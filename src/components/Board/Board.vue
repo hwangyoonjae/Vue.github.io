@@ -12,7 +12,7 @@ export default {
   name: 'Board',
   data() {
     let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
-items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name}})
+    items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name}})
     return {
       fields: [
         {

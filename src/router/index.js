@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
+import Login from '@/components/Login/Login'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/board/free/create/:contentId?', // ?는 선택적으로
       name: 'Create',
       component: Create
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
