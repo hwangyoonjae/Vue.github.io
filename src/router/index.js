@@ -1,21 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
 import Login from '@/components/Login/Login'
+import Table from '@/components/Tables/Table'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
     {
       path: '/board/free',
       name: 'Board',
@@ -35,6 +30,11 @@ export default new Router({
       path: '/Login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/Table',
+      name: 'Table',
+      component: Table
     }
   ]
 })
