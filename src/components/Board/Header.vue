@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Header_Content">
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand href="#">Vue.js로 게시판 만들기</b-navbar-brand>
 
@@ -25,3 +25,8 @@ export default {
 };
 </script>
 
+<style scoped>
+.Header_Content {
+  text-align: center;
+}
+</style>

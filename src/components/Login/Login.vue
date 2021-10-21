@@ -1,114 +1,77 @@
 <template>
   <div>
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col md="4">1 of 3</b-col>
-        <b-col md="4">2 of 3</b-col>
-        <b-col md="4">3 of 3</b-col>
-      </b-row>
-
-      <hr>
-
-      <b-row>
-        <b-col md="4">1 of 3</b-col>
-        <b-col md="4" offset-md="4">2 of 3</b-col>
-      </b-row>
-
-      <hr>
-
-      <b-row align-v="center" class="height">
-        <b-col>1 of 3</b-col>
-        <b-col>2 of 3</b-col>
-        <b-col>3 of 3</b-col>
-      </b-row>
-
-      <hr>
-
-      <b-row align-h="center">
-        <b-col cols="4">
-
-        </b-col>
-        <b-col cols="4"> 
-          <b-alert variant="danger" dismissible :show="showDismissibleAlert" @dismissed="showDismissibleAlert=false">
-            Dismissible Alert!
-          </b-alert>
-        </b-col>
-      </b-row>
-
-      <hr>
-
-      <b-row>
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-          <b-form-group id="input-group-1" label="Email address:" label-for="input-1"  description="We'll never share your email with anyone else.">
-            <b-form-input id="input-1" v-model="form.email" type="email" placeholder="Enter email" required></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-            <b-form-input id="input-2" v-model="form.name" placeholder="Enter name" required></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-            <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
-          </b-form-group>
-
-          <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
-            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4" :aria-describedby="ariaDescribedby">
-            <b-form-checkbox value="me">Check me out</b-form-checkbox>
-            <b-form-checkbox value="that">Check that out</b-form-checkbox>
-            </b-form-checkbox-group>
-          </b-form-group>
-
-          <b-button type="submit" variant="primary">Submit</b-button>
-          <b-button type="reset" variant="danger">Reset</b-button>
-        </b-form>
-      </b-row>
-
-    </b-container>
+    <el-form ref="form" :model="form" label-width="120px">
+  <el-form-item label="Activity name">
+    <el-input v-model="form.name"></el-input>
+  </el-form-item>
+  <el-form-item label="Activity zone">
+    <el-select v-model="form.region" placeholder="please select your zone">
+      <el-option label="Zone one" value="shanghai"></el-option>
+      <el-option label="Zone two" value="beijing"></el-option>
+    </el-select>
+  </el-form-item>
+  <el-form-item label="Activity time">
+    <el-col :span="11">
+      <el-date-picker type="date" placeholder="Pick a date" v-model="form.date1" style="width: 100%;"></el-date-picker>
+    </el-col>
+    <el-col class="line" :span="2">-</el-col>
+    <el-col :span="11">
+      <el-time-picker placeholder="Pick a time" v-model="form.date2" style="width: 100%;"></el-time-picker>
+    </el-col>
+  </el-form-item>
+  <el-form-item label="Instant delivery">
+    <el-switch v-model="form.delivery"></el-switch>
+  </el-form-item>
+  <el-form-item label="Activity type">
+    <el-checkbox-group v-model="form.type">
+      <el-checkbox label="Online activities" name="type"></el-checkbox>
+      <el-checkbox label="Promotion activities" name="type"></el-checkbox>
+      <el-checkbox label="Offline activities" name="type"></el-checkbox>
+      <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
+    </el-checkbox-group>
+  </el-form-item>
+  <el-form-item label="Resources">
+    <el-radio-group v-model="form.resource">
+      <el-radio label="Sponsor"></el-radio>
+      <el-radio label="Venue"></el-radio>
+    </el-radio-group>
+  </el-form-item>
+  <el-form-item label="Activity form">
+    <el-input type="textarea" v-model="form.desc"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit">Create</el-button>
+    <el-button>Cancel</el-button>
+  </el-form-item>
+</el-form>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Login',
-  data() {
-    return {
-      showDismissibleAlert: false,
-      form: {
-          email: '',
+  export default {
+    name: 'Login',
+    data() {
+      return {
+        form: {
           name: '',
-          food: null,
-          checked: []
-      },
-        foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
-        show: true
-    }
-  },
-  methods: {
-    handleClick() {
-      this.showDismissibleAlert = true;
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+        }
+      }
     },
-    onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
-      onReset(event) {
-        event.preventDefault()
-        this.form.email = ''
-        this.form.name = ''
-        this.form.food = null
-        this.form.checked = []
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-      })
+    methods: {
+      onSubmit() {
+        console.log('submit!');
+      }
     }
   }
-}
 </script>
 
 <style scoped>
-.height {
-  min-height: 10rem;
-  background: lightgray;
-}
+
 </style>
