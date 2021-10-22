@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Board_Component">
     <b-table striped hover :items="items" :fields="fields" @row-clicked="rowClick"></b-table>
     <b-button @click="writeContent">글쓰기</b-button>
   </div>
@@ -49,3 +49,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>
