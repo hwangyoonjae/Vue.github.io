@@ -8,18 +8,18 @@
       max-rows="6"
     ></b-form-textarea>
     <el-upload
-  class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :before-remove="beforeRemove"
-  multiple
-  :limit="3"
-  :on-exceed="handleExceed"
-  :file-list="fileList">
-  <el-button size="small" type="primary">Click to upload</el-button>
-  <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
-</el-upload>
+      class="upload-demo"
+      action="https://jsonplaceholder.typicode.com/posts/"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :before-remove="beforeRemove"
+      multiple
+      :limit="3"
+      :on-exceed="handleExceed"
+      :file-list="fileList">
+      <el-button size="small" type="primary">Click to upload</el-button>
+      <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+    </el-upload>
     <b-button @click="updateMode ? updateContent() : uploadContent()">저장</b-button>
     <b-button @click="cancle">취소</b-button>
   </div>

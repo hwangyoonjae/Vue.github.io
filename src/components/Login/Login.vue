@@ -1,72 +1,110 @@
 <template>
   <div>
-    <el-form ref="form" :model="form" label-width="120px">
-  <el-form-item label="Activity name">
-    <el-input v-model="form.name"></el-input>
-  </el-form-item>
-  <el-form-item label="Activity zone">
-    <el-select v-model="form.region" placeholder="please select your zone">
-      <el-option label="Zone one" value="shanghai"></el-option>
-      <el-option label="Zone two" value="beijing"></el-option>
-    </el-select>
-  </el-form-item>
-  <el-form-item label="Activity time">
-    <el-col :span="11">
-      <el-date-picker type="date" placeholder="Pick a date" v-model="form.date1" style="width: 100%;"></el-date-picker>
-    </el-col>
-    <el-col class="line" :span="2">-</el-col>
-    <el-col :span="11">
-      <el-time-picker placeholder="Pick a time" v-model="form.date2" style="width: 100%;"></el-time-picker>
-    </el-col>
-  </el-form-item>
-  <el-form-item label="Instant delivery">
-    <el-switch v-model="form.delivery"></el-switch>
-  </el-form-item>
-  <el-form-item label="Activity type">
-    <el-checkbox-group v-model="form.type">
-      <el-checkbox label="Online activities" name="type"></el-checkbox>
-      <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-      <el-checkbox label="Offline activities" name="type"></el-checkbox>
-      <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-    </el-checkbox-group>
-  </el-form-item>
-  <el-form-item label="Resources">
-    <el-radio-group v-model="form.resource">
-      <el-radio label="Sponsor"></el-radio>
-      <el-radio label="Venue"></el-radio>
-    </el-radio-group>
-  </el-form-item>
-  <el-form-item label="Activity form">
-    <el-input type="textarea" v-model="form.desc"></el-input>
-  </el-form-item>
-  <el-form-item>
-    <el-button type="primary" @click="onSubmit">Create</el-button>
-    <el-button>Cancel</el-button>
-  </el-form-item>
-</el-form>
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+      <el-form-item label="ID" prop="id">
+        <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="Password" prop="pass">
+        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="Confirm" prop="checkPass">
+        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="Age" prop="age">
+        <el-input v-model.number="ruleForm.age"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">Submit</el-button>
+        <el-button @click="resetForm('ruleForm')">Reset</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Login',
     data() {
-      return {
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+      var checkAge = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('Please input the age'));
         }
-      }
+        setTimeout(() => {
+          if (!Number.isInteger(value)) {
+            callback(new Error('Please input digits'));
+          } else {
+            if (value < 18) {
+              callback(new Error('Age must be greater than 18'));
+            } else {
+              callback();
+            }
+          }
+        }, 1000);
+      };
+      var validateId = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Please input the ID'));
+        } else {
+          if (this.ruleForm.checkId !== '') {
+            this.$refs.ruleForm.validateField('checkId');
+          }
+          callback();
+        }
+      };
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Please input the password'));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Please input the password again'));
+        } else if (value !== this.ruleForm.pass) {
+          callback(new Error('Two inputs don\'t match!'));
+        } else {
+          callback();
+        }
+      };
+      return {
+        ruleForm: {
+          id: '',
+          pass: '',
+          checkPass: '',
+          age: ''
+        },
+        rules: {
+          id: [
+            { validator: validateId, trigger: 'blur' }
+          ],
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          checkPass: [
+            { validator: validatePass2, trigger: 'blur' }
+          ],
+          age: [
+            { validator: checkAge, trigger: 'blur' }
+          ]
+        }
+      };
     },
     methods: {
-      onSubmit() {
-        console.log('submit!');
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
       }
     }
   }
