@@ -96,7 +96,7 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            alert('Success sign up!');
           } else {
             console.log('error submit!!');
             return false;
