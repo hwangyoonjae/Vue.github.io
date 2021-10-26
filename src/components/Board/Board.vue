@@ -51,5 +51,7 @@ export default {
 </script>
 
 <style scoped>
-
+.Board_Component {
+  text-align: center;
+}
 </style>

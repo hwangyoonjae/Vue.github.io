@@ -5,6 +5,7 @@ import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
 import Login from '@/components/Login/Login'
 import Table from '@/components/Tables/Table'
+import Style from '@/components/Webpage/style';
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/Table',
       name: 'Table',
       component: Table
+    },
+    {
+      path: '/Style',
+      name: 'Style',
+      component: Style
     }
   ]
 })

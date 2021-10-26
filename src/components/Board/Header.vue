@@ -7,9 +7,10 @@
 
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
-          <b-nav-item to="/Table">홈페이지</b-nav-item>
+          <b-nav-item to="/Table">테이블</b-nav-item>
           <b-nav-item to="/board/free">자유게시판</b-nav-item>
           <b-nav-item to="/Login">로그인</b-nav-item>
+          <b-nav-item to="/style">홈페이지</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
