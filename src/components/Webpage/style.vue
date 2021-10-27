@@ -1,7 +1,7 @@
 <template>
   <div class="style_component">
     <div class="style_component_menu_group">
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+      <el-radio-group v-model="isCollapse" class="style_component_menu_radio">
         <el-radio-button :label="false">expand</el-radio-button>
         <el-radio-button :label="true">collapse</el-radio-button>
       </el-radio-group>
@@ -45,11 +45,13 @@
 
 <script>
 import Board from '../Board/Board.vue'
+import Todo from '../Todo/TodoMain.vue'
 
 export default {
   name: 'style',
   components: {
     Board,
+    Todo,
   },
   data() {
     return {
@@ -71,13 +73,16 @@ export default {
 .style_component {
   height: 100%;
   display: flex;
-}
-
-.style_component_menu_group {
   margin-top: 20px;
 }
 
+.style_component_menu_radio {
+  margin-bottom: 20px;
+  display: flex;
+}
+
 .style_component_table_group {
+  width: 100%;
   margin-left: 10px;
 }
 

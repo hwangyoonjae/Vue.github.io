@@ -6,6 +6,7 @@ import Create from '@/components/Board/Create'
 import Login from '@/components/Login/Login'
 import Table from '@/components/Tables/Table'
 import Style from '@/components/Webpage/style';
+import Todo from '@/components/Todo/TodoMain'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/Style',
       name: 'Style',
       component: Style
+    },
+    {
+      path: '/Todo',
+      name: 'Todo',
+      component: Todo
     }
   ]
 })
