@@ -1,5 +1,5 @@
 <template> 
-    <div>
+    <div class="Todo_Content">
       <!-- 등록된 컴포넌트 4개를 HTML에 표시 -->
       <TodoHeader></TodoHeader> 
       <TodoInput v-on:addTodo="addTodo"></TodoInput>
@@ -51,5 +51,7 @@ export default { // 지역 컴포넌트 등록
 </script>
 
 <style>
-
+.Todo_Content {
+    text-align: center;
+}
 </style>
