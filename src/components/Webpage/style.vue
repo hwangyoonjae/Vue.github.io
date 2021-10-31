@@ -44,8 +44,7 @@
       <section>
         <div class="style_component">
           <div class="style_component_table_group">
-            <Board></Board>
-            <Todo></Todo>
+            <Chart></Chart>
           </div>
           <div class="style_component_todo_group">
             <Todo></Todo>
@@ -59,6 +58,7 @@
 
 <script>
 import Sidebar from '../Sidebar/Sidebar.vue'
+import Chart from '../Chart/Chart.vue'
 import Board from '../Board/Board.vue'
 import Todo from '../Todo/TodoMain.vue'
 
@@ -66,6 +66,7 @@ export default {
   name: 'style',
   components: {
     Sidebar,
+    Chart,
     Board,
     Todo,
   },
