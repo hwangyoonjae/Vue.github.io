@@ -37,24 +37,31 @@
         </el-menu-item>
       </el-menu>
     </div>
-    <div class="style_component_table_group">
-      <Board></Board>
-      <Todo></Todo>
+    <div class="style_component_sidebar_group">
+      <Sidebar></Sidebar>
     </div>
-    <div class="style_component_todo_group">
-      <Todo></Todo>
-      <Board></Board>
+    <div class="style_component">
+      <div class="style_component_table_group">
+        <Board></Board>
+        <Todo></Todo>
+      </div>
+      <div class="style_component_todo_group">
+        <Todo></Todo>
+        <Board></Board>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Sidebar from '../Sidebar/Sidebar.vue'
 import Board from '../Board/Board.vue'
 import Todo from '../Todo/TodoMain.vue'
 
 export default {
   name: 'style',
   components: {
+    Sidebar,
     Board,
     Todo,
   },
@@ -86,12 +93,16 @@ export default {
 }
 
 .style_component_menu_radio {
-  margin-bottom: 20px;
   display: flex;
 }
 
 .el-menu-vertical-demo {
+  height: 100%;
   background: #545c64;
+}
+
+.style_component_sidebar_group {
+  width: 100%;
 }
 
 .style_component_table_group {
