@@ -14,5 +14,11 @@ export default {
 </script>
 
 <style scoped>
-
+.Sidebar_Content {
+    line-height: 50px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    transition: background .3s;
+}
 </style>

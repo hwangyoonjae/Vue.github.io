@@ -37,18 +37,22 @@
         </el-menu-item>
       </el-menu>
     </div>
-    <div class="style_component_sidebar_group">
-      <Sidebar></Sidebar>
-    </div>
-    <div class="style_component">
-      <div class="style_component_table_group">
-        <Board></Board>
-        <Todo></Todo>
+    <div class="style_component_group">
+      <div class="style_component_sidebar_group">
+        <Sidebar></Sidebar>
       </div>
-      <div class="style_component_todo_group">
-        <Todo></Todo>
-        <Board></Board>
-      </div>
+      <section>
+        <div class="style_component">
+          <div class="style_component_table_group">
+            <Board></Board>
+            <Todo></Todo>
+          </div>
+          <div class="style_component_todo_group">
+            <Todo></Todo>
+            <Board></Board>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -82,14 +86,27 @@ export default {
 </script>
 
 <style>
+.Header_Content {
+  display: none;
+}
+
 .style_component {
+  width: 100%;
   height: 100%;
-  display: flex;
-  margin-top: 20px;
+  position: relative;
 }
 
 .style_component_menu_group {
-  height: 100%;
+    transition: width .28s;
+    width: 200px !important;
+    height: 100%;
+    position: fixed;
+    font-size: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
 }
 
 .style_component_menu_radio {
@@ -101,8 +118,16 @@ export default {
   background: #545c64;
 }
 
+.style_component_group{
+  min-height: 100%;
+  transition: margin-left .28s;
+  margin-left: 200px;
+  position: relative;
+}
+
 .style_component_sidebar_group {
   width: 100%;
+  height: 50px;
 }
 
 .style_component_table_group {
