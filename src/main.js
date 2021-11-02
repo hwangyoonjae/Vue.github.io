@@ -7,16 +7,24 @@ import router from './router'
 // Bootstrap
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css' 
 
+// Element UI
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 Vue.use(ElementUI);
+
+//
+import VueApexCharts from 'vue-apexcharts'
+
+Vue.use(VueApexCharts)
+
+Vue.component('apexchart', VueApexCharts)
 
 Vue.config.productionTip = false
 
