@@ -132,12 +132,10 @@ export default {
 }
 
 .style_component_table_group {
-  width: 100%;
   margin-left: 10px;
 }
 
 .style_component_todo_group {
-  width: 100%;
   margin-left: 10px;
 }
 
