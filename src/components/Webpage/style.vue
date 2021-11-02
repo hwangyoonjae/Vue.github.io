@@ -43,6 +43,9 @@
       </div>
       <section>
         <div class="style_component">
+          <div class="style_component_card_group">
+            <Card></Card>
+          </div>
           <div class="style_component_table_group">
             <Chart></Chart>
           </div>
@@ -58,6 +61,7 @@
 
 <script>
 import Sidebar from '../Sidebar/Sidebar.vue'
+import Card from '../Card/Card.vue'
 import Chart from '../Chart/Chart.vue'
 import Board from '../Board/Board.vue'
 import Todo from '../Todo/TodoMain.vue'
@@ -66,6 +70,7 @@ export default {
   name: 'style',
   components: {
     Sidebar,
+    Card,
     Chart,
     Board,
     Todo,

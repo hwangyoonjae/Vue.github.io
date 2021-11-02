@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Chart_component">
     <div id="chart">
       <apexchart type="line" height="400" :options="chartOptions" :series="series"></apexchart>
     </div>
