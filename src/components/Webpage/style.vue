@@ -136,6 +136,10 @@ export default {
   height: 50px;
 }
 
+.style_component_right_group {
+  float: right;
+}
+
 .style_component_table_group {
   margin-left: 10px;
 }

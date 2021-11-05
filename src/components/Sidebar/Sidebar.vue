@@ -6,12 +6,18 @@
   <div class="sidebar_content_text">
     <span>Dashboard</span>
   </div>
+  <Menu></Menu>
   </div>
 </template>
 
 <script>
+import Menu from '../Menu/right-menu.vue'
+
 export default {
   name: "Sidebar",
+  components : {
+    Menu,
+  },
   data() {
     return {};
   }
