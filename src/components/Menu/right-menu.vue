@@ -4,9 +4,7 @@
       <el-input placeholder="Type something" prefix-icon="el-icon-search" v-model="input2"></el-input>
     </div>
     <div class="Login_component">
-      <b-navbar-nav>
-        <b-nav-item to="/Login">Login</b-nav-item>
-      </b-navbar-nav>
+      <b-button @click="Login">Login</b-button>
     </div>
   </div>
 </template>
@@ -20,6 +18,13 @@ export default {
   data() {
     return {
       input2: '',
+    }
+  },
+  methods: {
+    Login() {
+      this.$router.push({
+        path: '/Login'
+      })
     }
   }
 }
