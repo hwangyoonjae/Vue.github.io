@@ -1,18 +1,23 @@
 <template>
   <div class="Card_component">
-    <div class="Card_people_component">
-      <span class="Card_people_icon">
-        <i class="fas fa-user-friends" aria-hidden="true"></i>
-      </span>
-      <div class="Card_people_count">
-          <el-row :gutter="20">
-          <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-        </el-row>
-      </div>
-    </div>
+    <el-row :gutter="20">
+      <el-col :span="6">
+        <div class="grid-content bg-purple">
+          <div class="Card_people_component">
+            <span class="Card_people_icon">
+              <svg-icon icon-class="peoples" class-name="card-panel-icon" />
+            </span>
+          </div>
+          <div class="Card_people_count">
+            <div> New Visits </div>
+            <span> 102,400 </span>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+    </el-row>
   </div>
 </template>
 
