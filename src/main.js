@@ -19,15 +19,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
-//
-import VueApexCharts from 'vue-apexcharts'
-
-Vue.use(VueApexCharts)
-Vue.component('apexchart', VueApexCharts)
-
-import IconBase from '@/components/IconBase.vue'
-Vue.component('icon-base', IconBase);
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
