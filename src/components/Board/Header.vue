@@ -7,11 +7,7 @@
 
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
-          <b-nav-item to="/Table">테이블</b-nav-item>
           <b-nav-item to="/board/free">자유게시판</b-nav-item>
-          <b-nav-item to="/Login">로그인</b-nav-item>
-          <b-nav-item to="/style">홈페이지</b-nav-item>
-          <b-nav-item to="/todo">ToDo</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -20,11 +16,20 @@
 
 <script>
 export default {
-  name: "Header",
-  data() {
-    return {};
+    data() {
+      return {
+        isCollapse: true
+      };
+    },
+    methods: {
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      }
+    }
   }
-};
 </script>
 
 <style scoped>
