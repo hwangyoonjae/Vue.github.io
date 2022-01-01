@@ -57,7 +57,7 @@
       },
       toggleOnff() {
         console.log(this.isCollapse);
-        this.isCollapse = this.isCollapse1;
+        this.isCollapse1 = false;
         console.log(this.isCollapse);
       },
       toggleOn() {
