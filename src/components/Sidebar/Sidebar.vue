@@ -1,20 +1,26 @@
 <template>
-  <div>
-    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-  <el-radio-button :label="false">expand</el-radio-button>
-  <el-radio-button :label="true">collapse</el-radio-button>
-</el-radio-group>
-<el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-  <el-submenu index="1">
-    <template slot="title">
-      <i class="el-icon-location"></i>
-      <span slot="title">Navigator One</span>
-    </template>
-    <el-menu-item-group>
-      <span slot="title">Group One</span>
-      <el-menu-item index="1-1">item one</el-menu-item>
-      <el-menu-item index="1-2">item two</el-menu-item>
-    </el-menu-item-group>
+  <div class="Sidebar_Component">
+    <el-radio-group v-model="isCollapse">
+      <el-radio-button :label="false">
+        <div v-if="isCollapse == isCollapse1">
+          <i class="fas fa-angle-double-right" @click="toggleOn"></i>
+        </div>
+        <div v-else>
+          <i class="fas fa-angle-double-left" @click="toggleOnff"></i>
+        </div>
+      </el-radio-button>
+    </el-radio-group>
+    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+    <el-submenu index="1">
+      <template slot="title">
+        <i class="el-icon-location"></i>
+        <span slot="title">Navigator One</span>
+      </template>
+      <el-menu-item-group>
+        <span slot="title">Group One</span>
+        <el-menu-item index="1-1">item one</el-menu-item>
+        <el-menu-item index="1-2">item two</el-menu-item>
+      </el-menu-item-group>
     <el-menu-item-group title="Group Two">
       <el-menu-item index="1-3">item three</el-menu-item>
     </el-menu-item-group>
@@ -26,10 +32,6 @@
   <el-menu-item index="2">
     <i class="el-icon-menu"></i>
     <span slot="title">Navigator Two</span>
-  </el-menu-item>
-  <el-menu-item index="3" disabled>
-    <i class="el-icon-document"></i>
-    <span slot="title">Navigator Three</span>
   </el-menu-item>
   <el-menu-item index="4">
     <i class="el-icon-setting"></i>
@@ -52,13 +54,30 @@
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
-      }
+      },
+      toggleOnff() {
+        console.log(this.isCollapse);
+        this.isCollapse = this.isCollapse1;
+        console.log(this.isCollapse);
+      },
+      toggleOn() {
+        console.log(this.isCollapse);
+        this.isCollapse1 = this.isCollapse;
+        console.log(this.isCollapse);
+      },
     }
   }
 </script>
 
 <style>
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    
-  }
+.Sidebar_Component {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  height: 100%;
+}
 </style>
