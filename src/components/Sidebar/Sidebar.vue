@@ -2,12 +2,10 @@
   <div class="Sidebar_Component">
     <el-radio-group v-model="isCollapse">
       <el-radio-button :label="false">
-        <div v-if="isCollapse == isCollapse1">
-          <i class="fas fa-angle-double-right" @click="toggleOn"></i>
-        </div>
-        <div v-else>
-          <i class="fas fa-angle-double-left" @click="toggleOnff"></i>
-        </div>
+        <i class="fas fa-angle-double-right"></i>
+      </el-radio-button>
+      <el-radio-button :label="true">
+        <i class="fas fa-angle-double-left"></i>
       </el-radio-button>
     </el-radio-group>
     <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
@@ -54,16 +52,6 @@
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
-      },
-      toggleOnff() {
-        console.log(this.isCollapse);
-        this.isCollapse1 = false;
-        console.log(this.isCollapse);
-      },
-      toggleOn() {
-        console.log(this.isCollapse);
-        this.isCollapse1 = this.isCollapse;
-        console.log(this.isCollapse);
       },
     }
   }
