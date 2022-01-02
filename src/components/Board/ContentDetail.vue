@@ -26,6 +26,9 @@
         <b-button variant="primary" @click="updateData">수정</b-button>
         <b-button variant="success" @click="deleteData">삭제</b-button>
       </div>
+      <div class="content-detail-filelist">
+        
+      </div>
       <div class="content-detail-comment">
         <CommentList :contentId="contentId"/>
       </div>

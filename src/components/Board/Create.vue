@@ -1,12 +1,8 @@
 <template>
   <div>
     <b-input v-model="subject" placeholder="제목을 입력해 주세요"></b-input>
-    <b-form-textarea
-      v-model="context"
-      placeholder="내용을 입력해 주세요"
-      rows="3"
-      max-rows="6"
-    ></b-form-textarea>
+    <b-form-textarea v-model="context" placeholder="내용을 입력해 주세요" rows="3" max-rows="6"></b-form-textarea>
+    <br>
     <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :before-remove="beforeRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
       <el-button size="small" type="primary">Click to upload</el-button>
       <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
@@ -29,7 +25,17 @@ export default {
       updatedAt: null,
       updateObject: null,
       updateMode: this.$route.params.contentId > 0 ? true : false,
-      fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
+      fileList: [
+        {
+          name: 'food.jpeg', 
+          url: '#'}, 
+          {
+            name: 'food2.jpeg', url: '#'
+          },
+            {
+              name: 'test.hwp', url: '#'
+            },
+      ]
     }
   },
   created() {
