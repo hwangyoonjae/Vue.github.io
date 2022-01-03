@@ -27,14 +27,14 @@ export default {
       updateMode: this.$route.params.contentId > 0 ? true : false,
       fileList: [
         {
-          name: 'food.jpeg', 
-          url: '#'}, 
-          {
-            name: 'food2.jpeg', url: '#'
-          },
-            {
-              name: 'test.hwp', url: '#'
-            },
+          name: 'food.jpeg', url: '#'
+        }, 
+        {
+          name: 'food2.jpeg', url: '#'
+        },
+        {
+          name: 'test.hwp', url: '#'
+        },
       ]
     }
   },
@@ -74,18 +74,18 @@ export default {
         path: '/board/free/'
       })
     },
-     handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePreview(file) {
-        console.log(file);
-      },
-      handleExceed(files, fileList) {
-        this.$message.warning(`The limit is 3, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
-      },
-      beforeRemove(file, fileList) {
-        return this.$confirm(`Cancel the transfert of ${ file.name } ?`);
-      }
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(`The limit is 3, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`Cancel the transfert of ${ file.name } ?`);
+    }
   }
 }
 </script>

@@ -27,7 +27,7 @@
         <b-button variant="success" @click="deleteData">삭제</b-button>
       </div>
       <div class="content-detail-filelist">
-        
+        {{name}}
       </div>
       <div class="content-detail-comment">
         <CommentList :contentId="contentId"/>
@@ -106,6 +106,12 @@ export default {
 }
 
 .content-detail-button {
+  border: 1px solid black;
+  margin-top: 1rem;
+  padding: 2rem;
+}
+
+.content-detail-filelist {
   border: 1px solid black;
   margin-top: 1rem;
   padding: 2rem;
