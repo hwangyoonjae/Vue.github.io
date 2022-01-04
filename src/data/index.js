@@ -68,6 +68,20 @@ export default {
       updated_at: null
     }
   ],
+  filelist: [
+    {
+      comment_id: 1,
+      name: 'food1.jpeg'
+    },
+    {
+      comment_id: 2,
+      name: 'food2.jpeg'
+    },
+    {
+      comment_id: 2,
+      name: 'food3.jpeg'
+    }
+  ],
   SubComment: [
     {
       subcomment_id: 1,

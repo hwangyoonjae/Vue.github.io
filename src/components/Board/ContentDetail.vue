@@ -27,7 +27,7 @@
         <b-button variant="success" @click="deleteData">삭제</b-button>
       </div>
       <div class="content-detail-filelist">
-        {{name}}
+        {{file}}
       </div>
       <div class="content-detail-comment">
         <CommentList :contentId="contentId"/>
@@ -47,13 +47,12 @@ export default {
   },
   data() {
     const contentId = Number(this.$route.params.contentId);
-    const contentData = data.Content.filter(item => item.content_id === contentId)[0]
+    const contentData = data.Content.filter(item => item.content_id === contentId)[0];
     return {
       contentId: contentId,
       title: contentData.title,
       context: contentData.context,
-      user: data.User.filter(item => item.user_id === contentData.user_id)[0]
-        .name,
+      user: data.User.filter(item => item.user_id === contentData.user_id)[0].name,
       created: contentData.created_at
     };
   },
