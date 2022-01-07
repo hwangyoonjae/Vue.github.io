@@ -9,33 +9,41 @@
       </el-radio-button>
     </el-radio-group>
     <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-    <el-submenu index="1">
+    <el-menu-item index="1">
+      <i class="el-icon-s-home"></i>
+      <span slot="title">홈</span>
+    </el-menu-item>
+  <el-menu-item index="2">
+    <i class="el-icon-star-on"></i>
+    <span slot="title">인기영상</span>
+  </el-menu-item>
+  <el-menu-item index="3">
+    <i class="el-icon-s-order"></i>
+    <span slot="title">시청기록</span>
+  </el-menu-item>
+  <el-submenu index="4">
       <template slot="title">
-        <i class="el-icon-location"></i>
-        <span slot="title">Navigator One</span>
+        <i class="el-icon-video-camera-solid"></i>
+        <span slot="title">영화</span>
       </template>
       <el-menu-item-group>
-        <span slot="title">Group One</span>
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
+        <span slot="title">소제목</span>
+        <el-menu-item index="1-3">한국영화</el-menu-item>
+        <el-menu-item index="1-3">외국영화</el-menu-item>
       </el-menu-item-group>
-    <el-menu-item-group title="Group Two">
-      <el-menu-item index="1-3">item three</el-menu-item>
-    </el-menu-item-group>
-    <el-submenu index="1-4">
-      <span slot="title">item four</span>
-      <el-menu-item index="1-4-1">item one</el-menu-item>
-    </el-submenu>
   </el-submenu>
-  <el-menu-item index="2">
-    <i class="el-icon-menu"></i>
-    <span slot="title">Navigator Two</span>
-  </el-menu-item>
-  <el-menu-item index="4">
-    <i class="el-icon-setting"></i>
-    <span slot="title">Navigator Four</span>
-  </el-menu-item>
-</el-menu>
+  <el-submenu index="6">
+      <template slot="title">
+        <i class="el-icon-s-platform"></i>
+        <span slot="title">드라마</span>
+      </template>
+      <el-menu-item-group>
+        <span slot="title">소제목</span>
+        <el-menu-item index="1-3">한국드라마</el-menu-item>
+        <el-menu-item index="1-3">외국드라마</el-menu-item>
+      </el-menu-item-group>
+  </el-submenu>
+  </el-menu>
   </div>
 </template>
 

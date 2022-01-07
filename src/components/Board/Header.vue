@@ -1,7 +1,7 @@
 <template>
   <div class="Header_Content">
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Vue.js로 게시판 만들기</b-navbar-brand>
+      <b-navbar-brand href="#">Vue.js로 OTT 만들기</b-navbar-brand>
 
       <b-navbar-toggle target="nav_collapse"/>
 
