@@ -4,6 +4,8 @@ import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
 import Main from '@/components/Main/Main'
+import Login from '@/components/Login/Login'
+import Signup from '@/components/Login/Signup'
 
 Vue.use(Router)
 
@@ -29,6 +31,16 @@ export default new Router({
       path: '/main',
       name: 'Main',
       component: Main
+    },
+    {
+      path: '/main/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/main/signup',
+      name: 'Signup',
+      component: Signup
     }
   ]
 })

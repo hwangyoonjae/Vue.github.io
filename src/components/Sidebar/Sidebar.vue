@@ -8,7 +8,7 @@
         <i class="fas fa-angle-double-left"></i>
       </el-radio-button>
     </el-radio-group>
-    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+    <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse">
     <el-menu-item index="1">
       <i class="el-icon-s-home"></i>
       <span slot="title">홈</span>
@@ -55,12 +55,7 @@
       };
     },
     methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      },
+
     }
   }
 </script>
