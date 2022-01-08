@@ -13,15 +13,19 @@
       <i class="el-icon-s-home"></i>
       <span slot="title">홈</span>
     </el-menu-item>
-  <el-menu-item index="2">
-    <i class="el-icon-star-on"></i>
-    <span slot="title">인기영상</span>
-  </el-menu-item>
-  <el-menu-item index="3">
-    <i class="el-icon-s-order"></i>
-    <span slot="title">시청기록</span>
-  </el-menu-item>
-  <el-submenu index="4">
+    <el-menu-item index="2">
+      <i class="el-icon-message-solid"></i>
+      <span slot="title">공지사항</span>
+    </el-menu-item>
+    <el-menu-item index="3">
+      <i class="el-icon-star-on"></i>
+      <span slot="title">인기영상</span>
+    </el-menu-item>
+    <el-menu-item index="4">
+      <i class="el-icon-s-order"></i>
+      <span slot="title">시청기록</span>
+    </el-menu-item>
+    <el-submenu index="5">
       <template slot="title">
         <i class="el-icon-video-camera-solid"></i>
         <span slot="title">영화</span>
@@ -31,18 +35,17 @@
         <el-menu-item index="1-3">한국영화</el-menu-item>
         <el-menu-item index="1-3">외국영화</el-menu-item>
       </el-menu-item-group>
-  </el-submenu>
-  <el-submenu index="6">
+    </el-submenu>
+    <el-submenu index="6">
       <template slot="title">
         <i class="el-icon-s-platform"></i>
         <span slot="title">드라마</span>
       </template>
       <el-menu-item-group>
-        <span slot="title">소제목</span>
         <el-menu-item index="1-3">한국드라마</el-menu-item>
         <el-menu-item index="1-3">외국드라마</el-menu-item>
       </el-menu-item-group>
-  </el-submenu>
+    </el-submenu>
   </el-menu>
   </div>
 </template>
