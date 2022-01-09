@@ -1,6 +1,8 @@
 <template>
   <div class="Header_Content">
     <b-navbar toggleable="lg" type="dark" variant="info">
+      <Burger></Burger>
+      
       <b-navbar-brand href="#">Vue.js로 OTT 만들기</b-navbar-brand>
 
       <b-navbar-toggle target="nav_collapse"/>
@@ -17,11 +19,11 @@
 </template>
 
 <script>
-import Sidebar from '../Sidebar/Sidebar'
+import Burger from '../Sidebar/Burger.vue'
 
 export default {
   components: {
-    Sidebar,
+    Burger
   }
 }
 </script>

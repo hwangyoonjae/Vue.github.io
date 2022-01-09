@@ -1,6 +1,6 @@
 <template>
   <div class="Sidebar_Component">
-    <el-radio-group v-model="isCollapse">
+    <el-radio-group v-model="isCollapse" :class="{ active: isCollapse }" @click="isCollapse = !isCollapse">
       <el-radio-button :label="false">
         <i class="fas fa-angle-double-right"></i>
       </el-radio-button>
@@ -55,10 +55,12 @@
     data() {
       return {
         isCollapse: true
-      };
+      }
     },
     methods: {
-
+      toggle() {
+        this.isCollapse = !this.isCollapse;
+      }
     }
   }
 </script>
