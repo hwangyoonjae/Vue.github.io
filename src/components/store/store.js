@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 export const store = Vue.observable({
-  isCollapse: true
+  isCollapse: false
 });
 
 export const mutations = {
