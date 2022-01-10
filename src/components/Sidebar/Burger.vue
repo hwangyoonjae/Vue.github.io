@@ -1,23 +1,40 @@
 <template>
-  <div id="burger" :class="{ 'active' : isBurgerActive }" @click.prevent="toggle">
-        <i class="el-icon-s-unfold"></i>
+  <div>
+       <el-radio-group v-model="isCollapse">
+      <el-radio-button :label="false">
+        <i class="fas fa-angle-double-right"></i>
+      </el-radio-button>
+      <el-radio-button :label="true">
+        <i class="fas fa-angle-double-left"></i>
+      </el-radio-button>
+    </el-radio-group>
+    <sidebar></sidebar>
   </div>
 </template>
 
 <script>
-import { store, mutations } from "../store/store";
 
 export default {
-  computed: {
-    // 버튼 클릭 후 X 아이콘으로 변경
-    isBurgerActive() {
-      return store.isNavOpen;
-    }
+  components: {
+   
   },
-  methods: {
-    toggle() {
-      mutations.toggleNav();
-    }
-  }
-};
+  data() {
+      return {
+        isCollapse: true
+      }
+    },
+}
 </script>
+
+<style>
+.Sidebar_Component {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  height: 100%;
+}
+</style>

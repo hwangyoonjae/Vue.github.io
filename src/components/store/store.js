@@ -1,14 +1,14 @@
 import Vue from "vue";
 
 export const store = Vue.observable({
-  isNavOpen: false
+  isCollapse: true
 });
 
 export const mutations = {
   setIsNavOpen(yesno) {
-    store.isNavOpen = yesno;
+    store.isCollapse = yesno;
   },
   toggleNav() {
-    store.isNavOpen = !store.isNavOpen;
+    store.isCollapse = !store.isCollapse;
   }
 };
