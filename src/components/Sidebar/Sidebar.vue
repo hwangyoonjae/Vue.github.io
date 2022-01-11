@@ -33,9 +33,11 @@
       <el-menu-item-group>
         <span slot="title">소제목</span>
         <el-menu-item index="1-3">
-          <el-link href="/todo">업무일정</el-link>
+          <el-link>업무일정</el-link>
         </el-menu-item>
-        <el-menu-item index="1-3">할일목록</el-menu-item>
+        <el-menu-item index="1-3">
+          <el-link href="/todo">할일목록</el-link>
+        </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
