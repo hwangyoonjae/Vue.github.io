@@ -6,6 +6,7 @@ import Create from '@/components/Board/Create'
 import Main from '@/components/Main/Main'
 import Login from '@/components/Login/Login'
 import Signup from '@/components/Login/Signup'
+import Todo from '@/components/Todo/TodoMain'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/main/signup',
       name: 'Signup',
       component: Signup
+    },
+    {
+      path: '/todo',
+      name: 'Todo',
+      component: Todo
     }
   ]
 })
