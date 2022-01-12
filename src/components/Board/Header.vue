@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="dark" variant="info">
       
       
-      <b-navbar-brand href="#">Vue.js로 OTT 만들기</b-navbar-brand>
+      <b-navbar-brand href="#">Vue.js로 레드마인 만들기</b-navbar-brand>
 
       <b-navbar-toggle target="nav_collapse"/>
 

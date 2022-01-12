@@ -11,7 +11,7 @@
     <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
     <el-menu-item index="1">
       <i class="el-icon-s-home"></i>
-      <span slot="title">홈</span>
+      <span slot="title">대시보드</span>
     </el-menu-item>
     <el-menu-item index="2">
       <i class="el-icon-s-cooperation"></i>
