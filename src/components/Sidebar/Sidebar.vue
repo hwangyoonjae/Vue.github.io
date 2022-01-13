@@ -27,7 +27,9 @@
     </el-menu-item>
     <el-menu-item index="5">
       <i class="el-icon-date"></i>
-      <span slot="title">업무일정</span>
+      <span slot="title">
+        <el-link href="/timetable">업무일정</el-link>
+        </span>
     </el-menu-item>
     <el-submenu index="6">
       <template slot="title">
