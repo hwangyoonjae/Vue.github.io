@@ -4,21 +4,21 @@
       <Sidebar />
     </div>
     <div class="b">
-      <Header />
+      <Navbar />
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Board/Header'
 import Sidebar from '@/components/Sidebar/Sidebar'
+import Navbar from '@/components/Sidebar/Navbar'
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Sidebar
+    Sidebar,
+    Navbar
   }
 }
 </script>
