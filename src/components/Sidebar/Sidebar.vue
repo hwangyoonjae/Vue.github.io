@@ -11,7 +11,9 @@
     <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
     <el-menu-item index="1">
       <i class="el-icon-house"></i>
-      <span slot="title">대시보드</span>
+      <span slot="title">
+        <el-link href="/main" :underline="false">대시보드</el-link>
+      </span>
     </el-menu-item>
     <el-menu-item index="2">
       <i class="el-icon-magic-stick"></i>
@@ -23,13 +25,15 @@
     </el-menu-item>
     <el-menu-item index="4">
       <i class="el-icon-document"></i>
-      <span slot="title">게시판</span>
+      <span slot="title">
+        <el-link href="/board/free" :underline="false">게시판</el-link>
+      </span>
     </el-menu-item>
-    <el-menu-item index="5">
+    <el-menu-item index="5" >
       <i class="el-icon-date"></i>
       <span slot="title">
-        <el-link href="/timetable">업무일정</el-link>
-        </span>
+        <el-link href="/timetable" :underline="false">업무일정</el-link>
+      </span>
     </el-menu-item>
     <el-submenu index="6">
       <template slot="title">
@@ -42,7 +46,7 @@
           <el-link>개인일정</el-link>
         </el-menu-item>
         <el-menu-item index="1-3">
-          <el-link href="/todo">할일목록</el-link>
+          <el-link href="/todo" :underline="false">할일목록</el-link>
         </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
