@@ -1,20 +1,18 @@
 <template>
   <div class="Header_Content">
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      
-      
-      <b-navbar-brand href="#">Vue.js로 레드마인 만들기</b-navbar-brand>
-
-      <b-navbar-toggle target="nav_collapse"/>
-
-      <b-collapse is-nav id="nav_collapse">
-        <b-navbar-nav>
-          <b-nav-item to="/main">Main</b-nav-item>
-          <b-nav-item to="/main/login">로그인</b-nav-item>
-          <b-nav-item to="/board/free">자유게시판</b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+    <el-container>
+    <el-header style="text-align: right; font-size: 12px">
+      <el-dropdown>
+        <i class="el-icon-setting" style="margin-right: 15px"></i>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>View</el-dropdown-item>
+          <el-dropdown-item>Add</el-dropdown-item>
+          <el-dropdown-item>Delete</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <span>Tom</span>
+    </el-header>
+    </el-container>
   </div>
 </template>
 
@@ -31,5 +29,6 @@ export default {
 <style scoped>
 .Header_Content {
   text-align: center;
+  width: 100%;
 }
 </style>
