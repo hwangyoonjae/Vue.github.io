@@ -4,10 +4,11 @@ import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
 import Main from '@/components/Main/Main'
+import Notice from '@/components/Notice/Notice'
 import Login from '@/components/Login/Login'
 import Signup from '@/components/Login/Signup'
 import Todo from '@/components/Todo/TodoMain'
-import Schedule from '@/components/timetable/timetable'
+import Schedule from '@/components/Timetable/Timetable'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/timetable',
       name: 'Schedule',
       component: Schedule
+    },
+    {
+      path: '/notice',
+      name: 'Notice',
+      component: Notice
     }
   ]
 })

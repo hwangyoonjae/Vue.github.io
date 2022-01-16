@@ -21,7 +21,9 @@
     </el-menu-item>
     <el-menu-item index="3">
       <i class="el-icon-bell"></i>
-      <span slot="title">공지사항</span>
+      <span slot="title">
+        <el-link href="/notice" :underline="false">공지사항</el-link>
+      </span>
     </el-menu-item>
     <el-menu-item index="4">
       <i class="el-icon-document"></i>
