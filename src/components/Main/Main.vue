@@ -4,6 +4,9 @@
 
     <el-row style="background:#fff; padding:16px 16px; margin-bottom:32px;">
       <Project />
+      <div style="text-align:right; margin-top:10px">
+        <el-link href="/project" :underline="false">더보기</el-link>
+      </div>
     </el-row>
 
     <el-row :gutter="32" class="page-group">
