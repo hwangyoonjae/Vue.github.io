@@ -16,7 +16,7 @@
       </span>
     </el-menu-item>
     <el-menu-item index="2">
-      <i class="el-icon-magic-stick"></i>
+      <i class="el-icon-monitor"></i>
       <span slot="title">프로젝트</span>
     </el-menu-item>
     <el-menu-item index="3">
