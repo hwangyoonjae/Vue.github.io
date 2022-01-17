@@ -37,15 +37,14 @@ export default {
 
 <style scoped>
 
-.page-group
-{
+.page-group{
   margin: 18px 0px 0px 0px;
   width: 100%;
 }
 
-    .board_part, .todo_part {
-      background: #fff;
-      padding: 16px 0 0;
-      margin-bottom: 32px;
-    }
+.board_part, .todo_part {
+  background: #fff;
+  padding: 16px 0 0;
+  margin-bottom: 32px;
+}
 </style>
