@@ -17,7 +17,9 @@
     </el-menu-item>
     <el-menu-item index="2">
       <i class="el-icon-monitor"></i>
-      <span slot="title">프로젝트</span>
+      <span slot="title">
+        <el-link href="/project" :underline="false">프로젝트</el-link>
+      </span>
     </el-menu-item>
     <el-menu-item index="3">
       <i class="el-icon-bell"></i>
