@@ -11,6 +11,8 @@ import Signup from '@/components/Login/Signup'
 import Todo from '@/components/Todo/TodoMain'
 import Schedule from '@/components/Timetable/Timetable'
 
+import test from '@/components/test'
+
 Vue.use(Router)
 
 export default new Router({
@@ -65,6 +67,11 @@ export default new Router({
       path: '/project',
       name: 'Project',
       component: Project
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test
     }
   ]
 })
