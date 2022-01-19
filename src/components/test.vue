@@ -83,53 +83,6 @@
     </div>
 </template>
 
-
-출처: https://www.crocus.co.kr/1309 [Crocus]
-
-<script>
-
-export default {
-  data() {
-    return {
-      tableData: [
-      {
-        title : 'Blue X-ray Enterprise',
-        start : '2016-05-03',
-        finish : '2016-05-04',
-        problem : '2',
-        state : 'soso',
-        success : '88%'
-      },
-      {
-        title : 'Blue X-ray DLP',
-        start : '2016-05-03',
-        finish : '2016-05-04',
-        problem : '0',
-        state : 'good',
-        success : '100%'
-      },
-      {
-        title : '전군PC보안체계',
-        start : '2016-05-03',
-        finish : '2016-05-04',
-        problem : '10',
-        state : 'just',
-        success : '50%'
-      },
-      {
-        title : 'DBSafer',
-        start : '2016-05-03',
-        finish : '2016-05-04',
-        problem : '20',
-        state : 'just',
-        success : '90%'
-      },
-      ]
-    }
-  }
-}
-</script>
-
 <script>    
     export default {
         name: 'Admin',
