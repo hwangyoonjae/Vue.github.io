@@ -5,6 +5,7 @@ import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
 import Main from '@/components/Main/Main'
 import Notice from '@/components/Notice/Notice'
+import NoticeWrite from '@/components/Notice/Write'
 import Project from '@/components/Project/Project'
 import Login from '@/components/Login/Login'
 import Signup from '@/components/Login/Signup'
@@ -62,6 +63,11 @@ export default new Router({
       path: '/notice',
       name: 'Notice',
       component: Notice
+    },
+    {
+      path: '/notice/write',
+      name: 'NoticeWrite',
+      component: NoticeWrite
     },
     {
       path: '/project',
