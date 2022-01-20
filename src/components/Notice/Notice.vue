@@ -1,6 +1,7 @@
 <template>
   <div class="Notice_component">
-    <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
+    <!--<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">-->
+    <el-table>
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="작성자" prop="name"></el-table-column>
@@ -9,12 +10,18 @@
         <template slot="header" slot-scope="{}">
           <el-input v-model="search" size="mini" placeholder="작성자 검색"/>
         </template>
-        <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+        <template>
+          <el-button size="mini">수정</el-button>
+          <el-button size="mini" type="danger">삭제</el-button>
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
+    <div class="Notice_write">
+      <el-link href="/notice/write" :underline="false">
+        <el-button type="primary" @click="createUser(str)">글쓰기</el-button>
+      </el-link>
+    </div>
   </div>
 </template>
 
@@ -64,5 +71,12 @@ export default {
 </script>
 
 <style>
+.Notice_component {
+  text-align: center;
+} 
 
+.Notice_write {
+  text-align: right;
+  margin: 10px;
+}
 </style>
