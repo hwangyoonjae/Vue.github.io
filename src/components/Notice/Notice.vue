@@ -18,9 +18,7 @@
     </el-table>
     <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
     <div class="Notice_write">
-      <el-link href="/notice/write" :underline="false">
-        <el-button type="primary" @click="createUser(str)">글쓰기</el-button>
-      </el-link>
+        <el-button type="primary" @click="writeContent">글쓰기</el-button>
     </div>
   </div>
 </template>
@@ -65,6 +63,11 @@ export default {
     },
       handleDelete(index, row) {
         console.log(index, row);
+    },
+    writeContent() {
+      this.$router.push({
+        path: '/notice/write'
+      })
     }
   },
 }
