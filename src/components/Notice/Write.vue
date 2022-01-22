@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import data from '@/data'
 
 export default {
   data() {
@@ -26,7 +27,7 @@ export default {
   },
   methods:{
     createNotice:function(val){
-      this.users.push({ title: val.title, component: val.component});
+      data.tableData.push({ title: val.title, component: val.component});
       this.usersNumber++;
  
       this.pageUsers = [[]];

@@ -91,5 +91,31 @@ export default {
       created_at: '2019-03-29 16:22:11',
       updated_at: null
     }
-  ]
+  ],
+  tableData: [
+    {
+      number : '1',
+      title : '질문있습니다',
+      date: '2016-05-03',
+      name: 'Tom',
+    }, 
+    {
+      number : '2',
+      title : '답변있습니다',
+      date: '2016-05-02',
+      name: 'John',
+    }, 
+    {
+      number : '3',
+      title : '대답하겠습니다.',
+      date: '2016-05-04',
+      name: 'Morgan',
+    }, 
+    {
+      number : '4',
+      title : '공지하겠습니다.',
+      date: '2016-05-01',
+      name: 'Jessy',
+    }],
+  search: '',  
 }

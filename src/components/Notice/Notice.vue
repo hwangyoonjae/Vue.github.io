@@ -1,7 +1,7 @@
 <template>
   <div class="Notice_component">
     <!--<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">-->
-    <el-table>
+    <el-table :data="tableData">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="작성자" prop="name"></el-table-column>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import data from '@/data'
 
 export default {
   data() {
