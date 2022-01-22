@@ -7,7 +7,7 @@
         <i class="el-icon-bel"></i>
         <i class="el-icon-setting" style="margin-right: 15px"></i>
       </el-dropdown>
-      <span>Tom</span>
+      <el-button type="text" @click="logingo">로그인</el-button>
     </el-header>
     </el-container>
   </div>
@@ -19,6 +19,13 @@
 export default {
   components: {
     
+  },
+  methods: {
+    logingo() {
+      this.$router.push({
+        path: '/main/login'
+      })
+    },
   }
 }
 </script>
