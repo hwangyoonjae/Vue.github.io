@@ -9,7 +9,7 @@
       <el-table-column label="작성일" prop="date"></el-table-column>
     </el-table>
     </div>
-    <el-table :data="tableData">
+    <el-table :data="items">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="작성자" prop="name"></el-table-column>
@@ -36,8 +36,10 @@ import data from '@/data'
 
 export default {
   data() {
+    let items = data.NoticeContent.sort((a,b) => {return b.number - a.number})
+    
     return {
-        tableData: data,
+        items: items
       }
     },
     methods: 
