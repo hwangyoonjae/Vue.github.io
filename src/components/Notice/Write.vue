@@ -23,21 +23,22 @@ export default {
       },
       title: null,
       component: null,
+      noticeNumber: 0,
     }
   },
   methods:{
     createNotice:function(val){
       data.tableData.push({ title: val.title, component: val.component});
-      this.usersNumber++;
+      this.noticeNumber++;
  
       this.pageUsers = [[]];
-      this.maxpageNumber = this.usersNumber / 10 + 1;
+      this.maxpageNumber = this.noticeNumber / 10 + 1;
       for(var i = 0; i < this.maxpageNumber; i++)
         this.pageUsers.push([]);
  
         var page = 1;
         var num = 0;
-        for(var i = 0; i < this.usersNumber; i++){
+        for(var i = 0; i < this.noticeNumber; i++){
           this.pageUsers[page].push(this.users[i]);
           num++;
           if(num == 10){

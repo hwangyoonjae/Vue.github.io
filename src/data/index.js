@@ -92,7 +92,7 @@ export default {
       updated_at: null
     }
   ],
-  tableData: [
+  NoticeContent: [
     {
       number : '1',
       title : '질문있습니다',
@@ -100,7 +100,7 @@ export default {
       name: 'Tom',
     }, 
     {
-      number : '2',
+      number : '4',
       title : '답변있습니다',
       date: '2016-05-02',
       name: 'John',
@@ -112,10 +112,10 @@ export default {
       name: 'Morgan',
     }, 
     {
-      number : '4',
+      number : '2',
       title : '공지하겠습니다.',
       date: '2016-05-01',
       name: 'Jessy',
     }],
-  search: '',  
+    search: '',
 }
