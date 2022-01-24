@@ -94,28 +94,32 @@ export default {
   ],
   NoticeContent: [
     {
-      number : '1',
+      number : 1,
       title : '질문있습니다',
       date: '2016-05-03',
       name: 'Tom',
+      updated_at: null
     }, 
     {
-      number : '4',
+      number : 4,
       title : '답변있습니다',
       date: '2016-05-02',
       name: 'John',
+      updated_at: null
     }, 
     {
-      number : '3',
+      number : 3,
       title : '대답하겠습니다.',
       date: '2016-05-04',
       name: 'Morgan',
+      updated_at: null
     }, 
     {
-      number : '2',
+      number : 2,
       title : '공지하겠습니다.',
       date: '2016-05-01',
       name: 'Jessy',
+      updated_at: null
     }],
     search: '',
 }
