@@ -1,14 +1,6 @@
 <template>
   <div class="Notice_component">
     <!--<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">-->
-    <div v-for="tableData in data" :key="tableData">
-      <el-table>
-      <el-table-column label="번호" prop="number"></el-table-column>
-      <el-table-column label="제목" prop="title"></el-table-column>
-      <el-table-column label="작성자" prop="name"></el-table-column>
-      <el-table-column label="작성일" prop="date"></el-table-column>
-    </el-table>
-    </div>
     <el-table :data="items">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
