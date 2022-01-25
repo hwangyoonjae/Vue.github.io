@@ -41,6 +41,7 @@ export default {
       data.NoticeContent.push({
         number: number,
         title: this.title,
+        component: this.component,
         name: this.name,
         date: this.date,
         updated_at: null
