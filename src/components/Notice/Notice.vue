@@ -11,8 +11,8 @@
           <el-input v-model="search" size="mini" placeholder="작성자 검색"/>
         </template>
         <template>
-          <el-button size="mini">수정</el-button>
-          <el-button size="mini" type="danger">삭제</el-button>
+          <el-button size="mini" @click="Data">수정</el-button>
+          <el-button size="mini" type="danger" @click="deleteData">삭제</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -41,6 +41,18 @@ export default {
     },
       handleDelete(index, row) {
         console.log(index, row);
+    },
+    updateData() {
+      this.$router.push({
+        path: `/notice/write/${this.contentId}`
+      })
+    },
+    deleteData() {
+      const content_index = data.NoticeContent.findIndex(item => item.number === this.number);
+      data.NoticeContent.splice(content_index, 1)
+      this.$router.push({
+        path: '/notice'
+      })
     },
     writeContent() {
       this.$router.push({
