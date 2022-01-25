@@ -41,15 +41,25 @@
     </el-menu-item>
     <el-submenu index="6">
       <template slot="title">
-        <i class="el-icon-user"></i>
-      <span slot="title">내 페이지</span>
+        <i class="el-icon-s-custom"></i>
+      <span slot="title">관리자</span>
       </template>
       <el-menu-item-group>
         <span slot="title">소제목</span>
         <el-menu-item index="1-3">
-          <el-link>개인일정</el-link>
+          <i class="el-icon-coordinate"></i>
+          <el-link>관리자 목록</el-link>
         </el-menu-item>
         <el-menu-item index="1-3">
+          <i class="el-icon-user"></i>
+          <el-link>사용자 목록</el-link>
+        </el-menu-item>
+        <el-menu-item index="1-3">
+          <i class="el-icon-setting"></i>
+          <el-link>환경설정</el-link>
+        </el-menu-item>
+        <el-menu-item index="1-3">
+          <i class="el-icon-document-checked"></i>
           <el-link href="/todo" :underline="false">할일목록</el-link>
         </el-menu-item>
       </el-menu-item-group>
