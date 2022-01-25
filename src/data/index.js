@@ -96,6 +96,7 @@ export default {
     {
       number : 1,
       title : '질문있습니다',
+      component : '질문있습니다',
       date: '2016-05-03',
       name: 'Tom',
       updated_at: null
@@ -103,6 +104,7 @@ export default {
     {
       number : 4,
       title : '답변있습니다',
+      component : '답변있습니다',
       date: '2016-05-02',
       name: 'John',
       updated_at: null
@@ -110,6 +112,7 @@ export default {
     {
       number : 3,
       title : '대답하겠습니다.',
+      component : '대답하겠습니다',
       date: '2016-05-04',
       name: 'Morgan',
       updated_at: null
@@ -117,6 +120,7 @@ export default {
     {
       number : 2,
       title : '공지하겠습니다.',
+      component : '공지하겠습니다',
       date: '2016-05-01',
       name: 'Jessy',
       updated_at: null
