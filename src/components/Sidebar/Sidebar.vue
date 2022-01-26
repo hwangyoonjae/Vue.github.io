@@ -48,15 +48,15 @@
         <span slot="title">소제목</span>
         <el-menu-item index="1-3">
           <i class="el-icon-coordinate"></i>
-          <el-link>관리자 목록</el-link>
+          <el-link href="/adminlist" :underline="false">관리자 목록</el-link>
         </el-menu-item>
         <el-menu-item index="1-4">
           <i class="el-icon-user"></i>
-          <el-link>사용자 목록</el-link>
+          <el-link href="/userlist" :underline="false">사용자 목록</el-link>
         </el-menu-item>
         <el-menu-item index="1-5">
           <i class="el-icon-setting"></i>
-          <el-link>환경설정</el-link>
+          <el-link :underline="false">환경설정</el-link>
         </el-menu-item>
         <el-menu-item index="1-6">
           <i class="el-icon-document-checked"></i>
