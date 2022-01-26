@@ -1,18 +1,50 @@
 export default {
+  Admin: [
+    {
+      admin_number: 1,
+      admin_id: 'hyj118',
+      name: '황윤재',
+      email: 'hyj118@naver.com',
+      created_at: '2018-09-11 11:42:11',
+      updated_at: '2022-01-26 11:42:11'
+    },
+    {
+      admin_number: 2,
+      admin_id: 'hyj2001118',
+      name: '홍길동',
+      email: 'hyj2001118@naver.com',
+      created_at: '2018-09-11 11:42:11',
+      updated_at: '2022-01-26 11:42:11'
+    },
+    {
+      admin_number: 3,
+      admin_id: 'hyj90632',
+      name: '황구글',
+      email: 'hyj90632@gmail.com',
+      created_at: '2018-09-11 11:42:11',
+      updated_at: '2022-01-26 11:42:11'
+    }
+  ],
   User: [
     {
       user_id: 1,
+      nickname: 'bonobono',
       name: 'lelana',
+      email: 'lelana@naver.com',
       created_at: '2018-09-11 11:42:11'
     },
     {
       user_id: 2,
+      nickname: 'redvelvet',
       name: '아이린',
+      email: 'bonobono@naver.com',
       created_at: '2018-09-11 11:42:11'
     },
     {
       user_id: 3,
+      nickname: 'happy',
       name: '조이',
+      email: 'happy@naver.com',
       created_at: '2018-09-11 11:42:11'
     },
   ],
