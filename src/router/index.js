@@ -11,6 +11,8 @@ import Login from '@/components/Login/Login'
 import Signup from '@/components/Login/Signup'
 import Todo from '@/components/Todo/TodoMain'
 import Schedule from '@/components/Timetable/Timetable'
+import AdminList from '@/components/Person/AdminList'
+import UserList from '@/components/Person/UserList'
 
 import test from '@/components/test'
 
@@ -73,6 +75,16 @@ export default new Router({
       path: '/project',
       name: 'Project',
       component: Project
+    },
+    {
+      path: '/userlist',
+      name: 'UserList',
+      component: UserList
+    },
+    {
+      path: '/adminlist',
+      name: 'AdminList',
+      component: AdminList
     },
     {
       path: '/test',
