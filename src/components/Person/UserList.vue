@@ -3,7 +3,7 @@
     <!--<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">-->
     <el-table :data="items">
       <el-table-column label="번호" prop="user_id"></el-table-column>
-      <el-table-column label="닉네임" prop="nickname"></el-table-column>
+      <el-table-column label="아이디" prop="id"></el-table-column>
       <el-table-column label="이름" prop="name"></el-table-column>
       <el-table-column label="이메일" prop="email"></el-table-column>
       <el-table-column label="등록일" prop="created_at"></el-table-column>
@@ -14,8 +14,12 @@
 
 <script>
 import data from '@/data'
+import user from '@/components/Login/Signup'
 
 export default {
+  components: {
+    user,
+  },
   data() {
     let items = data.User.sort((a,b) => {return b.user_id - a.user_id})
     
