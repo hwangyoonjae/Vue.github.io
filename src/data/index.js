@@ -28,21 +28,21 @@ export default {
   User: [
     {
       user_id: 1,
-      nickname: 'bonobono',
+      id: 'aaa',
       name: 'lelana',
       email: 'lelana@naver.com',
       created_at: '2018-09-11 11:42:11'
     },
     {
       user_id: 2,
-      nickname: 'redvelvet',
+      id: 'aaa',
       name: '아이린',
       email: 'bonobono@naver.com',
       created_at: '2018-09-11 11:42:11'
     },
     {
       user_id: 3,
-      nickname: 'happy',
+      id: 'aaa',
       name: '조이',
       email: 'happy@naver.com',
       created_at: '2018-09-11 11:42:11'
