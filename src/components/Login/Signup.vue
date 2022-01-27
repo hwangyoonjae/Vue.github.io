@@ -1,17 +1,22 @@
 <template>
   <div>
     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
-      <el-form-item label="ID" prop="id">
+      <el-form-item label="아이디" prop="id">
         <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="Password" prop="pass">
+      <el-form-item label="비밀번호" prop="pass">
         <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="Confirm" prop="checkPass">
+      <el-form-item label="비밀번호 확인" prop="checkPass">
         <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="Age" prop="age">
-        <el-input v-model.number="ruleForm.age"></el-input>
+      <el-form-item label="이름" prop="name">
+        <el-input v-model="ruleForm.name"></el-input>
+      </el-form-item>
+      <el-form-item label="이메일" prop="email" :rules="[
+      { required: true, message: 'Please input email address', trigger: 'blur' },
+      { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }]">
+        <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">회원가입</el-button>
@@ -24,22 +29,6 @@
 <script>
   export default {
     data() {
-      var checkAge = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('Please input the age'));
-        }
-        setTimeout(() => {
-          if (!Number.isInteger(value)) {
-            callback(new Error('Please input digits'));
-          } else {
-            if (value < 18) {
-              callback(new Error('Age must be greater than 18'));
-            } else {
-              callback();
-            }
-          }
-        }, 1000);
-      };
       var validateId = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('Please input the ID'));
@@ -69,12 +58,18 @@
           callback();
         }
       };
+      var checkname = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('Please input the name'));
+        }
+      };
       return {
         ruleForm: {
           id: '',
           pass: '',
           checkPass: '',
-          age: ''
+          name: '',
+          email: ''
         },
         rules: {
           id: [
@@ -86,9 +81,9 @@
           checkPass: [
             { validator: validatePass2, trigger: 'blur' }
           ],
-          age: [
-            { validator: checkAge, trigger: 'blur' }
-          ]
+          name: [
+            { validator: checkname, trigger: 'blur' }
+          ],
         }
       };
     },
