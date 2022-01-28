@@ -8,7 +8,7 @@
         <i class="fas fa-angle-double-left"></i>
       </el-radio-button>
     </el-radio-group>
-    <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
     <el-menu-item index="1">
       <i class="el-icon-house"></i>
       <span slot="title">
