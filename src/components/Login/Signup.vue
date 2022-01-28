@@ -21,6 +21,7 @@
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">회원가입</el-button>
         <el-button @click="resetForm('ruleForm')">초기화</el-button>
+        <el-button type="danger" @click="cancle">취소하기</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -93,16 +94,43 @@
           if (valid) {
             alert('Success sign up!');
           } else {
-            console.log('error submit!!');
+            alert('error submit!!');
             return false;
           }
         });
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-      }
+      },
+      uploadContent() {
+      let items = data.User.sort((a,b) => {return b.user_id - a.user_id})
+      const user = items[0].user_id + 1
+      data.User.push({
+        user_id: user,
+        id: this.id,
+        name: this.name,
+        name: this.name,
+        email: this.email,
+        created_at: '2018-09-11 11:42:11'
+      })
+      this.$router.push({
+        path: '/userlist'
+      })
+    },
+    updateContent() {
+      this.updateObject.title = this.title;
+      this.updateObject.component = this.component;
+      this.$router.push({
+        path: '/userlist'
+      })
+    },
+    cancle() {
+      this.$router.push({
+        path: '/main/login'
+      })
     }
   }
+}
 </script>
 
 <style scoped>
