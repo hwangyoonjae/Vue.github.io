@@ -15,31 +15,59 @@
         <el-link href="/main" :underline="false">대시보드</el-link>
       </span>
     </el-menu-item>
-    <el-menu-item index="2">
-      <i class="el-icon-monitor"></i>
-      <span slot="title">
-        <el-link href="/project" :underline="false">프로젝트</el-link>
-      </span>
-    </el-menu-item>
-    <el-menu-item index="3">
+    <el-submenu index="2">  
+      <template slot="title">
+        <i class="el-icon-edit-outline"></i>
+        <span slot="title">일반업무</span>
+      </template>
+      <el-menu-item-group>
+        <span slot="title">소제목</span>
+        <el-menu-item index="1-3">
+          <i class="el-icon-view"></i>
+          <el-link href="" :underline="false">이슈관리</el-link>
+        </el-menu-item>
+        <el-menu-item index="1-4">
+          <i class="el-icon-edit"></i>
+          <el-link href="" :underline="false">변경요청</el-link>
+        </el-menu-item>
+      </el-menu-item-group>
+    </el-submenu>
+    <el-submenu index="3">  
+      <template slot="title">
+        <i class="el-icon-monitor"></i>
+        <span slot="title">프로젝트</span>
+      </template>
+      <el-menu-item-group>
+        <span slot="title">소제목</span>
+        <el-menu-item index="1-3">
+          <i class="el-icon-tickets"></i>
+          <el-link href="" :underline="false">프로젝트 리스트</el-link>
+        </el-menu-item>
+        <el-menu-item index="1-4">
+          <i class="el-icon-notebook-1"></i>
+          <el-link href="" :underline="false">프로젝트 산출물</el-link>
+        </el-menu-item>
+      </el-menu-item-group>
+    </el-submenu>
+    <el-menu-item index="4">
       <i class="el-icon-bell"></i>
       <span slot="title">
         <el-link href="/notice" :underline="false">공지사항</el-link>
       </span>
     </el-menu-item>
-    <el-menu-item index="4">
+    <el-menu-item index="5">
       <i class="el-icon-document"></i>
       <span slot="title">
         <el-link href="/board/free" :underline="false">게시판</el-link>
       </span>
     </el-menu-item>
-    <el-menu-item index="5" >
+    <el-menu-item index="6" >
       <i class="el-icon-date"></i>
       <span slot="title">
         <el-link href="/timetable" :underline="false">업무일정</el-link>
       </span>
     </el-menu-item>
-    <el-submenu index="6">
+    <el-submenu index="7">
       <template slot="title">
         <i class="el-icon-s-custom"></i>
       <span slot="title">관리자</span>
