@@ -13,10 +13,14 @@
       <el-form-item label="이름" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
-      <el-form-item label="이메일" prop="email" :rules="[
-      { required: true, message: 'Please input email address', trigger: 'blur' },
-      { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }]">
+      <el-form-item label="이메일" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
+      </el-form-item>
+      <el-form-item label="계정권한" prop="region">
+        <el-select v-model="ruleForm.region" placeholder="계정구분">
+          <el-option label="괸리자" value="admin"></el-option>
+          <el-option label="사용자" value="user"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>
@@ -72,7 +76,8 @@ export default {
         pass: '',
         checkPass: '',
         name: '',
-        email: ''
+        email: '',
+        region: '',
       },
       rules: {
         id: [
@@ -86,6 +91,13 @@ export default {
         ],
         name: [
           { validator: checkname, trigger: 'blur' }
+        ],
+        email: [
+          { required: true, message: 'Please input email address', trigger: 'blur' },
+          { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
+        ],
+        region: [
+          { required: true, message: 'Please select Activity zone', trigger: 'change' }
         ],
       }
     };
@@ -114,6 +126,12 @@ export default {
         email: this.ruleForm.email,
         created_at: '2018-09-11 11:42:11'
       })
+      if (condition) {
+        
+      }
+      else {
+
+      }
       this.$router.push({
         path: '/userlist'
       })
