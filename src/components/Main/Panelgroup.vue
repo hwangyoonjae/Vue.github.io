@@ -16,6 +16,7 @@
           <div class="card-panel-text">
             프로젝트
           </div>
+          <span data-v-48c369af="" class="card-panel-num"> 10 </span>
           <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
         </div>
       </div>
@@ -29,6 +30,7 @@
           <div class="card-panel-text">
             사용자
           </div>
+          <span data-v-48c369af="" class="card-panel-num"> 200 </span>
           <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
         </div>
       </div>
@@ -42,6 +44,7 @@
           <div class="card-panel-text">
             공지사항
           </div>
+          <span data-v-48c369af="" class="card-panel-num"> 30 </span>
           <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
         </div>
       </div>
@@ -55,6 +58,7 @@
           <div class="card-panel-text">
             이슈사항
           </div>
+          <span data-v-48c369af="" class="card-panel-num"> 0 </span>
           <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
         </div>
       </div>
