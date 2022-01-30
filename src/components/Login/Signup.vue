@@ -16,12 +16,13 @@
       <el-form-item label="이메일" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
-      <el-form-item label="계정권한" prop="region">
-        <el-select v-model="ruleForm.region" placeholder="계정구분">
-          <el-option label="관리자" value="admin"></el-option>
-          <el-option label="사용자" value="user"></el-option>
-        </el-select>
-      </el-form-item>
+      <el-form-item label="계정권한" prop="division">
+    <el-select v-model="ruleForm.division" placeholder="계정권한">
+      <el-option label="관리자" value="admin"></el-option>
+      <el-option label="사용자" value="user"></el-option>
+    </el-select>
+    <span>Selected: {{ ruleForm.division }}</span>
+  </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>
         <el-button @click="resetForm('ruleForm')">초기화</el-button>
@@ -77,7 +78,7 @@ export default {
         checkPass: '',
         name: '',
         email: '',
-        region: '',
+        division: '',
       },
       rules: {
         id: [
@@ -96,8 +97,8 @@ export default {
           { required: true, message: 'Please input email address', trigger: 'blur' },
           { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
         ],
-        region: [
-          { required: true, message: 'Please select Activity zone', trigger: 'change' }
+        division: [
+          { required: true, message: 'Please select Activity zone', trigger: 'change' },
         ],
       }
     };
@@ -117,24 +118,38 @@ export default {
       this.$refs[formName].resetFields();
     },
     uploadContent() {
-      let items = data.User.sort((a,b) => {return b.user_id - a.user_id})
-      const user = items[0].user_id + 1
-      data.User.push({
-        user_id: user,
-        id: this.ruleForm.id,
-        name: this.ruleForm.name,
-        email: this.ruleForm.email,
-        created_at: '2018-09-11 11:42:11'
-      })
-      if (condition) {
-        
-      }
-      else {
+      let adminitems = data.Admin.sort((a,b) => {return b.admin_id - a.admin_id})
+      let useritems = data.User.sort((a,b) => {return b.user_id - a.user_id})
 
+      const admin = adminitems[0].admin_id + 1
+      const user = useritems[0].user_id + 1
+      
+      if (this.ruleForm.division == 'admin') {
+        data.Admin.push({
+          admin_id: admin,
+          id: this.ruleForm.id,
+          name: this.ruleForm.name,
+          email: this.ruleForm.email,
+          created_at: '2018-09-11 11:42:11',
+          updated_at: '2022-01-26 11:42:11'
+        })
+        this.$router.push({
+          path: '/adminlist'
+        })
+      } else if (this.ruleForm.division == 'user') {
+        data.User.push({
+          user_id: user,
+          id: this.ruleForm.id,
+          name: this.ruleForm.name,
+          email: this.ruleForm.email,
+          created_at: '2018-09-11 11:42:11'
+        })
+        this.$router.push({
+          path: '/userlist'
+        })
+      } else {
+        console.log("signup error!!");
       }
-      this.$router.push({
-        path: '/userlist'
-      })
     },
     updateContent() {
       this.updateObject.id = this.id;
