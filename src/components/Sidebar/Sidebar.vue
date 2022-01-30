@@ -23,7 +23,7 @@
       <el-menu-item-group>
         <span slot="title">소제목</span>
         <el-menu-item index="1-3">
-          <i class="el-icon-view"></i>
+          <i class="el-icon-warning"></i>
           <el-link href="" :underline="false">이슈관리</el-link>
         </el-menu-item>
         <el-menu-item index="1-4">

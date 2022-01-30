@@ -52,11 +52,11 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
         <div class="card-panel-icon-wrapper icon-issue">
-          <i class="el-icon-question card-panel-icon"></i>
+          <i class="el-icon-warning card-panel-icon"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            이슈사항
+            이슈관리
           </div>
           <span data-v-48c369af="" class="card-panel-num"> 0 </span>
           <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
