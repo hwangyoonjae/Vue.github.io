@@ -21,7 +21,6 @@
       <el-option label="관리자" value="admin"></el-option>
       <el-option label="사용자" value="user"></el-option>
     </el-select>
-    <span>Selected: {{ ruleForm.division }}</span>
   </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>
