@@ -1,24 +1,27 @@
 export default {
   Admin: [
     {
-      admin_number: 1,
-      admin_id: 'hyj118',
+      division : 'admin',
+      admin_id: 1,
+      id: 'hyj118',
       name: '황윤재',
       email: 'hyj118@naver.com',
       created_at: '2018-09-11 11:42:11',
       updated_at: '2022-01-26 11:42:11'
     },
     {
-      admin_number: 2,
-      admin_id: 'hyj2001118',
+      division : 'admin',
+      admin_id: 2,
+      id: 'hyj2001118',
       name: '홍길동',
       email: 'hyj2001118@naver.com',
       created_at: '2018-09-11 11:42:11',
       updated_at: '2022-01-26 11:42:11'
     },
     {
-      admin_number: 3,
-      admin_id: 'hyj90632',
+      division : 'admin',
+      admin_id: 3,
+      id: 'hyj90632',
       name: '황구글',
       email: 'hyj90632@gmail.com',
       created_at: '2018-09-11 11:42:11',
@@ -27,6 +30,7 @@ export default {
   ],
   User: [
     {
+      division : 'user',
       user_id: 1,
       id: 'aaa',
       name: 'lelana',
@@ -34,6 +38,7 @@ export default {
       created_at: '2018-09-11 11:42:11'
     },
     {
+      division : 'user',
       user_id: 2,
       id: 'aaa',
       name: '아이린',
@@ -41,6 +46,7 @@ export default {
       created_at: '2018-09-11 11:42:11'
     },
     {
+      division : 'user',
       user_id: 3,
       id: 'aaa',
       name: '조이',
