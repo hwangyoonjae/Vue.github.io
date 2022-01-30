@@ -18,7 +18,7 @@
       </el-form-item>
       <el-form-item label="계정권한" prop="region">
         <el-select v-model="ruleForm.region" placeholder="계정구분">
-          <el-option label="괸리자" value="admin"></el-option>
+          <el-option label="관리자" value="admin"></el-option>
           <el-option label="사용자" value="user"></el-option>
         </el-select>
       </el-form-item>
