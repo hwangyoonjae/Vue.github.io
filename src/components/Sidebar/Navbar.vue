@@ -1,6 +1,7 @@
 <template>
   <div class="Header_Content">
     <el-container>
+    <Burger></Burger>
     <el-header style="text-align: right; font-size: 12px">
       <el-dropdown>
         <i class="el-icon-search"></i>
@@ -14,11 +15,11 @@
 </template>
 
 <script>
-
+import Burger from '@/components/Sidebar/Burger'
 
 export default {
   components: {
-    
+    Burger
   },
   methods: {
     logingo() {
