@@ -1,28 +1,35 @@
 <template>
-  <div>
-       <el-radio-group v-model="isCollapse">
-      <el-radio-button :label="false">
-        <i class="fas fa-angle-double-right"></i>
+  <div id="burger" :class="{ 'active' : isBurgerActive }" @click.prevent="toggle">
+    <div v-if="isNavOpen">
+      <el-radio-button>
+        <i class="el-icon-s-fold"></i>
       </el-radio-button>
-      <el-radio-button :label="true">
-        <i class="fas fa-angle-double-left"></i>
+    </div>
+    <div v-else>
+      <el-radio-button>
+        <i class="el-icon-s-unfold"></i>
       </el-radio-button>
-    </el-radio-group>
-    <sidebar></sidebar>
+    </div>
   </div>
 </template>
 
 <script>
+import { store, mutations } from "@/store.js";
 
 export default {
-  components: {
-   
+  computed: {
+    isNavOpen() {
+      console.log(store.isNavOpen);
+      return store.isNavOpen
+    }
   },
-  data() {
-      return {
-        isCollapse: true
-      }
-    },
+  methods: {
+    toggle() {
+      console.log(store.isNavOpen);
+      mutations.toggleNav();
+      console.log(store.isNavOpen);
+    }
+  }
 }
 </script>
 
@@ -31,10 +38,5 @@ export default {
   width: 100%;
   height: 100%;
   margin: 0;
-}
-
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  height: 100%;
 }
 </style>
