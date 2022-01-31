@@ -1,13 +1,5 @@
 <template>
   <div class="Sidebar_Component">
-    <el-radio-group v-model="isCollapse">
-      <el-radio-button :label="false">
-        <i class="fas fa-angle-double-right"></i>
-      </el-radio-button>
-      <el-radio-button :label="true">
-        <i class="fas fa-angle-double-left"></i>
-      </el-radio-button>
-    </el-radio-group>
     <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
     <el-menu-item index="1">
       <i class="el-icon-house"></i>
@@ -103,6 +95,11 @@
         isCollapse: true
       }
     },
+    computed: {
+            isPanelOpen() {
+                return store.isNavOpen
+            }
+        }
   }
 </script>
 
