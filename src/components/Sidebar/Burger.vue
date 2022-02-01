@@ -1,13 +1,13 @@
 <template>
-  <div id="burger" :class="{ 'active' : isBurgerActive }" @click.prevent="toggle">
+  <div id="burger" @click.prevent="toggle">
     <div v-if="isNavOpen">
       <el-radio-button>
-        <i class="el-icon-s-fold"></i>
+        <i class="el-icon-s-unfold"></i>
       </el-radio-button>
     </div>
     <div v-else>
       <el-radio-button>
-        <i class="el-icon-s-unfold"></i>
+        <i class="el-icon-s-fold"></i>
       </el-radio-button>
     </div>
   </div>
@@ -27,9 +27,9 @@ export default {
     toggle() {
       console.log(store.isNavOpen);
       mutations.toggleNav();
-      console.log(store.isNavOpen);
+      console.log(store.isNavOpen);    
     }
-  }
+  },
 }
 </script>
 

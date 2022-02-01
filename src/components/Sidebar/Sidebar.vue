@@ -1,6 +1,6 @@
 <template>
   <div class="Sidebar_Component">
-    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
+    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse.isNavOpen">
     <el-menu-item index="1">
       <i class="el-icon-house"></i>
       <span slot="title">
@@ -89,18 +89,15 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        isCollapse: true
-      }
-    },
-    computed: {
-            isPanelOpen() {
-                return store.isNavOpen
-            }
-        }
-  }
+import { store, mutations } from "@/store.js";
+
+export default {
+  data() {
+    return {
+      isCollapse: store
+    }
+  },
+}
 </script>
 
 <style>
