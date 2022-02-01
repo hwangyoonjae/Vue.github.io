@@ -54,6 +54,8 @@ export default {
 
 .Main_Component {
   background-color: #f0f2f5;
+  width: 100%;
+  height: 100%;
 }
 
 .project {
@@ -73,11 +75,14 @@ export default {
 .page-group{
   margin: 18px 0px 0px 0px;
   width: 100%;
+  height: 350px;
 }
 
 .timetable_part, .board_part, .todo_part {
   background: #fff;
   padding: 16px 0 0;
   margin-bottom: 32px;
+  width: 100%;
+  height: 100%;
 }
 </style>
