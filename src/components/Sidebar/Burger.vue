@@ -1,14 +1,10 @@
 <template>
-  <div id="burger" @click.prevent="toggle">
+  <div class="Burger_Component" @click.prevent="toggle">
     <div v-if="isNavOpen">
-      <el-radio-button>
         <i class="el-icon-s-unfold"></i>
-      </el-radio-button>
     </div>
     <div v-else>
-      <el-radio-button>
         <i class="el-icon-s-fold"></i>
-      </el-radio-button>
     </div>
   </div>
 </template>
@@ -34,9 +30,14 @@ export default {
 </script>
 
 <style>
-.Sidebar_Component {
+.Burger_Component {
   width: 100%;
   height: 100%;
-  margin: 0;
+  cursor: pointer;
+}
+
+.el-icon-s-unfold, .el-icon-s-fold {
+  margin: 10px;
+  font-size: 20px;
 }
 </style>
