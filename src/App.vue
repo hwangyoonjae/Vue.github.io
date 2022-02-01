@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div class="Sidebar_Component">
+    <div class="Sidebar_Part">
       <Sidebar />
     </div>
-    <div class="Main_Component">
+    <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen }">
       <Navbar />
       <router-view/>
     </div>
@@ -13,13 +13,19 @@
 <script>
 import Sidebar from '@/components/Sidebar/Sidebar'
 import Navbar from '@/components/Sidebar/Navbar'
+import { store, mutations } from "@/store.js";
 
 export default {
   name: 'App',
   components: {
     Sidebar,
     Navbar
-  }
+  },
+  data() {
+    return {
+      isCollapse: store
+    }
+  },
 }
 </script>
 
@@ -40,12 +46,17 @@ html,body {
   display: flex;
 }
 
-.a {
+.Sidebar_Part {
   height: 100%;
 }
 
-.b {
-  width: 100%;;
+.Home_Part_open {
+  width: calc(100% - 200px);
+  height: 100%;
+}
+
+.Home_Part_close {
+  width: calc(100% - 64px);
   height: 100%;
 }
 </style>
