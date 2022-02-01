@@ -1,16 +1,7 @@
 <template>
   <div class="Header_Content">
-    <el-container>
-    <Burger></Burger>
-    <el-header style="text-align: right; font-size: 12px">
-      <el-dropdown>
-        <i class="el-icon-search"></i>
-        <i class="el-icon-bel"></i>
-        <i class="el-icon-setting" style="margin-right: 15px"></i>
-      </el-dropdown>
-      <el-button type="text" @click="logingo">로그인</el-button>
-    </el-header>
-    </el-container>
+      <Burger></Burger>
+      <el-button type="text" @click="logingo" class="login_button">로그인</el-button>
   </div>
 </template>
 
@@ -33,7 +24,16 @@ export default {
 
 <style scoped>
 .Header_Content {
-  text-align: center;
   width: 100%;
+  height: 60px;
+  display: flex;
+}
+
+.Header_Content i {
+  font-size: 20px;
+}
+
+.login_button {
+  margin: 10px;
 }
 </style>
