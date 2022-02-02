@@ -33,7 +33,7 @@
         <span slot="title">소제목</span>
         <el-menu-item index="1-3">
           <i class="el-icon-tickets"></i>
-          <el-link href="" :underline="false">프로젝트 리스트</el-link>
+          <el-link href="/project" :underline="false">프로젝트 리스트</el-link>
         </el-menu-item>
         <el-menu-item index="1-4">
           <i class="el-icon-notebook-1"></i>
