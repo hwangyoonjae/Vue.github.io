@@ -1,11 +1,9 @@
 <template>
   <div class="Sidebar_Component">
-    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse.isNavOpen">
-    <el-menu-item index="1">
+    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse.isNavOpen" background-color="#304156" text-color="#fff">
+    <el-menu-item index="1" @click="dashboardgo">
       <i class="el-icon-house"></i>
-      <span slot="title">
-        <el-link href="/main" :underline="false">대시보드</el-link>
-      </span>
+      <span slot="title">대시보드</span>
     </el-menu-item>
     <el-submenu index="2">  
       <template slot="title">
@@ -13,14 +11,13 @@
         <span slot="title">일반업무</span>
       </template>
       <el-menu-item-group>
-        <span slot="title">소제목</span>
         <el-menu-item index="1-3">
           <i class="el-icon-warning"></i>
-          <el-link href="" :underline="false">이슈관리</el-link>
+          <span>이슈관리</span>
         </el-menu-item>
         <el-menu-item index="1-4">
           <i class="el-icon-edit"></i>
-          <el-link href="" :underline="false">변경요청</el-link>
+          <span>변경요청</span>
         </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
@@ -30,34 +27,27 @@
         <span slot="title">프로젝트</span>
       </template>
       <el-menu-item-group>
-        <span slot="title">소제목</span>
-        <el-menu-item index="1-3">
+        <el-menu-item index="1-3" @click="projectgo">
           <i class="el-icon-tickets"></i>
-          <el-link href="/project" :underline="false">프로젝트 리스트</el-link>
+          <span>프로젝트 리스트</span>
         </el-menu-item>
         <el-menu-item index="1-4">
           <i class="el-icon-notebook-1"></i>
-          <el-link href="" :underline="false">프로젝트 산출물</el-link>
+          <span>프로젝트 산출물</span>
         </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
-    <el-menu-item index="4">
+    <el-menu-item index="4" @click="noticego">
       <i class="el-icon-bell"></i>
-      <span slot="title">
-        <el-link href="/notice" :underline="false">공지사항</el-link>
-      </span>
+      <span slot="title">공지사항</span>
     </el-menu-item>
-    <el-menu-item index="5">
+    <el-menu-item index="5" @click="boardgo">
       <i class="el-icon-document"></i>
-      <span slot="title">
-        <el-link href="/board/free" :underline="false">게시판</el-link>
-      </span>
+      <span slot="title">게시판</span>
     </el-menu-item>
-    <el-menu-item index="6" >
+    <el-menu-item index="6" @click="timetalbego">
       <i class="el-icon-date"></i>
-      <span slot="title">
-        <el-link href="/timetable" :underline="false">업무일정</el-link>
-      </span>
+      <span slot="title">업무일정</span>
     </el-menu-item>
     <el-submenu index="7">
       <template slot="title">
@@ -65,22 +55,21 @@
       <span slot="title">관리자</span>
       </template>
       <el-menu-item-group>
-        <span slot="title">소제목</span>
-        <el-menu-item index="1-3">
+        <el-menu-item index="1-3" @click="adminlistgo">
           <i class="el-icon-coordinate"></i>
-          <el-link href="/adminlist" :underline="false">관리자 목록</el-link>
+          <span>관리자 목록</span>
         </el-menu-item>
-        <el-menu-item index="1-4">
+        <el-menu-item index="1-4" @click="userlistgo">
           <i class="el-icon-user"></i>
-          <el-link href="/userlist" :underline="false">사용자 목록</el-link>
+          <span>사용자 목록</span>
         </el-menu-item>
         <el-menu-item index="1-5">
           <i class="el-icon-setting"></i>
-          <el-link :underline="false">환경설정</el-link>
+          <span>환경설정</span>
         </el-menu-item>
-        <el-menu-item index="1-6">
+        <el-menu-item index="1-6" @click="todolistgo">
           <i class="el-icon-document-checked"></i>
-          <el-link href="/todo" :underline="false">할일목록</el-link>
+          <span>할일 목록</span>
         </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
@@ -97,6 +86,48 @@ export default {
       isCollapse: store
     }
   },
+  methods: {
+    dashboardgo() {
+      this.$router.push({
+        path: '/main'
+      })
+    },
+    projectgo() {
+      this.$router.push({
+        path: '/project'
+      })
+    },
+    noticego() {
+      this.$router.push({
+        path: '/notice'
+      })
+    },
+    boardgo() {
+      this.$router.push({
+        path: '/board/free'
+      })
+    },
+    timetalbego() {
+      this.$router.push({
+        path: '/timetalbe'
+      })
+    },
+    adminlistgo() {
+      this.$router.push({
+        path: '/adminList'
+      })
+    },
+    userlistgo() {
+      this.$router.push({
+        path: '/userlist'
+      })
+    },
+    todolistgo() {
+      this.$router.push({
+        path: '/todo'
+      })
+    },
+  }
 }
 </script>
 
@@ -109,8 +140,4 @@ export default {
   height: 100%;
 }
 
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  height: 100%;
-}
 </style>
