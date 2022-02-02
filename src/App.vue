@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <div class="Sidebar_Part">
-      <Sidebar />
-    </div>
-    <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen }">
-      <Navbar />
-      <router-view/>
+    <div class="app-wrapper">
+      <div :class="{Sidebar_close : isCollapse.isNavOpen, Sidebar_open : !isCollapse.isNavOpen }">
+        <Sidebar />
+      </div>
+      <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen }">
+        <Navbar />
+        <router-view/>
+      </div>
     </div>
   </div>
 </template>
@@ -41,22 +43,38 @@ html,body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
   height: 100%;
-  display: flex;
 }
 
-.Sidebar_Part {
+.app-wrapper {
+  position: relative;
   height: 100%;
+  width: 100%;
+}
+
+.Sidebar_close {
+  width: 60px !important;
+  transition: 0.4s;
+  height: 100%;
+  position: fixed;
+  background-color: #304156;
+  z-index: 1001;
+}
+
+.Sidebar_open {
+  width: 210px !important;
+  transition: 0.4s;
+  height: 100%;
+  position: fixed;
+  background-color: #304156;
+  z-index: 1001;
 }
 
 .Home_Part_open {
-  width: calc(100% - 200px);
-  height: 100%;
+  margin-left: 210px
 }
 
 .Home_Part_close {
-  width: calc(100% - 64px);
-  height: 100%;
+  margin-left: 54px;
 }
 </style>
