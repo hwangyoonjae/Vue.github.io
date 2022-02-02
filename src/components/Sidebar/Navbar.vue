@@ -1,7 +1,11 @@
 <template>
   <div class="Header_Content">
+    <div class="Burger">
       <Burger></Burger>
-      <el-button type="text" @click="logingo" class="login_button">로그인</el-button>
+    </div>
+    <div class="Login">
+      <el-button type="text" @click="logingo" class="Login_button">로그인</el-button>
+    </div>
   </div>
 </template>
 
@@ -25,15 +29,17 @@ export default {
 <style scoped>
 .Header_Content {
   width: 100%;
-  height: 60px;
-  display: flex;
+  height: 50px;
 }
 
-.Header_Content i {
-  font-size: 20px;
+.Burger {
+  float: left;
 }
 
-.login_button {
-  margin: 10px;
+.Login {
+  height: 100%;
+  line-height: 46px;
+  float: right;
+  margin-right: 10px;
 }
 </style>
