@@ -109,12 +109,12 @@ export default {
     },
     timetalbego() {
       this.$router.push({
-        path: '/timetalbe'
+        path: '/timetable'
       })
     },
     adminlistgo() {
       this.$router.push({
-        path: '/adminList'
+        path: '/adminlist'
       })
     },
     userlistgo() {
