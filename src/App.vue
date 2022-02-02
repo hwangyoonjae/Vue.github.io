@@ -53,8 +53,8 @@ html,body {
 }
 
 .Sidebar_close {
-  width: 60px !important;
-  transition: 0.4s;
+  width: 56px !important;
+  transition: 0.28s;
   height: 100%;
   position: fixed;
   background-color: #304156;
@@ -63,7 +63,7 @@ html,body {
 
 .Sidebar_open {
   width: 210px !important;
-  transition: 0.4s;
+  transition: 0.28s;
   height: 100%;
   position: fixed;
   background-color: #304156;
@@ -71,10 +71,12 @@ html,body {
 }
 
 .Home_Part_open {
-  margin-left: 210px
+  margin-left: 210px;
+  min-height: 100%;
 }
 
 .Home_Part_close {
   margin-left: 54px;
+  min-height: 100%;
 }
 </style>
