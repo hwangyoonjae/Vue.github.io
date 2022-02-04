@@ -3,8 +3,13 @@
     <div class="Burger">
       <Burger></Burger>
     </div>
-    <div class="Login">
-      <el-button type="text" @click="logingo" class="Login_button">로그인</el-button>
+    <div class="right_menu">
+      <div class="search">
+        <i class="el-icon-search"></i>
+      </div>
+      <div class="Login">
+        <el-button type="text" @click="logingo" class="Login_button">로그인</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -36,10 +41,19 @@ export default {
   float: left;
 }
 
-.Login {
+.right_menu {
   height: 100%;
   line-height: 46px;
   float: right;
   margin-right: 10px;
+}
+
+.search, .Login{
+  display: inline-block;
+  padding: 0 8px;
+  height: 100%;
+  font-size: 20px;
+  cursor: pointer;
+  vertical-align: text-bottom;
 }
 </style>
