@@ -5,10 +5,10 @@
         <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="비밀번호" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+        <el-input type="password" v-model="ruleForm.pass" autocomplete="off" show-password></el-input>
       </el-form-item>
       <el-form-item label="비밀번호 확인" prop="checkPass">
-        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" show-password></el-input>
       </el-form-item>
       <el-form-item label="이름" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
