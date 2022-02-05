@@ -4,8 +4,8 @@
       <Burger></Burger>
     </div>
     <div class="right_menu">
-      <div class="search">
-        <i class="el-icon-search"></i>
+      <div class="Search">
+        <Search></Search>
       </div>
       <div class="Login">
         <el-button type="text" @click="logingo" class="Login_button">로그인</el-button>
@@ -16,10 +16,12 @@
 
 <script>
 import Burger from '@/components/Sidebar/Burger'
+import Search from '@/components/Sidebar/Search'
 
 export default {
   components: {
-    Burger
+    Burger,
+    Search,
   },
   methods: {
     logingo() {
