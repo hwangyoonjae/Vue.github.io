@@ -7,6 +7,7 @@ import Create from '@/components/Board/Create'
 import Notice from '@/components/Notice/Notice'
 import NoticeWrite from '@/components/Notice/Write'
 import Project from '@/components/Project/Project'
+import ProjectWrite from '@/components/Project/Write'
 import Login from '@/components/Login/Login'
 import Signup from '@/components/Login/Signup'
 import Todo from '@/components/Todo/TodoMain'
@@ -78,6 +79,11 @@ export default new Router({
             path: '/project',
             name: 'Project',
             component: Project
+        },
+        {
+          path: '/project/write',
+          name: 'ProjectWrite',
+          component: ProjectWrite
         },
         {
             path: '/userlist',
