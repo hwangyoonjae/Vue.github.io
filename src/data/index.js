@@ -130,6 +130,44 @@ export default {
       updated_at: null
     }
   ],
+  ProjectContent: [
+    {
+      number : 1,
+      title : 'Blue X-ray Enterprise',
+      start : '2016-05-03',
+      finish : '2016-05-04',
+      problem : '2',
+      state : '접수대기',
+      success : '88%'
+    },
+    {
+      number : 2,
+      title : 'Blue X-ray DLP',
+      start : '2016-05-03',
+      finish : '2016-05-04',
+      problem : '0',
+      state : '완료',
+      success : '100%'
+    },
+    {
+      number : 3,
+      title : '전군PC보안체계',
+      start : '2016-05-03',
+      finish : '2016-05-04',
+      problem : '10',
+      state : '진행중',
+      success : '50%'
+    },
+    {
+      number : 4,
+      title : 'DBSafer',
+      start : '2016-05-03',
+      finish : '2016-05-04',
+      problem : '20',
+      state : '완료',
+      success : '90%'
+    },
+  ],
   NoticeContent: [
     {
       number : 1,
@@ -162,6 +200,7 @@ export default {
       date: '2016-05-01',
       name: 'Jessy',
       updated_at: null
-    }],
-    search: '',
+    }
+  ],
+  search: '',
 }
