@@ -6,7 +6,7 @@
       <el-table-column label="시작일" prop="start"></el-table-column>
       <el-table-column label="완료일" prop="finish"></el-table-column>
       <el-table-column label="이슈" prop="problem"></el-table-column>
-      <el-table-column label="상태" prop="state"></el-table-column>
+      <el-table-column label="구분" prop="state"></el-table-column>
       <el-table-column label="완료율" prop="success"></el-table-column>
     </el-table>
     <div class="Project_write">
