@@ -137,7 +137,7 @@ export default {
       start : '2016-05-03',
       finish : '2016-05-04',
       problem : '2',
-      state : '접수대기',
+      state : '프리세일즈',
       success : '88%'
     },
     {
@@ -146,7 +146,7 @@ export default {
       start : '2016-05-03',
       finish : '2016-05-04',
       problem : '0',
-      state : '완료',
+      state : '프리세일즈',
       success : '100%'
     },
     {
@@ -155,7 +155,7 @@ export default {
       start : '2016-05-03',
       finish : '2016-05-04',
       problem : '10',
-      state : '진행중',
+      state : '사업진행',
       success : '50%'
     },
     {
@@ -164,7 +164,7 @@ export default {
       start : '2016-05-03',
       finish : '2016-05-04',
       problem : '20',
-      state : '완료',
+      state : '사업종료',
       success : '90%'
     },
   ],
