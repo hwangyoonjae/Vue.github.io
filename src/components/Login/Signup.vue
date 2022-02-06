@@ -17,11 +17,11 @@
         <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
       <el-form-item label="계정권한" prop="division">
-    <el-select v-model="ruleForm.division" placeholder="계정권한">
-      <el-option label="관리자" value="admin"></el-option>
-      <el-option label="사용자" value="user"></el-option>
-    </el-select>
-  </el-form-item>
+        <el-select v-model="ruleForm.division" placeholder="계정권한">
+          <el-option label="관리자" value="admin"></el-option>
+          <el-option label="사용자" value="user"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>
         <el-button @click="resetForm('ruleForm')">초기화</el-button>
