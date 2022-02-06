@@ -8,7 +8,7 @@
     </el-breadcrumb>
     <el-row :gutter="40" class="panel-group">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+      <div class="card-panel" @click="projectgo">
         <div class="card-panel-icon-wrapper icon-project">
           <i class="el-icon-s-cooperation card-panel-icon"></i>
         </div>
@@ -21,7 +21,7 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+      <div class="card-panel" @click="usergo">
         <div class="card-panel-icon-wrapper icon-people">
           <i class="el-icon-s-custom card-panel-icon"></i>
         </div>
@@ -34,7 +34,7 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+      <div class="card-panel" @click="noticego">
         <div class="card-panel-icon-wrapper icon-notice">
           <i class="el-icon-message-solid card-panel-icon"></i>
         </div>
@@ -47,7 +47,7 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+      <div class="card-panel" @click="issuego">
         <div class="card-panel-icon-wrapper icon-issue">
           <i class="el-icon-warning card-panel-icon"></i>
         </div>
@@ -72,6 +72,28 @@ export default {
   },
   data () {
 
+  },
+  methods: {
+    projectgo() {
+      this.$router.push({
+        path: '/project'
+      })
+    },
+    usergo() {
+      this.$router.push({
+        path: '/userlist'
+      })
+    },
+    noticego() {
+      this.$router.push({
+        path: '/userlist'
+      })
+    },
+    issuego() {
+      this.$router.push({
+        path: '/issue'
+      })
+    },
   }
 }
 </script>
