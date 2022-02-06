@@ -2,9 +2,7 @@
   <div class="search-wrapper">
     <div class="input-holder">
         <el-input placeholder="Type to Search" v-model="input" clearable></el-input>
-        <el-row class="search-icon" onclick="searchToggle(this, event);">
-            <el-button icon="el-icon-search" circle></el-button>
-        </el-row>
+        <el-button type="primary" icon="el-icon-search">Search</el-button>
     </div>
     <span class="close" onclick="searchToggle(this, event);"></span>
   </div>
@@ -24,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+.search-wrapper {
+    height: 100%;
+}
 </style>
