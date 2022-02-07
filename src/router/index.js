@@ -3,9 +3,10 @@ import Router from 'vue-router'
 import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
-
 import Notice from '@/components/Notice/Notice'
 import NoticeWrite from '@/components/Notice/Write'
+import IssueList from '@/components/Issue/IssueList'
+import IssueChange from '@/components/Issue/IssueChange'
 import Project from '@/components/Project/Project'
 import ProjectWrite from '@/components/Project/Write'
 import Login from '@/components/Login/Login'
@@ -74,6 +75,16 @@ export default new Router({
             path: '/notice/write',
             name: 'NoticeWrite',
             component: NoticeWrite
+        },
+        {
+            path: '/issueList',
+            name: 'IssueList',
+            component: IssueList
+        },
+        {
+            path: '/issueChange',
+            name: 'IssueChange',
+            component: IssueChange
         },
         {
             path: '/project',
