@@ -4,9 +4,6 @@
       <Burger></Burger>
     </div>
     <div class="right_menu">
-      <div class="Search">
-        <Search></Search>
-      </div>
       <div class="Login">
         <el-button type="text" @click="logingo" class="Login_button">로그인</el-button>
       </div>
@@ -16,12 +13,10 @@
 
 <script>
 import Burger from '@/components/Sidebar/Burger'
-import Search from '@/components/Sidebar/Search'
 
 export default {
   components: {
     Burger,
-    Search,
   },
   methods: {
     logingo() {
@@ -50,12 +45,10 @@ export default {
   margin-right: 10px;
 }
 
-.search, .Login{
+.Login{
   display: inline-block;
   padding: 0 8px;
   height: 100%;
   font-size: 20px;
-  cursor: pointer;
-  vertical-align: text-bottom;
 }
 </style>
