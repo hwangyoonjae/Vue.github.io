@@ -86,7 +86,7 @@ export default {
     },
     noticego() {
       this.$router.push({
-        path: '/userlist'
+        path: '/notice'
       })
     },
     issuego() {
