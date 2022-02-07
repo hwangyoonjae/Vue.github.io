@@ -11,7 +11,7 @@
         <span slot="title">일반업무</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="1-3">
+        <el-menu-item index="1-3" @click="issuelistgo">
           <i class="el-icon-warning"></i>
           <span>이슈관리</span>
         </el-menu-item>
@@ -90,6 +90,11 @@ export default {
     dashboardgo() {
       this.$router.push({
         path: '/main'
+      })
+    },
+    issuelistgo() {
+      this.$router.push({
+        path: '/issueList'
       })
     },
     projectgo() {
