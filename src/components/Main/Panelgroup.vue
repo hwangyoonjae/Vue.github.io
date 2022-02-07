@@ -1,12 +1,6 @@
 <template>
   <div class="Panelgroup_Component">
-    <el-breadcrumb class="el-icon-arrow-right" style="margin:10px">
-      <el-breadcrumb-item :to="{ path: '/main' }">대시보드</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion management</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-    </el-breadcrumb>
-    <el-row :gutter="40" class="panel-group">
+    <el-row :gutter="40">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="projectgo">
         <div class="card-panel-icon-wrapper icon-project">
@@ -59,7 +53,7 @@
         </div>
       </div>
     </el-col>
-  </el-row>
+    </el-row>
   </div>
 </template>
 
@@ -99,11 +93,6 @@ export default {
 </script>
 
 <style scoped>
-.panel-group {
-  margin: 18px 0px 0px 0px;
-  width: 100%;
-}
-
 .card-panel-col {
   margin-bottom: 32px;
 }
