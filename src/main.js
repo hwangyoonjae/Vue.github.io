@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { store } from './store';
+import { store } from './store'
 
 // Bootstrap
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
@@ -20,6 +20,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en'
 
 Vue.use(ElementUI, { locale })
+
+// apexchart
+import VueApexCharts from 'vue-apexcharts'
+Vue.use(VueApexCharts)
+
+Vue.component('apexchart', VueApexCharts)
 
 Vue.config.productionTip = false
 
