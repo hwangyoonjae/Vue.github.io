@@ -13,11 +13,11 @@
       <el-menu-item-group>
         <el-menu-item index="1-3" @click="issuelistgo">
           <i class="el-icon-warning"></i>
-          <span>이슈관리</span>
+          <span>이슈현황</span>
         </el-menu-item>
         <el-menu-item index="1-4">
           <i class="el-icon-edit"></i>
-          <span>변경요청</span>
+          <span>요청사항</span>
         </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
