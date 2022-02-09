@@ -53,7 +53,7 @@ html,body {
 }
 
 .Sidebar_close {
-  width: 56px !important;
+  width: 63px !important;
   transition: 0.28s;
   height: 100%;
   position: fixed;
@@ -76,7 +76,7 @@ html,body {
 }
 
 .Home_Part_close {
-  margin-left: 54px;
+  margin-left: 63px;
   height: 100%;
 }
 </style>
