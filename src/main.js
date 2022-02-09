@@ -21,11 +21,24 @@ import locale from 'element-ui/lib/locale/lang/en'
 
 Vue.use(ElementUI, { locale })
 
-// apexchart
-import VueApexCharts from 'vue-apexcharts'
-Vue.use(VueApexCharts)
+// echart
+import ECharts from 'vue-echarts'
+import { use } from 'echarts/core'
 
-Vue.component('apexchart', VueApexCharts)
+// import ECharts modules manually to reduce bundle size
+import { CanvasRenderer } from 'echarts/renderers'
+import { BarChart } from 'echarts/charts'
+import { GridComponent, TooltipComponent } from 'echarts/components'
+
+use([
+  CanvasRenderer,
+  BarChart,
+  GridComponent,
+  TooltipComponent
+]);
+
+// register globally (or you can do it locally)
+Vue.component('v-chart', ECharts)
 
 Vue.config.productionTip = false
 
