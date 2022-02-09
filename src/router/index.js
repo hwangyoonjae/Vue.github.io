@@ -5,6 +5,7 @@ import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
 import Notice from '@/components/Notice/Notice'
 import NoticeWrite from '@/components/Notice/Write'
+import NoticeDetail from '@/components/notice/ContentDetail'
 import IssueList from '@/components/Issue/IssueList'
 import IssueChange from '@/components/Issue/IssueChange'
 import Project from '@/components/Project/Project'
@@ -72,9 +73,14 @@ export default new Router({
             component: Notice
         },
         {
-            path: '/notice/write',
+            path: '/notice/write/:number?',
             name: 'NoticeWrite',
             component: NoticeWrite
+        },
+        {
+            path: '/project/detail/:number',
+            name: 'NoticeDetail',
+            component: NoticeDetail
         },
         {
             path: '/issueList',
@@ -87,7 +93,7 @@ export default new Router({
             component: IssueChange
         },
         {
-            path: '/project',
+            path: '/project/:contentId',
             name: 'Project',
             component: Project
         },
