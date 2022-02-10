@@ -1,7 +1,7 @@
 <template>
   <div class="Notice_component">
     <!--<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">-->
-    <el-table :data="items">
+    <el-table :data="items" @row-clicked="rowClick">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="내용" prop="component"></el-table-column>
@@ -28,24 +28,16 @@ export default {
         items: items
       }
     },
-    methods: 
-    {
+    methods: {
       handleEdit(index, row) {
         console.log(index, row);
     },
       handleDelete(index, row) {
         console.log(index, row);
     },
-    updateData() {
+    rowClick(item, index, e) {
       this.$router.push({
-        path: `/notice/write/${this.number}`
-      })
-    },
-    deleteData() {
-      const content_index = data.NoticeContent.findIndex(item => item.number === this.number);
-      data.NoticeContent.splice(content_index, 1)
-      this.$router.push({
-        path: '/notice'
+        path: `/project/detail/${item.number}`
       })
     },
     writeContent() {
