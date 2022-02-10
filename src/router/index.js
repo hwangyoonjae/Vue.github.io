@@ -78,7 +78,7 @@ export default new Router({
             component: NoticeWrite
         },
         {
-            path: '/project/detail/:number',
+            path: '/notice/detail/:number',
             name: 'NoticeDetail',
             component: NoticeDetail
         },
