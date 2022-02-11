@@ -13,6 +13,19 @@
     </el-row>
 
     <el-row :gutter="32" class="page-group">
+      <el-col :xs="24" :sm="24" :lg="12">
+        <div class="project_part">
+          <ProjectChart />
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="12">
+        <div class="issue_part">
+          
+        </div>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="32" class="page-group">
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="timetable_part">
           <Timetable />
@@ -35,6 +48,7 @@
 <script>
 import PanelGroup from './Panelgroup.vue'
 import Project from '../Project/Project.vue'
+import ProjectChart from '../Project/Chart.vue'
 import Timetable from '../Timetable/Timetable.vue'
 import Board from '../Board/Board.vue'
 import Todo from '../Todo/TodoMain.vue'
@@ -43,6 +57,7 @@ export default {
   components: {
     PanelGroup,
     Project,
+    ProjectChart,
     Timetable,
     Board,
     Todo,
@@ -80,7 +95,7 @@ export default {
   height: 350px;
 }
 
-.timetable_part, .board_part, .todo_part {
+.project_part, .issue_part, .timetable_part, .board_part, .todo_part {
   background: #fff;
   padding: 16px 0 0;
   margin-bottom: 32px;
