@@ -1,7 +1,7 @@
 <template>
   <div class="Notice_component">
     <!--<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">-->
-    <el-table :data="items" @row-clicked="rowClick">
+    <el-table :data="items" @row-click="rowClick">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="내용" prop="component"></el-table-column>
@@ -19,11 +19,9 @@
 import data from '@/data'
 
 export default {
+  name : 'Notice',
   data() {
     let items = data.NoticeContent.sort((a,b) => {return b.number - a.number})
-    
-    const number = Number(this.$route.params.number);
-    const contentData = data.NoticeContent.filter(item => item.number === number)[0];
     return {
         items: items
       }
@@ -37,7 +35,7 @@ export default {
     },
     rowClick(item, index, e) {
       this.$router.push({
-        path: `/project/detail/${item.number}`
+        path: `/notice/detail/${item.number}`
       })
     },
     writeContent() {
