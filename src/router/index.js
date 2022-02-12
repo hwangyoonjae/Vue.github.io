@@ -5,7 +5,7 @@ import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
 import Notice from '@/components/Notice/Notice'
 import NoticeWrite from '@/components/Notice/Write'
-import NoticeDetail from '@/components/notice/ContentDetail'
+import NoticeDetail from '@/components/Notice/ContentDetail'
 import IssueList from '@/components/Issue/IssueList'
 import IssueChange from '@/components/Issue/IssueChange'
 import Project from '@/components/Project/Project'
@@ -16,7 +16,6 @@ import Todo from '@/components/Todo/TodoMain'
 import Schedule from '@/components/Timetable/Timetable'
 import AdminList from '@/components/Person/AdminList'
 import UserList from '@/components/Person/UserList'
-
 import test from '@/components/test'
 
 Vue.use(Router)
