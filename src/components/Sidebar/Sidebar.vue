@@ -16,7 +16,7 @@
           <span>이슈현황</span>
         </el-menu-item>
         <el-menu-item index="1-4">
-          <i class="el-icon-edit"></i>
+          <i class="el-icon-thumb"></i>
           <span>요청사항</span>
         </el-menu-item>
       </el-menu-item-group>
