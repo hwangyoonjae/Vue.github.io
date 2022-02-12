@@ -17,6 +17,8 @@
               <el-input v-model="created"></el-input>
             </el-form-item>
           </el-form>
+          <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
+          <el-button type="danger" icon="el-icon-document-delete" @click="deleteData">삭제하기</el-button>
         </el-card>
       </el-col>
     </el-row>
@@ -32,12 +34,21 @@ export default {
     const number = Number(this.$route.params.number);
     const contentData = data.NoticeContent.filter(item => item.number === number)[0];
     return {
-      contentId: number,
+      number: number,
       title: contentData.title,
       content: contentData.component,
       writer: contentData.name,
       created: contentData.date
     }
+  },
+  methods: {
+    deleteData() {
+      const content_index = data.NoticeContent.findIndex(item => item.number === this.number);
+      data.NoticeContent.splice(content_index, 1)
+      this.$router.push({
+        path: '/notice'
+      })
+    },
   }
 };
 </script>
