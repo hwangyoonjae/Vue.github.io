@@ -29,12 +29,12 @@ import data from "@/data";
 export default {
   name: "ContentDetail",
   data() {
-    const contentId = Number(this.$route.params.contentId);
-    const contentData = data.NoticeContent.filter(item => item.content_id === contentId)[0];
+    const number = Number(this.$route.params.number);
+    const contentData = data.NoticeContent.filter(item => item.number === number)[0];
     return {
-      contentId: contentId,
+      contentId: number,
       title: contentData.title,
-      content: contentData.content,
+      content: contentData.component,
       writer: contentData.name,
       created: contentData.date
     }
