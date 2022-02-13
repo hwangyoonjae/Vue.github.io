@@ -42,6 +42,11 @@ export default {
     }
   },
   methods: {
+    updateData() {
+      this.$router.push({
+        path: `/notice/write/${this.number}`
+      })
+    },
     deleteData() {
       const content_index = data.NoticeContent.findIndex(item => item.number === this.number);
       data.NoticeContent.splice(content_index, 1)
