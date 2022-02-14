@@ -11,7 +11,7 @@
               <el-input v-model="title"></el-input>
             </el-form-item>
             <el-form-item label="내용">
-              <el-input v-model="content"></el-input>
+              <el-input v-model="component"></el-input>
             </el-form-item>
             <el-form-item label="작성일">
               <el-input v-model="created"></el-input>
@@ -36,7 +36,7 @@ export default {
     return {
       number: number,
       title: contentData.title,
-      content: contentData.component,
+      component: contentData.component,
       writer: contentData.name,
       created: contentData.date
     }
