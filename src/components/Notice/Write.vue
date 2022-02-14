@@ -29,7 +29,7 @@ export default {
   created() {
     if (this.$route.params.number > 0) {
       const number = Number(this.$route.params.number)
-      this.updateObject = data.Content.filter(item => item.number === number)[0]
+      this.updateObject = data.NoticeContent.filter(item => item.number === number)[0]
       this.title = this.updateObject.title;
       this.component = this.updateObject.component;
     }
