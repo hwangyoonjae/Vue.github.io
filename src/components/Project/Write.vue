@@ -13,6 +13,8 @@
           <el-date-picker type="date" placeholder="종료일" v-model="projectForm.finish" style="width: 100%;"></el-date-picker>
         </el-col>   
       </el-form-item>
+      <span>Start: {{projectForm.start}}</span>
+      <span>Finish: {{projectForm.finish}}</span>
       <el-form-item label="상태구분" prop="state">
         <el-select v-model="projectForm.state" placeholder="구분">
           <el-option label="프리세일즈" value="프리세일즈"></el-option>
@@ -69,9 +71,7 @@ export default {
   methods:{
     uploadContent() {
       let items = data.ProjectContent.sort((a,b) => {return a.number - b.number})
-      const number = items[3].number + 1
-
-      const date = dateFormat()
+      const number = items[items.length-1].number + 1
 
       data.ProjectContent.push({
         number: number,
