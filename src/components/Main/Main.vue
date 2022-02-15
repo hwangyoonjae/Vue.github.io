@@ -15,7 +15,7 @@
     <el-row :gutter="32" class="page-group">
       <el-col :xs="24" :sm="24" :lg="12">
         <div class="project_part">
-          <ProjectChart />
+          
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="12">

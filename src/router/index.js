@@ -92,7 +92,7 @@ export default new Router({
             component: IssueChange
         },
         {
-            path: '/project/:contentId',
+            path: '/project',
             name: 'Project',
             component: Project
         },
