@@ -11,11 +11,11 @@
         <span slot="title">일반업무</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="1-3" @click="issuelistgo">
+        <el-menu-item index="2-1" @click="issuelistgo">
           <i class="el-icon-warning"></i>
           <span>이슈현황</span>
         </el-menu-item>
-        <el-menu-item index="1-4">
+        <el-menu-item index="2-2">
           <i class="el-icon-thumb"></i>
           <span>요청사항</span>
         </el-menu-item>
@@ -27,11 +27,11 @@
         <span slot="title">프로젝트</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="1-3" @click="projectgo">
+        <el-menu-item index="3-1" @click="projectgo">
           <i class="el-icon-tickets"></i>
           <span>프로젝트 리스트</span>
         </el-menu-item>
-        <el-menu-item index="1-4">
+        <el-menu-item index="3-2">
           <i class="el-icon-notebook-1"></i>
           <span>프로젝트 산출물</span>
         </el-menu-item>
@@ -55,19 +55,19 @@
       <span slot="title">관리자</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="1-3" @click="adminlistgo">
+        <el-menu-item index="7-1" @click="adminlistgo">
           <i class="el-icon-coordinate"></i>
           <span>관리자 목록</span>
         </el-menu-item>
-        <el-menu-item index="1-4" @click="userlistgo">
+        <el-menu-item index="7-2" @click="userlistgo">
           <i class="el-icon-user"></i>
           <span>사용자 목록</span>
         </el-menu-item>
-        <el-menu-item index="1-5">
+        <el-menu-item index="7-3">
           <i class="el-icon-setting"></i>
           <span>환경설정</span>
         </el-menu-item>
-        <el-menu-item index="1-6" @click="todolistgo">
+        <el-menu-item index="7-4" @click="todolistgo">
           <i class="el-icon-document-checked"></i>
           <span>할일 목록</span>
         </el-menu-item>
