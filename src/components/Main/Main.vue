@@ -2,46 +2,79 @@
   <div class="Main_Component">
     <PanelGroup />
 
-    <el-row class="project">
-      <div class="project_title">
-        <p>프로젝트</p>
+    <!-- 프로젝트 -->
+    <div class="row">
+      <div class="col-lg-12 mb-8">
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="Project-area">
+              <div class="project_title">
+                <p>프로젝트</p>
+              </div>
+              <Project />
+              <div style="text-align:right; margin-top:10px">
+                <el-link href="/project" :underline="false">더보기</el-link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <Project />
-      <div style="text-align:right; margin-top:10px">
-        <el-link href="/project" :underline="false">더보기</el-link>
+    </div>
+
+    <!-- 프로젝트, 이슈차트 -->
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="Project-area">
+              <canvas id="myAreaChart"></canvas>
+            </div>
+          </div>
+        </div>
       </div>
-    </el-row>
 
-    <el-row :gutter="32" class="page-group">
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="project_part">
-          
+      <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="Issue-area">
+              <canvas id="myAreaChart"></canvas>
+            </div>
+          </div>
         </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="issue_part">
-          
-        </div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
 
-    <el-row :gutter="32" class="page-group">
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="timetable_part">
-          <Timetable />
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="timetable-area">
+              <Timetable />
+            </div>
+          </div>
         </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="board_part">
-          <Board />
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="board-area">
+              <Board />
+            </div>
+          </div>
         </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="todo_part">
-          <Todo />
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="todo-area">
+              <Todo />
+            </div>
+          </div>
         </div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -73,14 +106,6 @@ export default {
   padding: 32px;
   background-color: #f0f2f5;
   position: relative;
-}
-
-.project {
-  width: 100%;
-  height: 350px;
-  background:#fff; 
-  padding:16px 16px; 
-  margin-bottom:32px;
 }
 
 .project_title {
