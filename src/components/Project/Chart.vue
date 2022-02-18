@@ -53,12 +53,6 @@ export default {
 
 <style scoped>
 .chart {
-  height: 100vh;
-}
-</style>
-
-<style>
-body {
-  margin: 0;
+  height: 320px;
 }
 </style>
