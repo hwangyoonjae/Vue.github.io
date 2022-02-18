@@ -3,49 +3,26 @@
 </template>
 
 <script>
-import { use } from "echarts/core";
-import { CanvasRenderer } from "echarts/renderers";
-import { PieChart } from "echarts/charts";
-import { TitleComponent, TooltipComponent, LegendComponent } from "echarts/components";
-import VChart, { THEME_KEY } from "vue-echarts";
-
-use([
-  CanvasRenderer,
-  PieChart,
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent
-]);
-
 export default {
   name: "Chart",
-  components: {
-    VChart
-  },
-  provide: {
-    [THEME_KEY]: "dark"
-  },
   data() {
     return {
-    option : {
-  xAxis: {
-    type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  },
-  yAxis: {
-    type: 'value'
-  },
-  series: [
-    {
-      data: [120, 200, 150, 80, 70, 110, 130],
-      type: 'bar',
-      showBackground: true,
-      backgroundStyle: {
-        color: 'rgba(180, 180, 180, 0.2)'
+      option : {
+        legend: {},
+        tooltip: {},
+        dataset: {
+          source: [
+            ['product', '2015', '2016', '2017'],
+            ['Matcha Latte', 43.3, 85.8, 93.7],
+            ['Milk Tea', 83.1, 73.4, 55.1],
+            ['Cheese Cocoa', 86.4, 65.2, 82.5],
+            ['Walnut Brownie', 72.4, 53.9, 39.1]
+          ]
+        },
+        xAxis: { type: 'category' },
+        yAxis: {},
+        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
       }
-    }
-  ]
-}
     }
   }
 }
