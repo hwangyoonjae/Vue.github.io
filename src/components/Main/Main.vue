@@ -37,7 +37,7 @@
         <div class="card shadow mb-4">
           <div class="card-body">
             <div class="Issue-area">
-              <canvas id="myAreaChart"></canvas>
+              <IssueChart />
             </div>
           </div>
         </div>
@@ -82,6 +82,7 @@
 import PanelGroup from './Panelgroup.vue'
 import Project from './ProjectView.vue'
 import ProjectChart from '../Project/Chart.vue'
+import IssueChart from '../Issue/Chart.vue'
 import Timetable from '../Timetable/Timetable.vue'
 import Board from '../Board/Board.vue'
 import Todo from '../Todo/TodoMain.vue'
@@ -91,6 +92,7 @@ export default {
     PanelGroup,
     Project,
     ProjectChart,
+    IssueChart,
     Timetable,
     Board,
     Todo,
