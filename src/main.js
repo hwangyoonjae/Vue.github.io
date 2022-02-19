@@ -24,17 +24,17 @@ Vue.use(ElementUI, { locale })
 // echart
 import ECharts from 'vue-echarts'
 import { use } from 'echarts/core'
-
-// import ECharts modules manually to reduce bundle size
 import { CanvasRenderer } from 'echarts/renderers'
 import { BarChart } from 'echarts/charts'
-import { GridComponent, TooltipComponent } from 'echarts/components'
+import { GridComponent, TooltipComponent, DatasetComponent, LegendComponent } from 'echarts/components'
 
 use([
   CanvasRenderer,
   BarChart,
   GridComponent,
-  TooltipComponent
+  TooltipComponent,
+  DatasetComponent,
+  LegendComponent
 ]);
 
 // register globally (or you can do it locally)
