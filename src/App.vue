@@ -72,11 +72,9 @@ html,body {
 
 .Home_Part_open {
   margin-left: 210px;
-  height: 100%;
 }
 
 .Home_Part_close {
   margin-left: 63px;
-  height: 100%;
 }
 </style>
