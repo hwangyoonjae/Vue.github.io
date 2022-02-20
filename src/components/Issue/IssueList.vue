@@ -1,6 +1,6 @@
 <template>
   <div class="Issue_component">
-    <el-table :data="items" style="width: 100%">
+    <el-table :data="items" @row-click="rowClick">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="담당자" prop="name"></el-table-column>
@@ -10,7 +10,7 @@
       <el-table-column label="수정일" prop="updated_at"></el-table-column>
     </el-table>
     <div class="Issue_write">
-        <el-button type="primary" @click="writeContent">이슈 등록</el-button>
+        <el-button type="primary" @click="writeContent">이슈등록</el-button>
     </div>
   </div>
 </template>
@@ -19,17 +19,22 @@
 import data from '@/data'
 
 export default {
+  name : 'IssueList',
   data() {
-    let items = data.IssueContent.sort((a,b) => {return a.number - b.number})
-
+    let items = data.IssueContent.sort((a,b) => {return b.number - a.number})
     return {
       items: items
     }
   },
   methods: {
+    rowClick(item, index, e) {
+      this.$router.push({
+        path: `/issueList/detail/${item.number}`
+      })
+    },
     writeContent() {
       this.$router.push({
-        path: '/issuelist/write'
+        path: '/issueList/write'
       })
     }
   }
