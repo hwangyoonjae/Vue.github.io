@@ -106,7 +106,8 @@ export default {
   color: #666;
   background: #fff;
   box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-  border-color: rgba(0, 0, 0, .05);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
 
 .card-panel-icon-wrapper:hover {
