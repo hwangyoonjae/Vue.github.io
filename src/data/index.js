@@ -203,4 +203,36 @@ export default {
     }
   ],
   search: '',
+  IssueContent: [
+    {
+      number : 1,
+      title : '국방부_업데이트',
+      component : '이슈가 있어 업데이트를 진행해야합니다.',
+      name : 'Tom',
+      state : '신규',
+      level : '높음',
+      created_at: '2019-03-29 14:11:11',
+      updated_at: null
+    },
+    {
+      number : 2,
+      title : '환경부_업데이트',
+      component : '고도화 진행해야합니다.',
+      name : 'Jerry',
+      state : '진행',
+      level : '낮음',
+      created_at: '2019-03-29 14:11:11',
+      updated_at: null
+    },
+    {
+      number : 3,
+      title : '국토부_업데이트',
+      component : '이슈가 있어 업데이트를 진행해야합니다.',
+      name : 'Groot',
+      state : '완료',
+      level : '보통',
+      created_at: '2019-03-29 14:11:11',
+      updated_at: null
+    },
+  ]
 }
