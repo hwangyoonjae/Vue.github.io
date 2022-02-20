@@ -8,6 +8,7 @@ import NoticeWrite from '@/components/Notice/Write'
 import NoticeDetail from '@/components/Notice/ContentDetail'
 import IssueList from '@/components/Issue/IssueList'
 import IssueChange from '@/components/Issue/IssueChange'
+import IssueWrite from '@/components/Issue/Write'
 import Project from '@/components/Project/Project'
 import ProjectWrite from '@/components/Project/Write'
 import Login from '@/components/Login/Login'
@@ -85,6 +86,11 @@ export default new Router({
             path: '/issueList',
             name: 'IssueList',
             component: IssueList
+        },
+        {
+            path: '/issueList/write',
+            name: 'IssueWrite',
+            component: IssueWrite
         },
         {
             path: '/issueChange',
