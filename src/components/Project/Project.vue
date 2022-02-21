@@ -1,6 +1,6 @@
 <template>
   <div class="Project_component">
-    <el-table :data="items" style="width: 100%">
+    <el-table :data="items" @row-click="rowClick" style="width: 100%">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="프로젝트명" prop="title"></el-table-column>
       <el-table-column label="시작일" prop="start"></el-table-column>
@@ -27,6 +27,11 @@ export default {
     }
   },
   methods: {
+    rowClick(item, index, e) {
+      this.$router.push({
+        path: `/project/detail/${item.number}`
+      })
+    },
     writeContent() {
       this.$router.push({
         path: '/project/write'
