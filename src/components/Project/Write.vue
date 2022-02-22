@@ -24,7 +24,7 @@
       </el-form-item>
     </el-form>
     <div class="button-group">
-      <el-button type="success" @click="updateMode ? updateContent() : uploadContent('formName')">등록하기</el-button>
+      <el-button type="success" @click="updateMode ? updateContent() : uploadContent()">등록하기</el-button>
       <el-button type="danger" @click="cancle">취소하기</el-button>
     </div>
   </div>
@@ -44,6 +44,9 @@ export default {
         state : '',
         success : ''
       },
+      updatedAt: null,
+      updateObject: null,
+      updateMode: this.$route.params.number > 0 ? true : false,
       rules: {
         title: [
           { required: true, message: '프로젝트명을 입력해주세요.', trigger: 'blur' },
@@ -63,15 +66,15 @@ export default {
   created() {
     if (this.$route.params.number > 0) {
       const number = Number(this.$route.params.number)
-      this.updateObject = data.Content.filter(item => item.number === number)[0]
-      this.title = this.updateObject.title;
-      this.component = this.updateObject.component;
+      this.updateObject = data.ProjectContent.filter(item => item.number === number)[0]
+      this.projectForm.title = this.updateObject.title;
+      this.projectForm.state = this.updateObject.state;
     }
   },
   methods:{
     uploadContent() {
-      let items = data.ProjectContent.sort((a,b) => {return a.number - b.number})
-      const number = items[items.length-1].number + 1
+      let items = data.ProjectContent.sort((a,b) => {return b.number - a.number})
+      const number = items[0].number + 1
 
       data.ProjectContent.push({
         number: number,
@@ -85,7 +88,14 @@ export default {
       this.$router.push({
         path: '/project'
       })
-    }, 
+    },
+    updateContent() {
+      this.updateObject.title = this.projectForm.title;
+      this.updateObject.state = this.projectForm.state;
+      this.$router.push({
+        path: '/project'
+      })
+    },
     cancle() {
       this.$router.push({
         path: '/project'
