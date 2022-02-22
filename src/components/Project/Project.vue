@@ -20,7 +20,7 @@ import data from '@/data'
 
 export default {
   data() {
-    let items = data.ProjectContent.sort((a,b) => {return a.number - b.number})
+    let items = data.ProjectContent.sort((a,b) => {return b.number - a.number})
 
     return {
       items: items
