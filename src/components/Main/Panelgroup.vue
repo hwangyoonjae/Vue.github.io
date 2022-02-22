@@ -10,7 +10,7 @@
           <div class="card-panel-text">
             프로젝트
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="this.project" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -23,7 +23,7 @@
           <div class="card-panel-text">
             사용자
           </div>
-          <count-to :start-val="0" :end-val="10" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="this.user" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -36,7 +36,7 @@
           <div class="card-panel-text">
             공지사항
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="this.notice" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -49,7 +49,7 @@
           <div class="card-panel-text">
             이슈현황
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="this.issue" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -58,14 +58,23 @@
 </template>
 
 <script>
-import countTo from 'vue-count-to';
+import data from '@/data'
+import countTo from 'vue-count-to'
 
 export default {
   components: { 
-    countTo
+    countTo,
   },
   data () {
+    const project = data.ProjectContent.sort((a,b) => {return b.number - a.number})
+    const user = data.User.sort((a,b) => {return b.user_id - a.user_id})
+    const notice = data.NoticeContent.sort((a,b) => {return b.number - a.number})
+    const issue = data.IssueContent.sort((a,b) => {return b.number - a.number})
 
+    this.project = project[0].number
+    this.user = user[0].user_id
+    this.notice = notice[0].number
+    this.issue = issue[0].number
   },
   methods: {
     projectgo() {
