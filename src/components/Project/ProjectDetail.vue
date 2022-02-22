@@ -14,7 +14,7 @@
               <el-input v-model="finish"></el-input>
             </el-form-item>
             <el-form-item label="상태구분" prop="state">
-              <el-select v-model="projectForm.state" placeholder="구분">
+              <el-select v-model="state" placeholder="구분">
                 <el-option label="프리세일즈" value="프리세일즈"></el-option>
                 <el-option label="사업진행" value="사업진행"></el-option>
                 <el-option label="사업종료" value="사업종료"></el-option>
