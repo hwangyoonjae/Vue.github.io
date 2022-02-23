@@ -10,7 +10,7 @@
       <el-table-column label="완료율" prop="success"></el-table-column>
     </el-table>
     <div class="Project_write">
-        <el-button type="primary" @click="writeContent">프로젝트 등록하기</el-button>
+      <el-button type="primary" @click="writeContent">프로젝트 등록하기</el-button>
     </div>
   </div>
 </template>
@@ -21,7 +21,6 @@ import data from '@/data'
 export default {
   data() {
     let items = data.ProjectContent.sort((a,b) => {return b.number - a.number})
-
     return {
       items: items
     }
