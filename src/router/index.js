@@ -13,6 +13,7 @@ import IssueWrite from '@/components/Issue/Write'
 import Project from '@/components/Project/Project'
 import ProjectWrite from '@/components/Project/Write'
 import ProjectDetail from '@/components/Project/ProjectDetail'
+import ProjectOutputs from '@/components/Project/ProjectOutputs'
 import Login from '@/components/Login/Login'
 import Signup from '@/components/Login/Signup'
 import Todo from '@/components/Todo/TodoMain'
@@ -110,14 +111,19 @@ export default new Router({
             component: Project
         },
         {
-          path: '/project/write/:number?',
-          name: 'ProjectWrite',
-          component: ProjectWrite
+            path: '/project/write/:number?',
+            name: 'ProjectWrite',
+            component: ProjectWrite
         },
         {
-            path: '/project/detail/:number',
-            name: 'ProjectDetail',
-            component: ProjectDetail
+            path: '/projectoutputs',
+            name: 'ProjectOutputs',
+            component: ProjectOutputs
+        },
+        {
+            path: '/project',
+            name: 'Project',
+            component: Project
         },
         {
             path: '/userlist',
