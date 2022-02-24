@@ -9,9 +9,6 @@
                 <p>Blue X-ray Enterprise</p>
               </div>
               <BlueEnter />
-              <div style="text-align:right; margin-top:10px">
-                <el-link href="/project" :underline="false">더보기</el-link>
-              </div>
             </div>
           </div>
         </div>
