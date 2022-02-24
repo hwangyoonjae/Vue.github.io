@@ -120,17 +120,4 @@ export default {
   display: none;
 }
 
-.page-group{
-  margin: 18px 0px 0px 0px;
-  width: 100%;
-  height: 350px;
-}
-
-.project_part, .issue_part, .timetable_part, .board_part, .todo_part {
-  background: #fff;
-  padding: 16px 0 0;
-  margin-bottom: 32px;
-  width: 100%;
-  height: 100%;
-}
 </style>
