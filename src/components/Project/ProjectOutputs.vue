@@ -22,9 +22,7 @@
               <div class="project_title">
                 <p>Blue X-ray DLP</p>
               </div>
-              <div style="text-align:right; margin-top:10px">
-                <el-link href="/project" :underline="false">더보기</el-link>
-              </div>
+              <BlueDLP />
             </div>
           </div>
         </div>
