@@ -3,6 +3,7 @@
 </template>
 
 <script>
+//패치 건수
 export default {
   name: "Chart",
   data() {
@@ -12,7 +13,7 @@ export default {
         tooltip: {},
         dataset: {
           source: [
-            ['product', '장애', '패치', '점검'],
+            ['product', 'Blue X-ray Enterprise', 'Blue X-ray DLP', '전군 DLP'],
             ['2월', 43.3, 85.8, 93.7],
             ['3월', 83.1, 73.4, 55.1],
             ['4월', 86.4, 65.2, 82.5],
