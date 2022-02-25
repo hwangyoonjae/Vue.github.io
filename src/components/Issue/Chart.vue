@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// 이슈건수
 export default {
   name: "Chart",
   data() {
@@ -28,11 +29,9 @@ export default {
             show: false
           },
           data: [
-            { value: 1048, name: 'Search Engine' },
-            { value: 735, name: 'Direct' },
-            { value: 580, name: 'Email' },
-            { value: 484, name: 'Union Ads' },
-            { value: 300, name: 'Video Ads' }
+            { value: 1048, name: 'Blue X-ray Enterprise' },
+            { value: 735, name: 'Blue X-ray DLP' },
+            { value: 580, name: '전군 DLP' },
           ]
         }]
       }
