@@ -4,11 +4,11 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="projectgo">
         <div class="card-panel-icon-wrapper icon-project">
-          <i class="el-icon-s-cooperation card-panel-icon"></i>
+          <i class="el-icon-s-check card-panel-icon"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            프로젝트
+            점검
           </div>
           <count-to :start-val="0" :end-val="this.project" :duration="2600" class="card-panel-num" />
         </div>
