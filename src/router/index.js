@@ -20,7 +20,6 @@ import Todo from '@/components/Todo/TodoMain'
 import Schedule from '@/components/Timetable/Timetable'
 import AdminList from '@/components/Person/AdminList'
 import UserList from '@/components/Person/UserList'
-import test from '@/components/test'
 
 Vue.use(Router)
 
@@ -135,10 +134,5 @@ export default new Router({
             name: 'AdminList',
             component: AdminList
         },
-        {
-            path: '/test',
-            name: 'test',
-            component: test
-        }
     ]
 })
