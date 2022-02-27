@@ -205,6 +205,7 @@ export default {
   search: '',
   IssueContent: [
     {
+      division: 'Blue X-ray Enterprise',
       number : 1,
       title : '국방부_업데이트',
       component : '이슈가 있어 업데이트를 진행해야합니다.',
@@ -215,6 +216,7 @@ export default {
       updated_at: null
     },
     {
+      division: 'Blue X-ray DLP',
       number : 2,
       title : '환경부_업데이트',
       component : '고도화 진행해야합니다.',
@@ -225,6 +227,7 @@ export default {
       updated_at: null
     },
     {
+      division: '전군DLP',
       number : 3,
       title : '국토부_업데이트',
       component : '이슈가 있어 업데이트를 진행해야합니다.',
@@ -234,5 +237,5 @@ export default {
       created_at: '2019-03-29 14:11:11',
       updated_at: null
     },
-  ]
+  ],
 }

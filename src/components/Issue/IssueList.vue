@@ -8,9 +8,10 @@
       <el-table-column label="우선순위" prop="level"></el-table-column>
       <el-table-column label="작성일" prop="created_at"></el-table-column>
       <el-table-column label="수정일" prop="updated_at"></el-table-column>
+      <el-table-column label="구분" prop="division"></el-table-column>
     </el-table>
     <div class="Issue_write">
-        <el-button type="primary" @click="writeContent">이슈등록</el-button>
+      <el-button type="primary" @click="writeContent">이슈등록</el-button>
     </div>
   </div>
 </template>
@@ -23,7 +24,7 @@ export default {
   data() {
     let items = data.IssueContent.sort((a,b) => {return b.number - a.number})
     return {
-      items: items
+      items: items,
     }
   },
   methods: {

@@ -1,6 +1,13 @@
 <template>
   <div class="Issue_component">
     <el-form status-icon :rules="rules" label-width="120px" class="demo-ruleForm">
+      <el-form-item label="구분" prop="division">
+        <el-select v-model="division" placeholder="선택">
+          <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
+          <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
+          <el-option label="전군DLP" value="전군DLP"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="제목" prop="title">
         <el-input type="text" v-model="title" autocomplete="off"></el-input>
       </el-form-item>
@@ -46,11 +53,13 @@ export default {
       level : '',
       created_at: '2019-03-29 14:11:11',
       updated_at: null,
+      division: '',
       updateMode: this.$route.params.number > 0 ? true : false,
     };
   },
   created() {
     if (this.$route.params.number > 0) {
+      this.division = this.updateObject.division;
       const number = Number(this.$route.params.number)
       this.updateObject = data.IssueContent.filter(item => item.number === number)[0]
       this.title = this.updateObject.title;
@@ -65,6 +74,7 @@ export default {
       let items = data.IssueContent.sort((a,b) => {return b.number - a.number})
       const number = items[0].number + 1
       data.IssueContent.push({
+        division: this.division,
         number: number,
         title: this.title,
         component: this.component,
@@ -79,6 +89,7 @@ export default {
       })
     },
     updateContent() {
+      this.updateObject.division = this.division;
       this.updateObject.title = this.title;
       this.updateObject.component = this.component;
       this.updateObject.name = this.name;
