@@ -1,12 +1,17 @@
 <template>
-  <v-chart class="chart" :option="option" />
+  <div>
+    <v-chart class="chart" :option="option"/>
+  </div>
 </template>
 
 <script>
+import data from '@/data'
 // 이슈건수
 export default {
   name: "Chart",
   data() {
+    let count = data.IssueContent.filter(element => 'Blue X-ray Enterprise' === element).length;
+
     return {
       option : {
         tooltip: {
@@ -29,12 +34,12 @@ export default {
             show: false
           },
           data: [
-            { value: 1048, name: 'Blue X-ray Enterprise' },
-            { value: 735, name: 'Blue X-ray DLP' },
-            { value: 580, name: '전군 DLP' },
+            { value: 1, name: 'Blue X-ray Enterprise' },
+            { value: 2, name: 'Blue X-ray DLP' },
+            { value: 3, name: '전군 DLP' },
           ]
         }]
-      }
+      },
     }
   }
 }
