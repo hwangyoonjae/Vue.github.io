@@ -9,6 +9,12 @@
     <div class="input-group_component">
       <el-input placeholder="내용을 입력하세요" v-model="name"></el-input>
     </div>
+    <div>
+      <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :before-remove="beforeRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+        <el-button size="small" type="primary">Click to upload</el-button>
+        <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+      </el-upload>
+    </div>
     <div class="button-group">
       <el-button type="success" @click="updateMode ? updateContent() : uploadContent()">등록하기</el-button>
       <el-button type="danger" @click="cancle">취소하기</el-button>
@@ -29,6 +35,7 @@ export default {
       updatedAt: null,
       updateObject: null,
       updateMode: this.$route.params.number > 0 ? true : false,
+      fileList: [{name: 'food.jpeg'}] // 파일 업로드 할 파일들 저장 필요
     }
   },
   created() {
