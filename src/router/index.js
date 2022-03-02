@@ -120,7 +120,7 @@ export default new Router({
             component: ProjectOutputs
         },
         {
-            path: '/ProjectDetail/detail/:number',
+            path: '/project/detail/:number',
             name: 'ProjectDetail',
             component: ProjectDetail
         },
