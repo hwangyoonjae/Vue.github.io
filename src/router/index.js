@@ -120,9 +120,9 @@ export default new Router({
             component: ProjectOutputs
         },
         {
-            path: '/project',
-            name: 'Project',
-            component: Project
+            path: '/ProjectDetail/detail/:number',
+            name: 'ProjectDetail',
+            component: ProjectDetail
         },
         {
             path: '/userlist',
