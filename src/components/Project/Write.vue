@@ -1,20 +1,20 @@
 <template>
   <div class="Projectwrite_component">
-    <el-form :model="projectForm" :rules="rules" ref="projectForm" label-width="120px">
+    <el-form :rules="rules" label-width="120px">
       <el-form-item label="프로젝트명" prop="title">
-        <el-input v-model="projectForm.title"></el-input>
+        <el-input v-model="title"></el-input>
       </el-form-item>
       <el-form-item label="프로젝트 기간" required>
         <el-col :span="11" prop="start">
-          <el-date-picker type="date" placeholder="시작일" v-model="projectForm.start" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
+          <el-date-picker type="date" placeholder="시작일" v-model="start" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
         </el-col>
         <el-col class="line" :span="2">-</el-col>
         <el-col :span="11" prop="finish">
-          <el-date-picker type="date" placeholder="종료일" v-model="projectForm.finish" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
+          <el-date-picker type="date" placeholder="종료일" v-model="finish" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
         </el-col>   
       </el-form-item>
       <el-form-item label="상태구분" prop="state">
-        <el-select v-model="projectForm.state" placeholder="구분">
+        <el-select v-model="state" placeholder="구분">
           <el-option label="프리세일즈" value="프리세일즈"></el-option>
           <el-option label="사업진행" value="사업진행"></el-option>
           <el-option label="사업종료" value="사업종료"></el-option>
@@ -32,26 +32,19 @@
 import data from '@/data'
 
 export default {
+  name: 'Write',
   data() {
     return {
-      projectForm: {
-        title : '',
-        start : '',
-        finish : '',
-        problem : '',
-        state : '',
-        success : ''
-      },
+      title : '',
+      start : '',
+      finish : '',
+      problem : '7',        
+      state : '',
+      success : '100%',
       updatedAt: null,
       updateObject: null,
       updateMode: this.$route.params.number > 0 ? true : false,
       rules: {
-        title: [
-          { required: true, message: '프로젝트명을 입력해주세요.', trigger: 'blur' },
-        ],
-        state: [
-          { required: true, message: '프로젝트 상태구분을 선택해주세요.', trigger: 'change' },
-        ],
         start: [
           { required: true, message: '프로젝트 시작일을 선택해주세요.', trigger: 'change' },
         ],
@@ -65,8 +58,10 @@ export default {
     if (this.$route.params.number > 0) {
       const number = Number(this.$route.params.number)
       this.updateObject = data.ProjectContent.filter(item => item.number === number)[0]
-      this.projectForm.title = this.updateObject.title;
-      this.projectForm.state = this.updateObject.state;
+      this.title = this.updateObject.title;
+      this.start = this.updateObject.start;
+      this.finish = this.updateObject.finish;
+      this.state = this.updateObject.state;
     }
   },
   methods:{
@@ -76,11 +71,11 @@ export default {
 
       data.ProjectContent.push({
         number: number,
-        title: this.projectForm.title,
-        start: this.projectForm.start,
-        finish: this.projectForm.finish,
+        title: this.title,
+        start: this.start,
+        finish: this.finish,
         problem: this.problem,
-        state: this.projectForm.state,
+        state: this.state,
         success: this.success
       })
       this.$router.push({
@@ -88,8 +83,10 @@ export default {
       })
     },
     updateContent() {
-      this.updateObject.title = this.projectForm.title;
-      this.updateObject.state = this.projectForm.state;
+      this.updateObject.title = this.title;
+      this.updateObject.start = this.start;
+      this.updateObject.finish = this.finish;
+      this.updateObject.state = this.state;
       this.$router.push({
         path: '/project'
       })
