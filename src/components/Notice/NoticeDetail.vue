@@ -5,16 +5,16 @@
         <el-card shadow="never">
           <el-form label-width="120px">
             <el-form-item label="작성자">
-              <el-input v-model="writer"></el-input>
+              <el-input v-model="writer" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="제목">
-              <el-input v-model="title"></el-input>
+              <el-input v-model="title" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="내용">
-              <el-input v-model="component"></el-input>
+              <el-input v-model="component" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="작성일">
-              <el-input v-model="created"></el-input>
+              <el-input v-model="created" :disabled="true"></el-input>
             </el-form-item>
           </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
