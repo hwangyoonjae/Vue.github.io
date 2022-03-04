@@ -1,6 +1,6 @@
 <template>
   <div class="Issue_component">
-    <el-form status-icon :rules="rules" label-width="120px" class="demo-ruleForm">
+    <el-form status-icon label-width="120px" class="demo-ruleForm">
       <el-form-item label="구분" prop="division">
         <el-select v-model="division" placeholder="선택">
           <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
@@ -52,16 +52,17 @@ export default {
       state : '',
       level : '',
       created_at: '2019-03-29 14:11:11',
-      updated_at: null,
       division: '',
+      updated_at: null,
+      updateObject: null,
       updateMode: this.$route.params.number > 0 ? true : false,
-    };
+    }
   },
   created() {
     if (this.$route.params.number > 0) {
-      this.division = this.updateObject.division;
       const number = Number(this.$route.params.number)
       this.updateObject = data.IssueContent.filter(item => item.number === number)[0]
+      this.division = this.updateObject.division;
       this.title = this.updateObject.title;
       this.component = this.updateObject.component;
       this.name = this.updateObject.name;
