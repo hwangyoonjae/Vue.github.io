@@ -4,24 +4,31 @@
       <el-col :span="8">
         <el-card shadow="never">
           <el-form label-width="120px">
+            <el-form-item label="구분" prop="division">
+              <el-select v-model="division" placeholder="선택" :disabled="true">
+                <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
+                <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
+                <el-option label="전군DLP" value="전군DLP"></el-option>
+              </el-select>
+            </el-form-item>
             <el-form-item label="제목">
-              <el-input v-model="title"></el-input>
+              <el-input v-model="title" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="내용">
-              <el-input v-model="component"></el-input>
+              <el-input v-model="component" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="담당자">
-              <el-input v-model="writer"></el-input>
+              <el-input v-model="writer" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="상태" prop="state">
-              <el-select v-model="state" placeholder="선택">
+              <el-select v-model="state" placeholder="선택" :disabled="true">
                 <el-option label="완료" value="완료"></el-option>
                 <el-option label="진행" value="진행"></el-option>
                 <el-option label="신규" value="신규"></el-option>
               </el-select>
               </el-form-item>
               <el-form-item label="우선순위" prop="level">
-                <el-select v-model="level" placeholder="선택">
+                <el-select v-model="level" placeholder="선택" :disabled="true">
                   <el-option label="높은" value="높은"></el-option>
                   <el-option label="보통" value="보통"></el-option>
                   <el-option label="낮음" value="낮음"></el-option>
@@ -45,12 +52,13 @@ export default {
     const number = Number(this.$route.params.number);
     const contentData = data.IssueContent.filter(item => item.number === number)[0];
     return {
+      division: contentData.division,
       number: number,
       title: contentData.title,
       component: contentData.component,
       writer: contentData.name,
       state: contentData.state,
-      level: contentData.level
+      level: contentData.level,
     }
   },
   methods: {
