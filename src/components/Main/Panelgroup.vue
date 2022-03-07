@@ -70,11 +70,12 @@ export default {
     const user = data.User.sort((a,b) => {return b.user_id - a.user_id})
     const notice = data.NoticeContent.sort((a,b) => {return b.number - a.number})
     const issue = data.IssueContent.sort((a,b) => {return b.number - a.number})
-
-    this.project = project[0].number
-    this.user = user[0].user_id
-    this.notice = notice[0].number
-    this.issue = issue[0].number
+    return {
+      project : project[0].number,
+      user : user[0].user_id,
+      notice : notice[0].number,
+      issue : issue[0].number
+    }
   },
   methods: {
     projectgo() {
