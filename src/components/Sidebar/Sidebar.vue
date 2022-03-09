@@ -11,11 +11,11 @@
         <span slot="title">일반업무</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="2-1" @click="issuelistgo">
+        <el-menu-item index="2-1" @click="issuerequestlistgo">
           <i class="el-icon-warning"></i>
           <span>이슈현황</span>
         </el-menu-item>
-        <el-menu-item index="2-2">
+        <el-menu-item index="2-2" @click="issuerequestgo">
           <i class="el-icon-thumb"></i>
           <span>요청사항</span>
         </el-menu-item>
@@ -92,9 +92,14 @@ export default {
         path: '/main'
       })
     },
-    issuelistgo() {
+    issuerequestlistgo() {
       this.$router.push({
         path: '/issueList'
+      })
+    },
+    issuerequestgo() {
+      this.$router.push({
+        path: '/issuerequest/list'
       })
     },
     projectgo() {
