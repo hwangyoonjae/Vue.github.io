@@ -3,13 +3,13 @@ import Router from 'vue-router'
 import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
-import Notice from '@/components/Notice/Notice'
-import NoticeWrite from '@/components/Notice/Write'
 import NoticeDetail from '@/components/Notice/NoticeDetail'
 import IssueList from '@/components/Issue/IssueList/IssueList'
 import IssueListDetail from '@/components/Issue/IssueList/IssueListDetail'
-import IssueChange from '@/components/Issue/IssueList/IssueChange'
 import IssueWrite from '@/components/Issue/IssueList/Write'
+import IssueRequestList from '@/components/Issue/Issuerequest/IssueRequestList'
+import IssueRequestWrite from '@/components/Issue/Issuerequest/Write'
+import IssueRequestDetail from '@/components/Issue/Issuerequest/IssueRequestDetail'
 import Project from '@/components/Project/Project'
 import ProjectWrite from '@/components/Project/Write'
 import ProjectDetail from '@/components/Project/ProjectDetail'
@@ -77,18 +77,21 @@ export default new Router({
         },
         {
             path: '/notice',
+            component: () => import('@/components/Notice/Notice'),
             name: 'Notice',
-            component: Notice
-        },
-        {
-            path: '/notice/write/:number?',
-            name: 'NoticeWrite',
-            component: NoticeWrite
-        },
-        {
-            path: '/notice/detail/:number',
-            name: 'NoticeDetail',
-            component: NoticeDetail
+            hidden: true,
+            children: [
+                {
+                    path: 'write/:number?',
+                    component: () => import('@/components/Notice/Write'),
+                    name: 'NoticeWrite'
+                },
+                {
+                    path: 'detail/:number',
+                    component: () => import('@/components/Notice/NoticeDetail'),
+                    name: 'NoticeDetail'
+                }
+            ]
         },
         {
             path: '/issueList',
@@ -106,9 +109,19 @@ export default new Router({
             component: IssueListDetail
         },
         {
-            path: '/issueChange',
-            name: 'IssueChange',
-            component: IssueChange
+            path: '/issuerequest/list',
+            name: 'IssueRequestList',
+            component: IssueRequestList
+        },
+        {
+            path: '/issuerequest/list/write/:number?',
+            name: 'IssueRequestWrite',
+            component: IssueRequestWrite
+        },
+        {
+            path: '/issuerequest/list/detail/:number',
+            name: 'IssueRequestDetail',
+            component: IssueRequestDetail
         },
         {
             path: '/project',
@@ -121,14 +134,14 @@ export default new Router({
             component: ProjectWrite
         },
         {
-            path: '/projectoutputs',
-            name: 'ProjectOutputs',
-            component: ProjectOutputs
-        },
-        {
             path: '/project/detail/:number',
             name: 'ProjectDetail',
             component: ProjectDetail
+        },
+        {
+            path: '/projectoutputs',
+            name: 'ProjectOutputs',
+            component: ProjectOutputs
         },
         {
             path: '/userlist',
