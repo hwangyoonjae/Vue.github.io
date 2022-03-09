@@ -40,7 +40,7 @@ export default {
     },
     writeContent() {
       this.$router.push({
-        path: '/notice/write'
+        name: 'NoticeWrite'
       })
     }
   },
