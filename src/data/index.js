@@ -238,4 +238,33 @@ export default {
       updated_at: null
     },
   ],
+  IssueRequestContent: [
+    {
+      division: 'Blue X-ray DLP',
+      number : 1,
+      title : 'DLP 기능개선',
+      component : '고객사 요청으로 인하여 기능개선이 필요합니다.',
+      date: '2016-05-03',
+      name: 'Tom',
+      updated_at: null
+    },
+    {
+      division: 'Blue X-ray Enterprise',
+      number : 2,
+      title : '웹 페이지 UI 수정요청',
+      component : '페이지 內 한글 오타로 인하여 수정 요청드립니다.',
+      date: '2016-05-03',
+      name: 'Tom',
+      updated_at: null
+    },
+    {
+      division: '전군 DLP',
+      number : 3,
+      title : '저장매체 구별값 기능개선',
+      component : '테스트 해보니 문제 발생한게 있어 기능개선 요청드립니다.',
+      date: '2016-05-03',
+      name: 'Tom',
+      updated_at: null
+    }
+  ]
 }
