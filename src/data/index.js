@@ -244,7 +244,7 @@ export default {
       number : 1,
       title : 'DLP 기능개선',
       component : '고객사 요청으로 인하여 기능개선이 필요합니다.',
-      date: '2016-05-03',
+      created_at: '2016-05-03',
       name: 'Tom',
       updated_at: null
     },
@@ -253,7 +253,7 @@ export default {
       number : 2,
       title : '웹 페이지 UI 수정요청',
       component : '페이지 內 한글 오타로 인하여 수정 요청드립니다.',
-      date: '2016-05-03',
+      created_at: '2016-05-03',
       name: 'Tom',
       updated_at: null
     },
@@ -262,7 +262,7 @@ export default {
       number : 3,
       title : '저장매체 구별값 기능개선',
       component : '테스트 해보니 문제 발생한게 있어 기능개선 요청드립니다.',
-      date: '2016-05-03',
+      created_at: '2016-05-03',
       name: 'Tom',
       updated_at: null
     }
