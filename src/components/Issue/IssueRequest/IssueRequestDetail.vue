@@ -42,7 +42,6 @@ export default {
       number: number,
       title: contentData.title,
       component: contentData.component,
-      date: contentData.date,
       name: contentData.name
     }
   },
