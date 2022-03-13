@@ -10,7 +10,7 @@
     </el-table>
     <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
     <div class="Notice_write">
-        <el-button type="primary" @click="writeContent">글쓰기</el-button>
+      <el-button type="primary" @click="writeContent">글쓰기</el-button>
     </div>
   </div>
 </template>
@@ -38,9 +38,9 @@ export default {
         path: `/notice/detail/${item.number}`
       })
     },
-    writeContent() {
+    writeContent(index, row) {
       this.$router.push({
-        name: 'NoticeWrite'
+        path: '/notice/write'
       })
     }
   },
