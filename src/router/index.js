@@ -3,7 +3,9 @@ import Router from 'vue-router'
 import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
+import Notice from '@/components/Notice/Notice'
 import NoticeDetail from '@/components/Notice/NoticeDetail'
+import NoticeWrite from '@/components/Notice/Write'
 import IssueList from '@/components/Issue/IssueList/IssueList'
 import IssueListDetail from '@/components/Issue/IssueList/IssueListDetail'
 import IssueWrite from '@/components/Issue/IssueList/Write'
@@ -34,11 +36,12 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/main',
-        },
-        {
-            path: '/main',
-            component: () => import ('@/components/Main/Main'),
+            redirect: 'Main',
+            children: [{
+                path: "main",
+                component: () => import ('@/components/Main/Main'),
+                name: 'Main'
+            }]
         },
         {
             path: '/board/free',
@@ -77,18 +80,17 @@ export default new Router({
         },
         {
             path: '/notice',
-            component: () => import('@/components/Notice/Notice'),
+            component: () => import('../components/Notice/Notice.vue'),
             name: 'Notice',
-            hidden: true,
             children: [
                 {
                     path: 'write/:number?',
-                    component: () => import('@/components/Notice/Write'),
-                    name: 'NoticeWrite'
+                    component: NoticeWrite,
+                    name: 'NoticeWrite',
                 },
                 {
                     path: 'detail/:number',
-                    component: () => import('@/components/Notice/NoticeDetail'),
+                    component: NoticeDetail,
                     name: 'NoticeDetail'
                 }
             ]
