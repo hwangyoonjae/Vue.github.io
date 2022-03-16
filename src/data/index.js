@@ -266,5 +266,17 @@ export default {
       name: 'Tom',
       updated_at: null
     }
+  ],
+  CustomerList: [
+    {
+      number: 1,
+      company: '조은아이앤에스',
+      name: '홍길동',
+      rank: '사원',
+      phone: '010-1234-1234',
+      email: 'hong@naver.com',
+      created_at: '2016-05-03',
+      division: 'Blue X-ray DLP',
+    }
   ]
 }
