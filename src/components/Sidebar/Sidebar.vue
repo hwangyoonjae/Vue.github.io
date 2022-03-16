@@ -19,6 +19,10 @@
           <i class="el-icon-thumb"></i>
           <span>요청사항</span>
         </el-menu-item>
+        <el-menu-item index="2-3" @click="customergo">
+          <i class="el-icon-user-solid"></i>
+          <span>고객리스트</span>
+        </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
     <el-submenu index="3">  
@@ -100,6 +104,11 @@ export default {
     issuerequestgo() {
       this.$router.push({
         path: '/issuerequest/list'
+      })
+    },
+    customergo() {
+      this.$router.push({
+        path: '/customerlist'
       })
     },
     projectgo() {
