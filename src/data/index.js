@@ -266,6 +266,7 @@ export default {
       name: 'Tom',
       updated_at: null
     }
+<<<<<<< HEAD
   ],
   CustomerList: [
     {
@@ -278,5 +279,7 @@ export default {
       created_at: '2016-05-03',
       division: 'Blue X-ray DLP',
     }
+=======
+>>>>>>> 3c204f2377b56e00a3c7efa5eac0204c5d923771
   ]
 }
