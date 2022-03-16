@@ -6,12 +6,15 @@ import Create from '@/components/Board/Create'
 import Notice from '@/components/Notice/Notice'
 import NoticeDetail from '@/components/Notice/NoticeDetail'
 import NoticeWrite from '@/components/Notice/Write'
-import IssueList from '@/components/Issue/IssueList/IssueList'
-import IssueListDetail from '@/components/Issue/IssueList/IssueListDetail'
-import IssueWrite from '@/components/Issue/IssueList/Write'
-import IssueRequestList from '@/components/Issue/Issuerequest/IssueRequestList'
-import IssueRequestWrite from '@/components/Issue/Issuerequest/Write'
-import IssueRequestDetail from '@/components/Issue/Issuerequest/IssueRequestDetail'
+import IssueList from '@/components/Task/IssueList/IssueList'
+import IssueListDetail from '@/components/Task/IssueList/IssueListDetail'
+import IssueWrite from '@/components/Task/IssueList/Write'
+import IssueRequestList from '@/components/Task/Issuerequest/IssueRequestList'
+import IssueRequestWrite from '@/components/Task/Issuerequest/Write'
+import IssueRequestDetail from '@/components/Task/Issuerequest/IssueRequestDetail'
+import CustomerList from '@/components/Task/Customer/CustomerList'
+import CustomerWrite from '@/components/Task/Customer/Write'
+import CustomerDetail from '@/components/Task/Customer/CustomerDetail'
 import Project from '@/components/Project/Project'
 import ProjectWrite from '@/components/Project/Write'
 import ProjectDetail from '@/components/Project/ProjectDetail'
@@ -124,6 +127,21 @@ export default new Router({
             path: '/issuerequest/list/detail/:number',
             name: 'IssueRequestDetail',
             component: IssueRequestDetail
+        },
+        {
+            path: '/customerlist',
+            name: 'CustomerList',
+            component: CustomerList
+        },
+        {
+            path: '/customerlist/write/:number?',
+            name: 'CustomerWrite',
+            component: CustomerWrite
+        },
+        {
+            path: '/customerlist/detail/:number',
+            name: 'CustomerDetail',
+            component: CustomerDetail
         },
         {
             path: '/project',
