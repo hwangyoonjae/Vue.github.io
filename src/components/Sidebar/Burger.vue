@@ -15,15 +15,15 @@ import { store, mutations } from "@/store.js";
 export default {
   computed: {
     isNavOpen() {
-      console.log(store.isNavOpen);
+      /*console.log(store.isNavOpen);*/
       return store.isNavOpen
     }
   },
   methods: {
     toggle() {
-      console.log(store.isNavOpen);
+      /*console.log(store.isNavOpen);*/
       mutations.toggleNav();
-      console.log(store.isNavOpen);    
+      /*console.log(store.isNavOpen);*/
     }
   },
 }
