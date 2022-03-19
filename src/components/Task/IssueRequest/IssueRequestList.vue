@@ -5,7 +5,7 @@
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="내용" prop="component"></el-table-column>
       <el-table-column label="작성자" prop="name"></el-table-column>
-      <el-table-column label="작성일" prop="date"></el-table-column>
+      <el-table-column label="등록일" prop="created_at"></el-table-column>
       <el-table-column label="구분" prop="division"></el-table-column>
     </el-table>
     <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
