@@ -35,7 +35,7 @@ export default {
       title : '',
       component : '',
       name : '',
-      created_at: '2019-03-29 14:11:11',
+      created_at: '2019-03-29',
       division: '',
       updated_at: null,
       updateObject: null,
