@@ -39,9 +39,9 @@ export default {
       })
     },
     writeContent(index, row) {
-      this.$router.push({
-        path: '/notice/write'
-      })
+      this.$router.push(
+        '/notice/write'
+      )
     }
   },
 }

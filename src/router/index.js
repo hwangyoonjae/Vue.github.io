@@ -39,7 +39,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: 'Main',
+            redirect: '/main',
             children: [{
                 path: "main",
                 component: () => import ('@/components/Main/Main'),
@@ -84,12 +84,11 @@ export default new Router({
         {
             path: '/notice',
             component: () => import('../components/Notice/Notice.vue'),
-            name: 'Notice',
             children: [
                 {
                     path: 'write/:number?',
-                    component: NoticeWrite,
                     name: 'NoticeWrite',
+                    component: NoticeWrite,
                 },
                 {
                     path: 'detail/:number',
