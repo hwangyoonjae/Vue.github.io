@@ -130,7 +130,8 @@ export default {
             finish: '2016-05-04',
             problem: '2',
             state: '프리세일즈',
-            success: '88%'
+            success: '88%',
+            license: 100
         },
         {
             number: 2,
@@ -139,7 +140,8 @@ export default {
             finish: '2016-05-04',
             problem: '0',
             state: '프리세일즈',
-            success: '100%'
+            success: '100%',
+            license: 1500
         },
         {
             number: 3,
@@ -148,7 +150,8 @@ export default {
             finish: '2016-05-04',
             problem: '10',
             state: '사업진행',
-            success: '50%'
+            success: '50%',
+            license: 500
         },
         {
             number: 4,
@@ -157,7 +160,8 @@ export default {
             finish: '2016-05-04',
             problem: '20',
             state: '사업종료',
-            success: '90%'
+            success: '90%',
+            license: 10
         },
     ],
     NoticeContent: [{
