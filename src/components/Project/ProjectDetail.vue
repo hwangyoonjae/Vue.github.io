@@ -20,6 +20,9 @@
                 <el-option label="사업종료" value="사업종료"></el-option>
               </el-select>
             </el-form-item>
+            <el-form-item label="라이센스">
+              <el-input v-model="license" :disabled="true"></el-input>
+            </el-form-item>
           </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
           <el-button type="danger" icon="el-icon-document-delete" @click="deleteData">삭제하기</el-button>
@@ -44,7 +47,8 @@ export default {
       finish: contentData.finish,
       problem : contentData.problem,
       state: contentData.state,
-      success: contentData.success
+      success: contentData.success,
+      license: contentData.license
     }
   },
   methods: {

@@ -20,6 +20,9 @@
           <el-option label="사업종료" value="사업종료"></el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="라이센스" prop="license">
+        <el-input v-model="license"></el-input>
+      </el-form-item>
     </el-form>
     <div class="button-group">
       <el-button type="success" @click="updateMode ? updateContent() : uploadContent()">등록하기</el-button>
@@ -41,6 +44,7 @@ export default {
       problem : '7',        
       state : '',
       success : '100%',
+      license : '',
       updatedAt: null,
       updateObject: null,
       updateMode: this.$route.params.number > 0 ? true : false,
@@ -62,6 +66,7 @@ export default {
       this.start = this.updateObject.start;
       this.finish = this.updateObject.finish;
       this.state = this.updateObject.state;
+      this.license = this.updateObject.license;
     }
   },
   methods:{
@@ -76,7 +81,8 @@ export default {
         finish: this.finish,
         problem: this.problem,
         state: this.state,
-        success: this.success
+        success: this.success,
+        license: this.license
       })
       this.$router.push({
         path: '/project'
@@ -87,6 +93,7 @@ export default {
       this.updateObject.start = this.start;
       this.updateObject.finish = this.finish;
       this.updateObject.state = this.state;
+      this.updateObject.license = this.license;
       this.$router.push({
         path: '/project'
       })

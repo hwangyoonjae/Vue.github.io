@@ -8,6 +8,7 @@
       <el-table-column label="이슈" prop="problem"></el-table-column>
       <el-table-column label="구분" prop="state"></el-table-column>
       <el-table-column label="완료율" prop="success"></el-table-column>
+      <el-table-column label="라이센스" prop="license"></el-table-column>
     </el-table>
     <div class="Project_write">
       <el-button type="primary" @click="writeContent">프로젝트 등록하기</el-button>
