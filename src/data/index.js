@@ -200,7 +200,7 @@ export default {
     search: '',
     IssueContent: [{
             division: 'Blue X-ray Enterprise',
-            number: 1,
+            id: 1,
             title: '국방부_업데이트',
             component: '이슈가 있어 업데이트를 진행해야합니다.',
             name: 'Tom',
@@ -211,7 +211,7 @@ export default {
         },
         {
             division: 'Blue X-ray DLP',
-            number: 2,
+            id: 2,
             title: '환경부_업데이트',
             component: '고도화 진행해야합니다.',
             name: 'Jerry',
@@ -222,7 +222,7 @@ export default {
         },
         {
             division: '전군DLP',
-            number: 3,
+            id: 3,
             title: '국토부_업데이트',
             component: '이슈가 있어 업데이트를 진행해야합니다.',
             name: 'Groot',

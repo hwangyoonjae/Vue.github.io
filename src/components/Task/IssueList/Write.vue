@@ -55,13 +55,13 @@ export default {
       division: '',
       updated_at: null,
       updateObject: null,
-      updateMode: this.$route.params.number > 0 ? true : false,
+      updateMode: this.$route.params.id > 0 ? true : false,
     }
   },
   created() {
-    if (this.$route.params.number > 0) {
-      const number = Number(this.$route.params.number)
-      this.updateObject = data.IssueContent.filter(item => item.number === number)[0]
+    if (this.$route.params.id > 0) {
+      const number = Number(this.$route.params.id)
+      this.updateObject = data.IssueContent.filter(item => item.id === number)[0]
       this.division = this.updateObject.division;
       this.title = this.updateObject.title;
       this.component = this.updateObject.component;
@@ -72,11 +72,11 @@ export default {
   },
   methods:{
     uploadContent() {
-      let items = data.IssueContent.sort((a,b) => {return b.number - a.number})
-      const number = items[0].number + 1
+      let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
+      const number = items[0].id + 1
       data.IssueContent.push({
         division: this.division,
-        number: number,
+        id: number,
         title: this.title,
         component: this.component,
         name: this.name,

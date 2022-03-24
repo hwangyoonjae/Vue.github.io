@@ -1,7 +1,7 @@
 <template>
   <div class="Issue_component">
     <el-table :data="items" @row-click="rowClick">
-      <el-table-column label="번호" prop="number"></el-table-column>
+      <el-table-column label="번호" prop="id"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="담당자" prop="name"></el-table-column>
       <el-table-column label="상태" prop="state"></el-table-column>
@@ -22,7 +22,7 @@ import data from '@/data'
 export default {
   name : 'IssueList',
   data() {
-    let items = data.IssueContent.sort((a,b) => {return b.number - a.number})
+    let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
     return {
       items: items,
     }
@@ -30,7 +30,7 @@ export default {
   methods: {
     rowClick(item, index, e) {
       this.$router.push({
-        path: `/issueList/detail/${item.number}`
+        path: `/issueList/detail/${item.id}`
       })
     },
     writeContent() {

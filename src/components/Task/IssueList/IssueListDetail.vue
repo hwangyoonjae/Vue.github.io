@@ -49,11 +49,11 @@ import data from "@/data";
 export default {
   name: "ContentDetail",
   data() {
-    const number = Number(this.$route.params.number);
-    const contentData = data.IssueContent.filter(item => item.number === number)[0];
+    const number = Number(this.$route.params.id);
+    const contentData = data.IssueContent.filter(item => item.id === number)[0];
     return {
       division: contentData.division,
-      number: number,
+      id: number,
       title: contentData.title,
       component: contentData.component,
       writer: contentData.name,
@@ -64,11 +64,11 @@ export default {
   methods: {
     updateData() {
       this.$router.push({
-        path: `/issueList/write/${this.number}`
+        path: `/issueList/write/${this.idx}`
       })
     },
     deleteData() {
-      const content_index = data.IssueContent.findIndex(item => item.number === this.number);
+      const content_index = data.IssueContent.findIndex(item => item.id === this.id);
       data.IssueContent.splice(content_index, 1)
       this.$router.push({
         path: '/issueList'
