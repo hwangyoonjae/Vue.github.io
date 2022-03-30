@@ -1,6 +1,6 @@
 <template>
   <div class="Issue_component">
-    <el-table :data="items" @row-click="rowClick">
+    <el-table :data="connectData" @row-click="rowClick">
       <el-table-column label="번호" prop="id"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="담당자" prop="name"></el-table-column>
@@ -22,13 +22,14 @@ import data from '@/data'
 export default {
   name : 'IssueList',
   data() {
-    let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
+    //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
     return {
-      items: items,
+      //items: items,
+      connectData: "",
     }
   },
   methods: {
-    rowClick(item, index, e) {
+    /*rowClick(item, index, e) {
       this.$router.push({
         path: `/issueList/detail/${item.id}`
       })
@@ -38,7 +39,16 @@ export default {
         path: '/issueList/write'
       })
     }
-  }
+  }*/
+  get() {
+      this.axios.get("/connectTest").then((response) => {
+        this.connectData = response.data;
+      });
+    },
+  },
+  mounted() {
+    this.get();
+  },
 }
 </script>
 
