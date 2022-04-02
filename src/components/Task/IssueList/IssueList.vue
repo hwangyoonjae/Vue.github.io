@@ -13,6 +13,10 @@
     <div class="Issue_write">
       <el-button type="primary" @click="writeContent">이슈등록</el-button>
     </div>
+    <div>
+      <h1>{{msg}}</h1>
+      <button v-on:click="getData">call SpringBoot</button>
+    </div>
   </div>
 </template>
 
@@ -26,6 +30,7 @@ export default {
     return {
       //items: items,
       connectData: "",
+      msg: 'msg data!!',
     }
   },
   methods: {
@@ -40,11 +45,19 @@ export default {
       })
     }
   }*/
-  get() {
+  /*get() {
       this.axios.get("/connectTest").then((response) => {
         this.connectData = response.data;
       });
-    },
+    },*/
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$http.get(`${baseURI}/api/hello`)
+        .then((result) => {
+          console.log(result)
+          this.msg = result.data
+        })
+    }
   },
   mounted() {
     this.get();
