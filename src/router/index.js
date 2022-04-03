@@ -38,13 +38,8 @@ export default new Router({
     mode: 'history',
     routes: [
         {
-            path: '/',
-            redirect: '/main',
-            children: [{
-                path: "main",
-                component: () => import ('@/components/Main/Main'),
-                name: 'Main'
-            }]
+            path: '/main',
+            component: () => import ('@/components/Main/Main'),
         },
         {
             path: '/board/free',
@@ -86,9 +81,8 @@ export default new Router({
             component: () => import('../components/Notice/Notice.vue'),
             children: [
                 {
-                    path: 'write/:number?',
-                    name: 'NoticeWrite',
-                    component: NoticeWrite,
+                    path: 'write',
+                    component: () => import('../components/Notice/Write')
                 },
                 {
                     path: 'detail/:number',
