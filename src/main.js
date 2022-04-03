@@ -6,7 +6,7 @@ import router from './router'
 import { store } from './store'
 import axios from "axios";
 
-Vue.prototype.$http = axios;
+Vue.prototype.$axios = axios;
 
 // Bootstrap
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
