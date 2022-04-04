@@ -95,7 +95,7 @@ export default {
     },
     issuego() {
       this.$router.push({
-        path: '/issue'
+        path: '/issueList'
       })
     },
   }
