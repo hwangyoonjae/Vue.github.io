@@ -47,6 +47,15 @@ use([
 // register globally (or you can do it locally)
 Vue.component('v-chart', ECharts)
 
+// v-calendar 
+import VCalendar from 'v-calendar'
+import Calendar from 'v-calendar/lib/components/calendar.umd'
+import DatePicker from 'v-calendar/lib/components/date-picker.umd'
+
+Vue.component('calendar', Calendar)
+Vue.component('date-picker', DatePicker)
+Vue.use(VCalendar);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
