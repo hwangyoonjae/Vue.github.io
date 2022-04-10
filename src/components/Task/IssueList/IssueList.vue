@@ -25,14 +25,14 @@ import data from '@/data'
 
 export default {
   name : 'IssueList',
-  data() {
+  data: ()=> ({
     //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
-    return {
+    
       //items: items,
       connectData: "",
-      msg: [],
-    }
-  },
+      msg: '',
+
+  }),
   methods: {
     /*rowClick(item, index, e) {
       this.$router.push({
@@ -53,8 +53,8 @@ export default {
     getData: function() {
       const baseURI = 'http://localhost:8443';
       this.$axios.get(`${baseURI}/api/hello`)
-        .then((result) => {
-          console.log(result)
+        .then(result => {
+          console.log(result.data)
           this.msg = result.data
         })
     }
