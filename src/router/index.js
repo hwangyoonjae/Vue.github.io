@@ -25,6 +25,7 @@ import Todo from '@/components/Todo/TodoMain'
 import Schedule from '@/components/Timetable/Timetable'
 import AdminList from '@/components/Person/AdminList'
 import UserList from '@/components/Person/UserList'
+import Test from '@/components/Test'
 
 // 여기에 등록된 라우터와 다른 페이지에서 클릭 이벤트로 접속하는 라우터가 겹쳐도 무시하도록 수정
 const originalPush = Router.prototype.push;
@@ -166,5 +167,10 @@ export default new Router({
             name: 'AdminList',
             component: AdminList
         },
+        {
+            path: '/test',
+            name: 'Test',
+            component: Test
+        }
     ]
 })
