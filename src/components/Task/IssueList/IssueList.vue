@@ -13,10 +13,6 @@
     <div class="Issue_write">
       <el-button type="primary" @click="writeContent">이슈등록</el-button>
     </div>
-    <div>
-      <span>{{msg}}</span>
-      <button @click="getData">call SpringBoot</button>
-    </div>
   </div>
 </template>
 
@@ -59,7 +55,10 @@ export default {
           this.msg = result.data
         })
     }
-  }
+  },
+  mounted() {
+    this.getData();
+  },
 }
 </script>
 
