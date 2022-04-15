@@ -5,9 +5,9 @@
       <el-table-column label="구분" prop="division"></el-table-column>
       <el-table-column label="업체명" prop="company"></el-table-column>
       <el-table-column label="담당자" prop="name"></el-table-column>
-      <el-table-column label="직급" prop="rank"></el-table-column>
+      <el-table-column label="직급" prop="position"></el-table-column>
       <el-table-column label="연락처" prop="phone"></el-table-column>
-      <el-table-column label="이메일" prop="email"></el-table-column>
+      <el-table-column label="이메일" prop="mail"></el-table-column>
       <el-table-column label="등록일" prop="created_at"></el-table-column>
     </el-table>
     <div class="Issue_write">
