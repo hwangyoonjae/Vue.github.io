@@ -1,6 +1,6 @@
 <template>
   <div class="Issue_component">
-    <el-table :data="connectData" @row-click="rowClick">
+    <el-table :data="msg" @row-click="rowClick">
       <el-table-column label="번호" prop="id"></el-table-column>
       <el-table-column label="제목" prop="title"></el-table-column>
       <el-table-column label="담당자" prop="name"></el-table-column>
@@ -13,10 +13,6 @@
     <div class="Issue_write">
       <el-button type="primary" @click="writeContent">이슈등록</el-button>
     </div>
-    <div>
-      <span>{{msg}}</span>
-      <button @click="getData">call SpringBoot</button>
-    </div>
   </div>
 </template>
 
@@ -25,16 +21,17 @@ import data from '@/data'
 
 export default {
   name : 'IssueList',
-  data: ()=> ({
-    //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
+  data() {
+    return {
+      //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
     
       //items: items,
-      connectData: "",
+      //connectData: "",
       msg: '',
-
-  }),
+    }
+  },
   methods: {
-    /*rowClick(item, index, e) {
+    rowClick(item, index, e) {
       this.$router.push({
         path: `/issueList/detail/${item.id}`
       })
@@ -43,8 +40,7 @@ export default {
       this.$router.push({
         path: '/issueList/write'
       })
-    }
-  }*/
+    },
   /*get() {
       this.axios.get("/connectTest").then((response) => {
         this.connectData = response.data;
@@ -58,7 +54,10 @@ export default {
           this.msg = result.data
         })
     }
-  }
+  },
+  mounted() {
+    this.getData();
+  },
 }
 </script>
 

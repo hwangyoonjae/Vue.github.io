@@ -1,6 +1,6 @@
 <template>
   <div class="Customer_component">
-    <el-table :data="items" @row-click="rowClick">
+    <el-table :data="item" @row-click="rowClick">
       <el-table-column label="번호" prop="number"></el-table-column>
       <el-table-column label="구분" prop="division"></el-table-column>
       <el-table-column label="업체명" prop="company"></el-table-column>
@@ -22,9 +22,9 @@ import data from '@/data'
 export default {
   name : 'CustomerList',
   data() {
-    let items = data.CustomerList.sort((a,b) => {return b.number - a.number})
+    //let items = data.CustomerList.sort((a,b) => {return b.number - a.number})
     return {
-      items: items,
+      item: '',
     }
   },
   methods: {
@@ -37,7 +37,18 @@ export default {
       this.$router.push({
         path: '/customerList/write'
       })
+    },
+     getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/customer`)
+        .then(result => {
+          console.log(result.data)
+          this.item = result.data
+        })
     }
+  },
+  mounted() {
+    this.getData();
   }
 }
 </script>
