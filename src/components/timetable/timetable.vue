@@ -4,7 +4,7 @@
     <div class="Schedule_Button">
       <el-button type="success">등록하기</el-button>
     </div>
-    <v-date-picker :attributes="attributes" is-expanded :value="null" color="red" is-range/>
+    <v-date-picker :attributes="attributes" :today-attribute="attrs" is-expanded :value="null" color="red" is-range/>
   </div>
 </template>
 
@@ -54,7 +54,7 @@ export default {
           customData: todo,
         })),
       ];
-    },
+    }
   },
 }
 </script>
