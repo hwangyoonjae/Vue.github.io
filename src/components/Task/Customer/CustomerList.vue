@@ -1,7 +1,7 @@
 <template>
   <div class="Customer_component">
     <el-table :data="item" @row-click="rowClick">
-      <el-table-column label="번호" prop="number"></el-table-column>
+      <el-table-column label="번호" prop="id"></el-table-column>
       <el-table-column label="구분" prop="division"></el-table-column>
       <el-table-column label="업체명" prop="company"></el-table-column>
       <el-table-column label="담당자" prop="name"></el-table-column>
@@ -30,7 +30,7 @@ export default {
   methods: {
     rowClick(item, index, e) {
       this.$router.push({
-        path: `/customerList/detail/${item.number}`
+        path: `/customerList/detail/${item.id}`
       })
     },
     writeContent() {
@@ -38,13 +38,13 @@ export default {
         path: '/customerList/write'
       })
     },
-     getData: function() {
+    getData: function() {
       const baseURI = 'http://localhost:8443';
       this.$axios.get(`${baseURI}/api/customer`)
-        .then(result => {
-          console.log(result.data)
-          this.item = result.data
-        })
+      .then(result => {
+        console.log(result.data)
+        this.item = result.data
+      })
     }
   },
   mounted() {
