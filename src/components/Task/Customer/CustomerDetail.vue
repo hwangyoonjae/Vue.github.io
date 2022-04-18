@@ -17,8 +17,8 @@
             <el-form-item label="담당자">
               <el-input v-model="name" :disabled="true"></el-input>
             </el-form-item>
-            <el-form-item label="직급" prop="rank">
-              <el-select v-model="rank" placeholder="선택" :disabled="true">
+            <el-form-item label="직급" prop="position">
+              <el-select v-model="position" placeholder="선택" :disabled="true">
                 <el-option label="완료" value="완료"></el-option>
                 <el-option label="진행" value="진행"></el-option>
                 <el-option label="신규" value="신규"></el-option>
@@ -27,8 +27,8 @@
               <el-form-item label="연락처" prop="phone">
                 <el-input v-model="phone" :disabled="true"></el-input>
               </el-form-item>
-              <el-form-item label="이메일" prop="email">
-                <el-input v-model="email" :disabled="true"></el-input>
+              <el-form-item label="이메일" prop="mail">
+                <el-input v-model="mail" :disabled="true"></el-input>
               </el-form-item>
             </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
@@ -45,16 +45,16 @@ import data from "@/data";
 export default {
   name: "ContentDetail",
   data() {
-    const number = Number(this.$route.params.number);
-    const contentData = data.CustomerList.filter(item => item.number === number)[0];
+    const number = Number(this.$route.params.id);
+    //const contentData = item.filter(item => item.number === number)[0];
     return {
-      division: contentData.division,
-      number: number,
-      company: contentData.company,
-      name: contentData.name,
-      rank: contentData.rank,
-      phone: contentData.phone,
-      email: contentData.email,
+      division: item.division,
+      id: number,
+      company: item.company,
+      name: item.name,
+      position: item.position,
+      phone: item.phone,
+      mail: item.mail,
     }
   },
   methods: {
