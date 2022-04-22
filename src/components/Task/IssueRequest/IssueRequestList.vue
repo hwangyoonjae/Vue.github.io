@@ -10,12 +10,12 @@
       </div>
     </el-card>
     <el-card class="box-card">
-      <el-table :data="items" @row-click="rowClick">
-        <el-table-column label="번호" prop="number"></el-table-column>
+      <el-table :data="items" @row-click="rowClick" style="width: 100%">
+        <el-table-column label="번호" prop="number" width="50"></el-table-column>
         <el-table-column label="제목" prop="title"></el-table-column>
         <el-table-column label="내용" prop="component"></el-table-column>
-        <el-table-column label="작성자" prop="name"></el-table-column>
-        <el-table-column label="등록일" prop="created_at"></el-table-column>
+        <el-table-column label="작성자" prop="name" width="80"></el-table-column>
+        <el-table-column label="등록일" prop="created_at" width="100"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
       </el-table>
       <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
