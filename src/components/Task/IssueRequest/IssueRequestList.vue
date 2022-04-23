@@ -6,7 +6,7 @@
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
         <el-input placeholder="검색하세요" v-model="input"></el-input>
-        <el-button type="primary" icon="el-icon-search">Search</el-button>
+        <el-button type="primary" icon="el-icon-search">검색</el-button>
       </div>
     </el-card>
     <el-card class="box-card">
@@ -42,7 +42,8 @@ export default {
           value: 'Option2',
           label: 'Option2'
         }],
-        value: ''
+        value: '',
+        input: ''
       }
     },
     methods: {
