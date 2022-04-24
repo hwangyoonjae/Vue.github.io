@@ -1,18 +1,29 @@
 <template>
   <div class="Customer_component">
-    <el-table :data="item" @row-click="rowClick">
-      <el-table-column label="번호" prop="id"></el-table-column>
-      <el-table-column label="구분" prop="division"></el-table-column>
-      <el-table-column label="업체명" prop="company"></el-table-column>
-      <el-table-column label="담당자" prop="name"></el-table-column>
-      <el-table-column label="직급" prop="position"></el-table-column>
-      <el-table-column label="연락처" prop="phone"></el-table-column>
-      <el-table-column label="이메일" prop="mail"></el-table-column>
-      <el-table-column label="등록일" prop="created_at"></el-table-column>
-    </el-table>
-    <div class="Issue_write">
-      <el-button type="primary" @click="writeContent">이슈등록</el-button>
-    </div>
+    <el-card class="box-card">
+      <div class="Customer_component_search">
+        <el-select v-model="value" placeholder="Select">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+        </el-select>
+        <el-input placeholder="검색하세요" v-model="input"></el-input>
+        <el-button type="primary" icon="el-icon-search">검색</el-button>
+      </div>
+    </el-card>
+    <el-card class="box-card">
+      <el-table :data="item" @row-click="rowClick">
+        <el-table-column label="번호" prop="id"></el-table-column>
+        <el-table-column label="구분" prop="division"></el-table-column>
+        <el-table-column label="업체명" prop="company"></el-table-column>
+        <el-table-column label="담당자" prop="name"></el-table-column>
+        <el-table-column label="직급" prop="position"></el-table-column>
+        <el-table-column label="연락처" prop="phone"></el-table-column>
+        <el-table-column label="이메일" prop="mail"></el-table-column>
+        <el-table-column label="등록일" prop="created_at"></el-table-column>
+      </el-table>
+      <div class="Issue_write">
+        <el-button type="primary" @click="writeContent">이슈등록</el-button>
+      </div>
+    </el-card>
   </div>
 </template>
 
@@ -25,6 +36,15 @@ export default {
     //let items = data.CustomerList.sort((a,b) => {return b.number - a.number})
     return {
       item: '',
+      options: [{
+          value: '제목',
+          label: '제목'
+        }, {
+          value: 'Option2',
+          label: 'Option2'
+        }],
+        value: '',
+        input: ''
     }
   },
   methods: {
@@ -54,12 +74,21 @@ export default {
 </script>
 
 <style scoped>
-.Issue_component {
-  width: 100%;
+.Customer_component {
+  text-align: center;
+  margin: 10px;
+}
+
+.box-card {
+  margin: 10px 0px;
+}
+
+.Customer_component_search {
+  display: flex;
 }
 
 .Issue_write {
   text-align: right;
-  margin: 10px;
+  margin-top: 10px;
 }
 </style>
