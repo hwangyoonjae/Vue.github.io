@@ -40,8 +40,8 @@ export default {
           value: '제목',
           label: '제목'
         }, {
-          value: 'Option2',
-          label: 'Option2'
+          value: '내용',
+          label: '내용'
         }],
         value: '',
         input: ''
