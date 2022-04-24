@@ -18,11 +18,11 @@
         <el-table-column label="등록일" prop="created_at" width="100"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
       </el-table>
+      <div class="IssuerequestList_write">
+        <el-button type="primary" @click="writeContent">등록하기</el-button>
+      </div>
       <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
     </el-card>
-    <div class="IssuerequestList_write">
-        <el-button type="primary" @click="writeContent">등록하기</el-button>
-    </div>
   </div>
 </template>
 
@@ -36,8 +36,8 @@ export default {
     return {
         items: items,
         options: [{
-          value: 'Option1',
-          label: 'Option1'
+          value: '제목',
+          label: '제목'
         }, {
           value: 'Option2',
           label: 'Option2'
@@ -83,6 +83,6 @@ export default {
 
 .IssuerequestList_write {
   text-align: right;
-  margin: 10px;
+  margin-top: 10px;
 }
 </style>
