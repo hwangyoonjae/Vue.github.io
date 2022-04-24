@@ -1,18 +1,29 @@
 <template>
   <div class="Issue_component">
-    <el-table :data="msg" @row-click="rowClick">
-      <el-table-column label="번호" prop="id"></el-table-column>
-      <el-table-column label="제목" prop="title"></el-table-column>
-      <el-table-column label="담당자" prop="name"></el-table-column>
-      <el-table-column label="상태" prop="state"></el-table-column>
-      <el-table-column label="우선순위" prop="level"></el-table-column>
-      <el-table-column label="작성일" prop="created_at"></el-table-column>
-      <el-table-column label="수정일" prop="updated_at"></el-table-column>
-      <el-table-column label="구분" prop="division"></el-table-column>
-    </el-table>
-    <div class="Issue_write">
-      <el-button type="primary" @click="writeContent">이슈등록</el-button>
-    </div>
+    <el-card class="box-card">
+      <div class="Issue_component_search">
+        <el-select v-model="value" placeholder="Select">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+        </el-select>
+        <el-input placeholder="검색하세요" v-model="input"></el-input>
+        <el-button type="primary" icon="el-icon-search">검색</el-button>
+      </div>
+    </el-card>
+    <el-card class="box-card">
+      <el-table :data="item" @row-click="rowClick">
+        <el-table-column label="번호" prop="id"></el-table-column>
+        <el-table-column label="제목" prop="title"></el-table-column>
+        <el-table-column label="담당자" prop="name"></el-table-column>
+        <el-table-column label="상태" prop="state"></el-table-column>
+        <el-table-column label="우선순위" prop="level"></el-table-column>
+        <el-table-column label="작성일" prop="created_at"></el-table-column>
+        <el-table-column label="수정일" prop="updated_at"></el-table-column>
+        <el-table-column label="구분" prop="division"></el-table-column>
+      </el-table>
+      <div class="Issue_write">
+        <el-button type="primary" @click="writeContent">이슈등록</el-button>
+      </div>
+    </el-card>
   </div>
 </template>
 
@@ -27,7 +38,16 @@ export default {
     
       //items: items,
       //connectData: "",
-      msg: '',
+      item: '',
+      options: [{
+        value: '제목',          
+        label: '제목'
+      }, {
+        value: 'Option2',
+        label: 'Option2'
+      }],
+      value: '',
+      input: ''
     }
   },
   methods: {
@@ -51,7 +71,7 @@ export default {
       this.$axios.get(`${baseURI}/api/hello`)
         .then(result => {
           console.log(result.data)
-          this.msg = result.data
+          this.item = result.data
         })
     }
   },
@@ -63,11 +83,20 @@ export default {
 
 <style scoped>
 .Issue_component {
-  width: 100%;
+  text-align: center;
+  margin: 10px;
+}
+
+.box-card {
+  margin: 10px 0px;
+}
+
+.Issue_component_search {
+  display: flex;
 }
 
 .Issue_write {
   text-align: right;
-  margin: 10px;
+  margin-top: 10px;
 }
 </style>
