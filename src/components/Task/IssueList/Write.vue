@@ -72,9 +72,21 @@ export default {
   },
   methods:{
     uploadContent() {
-      let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
-      const number = items[0].id + 1
-      data.IssueContent.push({
+      //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
+      //const number = items[0].id + 1
+      const baseURI = 'http://localhost:8443';
+      this.$axios.post(`${baseURI}/api/post`)
+      .then(result => {
+        division = this.division,
+        id = number,
+        title = this.title,
+        component = this.component,
+        name = this.name,
+        state = this.state,
+        level = this.level,
+        console.log(result)
+      })
+      /*data.IssueContent.push({
         division: this.division,
         id: number,
         title: this.title,
@@ -87,7 +99,7 @@ export default {
       })
       this.$router.push({
         path: '/issueList'
-      })
+      })*/
     },
     updateContent() {
       this.updateObject.division = this.division;
