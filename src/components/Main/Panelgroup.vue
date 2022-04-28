@@ -104,7 +104,7 @@ export default {
 
 <style scoped>
 .card-panel-col {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .card-panel {
