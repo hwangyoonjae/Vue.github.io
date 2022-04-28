@@ -37,6 +37,9 @@ export default {
     return {
       item: '',
       options: [{
+          value: '전체',          
+          label: '전체'
+        }, {
           value: '제목',
           label: '제목'
         }, {
