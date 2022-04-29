@@ -24,6 +24,7 @@
         <el-button type="primary" @click="writeContent">프로젝트 등록하기</el-button>
       </div>
     </el-card>
+      <span>{{items[0].number}}</span>
   </div>
 </template>
 
