@@ -77,13 +77,12 @@ export default {
       const baseURI = 'http://localhost:8443';
       this.$axios.post(`${baseURI}/api/post`)
       .then(result => {
-        division = this.division,
-        id = number,
-        title = this.title,
-        component = this.component,
-        name = this.name,
-        state = this.state,
-        level = this.level,
+        this.division = result.division,
+        this.title = result.title,
+        this.component = result.component,
+        this.name = result.name,
+        this.state = result.state,
+        this.level = result.level,
         console.log(result)
       })
       /*data.IssueContent.push({
