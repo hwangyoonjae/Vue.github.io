@@ -64,18 +64,13 @@ export default {
         path: '/issueList/write'
       })
     },
-  /*get() {
-      this.axios.get("/connectTest").then((response) => {
-        this.connectData = response.data;
-      });
-    },*/
     getData: function() {
       const baseURI = 'http://localhost:8443';
       this.$axios.get(`${baseURI}/api/hello`)
-        .then(result => {
-          console.log(result.data)
-          this.item = result.data
-        })
+      .then(result => {
+        console.log(result.data)
+        this.item = result.data
+      })
     }
   },
   mounted() {
