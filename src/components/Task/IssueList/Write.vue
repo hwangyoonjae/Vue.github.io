@@ -75,30 +75,21 @@ export default {
       //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
       //const number = items[0].id + 1
       const baseURI = 'http://localhost:8443';
-      this.$axios.post(`${baseURI}/api/post`)
+      var data = {
+        division : this.division,
+        title : this.title,
+        component : this.component,
+        name : this.name,
+        state : this.state,
+        level : this.level
+      }
+      this.$axios.post(`${baseURI}/api/post`, data)
       .then(result => {
-        this.division = result.division,
-        this.title = result.title,
-        this.component = result.component,
-        this.name = result.name,
-        this.state = result.state,
-        this.level = result.level,
         console.log(result)
       })
-      /*data.IssueContent.push({
-        division: this.division,
-        id: number,
-        title: this.title,
-        component: this.component,
-        name: this.name,
-        state: this.state,
-        level: this.level,
-        created_at: this.created_at,
-        updated_at: null
+      .catch(error => {
+        console.log(error)
       })
-      this.$router.push({
-        path: '/issueList'
-      })*/
     },
     updateContent() {
       this.updateObject.division = this.division;
