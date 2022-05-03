@@ -34,10 +34,6 @@ export default {
   name : 'IssueList',
   data() {
     return {
-      //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
-    
-      //items: items,
-      //connectData: "",
       item: '',
       options: [{
         value: '전체',          
