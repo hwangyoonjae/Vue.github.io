@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row :gutter="12">
+    <el-row :gutter="12" style="margin : 0px">
       <el-col :span="8">
         <el-card shadow="never">
           <el-form label-width="120px">
