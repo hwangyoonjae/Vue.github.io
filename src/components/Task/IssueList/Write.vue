@@ -72,8 +72,6 @@ export default {
   },
   methods:{
     uploadContent() {
-      //let items = data.IssueContent.sort((a,b) => {return b.id - a.id})
-      //const number = items[0].id + 1
       const baseURI = 'http://localhost:8443';
       var data = {
         division : this.division,
@@ -86,6 +84,9 @@ export default {
       this.$axios.post(`${baseURI}/api/post`, data)
       .then(result => {
         console.log(result)
+        this.$router.push({
+          path: '/issueList'
+        })
       })
       .catch(error => {
         console.log(error)
