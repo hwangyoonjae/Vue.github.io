@@ -41,12 +41,10 @@
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
   data() {
     return {
-      Issue_form: {
+      Issue_form : {
         title : '',
         component : '',
         name : '',
@@ -94,7 +92,7 @@ export default {
     uploadContent(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          alert('등록되었습니다.');
           const baseURI = 'http://localhost:8443';
           var data = {
             division : this.Issue_form.division,
@@ -118,11 +116,12 @@ export default {
             console.log('error submit!!');
             return false;
           }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
+        }
+      );
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
     updateContent() {
       this.updateObject.division = this.division;
       this.updateObject.title = this.title;
