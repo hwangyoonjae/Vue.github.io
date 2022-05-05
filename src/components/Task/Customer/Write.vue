@@ -1,35 +1,35 @@
 <template>
   <div class="Customer_component">
-    <el-form status-icon label-width="120px" class="demo-ruleForm">
+    <el-form :model="Customer_form" m status-icon label-width="120px" class="demo-ruleForm" ref="Customer_form" :rules="rules">
       <el-form-item label="구분" prop="division">
-        <el-select v-model="division" placeholder="선택">
+        <el-select v-model="Customer_form.division" placeholder="선택">
           <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
           <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
           <el-option label="전군DLP" value="전군DLP"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="업체명" prop="company">
-        <el-input type="text" v-model="company" autocomplete="off"></el-input>
+        <el-input type="text" v-model="Customer_form.company" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="담당자" prop="name">
-        <el-input type="text" v-model="name" autocomplete="off"></el-input>
+        <el-input type="text" v-model="Customer_form.name" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="직급" prop="rank">
-        <el-select v-model="rank" placeholder="선택">
+        <el-select v-model="Customer_form.rank" placeholder="선택">
           <el-option label="사원" value="사원"></el-option>
           <el-option label="대리" value="대리"></el-option>
           <el-option label="부장" value="부장"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="연락처" prop="phone">
-        <el-input type="text" v-model="phone" autocomplete="off"></el-input>
+        <el-input type="text" v-model="Customer_form.phone" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="이메일" prop="email">
-        <el-input type="text" v-model="email" autocomplete="off"></el-input>
+        <el-input type="text" v-model="Customer_form.email" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="success" @click="updateMode ? updateContent() : uploadContent()">등록하기</el-button>
-        <el-button @click="resetForm('ruleForm')">초기화</el-button>
+        <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Customer_form')">등록하기</el-button>
+        <el-button @click="resetForm('Customer_form')">초기화</el-button>
         <el-button type="danger" @click="cancle">취소하기</el-button>
       </el-form-item>
     </el-form>
@@ -37,21 +37,40 @@
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
   data() {
     return {
-      division: '',
-      company : '',
-      name : '',
-      rank : '',
-      phone : '',
-      email : '',
-      created_at: '2019-03-29 14:11:11',
-      updated_at: null,
-      updateObject: null,
-      updateMode: this.$route.params.number > 0 ? true : false,
+      Customer_form : {
+        division: '',
+        company : '',
+        name : '',
+        rank : '',
+        phone : '',
+        email : '',
+        updated_at: null,
+        updateObject: null,
+        updateMode: this.$route.params.number > 0 ? true : false,
+      },
+      rules: {
+        division : [
+          { required: true, message: '구분을 선택하세요.', trigger: 'change' }
+        ],
+        company : [
+          { required: true, message: '업체명을 입력하세요.', trigger: 'blur' }
+        ],
+        name : [
+          { required: true, message: '담당자를 입력하세요.', trigger: 'blur' }
+        ],
+        rank : [
+          { required: true, message: '직급을 입력하세요.', trigger: 'change' }
+        ],
+        phone : [
+          { required: true, message: '연락처를 입력하세요.', trigger: 'blur' }
+        ],
+        email : [
+          { required: true, message: '이메일을 입력하세요.', trigger: 'change' }
+        ]
+      }
     }
   },
   created() {
@@ -67,22 +86,38 @@ export default {
     }
   },
   methods:{
-    uploadContent() {
-      let items = data.CustomerList.sort((a,b) => {return b.number - a.number})
-      const number = items[0].number + 1
-      data.CustomerList.push({
-        division: this.division,
-        number: number,
-        company: this.company,
-        name: this.name,
-        rank: this.rank,
-        phone: this.phone,
-        email: this.email,
-        created_at: this.created_at,
-      })
-      this.$router.push({
-        path: '/customerList'
-      })
+    uploadContent(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('등록되었습니다.');
+          const baseURI = 'http://localhost:8443';
+          var data = {
+            division: this.Customer_form.division,
+            company: this.Customer_form.company,
+            name: this.Customer_form.name,
+            rank: this.Customer_form.rank,
+            phone: this.Customer_form.phone,
+            email: this.Customer_form.email
+          }
+          this.$axios.post(`${baseURI}/api/customer/post`, data)
+          .then(result => {
+            console.log(result)
+            this.$router.push({
+              path: '/customerList'
+            })
+          })
+          .catch(error => {
+            console.log(error)
+          })
+        } else {
+            console.log('error submit!!');
+            return false;
+          }
+        }
+      );
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     },
     updateContent() {
       this.updateObject.division = this.division;
