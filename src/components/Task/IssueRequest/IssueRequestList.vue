@@ -10,8 +10,8 @@
       </div>
     </el-card>
     <el-card class="box-card">
-      <el-table :data="items" @row-click="rowClick" style="width: 100%">
-        <el-table-column label="번호" prop="number" width="50"></el-table-column>
+      <el-table :data="item" @row-click="rowClick">
+        <el-table-column label="번호" prop="id" width="50"></el-table-column>
         <el-table-column label="제목" prop="title"></el-table-column>
         <el-table-column label="내용" prop="component"></el-table-column>
         <el-table-column label="작성자" prop="name" width="80"></el-table-column>
@@ -27,38 +27,37 @@
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
-  name : 'Notice',
+  name : 'IssueRequestList',
   data() {
-    let items = data.IssueRequestContent.sort((a,b) => {return b.number - a.number})
     return {
-        items: items,
-        options: [{
-          value: '전체',          
-          label: '전체'
-        }, {
-          value: '제목',
-          label: '제목'
-        }, {
-          value: '내용',
-          label: '내용'
-        }],
-        value: '',
-        input: ''
-      }
-    },
-    methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
-    },
-      handleDelete(index, row) {
-        console.log(index, row);
-    },
+      item: '',
+      options: [{
+        value: '전체',          
+        label: '전체'
+      }, {
+        value: '제목',
+        label: '제목'
+      }, {
+        value: '내용',
+        label: '내용'
+      }],
+      value: '',
+      input: ''
+    }
+  },
+  methods: {
     rowClick(item, index, e) {
       this.$router.push({
         path: `/issuerequest/list/detail/${item.number}`
+      })
+    },
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/request`)
+      .then(result => {
+        console.log(result.data)
+        this.item = result.data
       })
     },
     writeContent() {
@@ -66,6 +65,9 @@ export default {
         path: '/issuerequest/list/write/'
       })
     }
+  },
+  mounted() {
+    this.getData();
   },
 }
 </script>
