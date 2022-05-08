@@ -37,7 +37,6 @@ export default {
         component : '',
         name : '',
         division: '',
-        updated_at: null,
         updateObject: null,
         updateMode: this.$route.params.number > 0 ? true : false,
       },
@@ -68,21 +67,33 @@ export default {
     }
   },
   methods:{
-    uploadContent() {
-      let items = data.IssueRequestContent.sort((a,b) => {return b.number - a.number})
-      const number = items[0].number + 1
-      data.IssueRequestContent.push({
-        division: this.division,
-        number: number,
-        title: this.title,
-        component: this.component,
-        name: this.name,
-        created_at: this.created_at,
-        updated_at: null
-      })
-      this.$router.push({
-        path: '/issuerequest/list'
-      })
+    uploadContent(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('등록되었습니다.');
+          const baseURI = 'http://localhost:8443';
+          var data = {
+            division : this.Request_form.division,
+            title : this.Request_form.title,
+            component : this.Request_form.component,
+            name : this.Request_form.name
+          }
+          this.$axios.post(`${baseURI}/api/request/post`, data)
+          .then(result => {
+            console.log(result)
+            this.$router.push({
+              path: '/issuerequest/list'
+            })
+          })
+          .catch(error => {
+            console.log(error)
+          })
+        } else {
+            console.log('error submit!!');
+            return false;
+          }
+        }
+      );
     },
     updateContent() {
       this.updateObject.division = this.division;
