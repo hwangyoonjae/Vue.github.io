@@ -49,7 +49,7 @@ export default {
   methods: {
     rowClick(item, index, e) {
       this.$router.push({
-        path: `/issuerequest/list/detail/${item.number}`
+        path: `/issuerequest/list/detail/${item.id}`
       })
     },
     getData: function() {
