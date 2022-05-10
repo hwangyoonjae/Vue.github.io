@@ -34,7 +34,7 @@
 import data from "@/data";
 
 export default {
-  name: "ContentDetail",
+  name: "IssueRequestDetail",
   data() {
     const number = Number(this.$route.params.number);
     const contentData = data.IssueRequestContent.filter(item => item.number === number)[0];
