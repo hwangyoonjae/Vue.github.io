@@ -49,7 +49,9 @@ export default {
   methods: {
     rowClick(item, index, e) {
       this.$router.push({
-        path: `/issuerequest/list/detail/${item.id}`
+        //path: `/issuerequest/list/detail/${item.id}`,
+        name : 'IssueRequestDetail',
+        query : { item : item.id }
       })
     },
     getData: function() {
