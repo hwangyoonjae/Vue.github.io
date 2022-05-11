@@ -47,7 +47,7 @@ export default {
   methods: {
     updateData() {
       this.$router.push({
-        path: `/issuerequest/list/write/${this.number}`
+        path: `/issuerequest/list/write/${this.$route.query.item.id}`
       })
     },
     deleteData() {
