@@ -51,7 +51,7 @@ export default {
       this.$router.push({
         //path: `/issuerequest/list/detail/${item.id}`,
         name : 'IssueRequestDetail',
-        query : { item : item.id }
+        query : { item : item }
       })
     },
     getData: function() {
