@@ -5,20 +5,20 @@
         <el-card shadow="never">
           <el-form label-width="120px">
             <el-form-item label="구분" prop="division">
-              <el-select v-model="division" placeholder="선택">
+              <el-select v-model="Request_DetailData.division" placeholder="선택">
                 <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
                 <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
                 <el-option label="전군DLP" value="전군DLP"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="제목">
-              <el-input v-model="title"></el-input>
+              <el-input v-model="Request_DetailData.title"></el-input>
             </el-form-item>
             <el-form-item label="내용">
-              <el-input v-model="component"></el-input>
+              <el-input v-model="Request_DetailData.component"></el-input>
             </el-form-item>
             <el-form-item label="담당자">
-              <el-input v-model="name"></el-input>
+              <el-input v-model="Request_DetailData.name"></el-input>
             </el-form-item>
             </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
@@ -38,10 +38,12 @@ export default {
   data() {
     const contentData = this.$route.query.item;
     return {
-      division: contentData.division,
-      title: contentData.title,
-      component: contentData.component,
-      name: contentData.name
+      Request_DetailData : {
+        division: contentData.division,
+        title: contentData.title,
+        component: contentData.component,
+        name: contentData.name
+      },
     }
   },
   methods: {
@@ -49,7 +51,25 @@ export default {
       /*this.$router.push({
         path: `/issuerequest/list/write/${this.$route.query.item.id}`
       })*/
-      
+      const baseURI = 'http://localhost:8443';
+      var data = {
+        division : this.Request_DetailData.division,
+        title : this.Request_DetailData.title,
+        component : this.Request_DetailData.component,
+        name : this.Request_DetailData.name
+      }
+      this.$axios.post(`${baseURI}/api/request/post_update`, data)
+        .then(result => {
+          console.log(result)
+          alert('수정되었습니다.');
+          this.$router.push({
+            path: '/issuerequest/list'
+          })
+        })
+        .catch(error => {
+          console.log(error)
+        }
+      )
     },
     deleteData() {
       const content_index = data.IssueRequestContent.findIndex(item => item.number === this.number);
