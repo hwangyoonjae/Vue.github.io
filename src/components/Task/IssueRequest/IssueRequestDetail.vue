@@ -5,20 +5,20 @@
         <el-card shadow="never">
           <el-form label-width="120px">
             <el-form-item label="구분" prop="division">
-              <el-select v-model="division" placeholder="선택" :disabled="true">
+              <el-select v-model="division" placeholder="선택">
                 <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
                 <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
                 <el-option label="전군DLP" value="전군DLP"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="제목">
-              <el-input v-model="title" :disabled="true"></el-input>
+              <el-input v-model="title"></el-input>
             </el-form-item>
             <el-form-item label="내용">
-              <el-input v-model="component" :disabled="true"></el-input>
+              <el-input v-model="component"></el-input>
             </el-form-item>
             <el-form-item label="담당자">
-              <el-input v-model="name" :disabled="true"></el-input>
+              <el-input v-model="name"></el-input>
             </el-form-item>
             </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
@@ -46,9 +46,10 @@ export default {
   },
   methods: {
     updateData() {
-      this.$router.push({
+      /*this.$router.push({
         path: `/issuerequest/list/write/${this.$route.query.item.id}`
-      })
+      })*/
+      
     },
     deleteData() {
       const content_index = data.IssueRequestContent.findIndex(item => item.number === this.number);
