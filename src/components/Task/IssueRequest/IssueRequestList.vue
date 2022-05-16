@@ -43,7 +43,10 @@ export default {
         label: '내용'
       }],
       value: '',
-      input: ''
+      input: '',
+      //페이징 데이터
+      page: this.$route.query.page ? this.$route.query.page : 1,
+      size: this.$route.query.size ? this.$route.query.size : 10,
     }
   },
   methods: {
@@ -58,13 +61,19 @@ export default {
       this.$axios.get(`${baseURI}/api/request`)
       .then(result => {
         console.log(result.data)
-        this.item = result.data
+        this.item = result.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
       })
     },
     writeContent() {
       this.$router.push({
         path: '/issuerequest/list/write/'
       })
+    },
+    fnPage(n) {
+      if (this.page !== n) {
+        this.page = n
+        this.getData()
+      }
     }
   },
   mounted() {
