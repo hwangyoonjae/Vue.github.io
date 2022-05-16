@@ -118,7 +118,7 @@ export default new Router({
             component: IssueRequestWrite
         },
         {
-            path: '/issuerequest/list/detail/:number',
+            path: '/issuerequest/list/detail',
             name: 'IssueRequestDetail',
             component: IssueRequestDetail
         },
