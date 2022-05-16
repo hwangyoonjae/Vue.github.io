@@ -28,6 +28,7 @@
       </el-col>
     </el-row>
     <span>{{item}}</span>
+    <span>{{idx}}</span>
   </div>
 </template>
 
@@ -46,7 +47,7 @@ export default {
         name: contentData.name
       },*/
       item: this.$route.query,
-      idx: this.$route.query.id,
+      idx: this.$route.query.idx,
       division : '',
       title : '',
       component : '',
@@ -59,8 +60,10 @@ export default {
   methods: {
     getData() {
       this.$axios.get(this.$serverUrl + '/issuerequest/list/detail/' + this.idx, {
-        
+        params : this.item
       }).then((res) => {
+        console.log(res.data);
+        alert('진입함.')
         this.division = res.data.division
         this.title = res.data.title
         this.component = res.data.component
