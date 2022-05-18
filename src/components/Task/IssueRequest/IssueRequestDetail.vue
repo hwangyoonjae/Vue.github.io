@@ -5,20 +5,20 @@
         <el-card shadow="never">
           <el-form label-width="120px">
             <el-form-item label="구분" prop="division">
-              <el-select v-model="division" placeholder="선택">
+              <el-select v-model="Request_DetailData.division" placeholder="선택">
                 <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
                 <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
                 <el-option label="전군DLP" value="전군DLP"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="제목">
-              <el-input v-model="title"></el-input>
+              <el-input v-model="Request_DetailData.title"></el-input>
             </el-form-item>
             <el-form-item label="내용">
-              <el-input v-model="component"></el-input>
+              <el-input v-model="Request_DetailData.component"></el-input>
             </el-form-item>
             <el-form-item label="담당자">
-              <el-input v-model="name"></el-input>
+              <el-input v-model="Request_DetailData.name"></el-input>
             </el-form-item>
             </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
@@ -27,8 +27,6 @@
         </el-card>
       </el-col>
     </el-row>
-    <span>{{item}}</span>
-    <span>{{idx}}</span>
   </div>
 </template>
 
@@ -38,42 +36,17 @@ import data from "@/data";
 export default {
   name: "IssueRequestDetail",
   data() {
-    //const contentData = this.$route.query.item;
+    const contentData = this.$route.query.item;
     return {
-      /*Request_DetailData : {
+      Request_DetailData : {
         division: contentData.division,
         title: contentData.title,
         component: contentData.component,
         name: contentData.name
-      },*/
-      item: this.$route.query,
-      idx: this.$route.query.idx,
-      division : '',
-      title : '',
-      component : '',
-      name : ''
+      }
     }
   },
-  mounted() {
-    this.getData()
-  },
   methods: {
-    getData() {
-      this.$axios.get(this.$serverUrl + '/issuerequest/list/detail/' + this.idx, {
-        params : this.item
-      }).then((res) => {
-        console.log(res.data);
-        alert('진입함.')
-        this.division = res.data.division
-        this.title = res.data.title
-        this.component = res.data.component
-        this.name = res.data.name
-      }).catch((err) => {
-        if (err.message.indexOf('Network Error') > -1) {
-          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
-        }
-      })
-    },
     updateData() {
       /*this.$router.push({
         path: `/issuerequest/list/write/${this.$route.query.item.id}`
