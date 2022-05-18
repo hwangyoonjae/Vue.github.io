@@ -50,13 +50,10 @@ export default {
     }
   },
   methods: {
-    rowClick(idx) {
-      this.item.id = idx
+    rowClick(item) {
       this.$router.push({
-        //name : 'IssueRequestDetail',
-        //query : { item : item },
-        path : '/issuerequest/list/detail',
-        query : this.item
+        name : 'IssueRequestDetail',
+        query : { item : item },
       })
     },
     getData: function() {
