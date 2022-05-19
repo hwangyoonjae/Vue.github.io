@@ -27,26 +27,43 @@
         </el-card>
       </el-col>
     </el-row>
+    <span>{{idx}}</span>
   </div>
 </template>
 
 <script>
-import data from "@/data";
-
 export default {
   name: "IssueRequestDetail",
   data() {
-    const contentData = this.$route.query.item;
     return {
       Request_DetailData : {
-        division: contentData.division,
-        title: contentData.title,
-        component: contentData.component,
-        name: contentData.name
-      }
+        division: '',
+        title: '',
+        component: '',
+        name: ''
+      },
+      contentData : this.$route.query,
+      idx : this.$route.query.id
     }
   },
+  mounted() {
+    this.getContentData();
+  },
   methods: {
+    getContentData() {
+      this.$axios.get(this.$serverUrl + '/issuerequest/list/detail/' + this.idx, {
+        params: this.item
+      }).then(res => {
+        this.Request_DetailData.division = res.data.division
+        this.Request_DetailData.title = res.data.title
+        this.Request_DetailData.component = res.data.component
+        this.Request_DetailData.name = res.data.name
+      }).catch((err) => {
+        if (err.message.indexOf('Network Error') > -1) {
+          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+        }
+      })
+    },
     updateData() {
       /*this.$router.push({
         path: `/issuerequest/list/write/${this.$route.query.item.id}`
