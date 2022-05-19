@@ -77,9 +77,6 @@
         </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
-    <el-menu-item index="8" @click="testgo">
-      <span slot="title">테스트 페이지</span>
-    </el-menu-item>
   </el-menu>
   </div>
 </template>
@@ -152,11 +149,6 @@ export default {
     todolistgo() {
       this.$router.push({
         path: '/todo'
-      })
-    },
-    testgo() {
-      this.$router.push({
-        path: '/test'
       })
     }
   }
