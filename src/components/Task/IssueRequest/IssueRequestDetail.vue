@@ -51,13 +51,14 @@ export default {
   },
   methods: {
     getContentData() {
-      this.$axios.get(this.$serverUrl + '/issuerequest/list/detail/' + this.idx, {
-        params: this.item
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/issuerequest/list/detail/` + this.idx, {
+        params: this.contentData
       }).then(res => {
-        this.Request_DetailData.division = res.data.division
-        this.Request_DetailData.title = res.data.title
-        this.Request_DetailData.component = res.data.component
-        this.Request_DetailData.name = res.data.name
+        this.Request_DetailData.division = res.idx.division
+        this.Request_DetailData.title = res.idx.title
+        this.Request_DetailData.component = res.idx.component
+        this.Request_DetailData.name = res.idx.name
       }).catch((err) => {
         if (err.message.indexOf('Network Error') > -1) {
           alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
