@@ -50,8 +50,8 @@ export default {
     }
   },
   methods: {
-    rowClick(idx) {
-      this.item.id = idx
+    rowClick(id) {
+      this.item.id = id
       this.$router.push({
         //name : 'IssueRequestDetail',
         path: './list/detail/',

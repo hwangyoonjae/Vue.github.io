@@ -27,7 +27,7 @@
         </el-card>
       </el-col>
     </el-row>
-    <span>{{idx}}</span>
+    <span>{{id}}</span>
   </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
         name: ''
       },
       contentData : this.$route.query,
-      idx : this.$route.query.id
+      id : this.$route.query.id
     }
   },
   mounted() {
@@ -52,13 +52,14 @@ export default {
   methods: {
     getContentData() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/issuerequest/list/detail/` + this.idx, {
+      this.$axios.get(`${baseURI}/api/request` + this.contentData.id, {
         params: this.contentData
       }).then(res => {
-        this.Request_DetailData.division = res.idx.division
-        this.Request_DetailData.title = res.idx.title
-        this.Request_DetailData.component = res.idx.component
-        this.Request_DetailData.name = res.idx.name
+        console.log(res.data)
+        this.Request_DetailData.division = res.data.division
+        this.Request_DetailData.title = res.data.title
+        this.Request_DetailData.component = res.data.component
+        this.Request_DetailData.name = res.data.name
       }).catch((err) => {
         if (err.message.indexOf('Network Error') > -1) {
           alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
