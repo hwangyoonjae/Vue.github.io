@@ -27,7 +27,8 @@
         </el-card>
       </el-col>
     </el-row>
-    <span>{{id}}</span>
+    <span>{{item}}</span>
+    <h1>{{id}}</h1>
   </div>
 </template>
 
@@ -36,14 +37,14 @@ export default {
   name: "IssueRequestDetail",
   data() {
     return {
+      item : this.$route.query,
+      id : this.$route.query.id,
       Request_DetailData : {
         division: '',
         title: '',
         component: '',
         name: ''
-      },
-      contentData : this.$route.query,
-      id : this.$route.query.id
+      }
     }
   },
   mounted() {
@@ -52,14 +53,14 @@ export default {
   methods: {
     getContentData() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/api/request` + this.contentData.id, {
-        params: this.contentData
+      this.$axios.get(`${baseURI}/api/request/` + this.item.id, {
+        params: this.item
       }).then(res => {
         console.log(res.data)
-        this.Request_DetailData.division = res.data.division
-        this.Request_DetailData.title = res.data.title
-        this.Request_DetailData.component = res.data.component
-        this.Request_DetailData.name = res.data.name
+        this.Request_DetailData.division = res.data.Request_DetailData.division
+        this.Request_DetailData.title = res.data.Request_DetailData.title
+        this.Request_DetailData.component = res.data.Request_DetailData.component
+        this.Request_DetailData.name = res.data.Request_DetailData.name
       }).catch((err) => {
         if (err.message.indexOf('Network Error') > -1) {
           alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
