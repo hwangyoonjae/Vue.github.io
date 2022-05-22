@@ -51,14 +51,14 @@ export default {
   },
   methods: {
     rowClick(id) {
-      this.item.id = id
+      this.item.id = id;
       this.$router.push({
         //name : 'IssueRequestDetail',
         path: './list/detail/',
         query : this.item
       })
     },
-    getData: function() {
+    getData() {
       const baseURI = 'http://localhost:8443';
       this.$axios.get(`${baseURI}/api/request`)
       .then(result => {
