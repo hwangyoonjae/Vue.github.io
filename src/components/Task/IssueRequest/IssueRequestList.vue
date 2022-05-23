@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     rowClick(id) {
-      this.item.id = id;
+      this.item.id = id; // 클릭한 게시글에 데이터를 보냄.
       this.$router.push({
         //name : 'IssueRequestDetail',
         path: './list/detail/',
