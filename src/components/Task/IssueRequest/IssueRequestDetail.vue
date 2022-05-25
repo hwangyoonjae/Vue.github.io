@@ -23,7 +23,6 @@
             </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
           <el-button type="danger" icon="el-icon-document-delete" @click="deleteData">삭제하기</el-button>
-          <el-button type="info" icon="el-icon-edit-outline" @click="commentData">댓글달기</el-button>
         </el-card>
       </el-col>
     </el-row>
