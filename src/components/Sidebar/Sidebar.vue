@@ -158,6 +158,7 @@ export default {
 <style>
 .Sidebar_Component {
   height: 100%;
+  border: none;
 }
 
 .el-menu-vertical-demo {
