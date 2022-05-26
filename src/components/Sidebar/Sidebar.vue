@@ -163,6 +163,7 @@ export default {
 
 .el-menu-vertical-demo {
   height: 100%;
+  border : none;
 }
 
 </style>
