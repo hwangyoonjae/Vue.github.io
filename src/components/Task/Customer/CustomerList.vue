@@ -21,7 +21,7 @@
         <el-table-column label="등록일" prop="created_at"></el-table-column>
       </el-table>
       <div class="Issue_write">
-        <el-button type="primary" @click="writeContent">이슈등록</el-button>
+        <el-button type="primary" @click="writeContent">고객사 등록</el-button>
       </div>
     </el-card>
   </div>
