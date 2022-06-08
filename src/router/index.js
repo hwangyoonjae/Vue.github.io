@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Board from '@/components/Board/Board'
 import ContentDetail from '@/components/Board/ContentDetail'
 import Create from '@/components/Board/Create'
@@ -27,14 +27,14 @@ import AdminList from '@/components/Person/AdminList'
 import UserList from '@/components/Person/UserList'
 
 // 여기에 등록된 라우터와 다른 페이지에서 클릭 이벤트로 접속하는 라우터가 겹쳐도 무시하도록 수정
-const originalPush = Router.prototype.push;
-Router.prototype.push = function push(location) {
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 };
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export const router = new VueRouter({
     mode: 'history', // 주소에 # 제거 방식
     routes: [
         {
@@ -86,7 +86,7 @@ export default new Router({
             children: [
                 {
                     path: 'write',
-                    component: () => import('../components/Notice/Write')
+                    component: NoticeWrite
                 },
                 {
                     path: 'detail/:number',
@@ -171,4 +171,6 @@ export default new Router({
             component: AdminList
         }
     ]
-})
+});
+
+export default router;
