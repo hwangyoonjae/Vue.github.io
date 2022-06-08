@@ -90,6 +90,10 @@ export default {
   display: flex;
 }
 
+.Customer_component_search > *{
+  margin: 4px;
+}
+
 .Issue_write {
   text-align: right;
   margin-top: 10px;

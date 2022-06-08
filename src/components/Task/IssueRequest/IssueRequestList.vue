@@ -98,6 +98,10 @@ export default {
   display: flex;
 }
 
+.IssuerequestList_component_search > * {
+  margin: 4px;
+}
+
 .IssuerequestList_write {
   text-align: right;
   margin-top: 10px;
