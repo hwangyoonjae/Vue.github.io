@@ -35,8 +35,12 @@ Router.prototype.push = function push(location) {
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history',
+    mode: 'history', // 주소에 # 제거 방식
     routes: [
+        {
+            path: '/',
+            redirect: '/main'
+        },
         {
             path: '/main',
             component: () => import ('@/components/Main/Main'),
