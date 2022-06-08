@@ -2,7 +2,7 @@
   <div class="Customer_component">
     <el-card class="box-card">
       <div class="Customer_component_search">
-        <el-select v-model="value" placeholder="Select">
+        <el-select v-model="value" placeholder="전체">
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
         <el-input placeholder="검색하세요" v-model="input"></el-input>
