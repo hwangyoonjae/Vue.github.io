@@ -66,4 +66,8 @@ export default {
   display: flex;
 }
 
+.UserList_component_search > * {
+  margin: 4px;
+}
+
 </style>

@@ -76,6 +76,10 @@ export default {
   display: flex;
 }
 
+.Project_component_search > * {
+  margin: 4px;
+}
+
 .Project_write {
   text-align: right;
   margin: 10px;

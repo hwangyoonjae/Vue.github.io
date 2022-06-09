@@ -62,4 +62,8 @@ export default {
 .AdminList_component_search {
   display: flex;
 }
+
+.AdminList_component_search > * {
+  margin: 4px;
+}
 </style>

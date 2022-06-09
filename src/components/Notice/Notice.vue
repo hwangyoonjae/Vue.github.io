@@ -83,6 +83,10 @@ export default {
   display: flex;
 }
 
+.Notice_component_search > * {
+  margin: 4px;
+}
+
 .Notice_write {
   text-align: right;
   margin: 10px;
