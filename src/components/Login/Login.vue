@@ -1,6 +1,12 @@
 <template>
   <div class="Login_Component">
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+    <el-row>
+      <el-col :span="4">
+        <div class="grid-content"></div>
+      </el-col>
+      <el-col :span="16">
+        <div class="grid-content">
+          <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
       <el-form-item label="ID" prop="id">
         <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
       </el-form-item>
@@ -17,6 +23,12 @@
         </p>
       </el-form-item>
     </el-form>
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="grid-content"></div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -74,5 +86,20 @@
 </script>
 
 <style>
+.el-row {
+  margin-bottom: 20px;
+}
 
+.el-col {
+  border-radius: 4px;
+}
+
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+}
+
+.row-bg {
+  padding: 10px 0;
+}
 </style>
