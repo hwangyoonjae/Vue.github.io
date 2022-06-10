@@ -1,6 +1,6 @@
 <template>
   <div class="Projectwrite_component">
-    <el-row :gutter="20">
+    <el-row>
       <el-col :span="16">
         <div class="grid_content_input">
           <el-form :rules="rules" label-width="120px">
@@ -29,7 +29,7 @@
           </el-form>
         </div>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="4">
         <div class="grid-content bg-purple">
         </div>
       </el-col>
