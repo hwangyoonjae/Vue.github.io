@@ -1,29 +1,39 @@
 <template>
   <div class="Projectwrite_component">
-    <el-form :rules="rules" label-width="120px">
-      <el-form-item label="프로젝트명" prop="title">
-        <el-input v-model="title"></el-input>
-      </el-form-item>
-      <el-form-item label="프로젝트 기간" required>
-        <el-col :span="11" prop="start">
-          <el-date-picker type="date" placeholder="시작일" v-model="start" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="11" prop="finish">
-          <el-date-picker type="date" placeholder="종료일" v-model="finish" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
-        </el-col>   
-      </el-form-item>
-      <el-form-item label="상태구분" prop="state">
-        <el-select v-model="state" placeholder="구분">
-          <el-option label="프리세일즈" value="프리세일즈"></el-option>
-          <el-option label="사업진행" value="사업진행"></el-option>
-          <el-option label="사업종료" value="사업종료"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="라이센스" prop="license">
-        <el-input v-model="license"></el-input>
-      </el-form-item>
-    </el-form>
+    <el-row :gutter="20">
+      <el-col :span="16">
+        <div class="grid_content_input">
+          <el-form :rules="rules" label-width="120px">
+            <el-form-item label="프로젝트명" prop="title">
+              <el-input v-model="title"></el-input>
+            </el-form-item>
+            <el-form-item label="프로젝트 기간" required>
+              <el-col :span="11" prop="start">
+                <el-date-picker type="date" placeholder="시작일" v-model="start" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
+              </el-col>
+              <el-col class="line" :span="2">-</el-col>
+              <el-col :span="11" prop="finish">
+                <el-date-picker type="date" placeholder="종료일" v-model="finish" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
+              </el-col>   
+            </el-form-item>
+            <el-form-item label="상태구분" prop="state">
+              <el-select v-model="state" placeholder="구분">
+                <el-option label="프리세일즈" value="프리세일즈"></el-option>
+                <el-option label="사업진행" value="사업진행"></el-option>
+                <el-option label="사업종료" value="사업종료"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="라이센스" prop="license">
+              <el-input v-model="license"></el-input>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <div class="grid-content bg-purple">
+        </div>
+      </el-col>
+    </el-row>
     <div class="button-group">
       <el-button type="success" @click="updateMode ? updateContent() : uploadContent()">등록하기</el-button>
       <el-button type="danger" @click="cancle">취소하기</el-button>
@@ -106,4 +116,3 @@ export default {
   }
 }
 </script>
-
