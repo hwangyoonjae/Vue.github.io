@@ -11,7 +11,7 @@
               <el-col :span="11" prop="start">
                 <el-date-picker type="date" placeholder="시작일" v-model="start" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
               </el-col>
-              <el-col class="line" :span="2">-</el-col>
+              <el-col class="line" :span="1">-</el-col>
               <el-col :span="11" prop="finish">
                 <el-date-picker type="date" placeholder="종료일" v-model="finish" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
               </el-col>   
@@ -116,3 +116,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.line {
+  text-align: center;
+}
+</style>
