@@ -20,6 +20,7 @@
         <el-table-column label="수정일" prop="updated_at"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
       </el-table>
+      <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
       <div class="Issue_write">
         <el-button type="primary" @click="writeContent">이슈등록</el-button>
       </div>
