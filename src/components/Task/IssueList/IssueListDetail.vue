@@ -26,15 +26,15 @@
                 <el-option label="진행" value="진행"></el-option>
                 <el-option label="신규" value="신규"></el-option>
               </el-select>
-              </el-form-item>
-              <el-form-item label="우선순위" prop="level">
-                <el-select v-model="level" placeholder="선택" :disabled="true">
-                  <el-option label="높은" value="높은"></el-option>
-                  <el-option label="보통" value="보통"></el-option>
-                  <el-option label="낮음" value="낮음"></el-option>
-                </el-select>
-              </el-form-item>
-            </el-form>
+            </el-form-item>
+            <el-form-item label="우선순위" prop="level">
+              <el-select v-model="level" placeholder="선택" :disabled="true">
+                <el-option label="높은" value="높은"></el-option>
+                <el-option label="보통" value="보통"></el-option>
+                <el-option label="낮음" value="낮음"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
           <el-button type="danger" icon="el-icon-document-delete" @click="deleteData">삭제하기</el-button>
         </el-card>
