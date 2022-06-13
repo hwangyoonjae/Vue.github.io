@@ -20,11 +20,12 @@
         <el-table-column label="완료율" prop="success"></el-table-column>
         <el-table-column label="라이센스" prop="license"></el-table-column>
       </el-table>
+      <el-pagination :page-size="pageSize" :pager-count="11" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
       <div class="Project_write">
         <el-button type="primary" @click="writeContent">프로젝트 등록하기</el-button>
       </div>
     </el-card>
-      <span>{{items[0].number}}</span>
+    <span>{{items.length}}</span>
   </div>
 </template>
 
@@ -36,6 +37,8 @@ export default {
     let items = data.ProjectContent.sort((a,b) => {return b.number - a.number})
     return {
       items: items,
+      page: 1,
+      pageSize: 2,
       options: [{
           value: '제목',
           label: '제목'
@@ -45,6 +48,17 @@ export default {
         }],
         value: '',
         input: ''
+    }
+  },
+  computed: {
+    displayData() {
+        if(this.search == null) return this.categories;
+      
+        this.filtered = this.categories.filter(data => !this.search || data.name.toLowerCase().includes(this.search.toLowerCase()));
+        
+        this.total = this.filtered.length;
+
+        return this.filtered.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page);
     }
   },
   methods: {
@@ -57,7 +71,10 @@ export default {
       this.$router.push({
         path: '/project/write'
       })
-    }
+    },
+    handleCurrentChange(val) {
+        this.page = val;
+    },
   }
 }
 </script>
