@@ -20,12 +20,11 @@
         <el-table-column label="수정일" prop="updated_at"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
       </el-table>
-      <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="item.length"></el-pagination>
+      <el-pagination :page-size="pageSize" :pager-count="11" layout="prev, pager, next" @current-change="handleCurrentChange" :total="item.length"></el-pagination>
       <div class="Issue_write">
         <el-button type="primary" @click="writeContent">이슈등록</el-button>
       </div>
     </el-card>
-    <span>{{item}}</span>
   </div>
 </template>
 
@@ -35,8 +34,8 @@ export default {
   data() {
     return {
       item: '',
-      page: 1,
-      pageSize: 10,
+      page: 1, // 페이지 로딩 시 초기에 보여줄 페이지 넘버
+      pageSize: 10, // 한 페이지에 몇개의 데이터를 보여줄건지
       options: [{
         value: '전체',          
         label: '전체'
@@ -75,7 +74,11 @@ export default {
         console.log(result.data)
         this.item = result.data
       })
-    }
+    },
+    // 10개씩 나눈 데이터를 페이지 넘버 클릭할 때마다 해당 데이터 보여주도록
+    handleCurrentChange(val) {
+        this.page = val;
+    },
   },
   mounted() {
     this.getData();
