@@ -18,7 +18,7 @@
         <el-table-column label="등록일" prop="created_at" width="100"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
       </el-table>
-      <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
+      <el-pagination :page-size="pageSize" :pager-count="11" layout="prev, pager, next" @current-change="handleCurrentChange" :total="item.length"></el-pagination>
       <div class="IssuerequestList_write">
         <el-button type="primary" @click="writeContent">요청등록</el-button>
       </div>
@@ -32,6 +32,8 @@ export default {
   data() {
     return {
       item: '',
+      page: 1, // 페이지 로딩 시 초기에 보여줄 페이지 넘버
+      pageSize: 10, // 한 페이지에 몇개의 데이터를 보여줄건지
       options: [{
         value: '전체',          
         label: '전체'
@@ -47,6 +49,12 @@ export default {
       //페이징 데이터
       page: this.$route.query.page ? this.$route.query.page : 1,
       size: this.$route.query.size ? this.$route.query.size : 10,
+    }
+  },
+  computed: {
+    displayData() {
+      if (!this.item || this.item.length === 0) return [];
+      return this.item.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
     }
   },
   methods: {
@@ -71,12 +79,10 @@ export default {
         path: '/issuerequest/list/write/'
       })
     },
-    fnPage(n) {
-      if (this.page !== n) {
-        this.page = n
-        this.getData()
-      }
-    }
+    // 10개씩 나눈 데이터를 페이지 넘버 클릭할 때마다 해당 데이터 보여주도록
+    handleCurrentChange(val) {
+      this.page = val;
+    },
   },
   mounted() {
     this.getData();
