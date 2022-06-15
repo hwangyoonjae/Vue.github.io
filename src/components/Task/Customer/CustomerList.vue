@@ -10,7 +10,7 @@
       </div>
     </el-card>
     <el-card class="box-card">
-      <el-table :data="item" @row-click="rowClick">
+      <el-table :data="displayData" @row-click="rowClick">
         <el-table-column label="번호" prop="id"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
         <el-table-column label="업체명" prop="company"></el-table-column>
@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
   name : 'CustomerList',
   data() {

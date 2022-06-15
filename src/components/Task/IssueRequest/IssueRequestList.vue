@@ -10,7 +10,7 @@
       </div>
     </el-card>
     <el-card class="box-card">
-      <el-table :data="item" @row-click="rowClick">
+      <el-table :data="displayData" @row-click="rowClick">
         <el-table-column label="번호" prop="id" width="50"></el-table-column>
         <el-table-column label="제목" prop="title"></el-table-column>
         <el-table-column label="내용" prop="component"></el-table-column>
