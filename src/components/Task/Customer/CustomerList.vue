@@ -20,6 +20,7 @@
         <el-table-column label="이메일" prop="mail"></el-table-column>
         <el-table-column label="등록일" prop="created_at"></el-table-column>
       </el-table>
+      <el-pagination :page-size="pageSize" :pager-count="11" layout="prev, pager, next" @current-change="handleCurrentChange" :total="item.length"></el-pagination>
       <div class="Issue_write">
         <el-button type="primary" @click="writeContent">고객사 등록</el-button>
       </div>
@@ -33,9 +34,10 @@ import data from '@/data'
 export default {
   name : 'CustomerList',
   data() {
-    //let items = data.CustomerList.sort((a,b) => {return b.number - a.number})
     return {
       item: '',
+      page: 1, // 페이지 로딩 시 초기에 보여줄 페이지 넘버
+      pageSize: 10, // 한 페이지에 몇개의 데이터를 보여줄건지
       options: [{
           value: '전체',          
           label: '전체'
@@ -48,6 +50,12 @@ export default {
         }],
         value: '',
         input: ''
+    }
+  },
+  computed: {
+    displayData() {
+      if (!this.item || this.item.length === 0) return [];
+      return this.item.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
     }
   },
   methods: {
@@ -68,7 +76,11 @@ export default {
         console.log(result.data)
         this.item = result.data
       })
-    }
+    },
+    // 10개씩 나눈 데이터를 페이지 넘버 클릭할 때마다 해당 데이터 보여주도록
+    handleCurrentChange(val) {
+      this.page = val;
+    },
   },
   mounted() {
     this.getData();
