@@ -77,7 +77,7 @@ export default {
     },
     // 10개씩 나눈 데이터를 페이지 넘버 클릭할 때마다 해당 데이터 보여주도록
     handleCurrentChange(val) {
-        this.page = val;
+      this.page = val;
     },
   },
   mounted() {
