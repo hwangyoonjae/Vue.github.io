@@ -26,8 +26,7 @@
         </el-card>
       </el-col>
     </el-row>
-    <span>{{item}}</span>
-    <h1>{{id}}</h1>
+    <span>{{number}}</span>
   </div>
 </template>
 
@@ -35,9 +34,9 @@
 export default {
   name: "IssueRequestDetail",
   data() {
+    const number = Number(this.$route.params.id);
     return {
-      item : this.$route.query,
-      id : this.$route.query.id,
+      number : number,
       Request_DetailData : {
         division: '',
         title: '',
