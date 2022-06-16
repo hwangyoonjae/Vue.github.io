@@ -121,7 +121,7 @@ export const router = new VueRouter({
             component: IssueRequestWrite
         },
         {
-            path: '/issuerequest/list/detail',
+            path: '/issuerequest/list/detail/:id',
             name: 'IssueRequestDetail',
             component: IssueRequestDetail
         },
