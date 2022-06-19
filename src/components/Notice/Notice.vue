@@ -9,16 +9,15 @@
         <el-button type="primary" icon="el-icon-search">검색</el-button>
       </div>
     </el-card>
-    <!--<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">-->
     <el-card class="box-card">
-      <el-table :data="items" @row-click="rowClick">
+      <el-table :data="displayData" @row-click="rowClick">
         <el-table-column label="번호" prop="number"></el-table-column>
         <el-table-column label="제목" prop="title"></el-table-column>
         <el-table-column label="내용" prop="component"></el-table-column>
         <el-table-column label="작성자" prop="name"></el-table-column>
         <el-table-column label="작성일" prop="date"></el-table-column>
       </el-table>
-      <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>
+      <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
       <div class="Notice_write">
         <router-link to="/notice/write" style="margin-left: 10px">
           <el-button type="primary">글쓰기</el-button>
@@ -37,6 +36,8 @@ export default {
     let items = data.NoticeContent.sort((a,b) => {return b.number - a.number})
     return {
         items: items,
+        page: 1,
+        pageSize: 10,
         options: [{
           value: '제목',
           label: '제목'
@@ -46,6 +47,12 @@ export default {
         }],
         value: '',
         input: ''
+      }
+    },
+    computed: {
+      displayData() {
+        if (!this.items || this.items.length === 0) return [];
+        return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
       }
     },
     methods: {
@@ -64,7 +71,10 @@ export default {
       this.$router.push({
         name: 'NoticeWrite'
       })
-    }
+    },
+    handleCurrentChange(val) {
+      this.page = val;
+    },
   },
 }
 </script>
