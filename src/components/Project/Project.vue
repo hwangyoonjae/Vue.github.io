@@ -67,7 +67,7 @@ export default {
       })
     },
     handleCurrentChange(val) {
-        this.page = val;
+      this.page = val;
     },
   }
 }
