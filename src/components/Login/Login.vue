@@ -8,7 +8,7 @@
               <el-form-item label="ID" prop="id">
                 <el-input type="username" v-model="ruleForm.id" autocomplete="off" placeholder="Enter Username..."></el-input>
               </el-form-item>
-              <el-form-item label="Password" prop="pass">
+              <el-form-item label="PW" prop="pass">
                 <el-input type="password" v-model="ruleForm.pass" autocomplete="off" placeholder="Enter Password..."></el-input>
               </el-form-item>
               <el-form-item>
@@ -17,7 +17,7 @@
               <el-form-item>
                 <p>
                   <span> 회원이 아니신가요?</span>
-                  <b-link to="/main/signup">지금 가입하세요</b-link>
+                  <b-link to="/main/signup">가입하기</b-link>
                 </p>
               </el-form-item>
             </el-form>
@@ -111,6 +111,6 @@
 .Login_Component_Button {
   width: 100%;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 </style>
