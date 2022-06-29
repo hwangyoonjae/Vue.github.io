@@ -49,7 +49,7 @@
           <div class="card-panel-text">
             이슈현황
           </div>
-          <count-to :start-val="0" :end-val="this.issue" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="this.Issuelist.length" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -71,6 +71,7 @@ export default {
     const notice = data.NoticeContent.sort((a,b) => {return b.number - a.number})
     const issue = data.IssueContent.sort((a,b) => {return b.number - a.number})
     return {
+      Issuelist: '',
       project : project[0].number,
       user : user[0].user_id,
       notice : notice[0].number,
@@ -98,7 +99,18 @@ export default {
         path: '/issueList'
       })
     },
-  }
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/hello`)
+      .then(result => {
+        console.log(result.data)
+        this.Issuelist = result.data
+      })
+    },
+  },
+  mounted() {
+    this.getData();
+  },
 }
 </script>
 
