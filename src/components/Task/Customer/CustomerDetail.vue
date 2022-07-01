@@ -5,30 +5,30 @@
         <el-card shadow="never">
           <el-form label-width="120px">
             <el-form-item label="구분" prop="division">
-              <el-select v-model="division" placeholder="선택" :disabled="true">
+              <el-select v-model="division" placeholder="선택">
                 <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
                 <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
                 <el-option label="전군DLP" value="전군DLP"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="업체명">
-              <el-input v-model="company" :disabled="true"></el-input>
+              <el-input v-model="company"></el-input>
             </el-form-item>
             <el-form-item label="담당자">
-              <el-input v-model="name" :disabled="true"></el-input>
+              <el-input v-model="name"></el-input>
             </el-form-item>
             <el-form-item label="직급" prop="position">
-              <el-select v-model="position" placeholder="선택" :disabled="true">
+              <el-select v-model="position" placeholder="선택">
                 <el-option label="완료" value="완료"></el-option>
                 <el-option label="진행" value="진행"></el-option>
                 <el-option label="신규" value="신규"></el-option>
               </el-select>
               </el-form-item>
               <el-form-item label="연락처" prop="phone">
-                <el-input v-model="phone" :disabled="true"></el-input>
+                <el-input v-model="phone"></el-input>
               </el-form-item>
               <el-form-item label="이메일" prop="mail">
-                <el-input v-model="mail" :disabled="true"></el-input>
+                <el-input v-model="mail"></el-input>
               </el-form-item>
             </el-form>
           <el-button type="primary" icon="el-icon-edit" @click="updateData">수정하기</el-button>
