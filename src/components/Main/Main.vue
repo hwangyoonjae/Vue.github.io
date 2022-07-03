@@ -8,9 +8,9 @@
         <div class="card shadow mb-4">
           <div class="card-body">
             <div class="Project-area">
-              <div class="project_title">
-                <p>프로젝트</p>
-              </div>
+              <div class="project-chart-header">
+                <span>프로젝트 현황</span>
+              </div> 
               <Project />
               <div style="text-align:right; margin-top:10px">
                 <el-link href="/project" :underline="false">더보기</el-link>
@@ -26,6 +26,9 @@
       <div class="col-lg-6 mb-4">
         <div class="card shadow mb-4">
           <div class="card-body">
+            <div class="project-chart-header">
+              <span>프로젝트 현황</span>
+            </div>
             <div class="Project-area">
               <ProjectChart />
             </div>
@@ -104,7 +107,6 @@ export default {
 
 .Main_Component {
   width: 100%;
-  height: 100%;
   padding: 32px;
   background-color: #f0f2f5;
   position: relative;
@@ -118,6 +120,19 @@ export default {
 
 .project .Project_write {
   display: none;
+}
+
+.project-chart-header {
+  border-bottom: 1px solid #D8D8D8;
+  margin-bottom: 5px;
+}
+
+.project-chart-header span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 10px;
 }
 
 </style>
