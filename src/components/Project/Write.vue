@@ -1,7 +1,7 @@
 <template>
   <div class="Projectwrite_component">
     <el-row>
-      <el-col :span="8">
+      <el-col :span="16">
         <el-card class="box-card">
           <div class="grid_content_input">
             <el-form :rules="rules" label-width="120px">
