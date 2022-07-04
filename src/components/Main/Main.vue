@@ -22,30 +22,48 @@
     </div>
 
     <!-- 프로젝트, 이슈차트 -->
-    <div class="row">
-      <div class="col-lg-6 mb-4">
+    <el-row :gutter="20">
+      <el-col :span="12">
         <div class="card shadow mb-4">
           <div class="card-body">
             <div class="project-chart-header">
-              <span>프로젝트 현황</span>
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <span>프로젝트 현황</span>
+                </div>
+                <div class="col-lg-6 mb-4" style="text-align:right;">
+                  <el-button size="small">상세보기</el-button>
+                  <el-button size="small">차트보기</el-button>
+                </div>
+              </div>
             </div>
             <div class="Project-area">
               <ProjectChart />
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-lg-6 mb-4">
+      </el-col>
+      <el-col :span="12">
         <div class="card shadow mb-4">
           <div class="card-body">
-            <div class="Issue-area">
+            <div class="project-chart-header">
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <span>이슈 현황</span>
+                </div>
+                <div class="col-lg-6 mb-4" style="text-align:right;">
+                  <el-button size="small">상세보기</el-button>
+                  <el-button size="small">차트보기</el-button>
+                </div>
+              </div>
+            </div>
+            <div class="Project-area">
               <IssueChart />
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </el-col>
+    </el-row>
 
     <div class="row">
       <div class="col-lg-4 mb-4">
@@ -125,6 +143,9 @@ export default {
 .project-chart-header {
   border-bottom: 1px solid #D8D8D8;
   margin-bottom: 5px;
+  font-size: 15px;
+  color: #595959;
+  font-weight: 700;
 }
 
 .project-chart-header span {
