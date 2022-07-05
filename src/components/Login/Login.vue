@@ -3,6 +3,9 @@
     <div class="Login_Component_part">
       <el-row>
         <el-col :span="20">
+          <div class="Login_Component_header">
+            <h1>로그인</h1>
+          </div>
           <div class="grid-content">
             <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
               <el-form-item label="ID" prop="id">
@@ -106,6 +109,10 @@
 .Login_Component_part {
   background-color: #F2F2F2;
   width: 100%;
+}
+
+.Login_Component_header {
+  text-align: center;
 }
 
 .Login_Component_Button {
