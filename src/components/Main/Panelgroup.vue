@@ -28,15 +28,15 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="noticego">
+      <div class="card-panel" @click="issuerequestgo">
         <div class="card-panel-icon-wrapper icon-notice">
-          <i class="el-icon-message-solid card-panel-icon"></i>
+          <i class="el-icon-thumb card-panel-icon"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            공지사항
+            요청사항
           </div>
-          <count-to :start-val="0" :end-val="this.notice" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="this.Issuelistrequest.length" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -72,6 +72,7 @@ export default {
     const issue = data.IssueContent.sort((a,b) => {return b.number - a.number})
     return {
       Issuelist: '',
+      Issuelistrequest: '',
       project : project[0].number,
       user : user[0].user_id,
       notice : notice[0].number,
@@ -89,9 +90,9 @@ export default {
         path: '/userlist'
       })
     },
-    noticego() {
+    issuerequestgo() {
       this.$router.push({
-        path: '/notice'
+        path: '/issuerequest/list'
       })
     },
     issuego() {
@@ -99,7 +100,7 @@ export default {
         path: '/issueList'
       })
     },
-    getData: function() {
+    getissueData: function() {
       const baseURI = 'http://localhost:8443';
       this.$axios.get(`${baseURI}/api/hello`)
       .then(result => {
@@ -107,9 +108,18 @@ export default {
         this.Issuelist = result.data
       })
     },
+    getissuerequestData() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/request`)
+      .then(result => {
+        console.log(result.data)
+        this.Issuelistrequest = result.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+      })
+    },
   },
   mounted() {
-    this.getData();
+    this.getissueData();
+    this.getissuerequestData();
   },
 }
 </script>
