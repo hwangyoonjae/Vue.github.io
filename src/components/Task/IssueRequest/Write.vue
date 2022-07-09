@@ -1,28 +1,36 @@
 <template>
   <div class="Issue_component">
-    <el-form :model="Request_form" label-width="120px" class="demo-ruleForm" ref="Request_form" :rules="rules">
-      <el-form-item label="구분" prop="division">
-        <el-select v-model="Request_form.division" placeholder="선택">
-          <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
-          <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
-          <el-option label="전군DLP" value="전군DLP"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="제목" prop="title">
-        <el-input type="text" v-model="Request_form.title" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="내용" prop="component">
-        <el-input type="text" v-model="Request_form.component" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="담당자" prop="name">
-        <el-input v-model="Request_form.name"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Request_form')">등록하기</el-button>
-        <el-button @click="resetForm('Request_form')">초기화</el-button>
-        <el-button type="danger" @click="cancle">취소하기</el-button>
-      </el-form-item>
-    </el-form>
+    <el-row>
+      <el-col :span="16">
+        <el-card class="box-card">
+          <div class="grid_content_input">
+            <el-form :model="Request_form" label-width="120px" class="demo-ruleForm" ref="Request_form" :rules="rules">
+              <el-form-item label="구분" prop="division">
+                <el-select v-model="Request_form.division" placeholder="선택">
+                  <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
+                  <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
+                  <el-option label="전군DLP" value="전군DLP"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="제목" prop="title">
+                <el-input type="text" v-model="Request_form.title" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="내용" prop="component">
+                <el-input type="text" v-model="Request_form.component" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="담당자" prop="name">
+                <el-input v-model="Request_form.name"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Request_form')">등록하기</el-button>
+                <el-button @click="resetForm('Request_form')">초기화</el-button>
+                <el-button type="danger" @click="cancle">취소하기</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>  
   </div>
 </template>
 
@@ -114,5 +122,15 @@ export default {
 </script>
 
 <style scoped>
+.Issue_component {
+  margin: 10px;
+}
 
+.line {
+  text-align: center;
+}
+
+.box-card {
+  margin: 10px 0px;
+}
 </style>
