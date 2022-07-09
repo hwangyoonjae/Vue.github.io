@@ -1,38 +1,46 @@
 <template>
   <div class="Customer_component">
-    <el-form :model="Customer_form" m status-icon label-width="120px" class="demo-ruleForm" ref="Customer_form" :rules="rules">
-      <el-form-item label="구분" prop="division">
-        <el-select v-model="Customer_form.division" placeholder="선택">
-          <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
-          <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
-          <el-option label="전군DLP" value="전군DLP"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="업체명" prop="company">
-        <el-input type="text" v-model="Customer_form.company" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="담당자" prop="name">
-        <el-input type="text" v-model="Customer_form.name" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="직급" prop="rank">
-        <el-select v-model="Customer_form.rank" placeholder="선택">
-          <el-option label="사원" value="사원"></el-option>
-          <el-option label="대리" value="대리"></el-option>
-          <el-option label="부장" value="부장"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="연락처" prop="phone">
-        <el-input type="text" v-model="Customer_form.phone" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="이메일" prop="email">
-        <el-input type="text" v-model="Customer_form.email" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Customer_form')">등록하기</el-button>
-        <el-button @click="resetForm('Customer_form')">초기화</el-button>
-        <el-button type="danger" @click="cancle">취소하기</el-button>
-      </el-form-item>
-    </el-form>
+    <el-row>
+      <el-col :span="16">
+        <el-card class="box-card">
+          <div class="grid_content_input">
+            <el-form :model="Customer_form" m status-icon label-width="120px" class="demo-ruleForm" ref="Customer_form" :rules="rules">
+              <el-form-item label="구분" prop="division">
+                <el-select v-model="Customer_form.division" placeholder="선택">
+                  <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
+                  <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
+                  <el-option label="전군DLP" value="전군DLP"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="업체명" prop="company">
+                <el-input type="text" v-model="Customer_form.company" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="담당자" prop="name">
+                <el-input type="text" v-model="Customer_form.name" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="직급" prop="rank">
+                <el-select v-model="Customer_form.rank" placeholder="선택">
+                  <el-option label="사원" value="사원"></el-option>
+                  <el-option label="대리" value="대리"></el-option>
+                  <el-option label="부장" value="부장"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="연락처" prop="phone">
+                <el-input type="text" v-model="Customer_form.phone" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="이메일" prop="email">
+                <el-input type="text" v-model="Customer_form.email" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Customer_form')">등록하기</el-button>
+                <el-button @click="resetForm('Customer_form')">초기화</el-button>
+                <el-button type="danger" @click="cancle">취소하기</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
