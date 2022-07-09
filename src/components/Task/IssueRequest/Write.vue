@@ -1,5 +1,5 @@
 <template>
-  <div class="Issue_component">
+  <div class="Issuerequest_component">
     <el-row>
       <el-col :span="16">
         <el-card class="box-card">
@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style scoped>
-.Issue_component {
+.Issuerequest_component {
   margin: 10px;
 }
 
