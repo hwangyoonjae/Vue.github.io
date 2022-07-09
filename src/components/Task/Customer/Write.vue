@@ -148,5 +148,15 @@ export default {
 </script>
 
 <style scoped>
+.Customer_component {
+  margin: 10px;
+}
 
+.line {
+  text-align: center;
+}
+
+.box-card {
+  margin: 10px 0px;
+}
 </style>
