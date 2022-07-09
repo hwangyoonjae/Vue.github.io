@@ -1,42 +1,50 @@
 <template>
   <div class="Issue_component">
-    <el-form :model="Issue_form" status-icon label-width="120px" class="demo-ruleForm" ref="Issue_form" :rules="rules">
-      <el-form-item label="구분" prop="division">
-        <el-select v-model="Issue_form.division" placeholder="선택">
-          <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
-          <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
-          <el-option label="전군DLP" value="전군DLP"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="제목" prop="title">
-        <el-input type="text" v-model="Issue_form.title" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="내용" prop="component">
-        <el-input type="text" v-model="Issue_form.component" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="담당자" prop="name">
-        <el-input v-model="Issue_form.name"></el-input>
-      </el-form-item>
-      <el-form-item label="상태" prop="state">
-        <el-select v-model="Issue_form.state" placeholder="선택">
-          <el-option label="완료" value="완료"></el-option>
-          <el-option label="진행" value="진행"></el-option>
-          <el-option label="신규" value="신규"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="우선순위" prop="level">
-        <el-select v-model="Issue_form.level" placeholder="선택">
-          <el-option label="높은" value="높은"></el-option>
-          <el-option label="보통" value="보통"></el-option>
-          <el-option label="낮음" value="낮음"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Issue_form')">등록하기</el-button>
-        <el-button @click="resetForm('Issue_form')">초기화</el-button>
-        <el-button type="danger" @click="cancle">취소하기</el-button>
-      </el-form-item>
-    </el-form>
+    <el-row>
+      <el-col :span="16">
+        <el-card class="box-card">
+          <div class="grid_content_input">
+            <el-form :model="Issue_form" status-icon label-width="120px" class="demo-ruleForm" ref="Issue_form" :rules="rules">
+              <el-form-item label="구분" prop="division">
+                <el-select v-model="Issue_form.division" placeholder="선택">
+                  <el-option label="Blue X-ray Enterprise" value="Blue X-ray Enterprise"></el-option>
+                  <el-option label="Blue X-ray DLP" value="Blue X-ray DLP"></el-option>
+                  <el-option label="전군DLP" value="전군DLP"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="제목" prop="title">
+                <el-input type="text" v-model="Issue_form.title" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="내용" prop="component">
+                <el-input type="text" v-model="Issue_form.component" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="담당자" prop="name">
+                <el-input v-model="Issue_form.name"></el-input>
+              </el-form-item>
+              <el-form-item label="상태" prop="state">
+                <el-select v-model="Issue_form.state" placeholder="선택">
+                  <el-option label="완료" value="완료"></el-option>
+                  <el-option label="진행" value="진행"></el-option>
+                  <el-option label="신규" value="신규"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="우선순위" prop="level">
+                <el-select v-model="Issue_form.level" placeholder="선택">
+                  <el-option label="높은" value="높은"></el-option>
+                  <el-option label="보통" value="보통"></el-option>
+                  <el-option label="낮음" value="낮음"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Issue_form')">등록하기</el-button>
+                <el-button @click="resetForm('Issue_form')">초기화</el-button>
+                <el-button type="danger" @click="cancle">취소하기</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>  
   </div>
 </template>
 
@@ -143,5 +151,15 @@ export default {
 </script>
 
 <style scoped>
+.Issue_component {
+  margin: 10px;
+}
 
+.line {
+  text-align: center;
+}
+
+.box-card {
+  margin: 10px 0px;
+}
 </style>
