@@ -3,6 +3,9 @@
     <el-row>
       <el-col :span="16">
         <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>이슈요청 등록</span>
+          </div>
           <div class="grid_content_input">
             <el-form :model="Request_form" label-width="120px" class="demo-ruleForm" ref="Request_form" :rules="rules">
               <el-form-item label="구분" prop="division">
@@ -124,6 +127,11 @@ export default {
 <style scoped>
 .Issuerequest_component {
   margin: 10px;
+}
+
+.clearfix {
+  color: #595959;
+  font-weight: 700;
 }
 
 .line {
