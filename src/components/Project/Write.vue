@@ -3,6 +3,9 @@
     <el-row>
       <el-col :span="16">
         <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>프로젝트 등록</span>
+          </div>
           <div class="grid_content_input">
             <el-form :model="Project_form" ref="Project_form" :rules="rules" label-width="120px">
               <el-form-item label="프로젝트명" prop="title">
@@ -27,15 +30,15 @@
               <el-form-item label="라이센스" prop="license">
                 <el-input v-model="Project_form.license"></el-input>
               </el-form-item>
+              <el-form-item>
+                <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Project_form')">등록하기</el-button>
+                <el-button type="danger" @click="cancle">취소하기</el-button>
+              </el-form-item>
             </el-form>
           </div>
         </el-card>
       </el-col>
     </el-row>
-    <div class="button-group">
-      <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Project_form')">등록하기</el-button>
-      <el-button type="danger" @click="cancle">취소하기</el-button>
-    </div>
   </div>
 </template>
 
@@ -141,6 +144,11 @@ export default {
 <style scoped>
 .Projectwrite_component {
   margin: 10px;
+}
+
+.clearfix {
+  color: #595959;
+  font-weight: 700;
 }
 
 .line {
