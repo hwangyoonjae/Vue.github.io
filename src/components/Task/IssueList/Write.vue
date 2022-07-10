@@ -3,6 +3,9 @@
     <el-row>
       <el-col :span="16">
         <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>이슈 등록</span>
+          </div>
           <div class="grid_content_input">
             <el-form :model="Issue_form" status-icon label-width="120px" class="demo-ruleForm" ref="Issue_form" :rules="rules">
               <el-form-item label="구분" prop="division">
@@ -35,7 +38,7 @@
                   <el-option label="낮음" value="낮음"></el-option>
                 </el-select>
               </el-form-item>
-              <el-form-item>
+              <el-form-item class="button_component">
                 <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Issue_form')">등록하기</el-button>
                 <el-button @click="resetForm('Issue_form')">초기화</el-button>
                 <el-button type="danger" @click="cancle">취소하기</el-button>
@@ -153,6 +156,11 @@ export default {
 <style scoped>
 .Issue_component {
   margin: 10px;
+}
+
+.clearfix {
+  color: #595959;
+  font-weight: 700;
 }
 
 .line {
