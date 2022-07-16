@@ -35,10 +35,6 @@
           <i class="el-icon-tickets"></i>
           <span>프로젝트 리스트</span>
         </el-menu-item>
-        <el-menu-item index="3-2" @click="projectoutputsgo">
-          <i class="el-icon-notebook-1"></i>
-          <span>프로젝트 산출물</span>
-        </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
     <el-menu-item index="4" @click="noticego">
@@ -114,11 +110,6 @@ export default {
     projectgo() {
       this.$router.push({
         path: '/project'
-      })
-    },
-    projectoutputsgo() {
-      this.$router.push({
-        path: '/projectoutputs'
       })
     },
     noticego() {
