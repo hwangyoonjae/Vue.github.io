@@ -8,10 +8,10 @@
               <el-input v-model="title"></el-input>
             </el-form-item>
             <el-form-item label="시작일">
-              <el-date-picker type="date" placeholder="시작일" v-model="start" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;" :disabled="true"></el-date-picker>
+              <el-date-picker type="date" placeholder="시작일" v-model="start" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
             </el-form-item>
             <el-form-item label="완료일">
-              <el-date-picker type="date" placeholder="종료일" v-model="finish" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;" :disabled="true"></el-date-picker>
+              <el-date-picker type="date" placeholder="종료일" v-model="finish" format="yyyy/MM/dd" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
             </el-form-item>
             <el-form-item label="상태구분" prop="state">
               <el-select v-model="state" placeholder="구분">
