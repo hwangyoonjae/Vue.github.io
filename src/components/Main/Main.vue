@@ -2,25 +2,6 @@
   <div class="Main_Component">
     <PanelGroup />
 
-    <!-- 프로젝트 -->
-    <div class="row">
-      <div class="col-lg-12 mb-8">
-        <div class="card shadow mb-4">
-          <div class="card-body">
-            <div class="Project-area">
-              <div class="project-chart-header">
-                <span>프로젝트 현황</span>
-              </div> 
-              <Project />
-              <div style="text-align:right; margin-top:10px">
-                <el-link href="/project" :underline="false">더보기</el-link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- 프로젝트, 이슈차트 -->
     <el-row :gutter="20">
       <el-col :span="12">
@@ -32,12 +13,15 @@
                   <span>프로젝트 현황</span>
                 </div>
                 <div class="col-lg-6" style="text-align:right;">
-                  <el-button size="small">상세보기</el-button>
-                  <el-button size="small">차트보기</el-button>
+                  <el-button size="small" @click=View_Detail()>상세보기</el-button>
+                  <el-button size="small" @click=View_Chart()>차트보기</el-button>
                 </div>
               </div>
             </div>
-            <div class="Project-area">
+            <div v-if="Detail" class="Project-area">
+              <Project />
+            </div>
+            <div v-if="chart" class="Project-area">
               <ProjectChart />
             </div>
           </div>
@@ -101,7 +85,7 @@
 
 <script>
 import PanelGroup from './Panelgroup.vue'
-import Project from './ProjectView.vue'
+import Project from '../Project/Project.vue'
 import ProjectChart from '../Project/Chart.vue'
 import IssueChart from '../Task/IssueList/Chart.vue'
 import Timetable from '../Timetable/Timetable.vue'
@@ -117,7 +101,23 @@ export default {
     Timetable,
     Board,
     Todo,
-  }
+  },
+  data() {
+    return {
+      Detail: true,
+      chart: false,
+    }
+  },
+  methods: {
+    View_Detail() {
+      this.Detail = true;
+      this.chart = false;
+    },
+    View_Chart() {
+      this.chart = true;
+      this.Detail = false;
+    }
+  },
 }
 </script>
 
