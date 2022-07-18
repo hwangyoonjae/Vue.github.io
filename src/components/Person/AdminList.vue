@@ -2,7 +2,7 @@
   <div class="AdminList_component">
     <el-card class="box-card">
       <div class="AdminList_component_search">
-        <el-select v-model="value" placeholder="Select">
+        <el-select v-model="value" placeholder="전체">
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
         <el-input placeholder="검색하세요" v-model="input"></el-input>
@@ -34,7 +34,17 @@ export default {
     const admin = Number(this.$route.params.admin_id);
     const contentData = data.User.filter(item => item.admin_id === admin)[0];
     return {
-        items: items
+        items: items,
+        options: [{
+          value: '아이디',
+          label: '아이디'
+        }, {
+          value: '이름',
+          label: '이름'
+        }, {
+          value: '이메일',
+          label: '이메일'
+        }],
       }
     },
     methods: 
