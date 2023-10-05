@@ -82,10 +82,5 @@ html,body {
 
 .router-view-wrapper {
   height: calc(100vh - 50px); /* 화면 높이에서 0px만큼 빼서 화면 크기에 맞게 표시 */
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden; /* 스크롤 막기 */
 }
 </style>
