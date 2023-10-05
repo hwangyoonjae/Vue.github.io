@@ -2,64 +2,6 @@
   <div class="Main_Component">
     <PanelGroup />
 
-    <!-- 프로젝트, 이슈차트 -->
-    <el-row :gutter="20">
-      <el-col :span="12">
-        <div class="card shadow mb-4">
-          <div class="card-body">
-            <div class="project-chart-header">
-              <div class="row">
-                <div class="col-lg-6">
-                  <span>프로젝트 현황</span>
-                </div>
-                <div class="col-lg-6" style="text-align:right;">
-                  <el-button size="small" @click=View_Detail()>상세보기</el-button>
-                  <el-button size="small" @click=View_Chart()>차트보기</el-button>
-                </div>
-              </div>
-            </div>
-            <div v-if="Detail" class="Project-area">
-              <Project />
-            </div>
-            <div v-if="chart" class="Project-area">
-              <ProjectChart />
-            </div>
-          </div>
-        </div>
-      </el-col>
-      <el-col :span="12">
-        <div class="card shadow mb-4">
-          <div class="card-body">
-            <div class="issue-chart-header">
-              <div class="row">
-                <div class="col-lg-6">
-                  <span>이슈 현황</span>
-                </div>
-                <div class="col-lg-6" style="text-align:right;">
-                  <el-button size="small">상세보기</el-button>
-                  <el-button size="small">차트보기</el-button>
-                </div>
-              </div>
-            </div>
-            <div class="Project-area">
-              <IssueChart />
-            </div>
-          </div>
-        </div>
-      </el-col>
-    </el-row>
-
-    <div class="row">
-      <div class="col-lg-4 mb-4">
-        <div class="card shadow mb-4">
-          <div class="card-body">
-            <div class="timetable-area">
-              <Timetable />
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="col-lg-4 mb-4">
         <div class="card shadow mb-4">
           <div class="card-body">
@@ -69,17 +11,6 @@
           </div>
         </div>
       </div>
-
-      <div class="col-lg-4">
-        <div class="card shadow mb-4">
-          <div class="card-body">
-            <div class="todo-area">
-              <Todo />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -88,9 +19,7 @@ import PanelGroup from './Panelgroup.vue'
 import Project from '../Project/Project.vue'
 import ProjectChart from '../Project/Chart.vue'
 import IssueChart from '../Task/IssueList/Chart.vue'
-import Timetable from '../Timetable/Timetable.vue'
 import Board from '../Board/Board.vue'
-import Todo from '../Todo/TodoMain.vue'
 
 export default {
   components: {

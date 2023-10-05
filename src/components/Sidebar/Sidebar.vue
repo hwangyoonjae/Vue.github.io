@@ -5,68 +5,22 @@
       <i class="el-icon-house"></i>
       <span slot="title">대시보드</span>
     </el-menu-item>
-    <el-submenu index="2">  
-      <template slot="title">
-        <i class="el-icon-edit-outline"></i>
-        <span slot="title">일반업무</span>
-      </template>
-      <el-menu-item index="2-1" @click="issuerequestlistgo">
-        <i class="el-icon-warning"></i>
-        <span>이슈현황</span>
-      </el-menu-item>
-      <el-menu-item index="2-2" @click="issuerequestgo">
-        <i class="el-icon-thumb"></i>
-        <span>요청사항</span>
-      </el-menu-item>
-      <el-menu-item index="2-3" @click="customergo">
-        <i class="el-icon-user-solid"></i>
-        <span>고객리스트</span>
-      </el-menu-item>
-    </el-submenu>
-    <el-submenu index="3">  
-      <template slot="title">
-        <i class="el-icon-monitor"></i>
-        <span slot="title">프로젝트</span>
-      </template>
-      <el-menu-item index="3-1" @click="projectgo">
-        <i class="el-icon-tickets"></i>
-        <span>프로젝트 리스트</span>
-      </el-menu-item>
-    </el-submenu>
-    <el-menu-item index="4" @click="noticego">
+    <el-menu-item index="2" @click="noticego">
       <i class="el-icon-bell"></i>
       <span slot="title">공지사항</span>
     </el-menu-item>
-    <el-menu-item index="5" @click="boardgo">
-      <i class="el-icon-document"></i>
-      <span slot="title">게시판</span>
+    <el-menu-item index="2" @click="checkgo">
+      <i class="el-icon-circle-check"></i>
+      <span slot="title">근태확인</span>
     </el-menu-item>
-    <el-menu-item index="6" @click="timetalbego">
+    <el-menu-item index="4" @click="customergo">
+        <i class="el-icon-user-solid"></i>
+        <span>사원리스트</span>
+      </el-menu-item>
+    <el-menu-item index="5" @click="timetalbego">
       <i class="el-icon-date"></i>
-      <span slot="title">업무일정</span>
+      <span slot="title">일정확인</span>
     </el-menu-item>
-    <el-submenu index="7">
-      <template slot="title">
-        <i class="el-icon-s-custom"></i>
-      <span slot="title">관리자</span>
-      </template>
-      <el-menu-item index="7-1" @click="adminlistgo">
-        <i class="el-icon-coordinate"></i>
-        <span>관리자 목록</span>
-      </el-menu-item>
-      <el-menu-item index="7-2" @click="userlistgo">
-        <i class="el-icon-user"></i>
-        <span>사용자 목록</span>
-      </el-menu-item>
-      <el-menu-item index="7-3">
-        <i class="el-icon-setting"></i>
-        <span>환경설정</span>
-      </el-menu-item>
-      <el-menu-item index="7-4" @click="todolistgo">
-        <i class="el-icon-document-checked"></i>
-        <span>할일 목록</span>
-      </el-menu-item>
-    </el-submenu>
   </el-menu>
   </div>
 </template>
@@ -86,56 +40,11 @@ export default {
         path: '/main'
       })
     },
-    issuerequestlistgo() {
-      this.$router.push({
-        path: '/issueList'
-      })
-    },
-    issuerequestgo() {
-      this.$router.push({
-        path: '/issuerequest/list'
-      })
-    },
-    customergo() {
-      this.$router.push({
-        path: '/customerlist'
-      })
-    },
-    projectgo() {
-      this.$router.push({
-        path: '/project'
-      })
-    },
     noticego() {
       this.$router.push({
         path: '/notice'
       })
     },
-    boardgo() {
-      this.$router.push({
-        path: '/board/free'
-      })
-    },
-    timetalbego() {
-      this.$router.push({
-        path: '/timetable'
-      })
-    },
-    adminlistgo() {
-      this.$router.push({
-        path: '/adminlist'
-      })
-    },
-    userlistgo() {
-      this.$router.push({
-        path: '/userlist'
-      })
-    },
-    todolistgo() {
-      this.$router.push({
-        path: '/todo'
-      })
-    }
   }
 }
 </script>
