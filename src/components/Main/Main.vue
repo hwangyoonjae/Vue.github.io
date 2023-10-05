@@ -2,6 +2,7 @@
   <div class="Main_Component">
     <PanelGroup />
 
+    <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card shadow mb-4">
           <div class="card-body">
@@ -11,6 +12,7 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
 </template>
 
@@ -27,9 +29,7 @@ export default {
     Project,
     ProjectChart,
     IssueChart,
-    Timetable,
-    Board,
-    Todo,
+    Board
   },
   data() {
     return {
