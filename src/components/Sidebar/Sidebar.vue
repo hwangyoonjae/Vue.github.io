@@ -9,15 +9,15 @@
       <i class="el-icon-bell"></i>
       <span slot="title">공지사항</span>
     </el-menu-item>
-    <el-menu-item index="2" @click="checkgo">
+    <el-menu-item index="3" @click="checkattendancego">
       <i class="el-icon-circle-check"></i>
       <span slot="title">근태확인</span>
     </el-menu-item>
-    <el-menu-item index="4" @click="customergo">
+    <el-menu-item index="4" @click="employeelistgo">
         <i class="el-icon-user-solid"></i>
         <span>사원리스트</span>
       </el-menu-item>
-    <el-menu-item index="5" @click="timetalbego">
+    <el-menu-item index="5" @click="timetablego">
       <i class="el-icon-date"></i>
       <span slot="title">일정확인</span>
     </el-menu-item>
@@ -45,6 +45,21 @@ export default {
         path: '/notice'
       })
     },
+    employeelistgo() {
+      this.$router.push({
+        path: '/employeelist'
+      })
+    },
+    checkattendancego() {
+      this.$router.push({
+        path: '/checkattendance'
+      })
+    },
+    timetablego() {
+      this.$router.push({
+        path: '/timetable'
+      })
+    }
   }
 }
 </script>
