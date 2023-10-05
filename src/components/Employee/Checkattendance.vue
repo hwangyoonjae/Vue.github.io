@@ -82,8 +82,10 @@ export default {
 
 <style>
 .Attendance_component {
-  text-align: center;
-  margin: 10px;
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f2f5;
+  position: relative;
 } 
 
 .box-card {
