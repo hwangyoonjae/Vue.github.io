@@ -60,6 +60,12 @@ export default {
 </script>
 
 <style scoped>
+.Schedule_Content {
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f2f5;
+  position: relative;
+} 
 .Schedule_Button {
   margin: 10px;
 }
