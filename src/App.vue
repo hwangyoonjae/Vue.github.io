@@ -6,7 +6,7 @@
       </div>
       <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen }">
         <Navbar />
-        <router-view/>
+        <router-view class="router-view-wrapper"/>
       </div>
     </div>
   </div>
@@ -78,5 +78,14 @@ html,body {
 .Home_Part_close {
   margin-left: 63px;
   height: 100%;
+}
+
+.router-view-wrapper {
+  height: calc(100vh - 50px); /* 화면 높이에서 0px만큼 빼서 화면 크기에 맞게 표시 */
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden; /* 스크롤 막기 */
 }
 </style>
