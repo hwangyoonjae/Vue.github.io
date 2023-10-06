@@ -34,7 +34,10 @@
       <div class="UserInfoButtons">
         <el-button type="primary" size="mini" @click="saveUserInfo" v-if="isEditing">저장</el-button>
         <el-button type="default" size="mini" @click="cancelEdit" v-if="isEditing">취소</el-button>
-        <el-button type="text" size="mini" @click="toggleEdit" v-if="!isEditing">수정</el-button>
+        <el-button type="info" size="mini" @click="toggleEdit" v-if="!isEditing">수정</el-button>
+        
+        <el-button type="danger" size="mini" @click="logout">로그아웃</el-button>
+        <el-button type="text" class="CloseButton" @click="closeUserInfoCard">닫기</el-button>
       </div>
     </el-card>
   </div>
@@ -71,15 +74,18 @@ export default {
       this.isEditing = !this.isEditing;
     },
     saveUserInfo() {
-      // 수정된 정보 저장
-      // 여기에 수정된 정보를 서버에 저장하는 로직을 추가하세요.
       this.toggleEdit(); // 수정 모드 종료
     },
     cancelEdit() {
-      // 수정 취소
-      // 여기에 수정을 취소하고 이전 정보로 되돌리는 로직을 추가하세요.
       this.toggleEdit(); // 수정 모드 종료
     },
+    closeUserInfoCard() {
+    // 사용자 정보 카드를 닫음
+    this.showUserInfoCard = false;
+    },
+    logout() {
+      // 로그아웃 처리 로직 추가
+    }
   }
 }
 </script>
