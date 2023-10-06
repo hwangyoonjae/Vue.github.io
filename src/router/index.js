@@ -83,18 +83,18 @@ export const router = new VueRouter({
         },
         {
             path: '/notice',
-            component: () => import('../components/Notice/Notice.vue'),
-            children: [
-                {
-                    path: 'write',
-                    component: NoticeWrite
-                },
-                {
-                    path: 'detail/:number',
-                    component: NoticeDetail,
-                    name: 'NoticeDetail'
-                }
-            ]
+            name: 'notice',
+            component: Notice
+        },
+        {
+            path: '/notice/write',
+            name: 'write',
+            component: NoticeWrite
+        },
+        {
+            path: '/notice/detail/:number',
+            name: 'NoticeDetail',
+            component: NoticeDetail
         },
         {
             path: '/issueList',
