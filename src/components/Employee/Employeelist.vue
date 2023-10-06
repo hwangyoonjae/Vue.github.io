@@ -89,6 +89,7 @@ export default {
 
 .box-card {
   margin: 10px 0px;
+  text-align: center;
 }
 
 .Employee_component_search {

@@ -90,6 +90,7 @@ export default {
 
 .box-card {
   margin: 10px 0px;
+  text-align: center;
 }
 
 .Attendance_component_search {
