@@ -81,10 +81,18 @@ export default {
 <style scoped>
 .Noticewrite_component {
   width:100%; 
-  padding:10px; 
+  padding:10px;
 }
 
 .Noticewrite_component .input-group_title, .input-group_component {
   margin-bottom:10px;
+}
+
+.button-group {
+  text-align: right; /* 버튼을 오른쪽 정렬 */
+}
+
+.align-right {
+  float: right; /* 버튼을 오른쪽으로 띄웁니다. */
 }
 </style>
