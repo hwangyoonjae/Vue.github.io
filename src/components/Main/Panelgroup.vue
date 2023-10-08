@@ -2,13 +2,13 @@
   <div class="Panelgroup_Component">
     <el-row :gutter="40">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="projectgo">
+      <div class="card-panel" @click="checkattendancego">
         <div class="card-panel-icon-wrapper icon-project">
           <i class="el-icon-s-cooperation card-panel-icon"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            프로젝트
+            출/퇴근
           </div>
           <count-to :start-val="0" :end-val="this.project" :duration="2600" class="card-panel-num" />
         </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            사용자
+            사원수
           </div>
           <count-to :start-val="0" :end-val="this.user" :duration="2600" class="card-panel-num" />
         </div>
@@ -80,14 +80,14 @@ export default {
     }
   },
   methods: {
-    projectgo() {
+    checkattendancego() {
       this.$router.push({
-        path: '/project'
+        path: '/checkattendance'
       })
     },
     usergo() {
       this.$router.push({
-        path: '/userlist'
+        path: '/employeelist'
       })
     },
     issuerequestgo() {
