@@ -31,17 +31,15 @@ export default {
   computed: {
     shouldShowSidebar() {
       // 특정 페이지에서는 Sidebar를 숨김
-      // 예를 들어, '/login' 페이지에서는 숨김
-      return this.$route.path !== '/login';
+      return !['/login', '/signup'].includes(this.$route.path);
     },
     shouldShowNavbar() {
       // 특정 페이지에서는 Navbar를 숨김
-      // 예를 들어, '/login' 페이지에서는 숨김
-      return this.$route.path !== '/login';
+      return !['/login', '/signup'].includes(this.$route.path);
     },
     shouldShowHomePart() {
       // Home_Part_open 클래스를 조건부로 추가/제거
-      return this.$route.path !== '/login';
+      return !['/login', '/signup'].includes(this.$route.path);
     }
   }
 }

@@ -67,7 +67,7 @@ export const router = new VueRouter({
             component: Login
         },
         {
-            path: '/main/signup',
+            path: '/signup',
             name: 'Signup',
             component: Signup
         },

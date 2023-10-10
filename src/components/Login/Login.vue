@@ -20,7 +20,7 @@
               <el-form-item>
                 <p>
                   <span> 회원이 아니신가요?</span>
-                  <b-link to="/main/signup">가입하기</b-link>
+                  <b-link to="/signup">가입하기</b-link>
                 </p>
               </el-form-item>
             </el-form>
