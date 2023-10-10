@@ -106,10 +106,11 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('Success sign up!');
+          document.querySelector('.demo-ruleForm').classList.add('success');
+          alert('회원가입 되었습니다.');
         } else {
-          alert('error submit!!');
-          return false;
+          document.querySelector('.demo-ruleForm').classList.remove('success');
+          this.$message.error('입력값을 확인하세요.');
         }
       });
     },
@@ -160,7 +161,7 @@ export default {
     },
     cancle() {
       this.$router.push({
-        path: '/main/login'
+        path: '/login'
       })
     }
   }
