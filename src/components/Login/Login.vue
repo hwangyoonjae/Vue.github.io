@@ -15,7 +15,7 @@
                 <el-input type="password" v-model="ruleForm.pass" autocomplete="off" placeholder="Enter Password..."></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button class="Login_Component_Button" type="primary" @click="submitForm('ruleForm')">Login</el-button>
+                <el-button class="Login_Component_Button" type="primary" @click="submitForm('ruleForm')">로그인</el-button>
               </el-form-item>
               <el-form-item>
                 <p>
@@ -102,7 +102,7 @@
 }
 </script>
 
-<style>
+<style scoped>
 .el-col {
   border-radius: 4px;
 }
