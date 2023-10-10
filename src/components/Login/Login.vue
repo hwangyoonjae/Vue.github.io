@@ -1,7 +1,7 @@
 <template>
   <div class="Login_Component">
     <div class="Login_Component_part">
-      <el-row>
+      <el-row type="flex" justify="center" align="middle" style="height: 100vh;">
         <el-col :span="20">
           <div class="Login_Component_header">
             <h1>로그인</h1>
@@ -26,10 +26,8 @@
             </el-form>
           </div>
         </el-col>
-
       </el-row>
     </div>
-    
   </div>
 </template>
 
@@ -114,14 +112,6 @@
   border-radius: 4px;
   min-height: 36px;
   padding: 30px;
-}
-
-.row-bg {
-  padding: 10px 0;
-}
-
-.Login_Component {
-  padding: 50px;
 }
 
 .Login_Component_part {
