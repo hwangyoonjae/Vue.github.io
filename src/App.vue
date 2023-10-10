@@ -32,16 +32,16 @@ export default {
     shouldShowSidebar() {
       // 특정 페이지에서는 Sidebar를 숨김
       // 예를 들어, '/login' 페이지에서는 숨김
-      return this.$route.path !== '/main/login';
+      return this.$route.path !== '/login';
     },
     shouldShowNavbar() {
       // 특정 페이지에서는 Navbar를 숨김
       // 예를 들어, '/login' 페이지에서는 숨김
-      return this.$route.path !== '/main/login';
+      return this.$route.path !== '/login';
     },
     shouldShowHomePart() {
       // Home_Part_open 클래스를 조건부로 추가/제거
-      return this.$route.path !== '/main/login';
+      return this.$route.path !== '/login';
     }
   }
 }

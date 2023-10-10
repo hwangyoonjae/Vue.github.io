@@ -87,7 +87,7 @@ export default {
     logout() {
       // 로그아웃 처리 로직 추가
       this.$router.push({
-        path: '/main/login'
+        path: '/login'
       });
       this.showUserInfoCard = false;
     }
