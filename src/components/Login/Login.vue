@@ -38,7 +38,7 @@
     data() {
       var validateId = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('Please input the ID'));
+          callback(new Error('아이디를 입력하세요.'));
         } else {
           if (this.ruleForm.checkId !== '') {
             this.$refs.ruleForm.validateField('checkId');
@@ -48,7 +48,7 @@
       };
       var validatePass = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('Please input the password'));
+          callback(new Error('비밀번호를 입력하세요.'));
         } else {
           if (this.ruleForm.checkPass !== '') {
             this.$refs.ruleForm.validateField('checkPass');
@@ -72,18 +72,36 @@
       };
     },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('Success sign up!');
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          // 하드코딩된 아이디와 비밀번호
+          const hardcodedUsername = 'admin';
+          const hardcodedPassword = 'admin';
+
+          if (this.ruleForm.id === hardcodedUsername && this.ruleForm.pass === hardcodedPassword) {
+            // 로그인 성공 시 사용자 님 환영합니다 알림 표시
+            this.$alert('사용자님 환영합니다', '알림', {
+              confirmButtonText: '확인',
+              callback: action => {
+                if (action === 'confirm') {
+                  // 확인 버튼을 누르면 메인 페이지로 이동
+                  this.$router.push('/main');
+                }
+              }
+            });
           } else {
-            console.log('error submit!!');
-            return false;
+            // 아이디와 비밀번호가 일치하지 않는 경우 에러 메시지 표시
+            this.$message.error('아이디 또는 비밀번호가 올바르지 않습니다.');
           }
-        });
-      },
-    }
+        } else {
+          // 폼 유효성 검사 실패 시 에러 메시지 표시
+          this.$message.error('입력값을 확인하세요.');
+        }
+      });
+    },
   }
+}
 </script>
 
 <style>
