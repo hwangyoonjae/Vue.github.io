@@ -1,33 +1,39 @@
 <template>
-  <div>
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
-      <el-form-item label="아이디" prop="id">
-        <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="비밀번호" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" autocomplete="off" show-password></el-input>
-      </el-form-item>
-      <el-form-item label="비밀번호 확인" prop="checkPass">
-        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" show-password></el-input>
-      </el-form-item>
-      <el-form-item label="이름" prop="name">
-        <el-input v-model="ruleForm.name"></el-input>
-      </el-form-item>
-      <el-form-item label="이메일" prop="email">
-        <el-input v-model="ruleForm.email"></el-input>
-      </el-form-item>
-      <el-form-item label="계정권한" prop="division">
-        <el-select v-model="ruleForm.division" placeholder="계정권한">
-          <el-option label="관리자" value="admin"></el-option>
-          <el-option label="사용자" value="user"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>
-        <el-button @click="resetForm('ruleForm')">초기화</el-button>
-        <el-button type="danger" @click="cancle">취소하기</el-button>
-      </el-form-item>
-    </el-form>
+  <div class="Signup_Component">
+    <div class="Signup_Component_part">
+      <el-row type="flex" justify="center" align="middle" style="height: 100vh;">
+        <el-col :span="20">
+          <div class="Signup_Component_header">
+            <h1>회원가입</h1>
+          </div>
+          <div class="grid-content">
+            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+              <el-form-item label="아이디" prop="id">
+                <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="비밀번호" prop="pass">
+                <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="비밀번호 확인" prop="checkPass">
+                <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="이름" prop="name">
+                <el-input v-model="ruleForm.name" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="이메일" prop="email">
+                <el-input v-model="ruleForm.email" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <!--<el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>-->
+                <el-button type="primary" @click="submitForm('ruleForm')">회원가입</el-button>
+                <el-button @click="resetForm('ruleForm')">초기화</el-button>
+                <el-button type="danger" @click="cancle">취소하기</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -38,7 +44,7 @@ export default {
   data() {
     var validateId = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('Please input the ID'));
+        callback(new Error('아이디를 입력하세요.'));
       } else {
         if (this.ruleForm.checkId !== '') {
           this.$refs.ruleForm.validateField('checkId');
@@ -48,7 +54,7 @@ export default {
     };
     var validatePass = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('Please input the password'));
+        callback(new Error('비밀번호를 입력하세요.'));
       } else {
         if (this.ruleForm.checkPass !== '') {
           this.$refs.ruleForm.validateField('checkPass');
@@ -58,16 +64,16 @@ export default {
     };
     var validatePass2 = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('Please input the password again'));
+        callback(new Error('비밀번호를 입력하세요.'));
       } else if (value !== this.ruleForm.pass) {
-        callback(new Error('Two inputs don\'t match!'));
+        callback(new Error('입력한 비밀번호가 일치하지 않습니다.'));
       } else {
         callback();
       }
     };
     var checkname = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error('Please input the name'));
+        return callback(new Error('이름을 입력하세요.'));
       }
     };
     return {
@@ -77,28 +83,24 @@ export default {
         checkPass: '',
         name: '',
         email: '',
-        division: '',
       },
       rules: {
         id: [
-          { validator: validateId, trigger: 'blur' }
+          { required: true, validator: validateId, trigger: 'blur' }
         ],
         pass: [
-          { validator: validatePass, trigger: 'blur' }
+          { required: true, validator: validatePass, trigger: 'blur' }
         ],
         checkPass: [
-          { validator: validatePass2, trigger: 'blur' }
+          { required: true, validator: validatePass2, trigger: 'blur' }
         ],
         name: [
-          { validator: checkname, trigger: 'blur' }
+          { required: true, validator: checkname, trigger: 'blur' }
         ],
         email: [
-          { required: true, message: 'Please input email address', trigger: 'blur' },
-          { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
-        ],
-        division: [
-          { required: true, message: 'Please select Activity zone', trigger: 'change' },
-        ],
+          { required: true, message: '이메일을 입력하세요.', trigger: 'blur' },
+          { type: 'email', message: '이메일 형식이 올바르지 않습니다.', trigger: ['blur', 'change'] }
+        ]
       }
     };
   },
@@ -169,5 +171,29 @@ export default {
 </script>
 
 <style scoped>
+.el-col {
+  border-radius: 4px;
+}
 
+.grid-content {
+  width: 100%;
+  border-radius: 4px;
+  min-height: 36px;
+  padding: 30px;
+}
+
+.Signup_Component_part {
+  background-color: #F2F2F2;
+  width: 100%;
+}
+
+.Signup_Component_header {
+  text-align: center;
+}
+
+.Signup_Component_Button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+}
 </style>
