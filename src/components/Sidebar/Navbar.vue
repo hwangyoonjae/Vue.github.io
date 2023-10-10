@@ -5,10 +5,10 @@
         <Burger></Burger>
       </div>
       <div class="right_menu">
-        <div class="UserInfo">
+        <div class="UserInfo" v-if="isLoggedIn">
           <el-button type="text" @click="toggleUserInfo">사용자 정보</el-button>
         </div>
-        <div class="Login">
+        <div class="Login" v-else>
           <el-button type="text" @click="logingo">로그인</el-button>
         </div>
       </div>
@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       showUserInfoCard: false, // 사용자 정보 카드 표시 여부
+      isLoggedIn: true, // 로그인 시 로그인 버튼 안보이게 표시
       isEditing: false, // 정보 수정 모드 여부
       userName: '황윤재', // 사용자 이름 데이터 예시
       department: '대기업', // 부서 데이터 예시
@@ -85,6 +86,10 @@ export default {
     },
     logout() {
       // 로그아웃 처리 로직 추가
+      this.$router.push({
+        path: '/main/login'
+      });
+      this.showUserInfoCard = false;
     }
   }
 }
