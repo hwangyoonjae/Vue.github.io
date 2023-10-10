@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <div :class="{Sidebar_close : isCollapse.isNavOpen, Sidebar_open : !isCollapse.isNavOpen }">
+      <div v-if="shouldShowSidebar" :class="{Sidebar_close : isCollapse.isNavOpen, Sidebar_open : !isCollapse.isNavOpen }">
         <Sidebar />
       </div>
       <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen }">
-        <Navbar />
+        <Navbar v-if="shouldShowNavbar"/>
         <router-view class="router-view-wrapper"/>
       </div>
     </div>
@@ -28,6 +28,18 @@ export default {
       isCollapse: store
     }
   },
+  computed: {
+    shouldShowSidebar() {
+      // 특정 페이지에서는 Sidebar를 숨김
+      // 예를 들어, '/login' 페이지에서는 숨김
+      return this.$route.path !== '/main/login';
+    },
+    shouldShowNavbar() {
+      // 특정 페이지에서는 Navbar를 숨김
+      // 예를 들어, '/login' 페이지에서는 숨김
+      return this.$route.path !== '/main/login';
+    }
+  }
 }
 </script>
 
