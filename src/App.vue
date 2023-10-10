@@ -4,7 +4,7 @@
       <div v-if="shouldShowSidebar" :class="{Sidebar_close : isCollapse.isNavOpen, Sidebar_open : !isCollapse.isNavOpen }">
         <Sidebar />
       </div>
-      <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen }">
+      <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen && shouldShowHomePart }">
         <Navbar v-if="shouldShowNavbar"/>
         <router-view class="router-view-wrapper"/>
       </div>
@@ -37,6 +37,10 @@ export default {
     shouldShowNavbar() {
       // 특정 페이지에서는 Navbar를 숨김
       // 예를 들어, '/login' 페이지에서는 숨김
+      return this.$route.path !== '/main/login';
+    },
+    shouldShowHomePart() {
+      // Home_Part_open 클래스를 조건부로 추가/제거
       return this.$route.path !== '/main/login';
     }
   }
@@ -82,9 +86,13 @@ html,body {
   z-index: 1001;
 }
 
-.Home_Part_open {
+.Home_Part_open:not(.login-page) {
   margin-left: 210px;
   height: 100%;
+}
+
+.login-page .Home_Part_open {
+  margin-left: 0;
 }
 
 .Home_Part_close {
