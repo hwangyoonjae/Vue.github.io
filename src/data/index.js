@@ -170,6 +170,7 @@ export default {
             component: '질문있습니다',
             date: '2016-05-03',
             name: 'Tom',
+            check: '출근',
             updated_at: null
         },
         {
@@ -178,6 +179,7 @@ export default {
             component: '답변있습니다',
             date: '2016-05-02',
             name: 'John',
+            check: '출근',
             updated_at: null
         },
         {
@@ -186,6 +188,7 @@ export default {
             component: '대답하겠습니다',
             date: '2016-05-04',
             name: 'Morgan',
+            check: '출근',
             updated_at: null
         },
         {
@@ -194,12 +197,13 @@ export default {
             component: '공지하겠습니다',
             date: '2016-05-01',
             name: 'Jessy',
+            check: '출근',
             updated_at: null
         }
     ],
     search: '',
     IssueContent: [{
-            division: 'Blue X-ray Enterprise',
+            check: 'Blue X-ray Enterprise',
             id: 1,
             title: '국방부_업데이트',
             component: '이슈가 있어 업데이트를 진행해야합니다.',
@@ -210,7 +214,7 @@ export default {
             updated_at: null
         },
         {
-            division: 'Blue X-ray DLP',
+            check: 'Blue X-ray DLP',
             id: 2,
             title: '환경부_업데이트',
             component: '고도화 진행해야합니다.',
@@ -221,7 +225,7 @@ export default {
             updated_at: null
         },
         {
-            division: '전군DLP',
+            check: '전군DLP',
             id: 3,
             title: '국토부_업데이트',
             component: '이슈가 있어 업데이트를 진행해야합니다.',

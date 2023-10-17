@@ -20,7 +20,7 @@
       </el-table>
       <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
       <div class="Attendance_write">
-        <router-link to="/notice/write" style="margin-left: 10px">
+        <router-link to="/checkattendance/write" style="margin-left: 10px">
           <el-button type="primary">글쓰기</el-button>
         </router-link>
       </div>
@@ -70,7 +70,7 @@ export default {
     },
     writeContent(index, row) {
       this.$router.push({
-        name: 'NoticeWrite'
+        name: 'CheckattendanceWrite'
       })
     },
     handleCurrentChange(val) {
@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .Attendance_component {
   width: 100%;
   padding: 20px;
