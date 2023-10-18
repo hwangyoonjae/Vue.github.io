@@ -65,7 +65,7 @@ export default {
     },
     rowClick(item, index, e) {
       this.$router.push({
-        path: `detail/${item.number}`
+        path: `checkattendance/detail/${item.number}`
       })
     },
     writeContent(index, row) {

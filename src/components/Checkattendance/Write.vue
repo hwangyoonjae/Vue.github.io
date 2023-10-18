@@ -147,6 +147,7 @@ export default {
 <style scoped>
 .Attendance_component {
   margin: 10px;
+  text-align: left;
 }
 
 .clearfix {
