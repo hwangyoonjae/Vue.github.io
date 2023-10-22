@@ -5,13 +5,21 @@
     <div class="row">
       <div class="col-lg-6 mb-4">
         <div class="card shadow mb-4">
-          <el-card class="box-card" style="padding: 10px;">
+          <el-card class="box-card" style="padding: 10px; height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-date"></i>
               근무계획
               <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
             <div class="main">
+              <div class="checkInTime">
+                <h3>08:23분 출근</h3>
+              </div>
+              <div class="workingHours">09:00 ~ 18:00 (소정근무 8시간)</div>
+              <div class="request_components">
+                <el-button @click="requestOvertime">연장근무 신청</el-button>
+                <el-button @click="requestLeave">휴(무)일 근무 신청</el-button>
+              </div>
             </div>
           </el-card>
         </div>
@@ -19,7 +27,7 @@
 
       <div class="col-lg-6 mb-4">
         <div class="card shadow mb-4">
-          <el-card class="box-card" style="padding: 10px;">
+          <el-card class="box-card" style="padding: 10px; height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-circle-check"></i>
               근무체크
@@ -132,7 +140,7 @@ export default {
   align-items: center;
 }
 
-.checkTime_components, .checkInOut_components, .checkOther_components {
+.request_components, .checkTime_components, .checkInOut_components, .checkOther_components {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,6 +154,6 @@ export default {
 }
 
 .current-time > h3 {
-  margin: 0px;
+  margin: 0px 10px;
 }
 </style>
