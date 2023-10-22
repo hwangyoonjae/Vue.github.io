@@ -5,19 +5,23 @@
       <i class="el-icon-house"></i>
       <span slot="title">대시보드</span>
     </el-menu-item>
-    <el-menu-item index="2" @click="noticego">
+    <el-menu-item index="2" @click="dashboardgo">
+      <i class="el-icon-postcard"></i>
+      <span slot="title">출/퇴근하기</span>
+    </el-menu-item>
+    <el-menu-item index="3" @click="noticego">
       <i class="el-icon-bell"></i>
       <span slot="title">공지사항</span>
     </el-menu-item>
-    <el-menu-item index="3" @click="checkattendancego">
+    <el-menu-item index="4" @click="checkattendancego">
       <i class="el-icon-circle-check"></i>
       <span slot="title">근태확인</span>
     </el-menu-item>
-    <el-menu-item index="4" @click="employeelistgo">
+    <el-menu-item index="5" @click="employeelistgo">
         <i class="el-icon-user-solid"></i>
         <span>사원리스트</span>
       </el-menu-item>
-    <el-menu-item index="5" @click="timetablego">
+    <el-menu-item index="6" @click="timetablego">
       <i class="el-icon-date"></i>
       <span slot="title">일정확인</span>
     </el-menu-item>

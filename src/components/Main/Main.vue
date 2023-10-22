@@ -3,21 +3,67 @@
     <PanelGroup />
 
     <div class="row">
-      <div class="col-lg-4 mb-4">
+      <div class="col-lg-6 mb-4">
         <div class="card shadow mb-4">
-          <div class="card-body">
-            <div class="board-area">
-              <Board />
+          <el-card class="box-card" style="padding: 10px;">
+            <div slot="header" class="clearfix">
+              <i class="el-icon-date"></i>
+              근무계획
+              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
-          </div>
+            <div class="main">
+            </div>
+          </el-card>
         </div>
       </div>
+
+      <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+          <el-card class="box-card" style="padding: 10px;">
+            <div slot="header" class="clearfix">
+              <i class="el-icon-circle-check"></i>
+              근무체크
+              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
+            </div>
+            <div class="main">
+              <div class="checkTime_components">
+                <div class="current-time">
+                  <h3>{{ serverTime }}</h3>
+                </div>
+                <div class="check">
+                  <el-button type="primary" size="medium" plain disabled>퇴근전</el-button>
+                </div>
+              </div>
+
+              <!-- 출근 및 퇴근 버튼 영역 -->
+              <div class="checkInOut_components">
+                <div class="checkInOut_components_checkIn" @click="showConfirmation('출근확인', 'checkIn')">
+                  <i class="el-icon-success"></i>
+                  <span>출근하기</span>
+                </div>
+                <div class="checkInOut_components_checkOut" @click="showConfirmation('퇴근확인', 'checkOut')">
+                  <i class="el-icon-circle-close"></i>
+                  <span>퇴근하기</span>
+                </div>
+              </div>
+
+              <!-- 회의, 외출, 외근 버튼 영역 -->
+              <div class="checkOther_components">
+                <el-button @click="startMeeting">회의 시작</el-button>
+                <el-button @click="goOut">외출 신청</el-button>
+                <el-button @click="remoteWork">외근 신청</el-button>
+              </div>
+            </div>
+          </el-card>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
-import PanelGroup from './Panelgroup.vue'
+import PanelGroup from './panelgroup.vue'
 import Project from '../Project/Project.vue'
 import ProjectChart from '../Project/Chart.vue'
 import IssueChart from '../Task/IssueList/Chart.vue'
@@ -35,6 +81,7 @@ export default {
     return {
       Detail: true,
       chart: false,
+      serverTime: '',
     }
   },
   methods: {
@@ -45,7 +92,21 @@ export default {
     View_Chart() {
       this.chart = true;
       this.Detail = false;
-    }
+    },
+    updateServerTime() {
+      // 서버 또는 클라이언트의 현재 시간을 가져옵니다.
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      const amOrPm = hours >= 12 ? 'PM' : 'AM';
+      const formattedTime = `${hours % 12}:${minutes}:${String(seconds).padStart(2, '0')}`;
+      this.serverTime = formattedTime;
+    },
+  },
+  created() {
+    this.updateServerTime(); // 컴포넌트 생성 시 현재 시간 업데이트
+    setInterval(this.updateServerTime, 1000); // 1초마다 현재 시간 업데이트
   },
 }
 </script>
@@ -59,30 +120,32 @@ export default {
   position: relative;
 }
 
-.project_title {
-  border-bottom: 1px solid #000408;
-  padding-left: 10px; 
-  padding-right: 10px;
+.clearfix {
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 16px;
+  font-weight: bold;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.project .Project_write {
-  display: none;
+.checkTime_components, .checkInOut_components, .checkOther_components {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px; /* 각 영역 사이 간격 조절 */
 }
 
-.project-chart-header, .issue-chart-header {
-  border-bottom: 1px solid #D8D8D8;
-  margin-bottom: 5px;
-  font-size: 15px;
-  color: #595959;
-  font-weight: 700;
+/* 각 영역의 스타일 수정 가능 */
+.current-time {
+  text-align: center; 
 }
 
-.project-chart-header span, .issue-chart-header span {
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin: 10px;
+.current-time > h3 {
+  margin: 0px;
 }
-
 </style>
