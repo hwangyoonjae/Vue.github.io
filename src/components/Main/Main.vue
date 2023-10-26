@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-lg-6 mb-3">
         <div class="card shadow mb-3">
-          <el-card class="box-card" style="padding: 10px; height: 300px;">
+          <el-card style="padding: 10px; height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-date"></i>
               근무계획
@@ -27,7 +27,7 @@
 
       <div class="col-lg-6 mb-3">
         <div class="card shadow mb-3">
-          <el-card class="box-card" style="padding: 10px; height: 300px;">
+          <el-card style="padding: 10px; height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-circle-check"></i>
               근무체크
@@ -70,7 +70,7 @@
     <div class="row">
         <div class="col-lg-4 mb-3">
           <div class="card shadow mb-3">
-            <el-card class="box-card" style="padding: 10px; height: 300px;">
+            <el-card style="padding: 10px; height: 300px;">
               <div slot="header" class="clearfix">
                 <i class="el-icon-monitor"></i>
                 근무현황
@@ -89,7 +89,7 @@
 
         <div class="col-lg-8 mb-3">
           <div class="card shadow mb-3">
-            <el-card class="box-card" style="padding: 10px; height: 300px;">
+            <el-card style="padding: 10px; height: 300px;">
               <div slot="header" class="clearfix">
                 <i class="el-icon-date"></i>
                 주간테이블
@@ -113,7 +113,7 @@
       <div class="row">
         <div class="col-lg-12 mb-3">
           <div class="card shadow mb-3">
-            <el-card class="box-card" style="padding: 10px; height: 300px;">
+            <el-card style="padding: 10px; height: 300px;">
               <div slot="header" class="clearfix">
                 <i class="el-icon-date"></i>
                 최근근태내역
