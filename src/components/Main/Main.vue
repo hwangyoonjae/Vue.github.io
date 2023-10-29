@@ -39,7 +39,7 @@
                   <h3>{{ serverTime }}</h3>
                 </div>
                 <div class="check">
-                  <el-button type="primary" size="medium" plain disabled>퇴근전</el-button>
+                  <el-button type="primary" size="medium" plain disabled>{{ confirmationMessage }}</el-button>
                 </div>
               </div>
 
@@ -158,6 +158,7 @@ export default {
       chart: false,
       serverTime: '',
       reverse: true,
+      confirmationMessage: '출근전',
       activities: [
         {
           content: 'Event start',
@@ -238,7 +239,11 @@ export default {
       this.serverTime = formattedTime;
     },
     showConfirmation(title, action) {
-      const confirmationMessage = action === 'checkIn' ? '출근 확인' : '퇴근 확인';
+      if (action === 'checkIn') {
+        this.confirmationMessage = '퇴근전';
+      } else if (action === 'checkOut') {
+        this.confirmationMessage = '출근전';
+      }
     },
     rowClassName({ row }) {
       if (row.status === '미결재') {
