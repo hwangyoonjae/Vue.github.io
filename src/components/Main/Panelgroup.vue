@@ -1,7 +1,7 @@
 <template>
   <div class="Panelgroup_Component">
-    <el-row :gutter="40">
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    <div class="row">
+      <div class="col-lg-3 mb-3">
       <div class="card-panel" @click="checkattendancego">
         <div class="card-panel-icon-wrapper icon-project">
           <i class="el-icon-s-cooperation card-panel-icon"></i>
@@ -13,8 +13,8 @@
           <count-to :start-val="0" :end-val="this.project" :duration="2600" class="card-panel-num" />
         </div>
       </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    </div>
+    <div class="col-lg-3 mb-3">
       <div class="card-panel" @click="usergo">
         <div class="card-panel-icon-wrapper icon-people">
           <i class="el-icon-s-custom card-panel-icon"></i>
@@ -26,8 +26,8 @@
           <count-to :start-val="0" :end-val="this.user" :duration="2600" class="card-panel-num" />
         </div>
       </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    </div>
+    <div class="col-lg-3 mb-3">
       <div class="card-panel" @click="issuerequestgo">
         <div class="card-panel-icon-wrapper icon-notice">
           <i class="el-icon-thumb card-panel-icon"></i>
@@ -39,8 +39,8 @@
           <count-to :start-val="0" :end-val="this.Issuelistrequest.length" :duration="2600" class="card-panel-num" />
         </div>
       </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    </div>
+    <div class="col-lg-3 mb-3">
       <div class="card-panel" @click="issuego">
         <div class="card-panel-icon-wrapper icon-issue">
           <i class="el-icon-warning card-panel-icon"></i>
@@ -52,8 +52,8 @@
           <count-to :start-val="0" :end-val="this.Issuelist.length" :duration="2600" class="card-panel-num" />
         </div>
       </div>
-    </el-col>
-    </el-row>
+    </div>
+    </div>
   </div>
 </template>
 
