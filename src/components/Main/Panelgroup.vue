@@ -2,57 +2,57 @@
   <div class="Panelgroup_Component">
     <div class="row">
       <div class="col-lg-3 mb-3">
-      <div class="card-panel" @click="checkattendancego">
-        <div class="card-panel-icon-wrapper icon-project">
-          <i class="el-icon-s-cooperation card-panel-icon"></i>
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            출/퇴근
+        <div class="card-panel" @click="checkattendancego">
+          <div class="card-panel-icon-wrapper icon-project">
+            <i class="el-icon-s-cooperation card-panel-icon"></i>
           </div>
-          <count-to :start-val="0" :end-val="this.project" :duration="2600" class="card-panel-num" />
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              출/퇴근
+            </div>
+            <count-to :start-val="0" :end-val="this.project" :duration="2600" class="card-panel-num" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3 mb-3">
-      <div class="card-panel" @click="usergo">
-        <div class="card-panel-icon-wrapper icon-people">
-          <i class="el-icon-s-custom card-panel-icon"></i>
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            사원수
+      <div class="col-lg-3 mb-3">
+        <div class="card-panel" @click="usergo">
+          <div class="card-panel-icon-wrapper icon-people">
+            <i class="el-icon-s-custom card-panel-icon"></i>
           </div>
-          <count-to :start-val="0" :end-val="this.user" :duration="2600" class="card-panel-num" />
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              사원수
+            </div>
+            <count-to :start-val="0" :end-val="this.user" :duration="2600" class="card-panel-num" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3 mb-3">
-      <div class="card-panel" @click="issuerequestgo">
-        <div class="card-panel-icon-wrapper icon-notice">
-          <i class="el-icon-bell card-panel-icon"></i>
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            공지사항
+      <div class="col-lg-3 mb-3">
+        <div class="card-panel" @click="issuerequestgo">
+          <div class="card-panel-icon-wrapper icon-notice">
+            <i class="el-icon-bell card-panel-icon"></i>
           </div>
-          <count-to :start-val="0" :end-val="this.Issuelistrequest.length" :duration="2600" class="card-panel-num" />
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              공지사항
+            </div>
+            <count-to :start-val="0" :end-val="this.Issuelistrequest.length" :duration="2600" class="card-panel-num" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3 mb-3">
-      <div class="card-panel" @click="issuego">
-        <div class="card-panel-icon-wrapper icon-issue">
-          <i class="el-icon-date card-panel-icon"></i>
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            일정확인
+      <div class="col-lg-3 mb-3">
+        <div class="card-panel" @click="issuego">
+          <div class="card-panel-icon-wrapper icon-issue">
+            <i class="el-icon-date card-panel-icon"></i>
           </div>
-          <count-to :start-val="0" :end-val="this.Issuelist.length" :duration="2600" class="card-panel-num" />
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              일정확인
+            </div>
+            <count-to :start-val="0" :end-val="this.Issuelist.length" :duration="2600" class="card-panel-num" />
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -140,6 +140,7 @@ export default {
   box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin-bottom: 16px;
 }
 
 .card-panel-icon-wrapper:hover {
