@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel" @click="issuerequestgo">
+        <div class="card-panel" @click="noticetgo">
           <div class="card-panel-icon-wrapper icon-notice">
             <i class="el-icon-bell card-panel-icon"></i>
           </div>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel" @click="issuego">
+        <div class="card-panel" @click="timetablego">
           <div class="card-panel-icon-wrapper icon-issue">
             <i class="el-icon-date card-panel-icon"></i>
           </div>
@@ -90,14 +90,14 @@ export default {
         path: '/employeelist'
       })
     },
-    issuerequestgo() {
+    noticetgo() {
       this.$router.push({
-        path: '/issuerequest/list'
+        path: '/notice'
       })
     },
-    issuego() {
+    timetablego() {
       this.$router.push({
-        path: '/issueList'
+        path: '/timetable'
       })
     },
     getissueData: function() {
