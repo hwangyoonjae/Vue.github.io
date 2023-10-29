@@ -273,5 +273,24 @@ export default {
         email: 'hong@naver.com',
         created_at: '2016-05-03',
         division: 'Blue X-ray DLP',
-    }]
+    }],
+    CheckattendanceContent: [{
+        number: 1,
+        title: '홍길동',
+        component: '연구소',
+        date: '2023-10-01',
+        name: '팀장',
+        check: '출근',
+        updated_at: '2023-10-01'
+    },
+    {
+        number: 2,
+        title: '홍길동',
+        component: '연구소',
+        date: '2023-10-01',
+        name: '팀장',
+        check: '퇴근',
+        updated_at: '2023-10-01'
+    },
+    ]
 }
