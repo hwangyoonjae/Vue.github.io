@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-lg-6 mb-3">
         <div class="card shadow mb-3">
-          <el-card style="padding: 10px; height: 300px;">
+          <el-card style="height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-date"></i>
               근무계획
@@ -27,7 +27,7 @@
 
       <div class="col-lg-6 mb-3">
         <div class="card shadow mb-3">
-          <el-card style="padding: 10px; height: 300px;">
+          <el-card style="height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-circle-check"></i>
               근무체크
@@ -70,7 +70,7 @@
     <div class="row">
         <div class="col-lg-4 mb-3">
           <div class="card shadow mb-3">
-            <el-card style="padding: 10px; height: 300px;">
+            <el-card style="height: 300px;">
               <div slot="header" class="clearfix">
                 <i class="el-icon-monitor"></i>
                 근무현황
@@ -89,7 +89,7 @@
 
         <div class="col-lg-8 mb-3">
           <div class="card shadow mb-3">
-            <el-card style="padding: 10px; height: 300px;">
+            <el-card style="height: 300px;">
               <div slot="header" class="clearfix">
                 <i class="el-icon-date"></i>
                 주간테이블
@@ -113,11 +113,11 @@
       <div class="row">
         <div class="col-lg-12 mb-3">
           <div class="card shadow mb-3">
-            <el-card style="padding: 10px; height: 300px;">
+            <el-card style="height: 300px;">
               <div slot="header" class="clearfix">
                 <i class="el-icon-date"></i>
                 최근근태내역
-                <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
+                <el-button style="float: right; padding: 3px 0" type="text" @click="checkattendancego">더보기</el-button>
               </div>
               <div class="main">
                 <el-table :data="attendanceData" style="width: 100%" border :row-class-name="rowClassName">
@@ -158,7 +158,7 @@ export default {
       chart: false,
       serverTime: '',
       reverse: true,
-        activities: [
+      activities: [
         {
           content: 'Event start',
           timestamp: '2018-04-15'
@@ -228,18 +228,17 @@ export default {
       this.Detail = false;
     },
     updateServerTime() {
-      // 서버 또는 클라이언트의 현재 시간을 가져옵니다.
       const now = new Date();
-      const hours = now.getHours();
+      let hours = now.getHours();
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
-      const amOrPm = hours >= 12 ? 'PM' : 'AM';
-      const formattedTime = `${hours % 12}:${minutes}:${String(seconds).padStart(2, '0')}`;
+  
+      // 24시간 형식으로 시간을 변경합니다.
+      const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
       this.serverTime = formattedTime;
     },
     showConfirmation(title, action) {
       const confirmationMessage = action === 'checkIn' ? '출근 확인' : '퇴근 확인';
-      alert(confirmationMessage);
     },
     rowClassName({ row }) {
       if (row.status === '미결재') {
@@ -254,6 +253,11 @@ export default {
     },
     requestLeave() {
       // 휴(무)일 근무 신청 로직을 여기에 추가
+    },
+    checkattendancego() {
+      this.$router.push({
+        path: '/checkattendance'
+      })
     }
   },
   created() {
