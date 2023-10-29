@@ -30,11 +30,11 @@
     <div class="col-lg-3 mb-3">
       <div class="card-panel" @click="issuerequestgo">
         <div class="card-panel-icon-wrapper icon-notice">
-          <i class="el-icon-thumb card-panel-icon"></i>
+          <i class="el-icon-bell card-panel-icon"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            요청사항
+            공지사항
           </div>
           <count-to :start-val="0" :end-val="this.Issuelistrequest.length" :duration="2600" class="card-panel-num" />
         </div>
@@ -43,11 +43,11 @@
     <div class="col-lg-3 mb-3">
       <div class="card-panel" @click="issuego">
         <div class="card-panel-icon-wrapper icon-issue">
-          <i class="el-icon-warning card-panel-icon"></i>
+          <i class="el-icon-date card-panel-icon"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            이슈현황
+            일정확인
           </div>
           <count-to :start-val="0" :end-val="this.Issuelist.length" :duration="2600" class="card-panel-num" />
         </div>
