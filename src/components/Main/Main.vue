@@ -68,72 +68,72 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-4 mb-3">
-          <div class="card shadow mb-3">
-            <el-card style="height: 300px;">
-              <div slot="header" class="clearfix">
-                <i class="el-icon-monitor"></i>
-                근무현황
-                <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
-              </div>
-              <div class="main">
-                <el-timeline :reverse="reverse">
-                  <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp">
-                    {{activity.content}}
-                  </el-timeline-item>
-                </el-timeline>  
-              </div>
-            </el-card>
-          </div>
-        </div>
-
-        <div class="col-lg-8 mb-3">
-          <div class="card shadow mb-3">
-            <el-card style="height: 300px;">
-              <div slot="header" class="clearfix">
-                <i class="el-icon-date"></i>
-                주간테이블
-                <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
-              </div>
-              <div class="main">
-                <el-table :data="timetableData" style="width: 100%" border :row-class-name="rowClassName">
-                  <el-table-column prop="time" label="시간" width="120"></el-table-column>
-                  <el-table-column prop="mon" label="월"></el-table-column>
-                  <el-table-column prop="tue" label="화"></el-table-column>
-                  <el-table-column prop="wed" label="수"></el-table-column>
-                  <el-table-column prop="thu" label="목"></el-table-column>
-                  <el-table-column prop="fri" label="금"></el-table-column>
-                </el-table>
-              </div>
-            </el-card>
-          </div>
+      <div class="col-lg-4 mb-3">
+        <div class="card shadow mb-3">
+          <el-card style="height: 300px;">
+            <div slot="header" class="clearfix">
+              <i class="el-icon-monitor"></i>
+              근무현황
+              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
+            </div>
+            <div class="main">
+              <el-timeline :reverse="reverse">
+                <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp">
+                  {{activity.content}}
+                </el-timeline-item>
+              </el-timeline>  
+            </div>
+          </el-card>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-lg-12 mb-3">
-          <div class="card shadow mb-3">
-            <el-card style="height: 300px;">
-              <div slot="header" class="clearfix">
-                <i class="el-icon-date"></i>
-                최근근태내역
-                <el-button style="float: right; padding: 3px 0" type="text" @click="checkattendancego">더보기</el-button>
-              </div>
-              <div class="main">
-                <el-table :data="attendanceData" style="width: 100%" border :row-class-name="rowClassName">
-                  <el-table-column prop="type" label="신청항목"></el-table-column>
-                  <el-table-column prop="category" label="신청구분"></el-table-column>
-                  <el-table-column prop="startDate" label="시작일자"></el-table-column>
-                  <el-table-column prop="endDate" label="종료일자"></el-table-column>
-                  <el-table-column prop="createdDate" label="작성일"></el-table-column>
-                  <el-table-column prop="status" label="상태"></el-table-column>
-                </el-table>
-              </div>
-            </el-card>
-          </div>
+      <div class="col-lg-8 mb-3">
+        <div class="card shadow mb-3">
+          <el-card style="height: 300px;">
+            <div slot="header" class="clearfix">
+              <i class="el-icon-date"></i>
+              주간테이블
+              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
+            </div>
+            <div class="main">
+              <el-table :data="timetableData" style="width: 100%" border :row-class-name="rowClassName">
+                <el-table-column prop="time" label="시간" width="120"></el-table-column>
+                <el-table-column prop="mon" label="월"></el-table-column>
+                <el-table-column prop="tue" label="화"></el-table-column>
+                <el-table-column prop="wed" label="수"></el-table-column>
+                <el-table-column prop="thu" label="목"></el-table-column>
+                <el-table-column prop="fri" label="금"></el-table-column>
+              </el-table>
+            </div>
+          </el-card>
         </div>
       </div>
+    </div>
 
+    <div class="row">
+      <div class="col-lg-12 mb-3">
+        <div class="card shadow mb-3">
+          <el-card style="height: 300px;">
+            <div slot="header" class="clearfix">
+              <i class="el-icon-date"></i>
+              최근근태내역
+              <el-button style="float: right; padding: 3px 0" type="text" @click="checkattendancego">더보기</el-button>
+            </div>
+            <div class="main">
+              <el-table :data="attendanceData" style="width: 100%" border :row-class-name="rowClassName">
+                <el-table-column prop="type" label="신청항목"></el-table-column>
+                <el-table-column prop="category" label="신청구분"></el-table-column>
+                <el-table-column prop="startDate" label="시작일자"></el-table-column>
+                <el-table-column prop="endDate" label="종료일자"></el-table-column>
+                <el-table-column prop="createdDate" label="작성일"></el-table-column>
+                <el-table-column prop="status" label="상태"></el-table-column>
+              </el-table>
+            </div>
+          </el-card>
+        </div>
+      </div>      
+    </div>
+    
   </div>
 </template>
 
@@ -161,16 +161,8 @@ export default {
       confirmationMessage: '출근전',
       activities: [
         {
-          content: 'Event start',
-          timestamp: '2018-04-15'
-        }, 
-        {
-          content: 'Approved',
-          timestamp: '2018-04-13'
-        }, 
-        {
-          content: 'Success',
-          timestamp: '2018-04-11'
+          content: ' ',
+          timestamp: ' '
         }
       ],
       timetableData: [
@@ -239,11 +231,16 @@ export default {
       this.serverTime = formattedTime;
     },
     showConfirmation(title, action) {
+      const now = new Date();
+      const formattedTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+      const formattedTimestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${formattedTime}`;
       if (action === 'checkIn') {
         this.confirmationMessage = '퇴근전';
       } else if (action === 'checkOut') {
         this.confirmationMessage = '출근전';
       }
+      const content = action === 'checkIn' ? `출근` : `퇴근`;
+      this.activities.push({ content, timestamp: formattedTimestamp });
     },
     rowClassName({ row }) {
       if (row.status === '미결재') {
