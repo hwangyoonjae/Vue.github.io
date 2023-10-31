@@ -57,9 +57,66 @@
 
               <!-- 회의, 외출, 외근 버튼 영역 -->
               <div class="checkOther_components">
-                <el-button @click="startMeeting">회의 시작</el-button>
-                <el-button @click="goOut">외출 신청</el-button>
-                <el-button @click="remoteWork">외근 신청</el-button>
+                <el-button @click="showMeetingDialog">회의 시작</el-button>
+                <el-dialog :visible.sync="dialogVisible" title="회의 시작" width="30%">
+                  <!-- 다이얼로그 내용 입력 폼 -->
+                  <el-form :model="meetingForm" label-position="top">
+                    <el-form-item label="회의 시간">
+                      <el-time-picker v-model="meetingForm.time" :picker-options="timePickerOptions" placeholder="시간 선택"></el-time-picker>
+                    </el-form-item>
+                    <el-form-item label="장소">
+                      <el-input v-model="meetingForm.location" placeholder="장소 입력"></el-input>
+                    </el-form-item>
+                  </el-form>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible=false">취소</el-button>
+                    <el-button type="primary" @click="startMeeting">시작</el-button>
+                  </span>
+                </el-dialog>
+                <el-button @click="showGoOutDialog">외출 신청</el-button>
+                <el-dialog :visible.sync="goOutDialogVisible" title="외출 신청" width="30%">
+                  <!-- 다이얼로그 내용 입력 폼 -->
+                  <el-form :model="goOutForm" label-position="top">
+                    <el-form-item label="시작 시간">
+                      <el-time-picker v-model="goOutForm.startTime" :picker-options="timePickerOptions" placeholder="시간 선택"></el-time-picker>
+                    </el-form-item>
+                    <el-form-item label="종료 시간">
+                      <el-time-picker v-model="goOutForm.endTime" :picker-options="timePickerOptions" placeholder="종료 시간 선택"></el-time-picker>
+                    </el-form-item>
+                    <el-form-item label="사유">
+                      <el-input v-model="goOutForm.reason" type="textarea" placeholder="외출 사유 입력"></el-input>
+                    </el-form-item>
+                  </el-form>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button @click="goOutDialogVisible=false">취소</el-button>
+                    <el-button type="primary" @click="submitGoOutRequest">시작</el-button>
+                  </span>
+                </el-dialog>
+                <el-button @click="showRemoteWorkDialog">외근 신청</el-button>
+                <el-dialog :visible.sync="remoteWorkDialogVisible" title="외근 신청" width="30%">
+                  <!-- 다이얼로그 내용 입력 폼 -->
+                  <el-form :model="remoteWorkForm" label-position="top">
+                    <el-form-item label="날짜">
+                      <el-date-picker v-model="remoteWorkForm.date" type="date" placeholder="날짜 선택"></el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="시작 시간">
+                      <el-time-picker v-model="remoteWorkForm.startTime" :picker-options="timePickerOptions" placeholder="시작 시간 선택"></el-time-picker>
+                    </el-form-item>
+                    <el-form-item label="종료 시간">
+                      <el-time-picker v-model="remoteWorkForm.endTime" :picker-options="timePickerOptions" placeholder="종료 시간 선택"></el-time-picker>
+                    </el-form-item>
+                    <el-form-item label="고객사명">
+                      <el-input v-model="remoteWorkForm.client" placeholder="고객사명 입력"></el-input>
+                    </el-form-item>
+                      <el-form-item label="사유">
+                      <el-input v-model="remoteWorkForm.reason" type="textarea" placeholder="외근 사유 입력"></el-input>
+                    </el-form-item>
+                  </el-form>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button @click="remoteWorkDialogVisible=false">취소</el-button>
+                    <el-button type="primary" @click="submitRemoteWorkRequest">시작</el-button>
+                  </span>
+                </el-dialog>
               </div>
             </div>
           </el-card>
@@ -166,6 +223,43 @@ export default {
           content: ' ',
           timestamp: ' '
         }
+      ],
+      // 회의 시작 다이얼로그의 표시 여부를 제어하는 변수
+      dialogVisible: false,
+      meetingForm: [
+        {
+        time: '', // 선택한 시간
+        location: '', // 입력한 장소
+        }
+      ],
+      timePickerOptions: [
+        {
+        selectableRange: '09:00:00 - 18:00:00', // 예시 시간 범위, 필요에 따라 수정
+        }
+      ],
+      // 외출 신청 다이얼로그의 표시 여부를 제어하는 변수
+      goOutDialogVisible: false,
+      goOutForm: [
+        {
+        startTime: '', // 외출 시작 시간
+        endTime: '', // 외출 종료 시간
+        reason: '', // 외출 사유
+        }
+      ],
+      // 시간 선택용 옵션
+      timePickerOptions: {
+        selectableRange: '09:00:00 - 18:00:00', // 예시 시간 범위, 필요에 따라 수정
+      },
+      // 외근 신청 다이얼로그의 표시 여부를 제어하는 변수
+      remoteWorkDialogVisible: false,
+      remoteWorkForm: [
+        {
+        date: '', // 날짜
+        startTime: '', // 시작 시간
+        endTime: '', // 종료 시간
+        client: '', // 고객사명
+        reason: '', // 외근 사유
+        },
       ],
       timetableData: [
         {
@@ -286,7 +380,25 @@ export default {
       this.$router.push({
         path: '/checkattendance'
       })
-    }
+    },
+    showMeetingDialog() {
+      this.dialogVisible = true;
+    },
+    startMeeting() {
+      this.dialogVisible = false;
+    },
+    showGoOutDialog() {
+      this.goOutDialogVisible = true;
+    },
+    submitGoOutRequest() {
+      this.goOutDialogVisible = false;
+    },
+    showRemoteWorkDialog() {
+      this.remoteWorkDialogVisible = true;
+    },
+    submitRemoteWorkRequest() {
+      this.remoteWorkDialogVisible = false;
+    },
   },
   created() {
     this.updateServerTime(); // 컴포넌트 생성 시 현재 시간 업데이트
@@ -346,5 +458,9 @@ export default {
   width: 50%;
   max-height: 200px; /* 원하는 높이로 설정하세요 */
   overflow: auto;
+}
+
+button.el-button.el-button--default {
+  margin: 0px 10px;
 }
 </style>
