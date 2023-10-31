@@ -283,6 +283,7 @@ export default {
 
 .Main_Component {
   width: 100%;
+  height: 100%;
   padding: 32px;
   background-color: #f0f2f5;
   position: relative;
