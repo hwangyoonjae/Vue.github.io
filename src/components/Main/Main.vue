@@ -77,11 +77,13 @@
               <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
             <div class="main">
+              <div class="timeline-container">
               <el-timeline :reverse="reverse">
                 <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp">
                   {{activity.content}}
                 </el-timeline-item>
-              </el-timeline>  
+              </el-timeline>
+              </div>
             </div>
           </el-card>
         </div>
@@ -321,5 +323,11 @@ export default {
 
 .processed-row {
   background-color: lightblue;
+}
+
+.timeline-container {
+  width: 50%;
+  max-height: 200px; /* 원하는 높이로 설정하세요 */
+  overflow: auto;
 }
 </style>
