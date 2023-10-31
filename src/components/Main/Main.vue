@@ -95,9 +95,9 @@
               주간테이블
               <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
-            <div class="main">
-              <el-table :data="timetableData" style="width: 100%" border :row-class-name="rowClassName">
-                <el-table-column prop="time" label="시간" width="120"></el-table-column>
+            <div>
+              <el-table :data="timetableData" height="200" style="width: 100%">
+                <el-table-column prop="time" label="시간" width="180"></el-table-column>
                 <el-table-column prop="mon" label="월"></el-table-column>
                 <el-table-column prop="tue" label="화"></el-table-column>
                 <el-table-column prop="wed" label="수"></el-table-column>
@@ -197,7 +197,7 @@ export default {
           wed: '정상처리',
           thu: '정상처리',
           fri: '-',
-        }
+        },
       ],
       attendanceData: [
         {
