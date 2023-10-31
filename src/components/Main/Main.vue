@@ -98,7 +98,7 @@
               <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
             <div>
-              <el-table :data="timetableData" height="200" style="width: 100%">
+              <el-table :data="timetableData" height="200" style="width: 100%" border>
                 <el-table-column prop="time" label="시간" width="180"></el-table-column>
                 <el-table-column prop="mon" label="월"></el-table-column>
                 <el-table-column prop="tue" label="화"></el-table-column>
@@ -121,8 +121,8 @@
               최근근태내역
               <el-button style="float: right; padding: 3px 0" type="text" @click="checkattendancego">더보기</el-button>
             </div>
-            <div class="main">
-              <el-table :data="attendanceData" style="width: 100%" border :row-class-name="rowClassName">
+            <div>
+              <el-table :data="attendanceData" height="200" style="width: 100%" border>
                 <el-table-column prop="type" label="신청항목"></el-table-column>
                 <el-table-column prop="category" label="신청구분"></el-table-column>
                 <el-table-column prop="startDate" label="시작일자"></el-table-column>
@@ -213,6 +213,22 @@ export default {
         {
           type: '외근',
           category: '장소 이전',
+          startDate: '2023-09-10',
+          endDate: '2023-09-12',
+          createdDate: '2023-08-25',
+          status: '결재 완료',
+        },
+        {
+          type: '외출',
+          category: '장소 이전',
+          startDate: '2023-09-10',
+          endDate: '2023-09-12',
+          createdDate: '2023-08-25',
+          status: '결재 완료',
+        },
+        {
+          type: '회의',
+          category: '장애',
           startDate: '2023-09-10',
           endDate: '2023-09-12',
           createdDate: '2023-08-25',
