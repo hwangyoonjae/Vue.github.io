@@ -86,6 +86,7 @@ html,body {
 
 .Home_Part_open:not(.login-page) {
   margin-left: 210px;
+  height: 100%;
 }
 
 .login-page .Home_Part_open {
@@ -94,6 +95,7 @@ html,body {
 
 .Home_Part_close {
   margin-left: 63px;
+  height: 100%;
 }
 
 .router-view-wrapper {
