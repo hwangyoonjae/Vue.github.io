@@ -99,6 +99,7 @@ export default {
 .Header_Content {
   width: 100%;
   height: 50px;
+  background: white;
 }
 
 .Burger {
