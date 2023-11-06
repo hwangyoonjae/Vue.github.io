@@ -1,37 +1,44 @@
 <template>
   <div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="#">
-			<h1>회원가입</h1>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button>회원가입</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1>로그인</h1>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">비밀번호를 잊으셨나요?</a>
-			<button>로그인</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>어서와요!</h1>
-				<p>계정이 존재하면 지금 발로 로그인 하세요.</p>
-				<button class="ghost" id="signIn">로그인</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>환영합니다!</h1>
-				<p>계정을 만들고 우리 서비스의 일부가 되세요.</p>
-				<button class="ghost" id="signUp">회원가입</button>
-			</div>
+	  <div class="form-container sign-up-container">
+      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
+	      <h1>회원가입</h1>
+        <el-form-item prop="id">
+          <el-input v-model="ruleForm.id"></el-input>
+        </el-form-item>
+			  <el-form-item prop="id">
+          <el-input v-model="ruleForm.id"></el-input>
+        </el-form-item>
+			  <button>회원가입</button>
+      </el-form>
 		</div>
-	</div>
+	  <div class="form-container sign-in-container">
+		  <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
+			  <h1>로그인</h1>
+        <el-form-item prop="id">
+          <el-input v-model="ruleForm.id"></el-input>
+        </el-form-item>
+	  		<el-form-item prop="pass">
+          <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+        </el-form-item>
+			  <a href="#">비밀번호를 잊으셨나요?</a>
+			  <button @click="submitForm('ruleForm')">로그인</button>
+		  </el-form>
+	  </div>
+	  <div class="overlay-container">
+		  <div class="overlay">
+			  <div class="overlay-panel overlay-left">
+				  <h1>어서와요!</h1>
+				  <p>계정이 존재하면 지금 바로 로그인 하세요.</p>
+				  <button class="ghost" id="signIn">로그인</button>
+			  </div>
+			  <div class="overlay-panel overlay-right">
+				  <h1>환영합니다!</h1>
+				  <p>계정을 만들고 우리 서비스의 일부가 되세요.</p>
+				  <button class="ghost" id="signUp">회원가입</button>
+			  </div>
+		  </div>
+	  </div>
   </div>
 </template>
 
@@ -211,9 +218,6 @@ input {
       0 10px 10px rgba(0,0,0,0.22);
   position: relative;
   overflow: hidden;
-  width: 768px;
-  max-width: 100%;
-  min-height: 480px;
 }
 
 .form-container {
@@ -286,7 +290,7 @@ input {
   left: -100%;
   height: 100%;
   width: 200%;
-    transform: translateX(0);
+  transform: translateX(0);
   transition: transform 0.6s ease-in-out;
 }
 
