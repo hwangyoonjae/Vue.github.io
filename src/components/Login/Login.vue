@@ -9,7 +9,7 @@
 			  <el-form-item prop="id">
           <el-input v-model="ruleForm.id"></el-input>
         </el-form-item>
-			  <button>회원가입</button>
+			  <el-button type="primary">회원가입</el-button>
       </el-form>
 		</div>
 	  <div class="form-container sign-in-container">
@@ -22,7 +22,7 @@
           <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
 			  <a href="#">비밀번호를 잊으셨나요?</a>
-			  <button @click="submitForm('ruleForm')">로그인</button>
+        <el-button type="primary" @click="submitForm('ruleForm')">로그인</el-button>
 		  </el-form>
 	  </div>
 	  <div class="overlay-container">
