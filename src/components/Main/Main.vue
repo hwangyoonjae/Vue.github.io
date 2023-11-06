@@ -9,7 +9,6 @@
             <div slot="header" class="clearfix">
               <i class="el-icon-date"></i>
               근무계획
-              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
             <div class="main">
               <div class="checkInTime">
@@ -31,7 +30,6 @@
             <div slot="header" class="clearfix">
               <i class="el-icon-circle-check"></i>
               근무체크
-              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
             <div class="main">
               <div class="checkTime_components">
@@ -131,7 +129,6 @@
             <div slot="header" class="clearfix">
               <i class="el-icon-monitor"></i>
               근무현황
-              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
             <div class="main">
               <div class="timeline-container">
@@ -152,7 +149,6 @@
             <div slot="header" class="clearfix">
               <i class="el-icon-date"></i>
               주간테이블
-              <el-button style="float: right; padding: 3px 0" type="text">더보기</el-button>
             </div>
             <div>
               <el-table :data="timetableData" height="200" style="width: 100%" border>
