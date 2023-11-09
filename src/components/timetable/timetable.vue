@@ -1,72 +1,57 @@
 <template>
-  <div class="Schedule_Content">
-    <v-date-picker :attributes="attrs"  is-expanded :value="null" color="red" is-range/>
-    <div class="Schedule_Button">
-      <el-button type="success">등록하기</el-button>
-    </div>
-    <v-date-picker :attributes="attributes" :today-attribute="attrs" is-expanded :value="null" color="red" is-range/>
+  <div>
+    <el-calendar :clickable="true" v-on:click="handleDateClick"/>
+    <el-dialog :visible.sync="dialogVisible" title="일정 추가">
+      <el-form ref="scheduleForm" :model="schedule" label-width="80px">
+        <el-form-item label="작업명" prop="taskName">
+          <el-input v-model="schedule.taskName" />
+        </el-form-item>
+        <el-form-item label="시간" prop="time">
+          <el-time-picker v-model="schedule.time" format="HH:mm" />
+        </el-form-item>
+        <el-form-item label="장소" prop="location">
+          <el-input v-model="schedule.location" />
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">취소</el-button>
+        <el-button type="primary" @click="saveSchedule">저장</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    const todos = [
-      {
-        description: 'Take Noah to basketball practice.',
-        isComplete: false,
-        dates: { weekdays: 6 }, // Every Friday
-        color: 'red',
-      },
-    ];
     return {
-      attrs: [
-        {
-          key: 'today',
-          //dot: true, 오늘 날짜 점 찍어줌.
-          //highlight: 'red', 오늘 날짜 동그라미 색 채워서 찍어줌.
-          highlight: {
-            color: 'purple',
-            fillMode: 'light', // solid, light, outline
-          },
-          dates: new Date(),
-        },
-      ],
-      incId: todos.length,
-      todos,
+      dialogVisible: false,
+      schedule: {
+        taskName: '',
+        time: '',
+        location: '',
+      },
     };
   },
-  computed: {
-    attributes() {
-      return [
-        // Attributes for todos
-        ...this.todos.map(todo => ({
-          dates: todo.dates,
-          dot: {
-            color: todo.color,
-            class: todo.isComplete ? 'opacity-75' : '',
-          },
-          popover: {
-            label: todo.description,
-            visibility: 'hover',
-            hideIndicator: true
-          },
-          customData: todo,
-        })),
-      ];
-    }
+  methods: {
+    handleDateClick(date) {
+      this.dialogVisible = true;
+      // 여기서 선택한 날짜를 사용하거나 저장할 수 있어
+      console.log('Selected Date:', date);
+    },
+    saveSchedule() {
+      // 여기서 작업명, 시간, 장소를 저장하면 돼
+      // 일반적으로 서버에 저장하는 로직을 추가해도 좋겠지
+      console.log('Saved Schedule:', this.schedule);
+      this.dialogVisible = false;
+      // 저장 후 다이얼로그를 닫아줘
+    },
   },
-}
+};
 </script>
 
-<style scoped>
-.Schedule_Content {
-  width: 100%;
-  padding: 20px;
-  background-color: #f0f2f5;
-  position: relative;
-} 
-.Schedule_Button {
-  margin: 10px;
+<style>
+.dialog-footer {
+  text-align: right;
 }
 </style>
