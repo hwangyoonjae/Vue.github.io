@@ -4,7 +4,7 @@
       <div v-if="shouldShowSidebar" :class="{Sidebar_close : isCollapse.isNavOpen, Sidebar_open : !isCollapse.isNavOpen }">
         <Sidebar />
       </div>
-      <div :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen && shouldShowHomePart }">
+      <div class="app-wrapper-main" :class="{Home_Part_close : isCollapse.isNavOpen, Home_Part_open : !isCollapse.isNavOpen && shouldShowHomePart }">
         <Navbar v-if="shouldShowNavbar"/>
         <router-view class="router-view-wrapper"/>
       </div>

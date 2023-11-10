@@ -216,13 +216,14 @@ input {
   border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
       0 10px 10px rgba(0,0,0,0.22);
-  position: relative;
   overflow: hidden;
+  height: 100vh;
 }
 
 .form-container {
   position: absolute;
   top: 0;
+  width: 100%;
   height: 100%;
   transition: all 0.6s ease-in-out;
 }
