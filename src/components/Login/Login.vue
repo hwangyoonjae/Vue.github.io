@@ -1,28 +1,41 @@
 <template>
   <div class="container" id="container">
 	  <div class="form-container sign-up-container">
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
-	      <h1>회원가입</h1>
-        <el-form-item prop="id">
-          <el-input v-model="ruleForm.id"></el-input>
+      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+        <h1>회원가입</h1>
+        <el-form-item label="아이디" prop="id">
+          <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
         </el-form-item>
-			  <el-form-item prop="id">
-          <el-input v-model="ruleForm.id"></el-input>
+        <el-form-item label="비밀번호" prop="pass">
+          <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
-			  <el-button type="primary">회원가입</el-button>
+        <el-form-item label="비밀번호 확인" prop="checkPass">
+          <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="이름" prop="name">
+          <el-input v-model="ruleForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="이메일" prop="email">
+          <el-input v-model="ruleForm.email" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <!--<el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>-->
+          <el-button type="primary" @click="submitsignupForm ('ruleForm')">회원가입</el-button>
+          <el-button @click="resetForm('ruleForm')">초기화</el-button>
+        </el-form-item>
       </el-form>
 		</div>
 	  <div class="form-container sign-in-container">
-		  <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
+		  <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
 			  <h1>로그인</h1>
-        <el-form-item prop="id">
-          <el-input v-model="ruleForm.id"></el-input>
+        <el-form-item label="아이디" prop="id">
+          <el-input v-model="ruleForm.id" autocomplete="off"></el-input>
         </el-form-item>
-	  		<el-form-item prop="pass">
+	  		<el-form-item label="비밀번호" prop="pass">
           <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
 			  <a href="#">비밀번호를 잊으셨나요?</a>
-        <el-button type="primary" @click="submitForm('ruleForm')">로그인</el-button>
+        <el-button type="primary" @click="submitloginForm('ruleForm')">로그인</el-button>
 		  </el-form>
 	  </div>
 	  <div class="overlay-container">
@@ -65,10 +78,27 @@
           callback();
         }
       };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('비밀번호를 입력하세요.'));
+        } else if (value !== this.ruleForm.pass) {
+          callback(new Error('입력한 비밀번호가 일치하지 않습니다.'));
+        } else {
+          callback();
+        }
+      };
+      var checkname = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('이름을 입력하세요.'));
+        }
+      };
       return {
         ruleForm: {
           id: '',
           pass: '',
+          checkPass: '',
+          name: '',
+          email: '',
         },
         rules: {
           id: [
@@ -77,11 +107,21 @@
           pass: [
             { validator: validatePass, trigger: 'blur' }
           ],
+          checkPass: [
+            { required: true, validator: validatePass2, trigger: 'blur' }
+          ],
+          name: [
+            { required: true, validator: checkname, trigger: 'blur' }
+          ],
+          email: [
+            { required: true, message: '이메일을 입력하세요.', trigger: 'blur' },
+            { type: 'email', message: '이메일 형식이 올바르지 않습니다.', trigger: ['blur', 'change'] }
+          ]
         }
       };
     },
     methods: {
-    submitForm(formName) {
+    submitloginForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 하드코딩된 아이디와 비밀번호
@@ -90,7 +130,8 @@
 
           if (this.ruleForm.id === hardcodedUsername && this.ruleForm.pass === hardcodedPassword) {
             // 로그인 성공 시 사용자 님 환영합니다 알림 표시
-            this.$alert('사용자님 환영합니다', '알림', {
+            const welcomeMessage = `${this.ruleForm.id}님 환영합니다`;
+            this.$alert(welcomeMessage, '알림', {
               confirmButtonText: '확인',
               callback: action => {
                 if (action === 'confirm') {
@@ -109,6 +150,67 @@
         }
       });
     },
+    submitsignupForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          document.querySelector('.demo-ruleForm').classList.add('success');
+          alert('회원가입 되었습니다.');
+        } else {
+          document.querySelector('.demo-ruleForm').classList.remove('success');
+          this.$message.error('입력값을 확인하세요.');
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
+    uploadContent() {
+      let adminitems = data.Admin.sort((a,b) => {return b.admin_id - a.admin_id})
+      let useritems = data.User.sort((a,b) => {return b.user_id - a.user_id})
+
+      const admin = adminitems[0].admin_id + 1
+      const user = useritems[0].user_id + 1
+      
+      if (this.ruleForm.division == 'admin') {
+        data.Admin.push({
+          admin_id: admin,
+          id: this.ruleForm.id,
+          name: this.ruleForm.name,
+          email: this.ruleForm.email,
+          created_at: '2018-09-11 11:42:11',
+          updated_at: '2022-01-26 11:42:11'
+        })
+        this.$router.push({
+          path: '/adminlist'
+        })
+      } else if (this.ruleForm.division == 'user') {
+        data.User.push({
+          user_id: user,
+          id: this.ruleForm.id,
+          name: this.ruleForm.name,
+          email: this.ruleForm.email,
+          created_at: '2018-09-11 11:42:11'
+        })
+        this.$router.push({
+          path: '/userlist'
+        })
+      } else {
+        console.log("signup error!!");
+      }
+    },
+    updateContent() {
+      this.updateObject.id = this.id;
+      this.updateObject.name = this.name;
+      this.updateObject.email = this.email;
+      this.$router.push({
+        path: '/userlist'
+      })
+    },
+    cancle() {
+      this.$router.push({
+        path: '/login'
+      })
+    }
   },
   mounted() {
     const signUpButton = document.getElementById('signUp');
