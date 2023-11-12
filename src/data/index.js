@@ -291,6 +291,14 @@ export default {
         name: '팀장',
         check: '퇴근',
         updated_at: '2023-10-01'
-    },
-    ]
+    }
+    ],
+    CommuteContent: [{
+        number: 1,
+        name: '홍길동',
+        attendancetime: '08:32',
+        leaveworktime: '18:01',
+        attendancestatus: '정상',
+        leaveworkstatus: '미확인',
+    }],
 }
