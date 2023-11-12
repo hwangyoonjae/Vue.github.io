@@ -5,7 +5,7 @@
       <i class="el-icon-house"></i>
       <span slot="title">대시보드</span>
     </el-menu-item>
-    <el-menu-item index="2" @click="dashboardgo">
+    <el-menu-item index="2" @click="commutego">
       <i class="el-icon-postcard"></i>
       <span slot="title">출/퇴근하기</span>
     </el-menu-item>
@@ -42,6 +42,11 @@ export default {
     dashboardgo() {
       this.$router.push({
         path: '/main'
+      })
+    },
+    commutego() {
+      this.$router.push({
+        path: '/commute'
       })
     },
     noticego() {

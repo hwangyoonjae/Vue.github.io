@@ -28,6 +28,7 @@ import Employeelist from '@/components/Employee/Employeelist.vue'
 import Checkattendance from '@/components/Checkattendance/Checkattendance.vue'
 import CheckattendanceDetail from '@/components/Checkattendance/CheckattendanceDetail.vue'
 import CheckattendanceWrite from '@/components/Checkattendance/Write.vue'
+import Commute from '@/components/Commute/Commute.vue'
 
 // 여기에 등록된 라우터와 다른 페이지에서 클릭 이벤트로 접속하는 라우터가 겹쳐도 무시하도록 수정
 const originalPush = VueRouter.prototype.push;
@@ -187,6 +188,11 @@ export const router = new VueRouter({
             path: '/checkattendance/detail/:number',
             name: 'CheckattendanceDetail',
             component: CheckattendanceDetail
+        },
+        {
+            path: '/commute',
+            name: 'Commute',
+            component: Commute
         },
     ]
 });
