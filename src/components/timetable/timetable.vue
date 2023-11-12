@@ -1,5 +1,5 @@
 <template>
-  <div class="Employee_component">
+  <div class="Timetable_component">
     <el-card class="box-card">
       <el-calendar :clickable="true" v-on:click="handleDateClick"/>
       <el-dialog :visible.sync="dialogVisible" title="일정 추가">
@@ -53,6 +53,13 @@ export default {
 </script>
 
 <style>
+.Timetable_component {
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f2f5;
+  position: relative;
+}
+
 .dialog-footer {
   text-align: right;
 }
