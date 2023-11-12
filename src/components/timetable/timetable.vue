@@ -1,23 +1,25 @@
 <template>
-  <div>
-    <el-calendar :clickable="true" v-on:click="handleDateClick"/>
-    <el-dialog :visible.sync="dialogVisible" title="일정 추가">
-      <el-form ref="scheduleForm" :model="schedule" label-width="80px">
-        <el-form-item label="작업명" prop="taskName">
-          <el-input v-model="schedule.taskName" />
-        </el-form-item>
-        <el-form-item label="시간" prop="time">
-          <el-time-picker v-model="schedule.time" format="HH:mm" />
-        </el-form-item>
-        <el-form-item label="장소" prop="location">
-          <el-input v-model="schedule.location" />
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">취소</el-button>
-        <el-button type="primary" @click="saveSchedule">저장</el-button>
-      </span>
-    </el-dialog>
+  <div class="Employee_component">
+    <el-card class="box-card">
+      <el-calendar :clickable="true" v-on:click="handleDateClick"/>
+      <el-dialog :visible.sync="dialogVisible" title="일정 추가">
+        <el-form ref="scheduleForm" :model="schedule" label-width="80px">
+          <el-form-item label="작업명" prop="taskName">
+            <el-input v-model="schedule.taskName" />
+          </el-form-item>
+          <el-form-item label="시간" prop="time">
+            <el-time-picker v-model="schedule.time" format="HH:mm" />
+          </el-form-item>
+          <el-form-item label="장소" prop="location">
+            <el-input v-model="schedule.location" />
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">취소</el-button>
+          <el-button type="primary" @click="saveSchedule">저장</el-button>
+        </span>
+      </el-dialog>
+    </el-card>
   </div>
 </template>
 
