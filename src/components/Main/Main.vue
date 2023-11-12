@@ -351,8 +351,10 @@ export default {
       const formattedTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
       const formattedTimestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${formattedTime}`;
       if (action === 'checkIn') {
+        alert("출근하였습니다.");
         this.confirmationMessage = '퇴근전';
       } else if (action === 'checkOut') {
+        alert("퇴근하였습니다.");
         this.confirmationMessage = '출근전';
       }
       const content = action === 'checkIn' ? `출근` : `퇴근`;
