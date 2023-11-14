@@ -12,11 +12,11 @@
     <el-card class="box-card">
       <el-table :data="displayData" @row-click="rowClick">
         <el-table-column label="번호" prop="number"></el-table-column>
-        <el-table-column label="이름" prop="title"></el-table-column>
-        <el-table-column label="부서" prop="component"></el-table-column>
-        <el-table-column label="직책" prop="name"></el-table-column>
+        <el-table-column label="이름" prop="name"></el-table-column>
+        <el-table-column label="부서" prop="depart"></el-table-column>
+        <el-table-column label="직책" prop="position"></el-table-column>
         <el-table-column label="근태여부" prop="check"></el-table-column>
-        <el-table-column label="시간" prop="date"></el-table-column>
+        <el-table-column label="시간" prop="created_at"></el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
     </el-card>
@@ -29,9 +29,9 @@ import data from '@/data'
 export default {
   name : 'Attendance',
   data() {
-    let items = data.CheckattendanceContent.sort((a,b) => {return b.number - a.number})
+    //let items = data.CheckattendanceContent.sort((a,b) => {return b.number - a.number})
     return {
-        items: items,
+        items: '',
         page: 1,
         pageSize: 10,
         options: [{
@@ -66,6 +66,14 @@ export default {
     writeContent(index, row) {
       this.$router.push({
         name: 'CheckattendanceWrite'
+      })
+    },
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/checkattendance`)
+      .then(result => {
+        console.log(result.data)
+        this.item = result.data
       })
     },
     handleCurrentChange(val) {
