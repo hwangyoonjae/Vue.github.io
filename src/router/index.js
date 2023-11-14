@@ -43,7 +43,7 @@ export const router = new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: '/main'
+            redirect: '/login'
         },
         {
             path: '/main',
