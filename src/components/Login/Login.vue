@@ -29,7 +29,7 @@
       </el-form>
 		</div>
 	  <div class="form-container sign-in-container">
-		  <el-form :model="loginform" status-icon :rules="rules" ref="loginform" label-width="150px" class="demo-ruleForm">
+		  <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">
 			  <h1>로그인</h1>
         <el-form-item label="아이디" prop="id">
           <el-input v-model="loginform.id" autocomplete="off"></el-input>
@@ -38,7 +38,7 @@
           <el-input type="password" v-model="loginform.pass" autocomplete="off"></el-input>
         </el-form-item>
 			  <a href="#">비밀번호를 잊으셨나요?</a>
-        <el-button type="primary" @click="submitLoginForm('loginform')">로그인</el-button>
+        <el-button type="primary" @click="submitLoginForm('ruleForm')">로그인</el-button>
 		  </el-form>
 	  </div>
 	  <div class="overlay-container">
@@ -137,37 +137,20 @@
       };
     },
     methods: {
-    submitLoginForm(loginform) {
+    submitLoginForm(ruleForm) {
       // 폼 유효성 검사
-      this.$refs[loginform].validate((valid) => {
+      this.$refs[ruleForm].validate((valid) => {
         if (valid) {
           // 아이디와 비밀번호를 서버로 전송
-          const { id, pass } = this.loginform;
+          const { id, pass } = this.ruleForm;
 
           this.$axios.post('http://localhost:8443/login', { id, pass })
             .then(response => {
-            // 계정이 존재하는지 확인
-            const userData = response.data.user;
-
-            if (userData) {
               // 로그인 성공 시 처리
+              const userData = response.data; // 백엔드에서 전달한 사용자 데이터
               this.$message.success('로그인 성공');
-
-              // 팝업 표시
-              this.$alert(`${userData.name}님 환영합니다.`, '로그인 성공', {
-                confirmButtonText: '확인',
-                callback: action => {
-                  if (action === 'confirm') {
-                    // 페이지 이동
-                    this.$router.push('/main');
-                  }
-                }
-              });
-            } 
-            else {
-              // 계정이 존재하지 않는 경우
-              this.$message.error('아이디 또는 비밀번호가 올바르지 않습니다.');
-              }
+              // 로그인 성공 후 필요한 작업 수행
+              // 예: 사용자 정보 저장, 홈페이지로 이동 등
             })
             .catch(error => {
               // 로그인 실패 시 처리
