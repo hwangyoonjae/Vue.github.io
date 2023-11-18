@@ -23,7 +23,7 @@
         </el-form-item>
         <el-form-item>
           <!--<el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>-->
-          <el-button type="primary" @click="submitSignupForm ('ruleForm')">회원가입</el-button>
+          <el-button type="primary" @click="submitSignupForm('ruleForm')">회원가입</el-button>
           <el-button @click="resetForm('ruleForm')">초기화</el-button>
         </el-form-item>
       </el-form>
