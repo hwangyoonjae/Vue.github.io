@@ -17,18 +17,18 @@
       <div class="UserInfoContent">
         <p>
           이름: 
-          <span v-if="!isEditing">{{ userName }}</span>
-          <el-input v-else v-model="userName"></el-input>
+          <span v-if="!isEditing">{{ userInfo.userName }}</span>
+          <el-input v-else v-model="userInfo.userName"></el-input>
         </p>
         <p>
           부서: 
-          <span v-if="!isEditing">{{ department }}</span>
-          <el-input v-else v-model="department"></el-input>
+          <span v-if="!isEditing">{{ userInfo.department }}</span>
+          <el-input v-else v-model="userInfo.department"></el-input>
         </p>
         <p>
           직급: 
-          <span v-if="!isEditing">{{ position }}</span>
-          <el-input v-else v-model="position"></el-input>
+          <span v-if="!isEditing">{{ userInfo.position }}</span>
+          <el-input v-else v-model="userInfo.position"></el-input>
         </p>
       </div>
       <div class="UserInfoButtons">
@@ -55,15 +55,21 @@ export default {
       showUserInfoCard: false, // 사용자 정보 카드 표시 여부
       isLoggedIn: true, // 로그인 시 로그인 버튼 안보이게 표시
       isEditing: false, // 정보 수정 모드 여부
-      userName: '황윤재', // 사용자 이름 데이터 예시
-      department: '대기업', // 부서 데이터 예시
-      position: '회장', // 직급 데이터 예시
+      userInfo: { // userInfo를 객체로 정의
+        userName: '',
+        department: '',
+        position: '',
+      },
     };
   },
   methods: {
-    logingo() {
-      this.$router.push({
-        path: '/main/login'
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+
+      this.$axios.get(`${baseURI}/login/user?id=${userId}`)
+      .then(result => {
+        console.log(result.data)
+        this.item = result.data
       })
     },
     toggleUserInfo() {

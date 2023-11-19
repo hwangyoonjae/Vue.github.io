@@ -15,7 +15,7 @@
         <el-table-column label="이름" prop="name"></el-table-column>
         <el-table-column label="부서" prop="depart"></el-table-column>
         <el-table-column label="직책" prop="position"></el-table-column>
-        <el-table-column label="근태여부" prop="check"></el-table-column>
+        <el-table-column label="근태여부" prop="state"></el-table-column>
         <el-table-column label="시간" prop="created_at"></el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
