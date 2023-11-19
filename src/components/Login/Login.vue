@@ -1,44 +1,44 @@
 <template>
   <div class="container" id="container">
 	  <div class="form-container sign-up-container">
-      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">
+      <el-form :model="signupForm" status-icon :rules="signuprules" ref="signupForm" label-width="150px" class="demo-ruleForm">
         <h1>회원가입</h1>
         <el-form-item label="아이디" prop="id">
-          <el-input type="username" v-model="ruleForm.id" autocomplete="off"></el-input>
+          <el-input type="username" v-model="signupForm.id" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="비밀번호" prop="pass">
-          <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+          <el-input type="password" v-model="signupForm.pass" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="비밀번호 확인" prop="checkPass">
-          <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+          <el-input type="password" v-model="signupForm.checkPass" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="이름" prop="name">
-          <el-input v-model="ruleForm.name" autocomplete="off"></el-input>
+          <el-input v-model="signupForm.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="부서" prop="depart">
-          <el-input v-model="ruleForm.depart" autocomplete="off"></el-input>
+          <el-input v-model="signupForm.depart" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="이메일" prop="email">
-          <el-input v-model="ruleForm.email" autocomplete="off"></el-input>
+          <el-input v-model="signupForm.email" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
           <!--<el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>-->
-          <el-button type="primary" @click="submitSignupForm('ruleForm')">회원가입</el-button>
-          <el-button @click="resetForm('ruleForm')">초기화</el-button>
+          <el-button type="primary" @click="submitSignupForm('signupForm')">회원가입</el-button>
+          <el-button @click="resetForm('signupForm')">초기화</el-button>
         </el-form-item>
       </el-form>
 		</div>
 	  <div class="form-container sign-in-container">
-		  <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">
+		  <el-form :model="loginForm" status-icon :rules="loginrules" ref="loginForm" label-width="150px" class="demo-ruleForm">
 			  <h1>로그인</h1>
         <el-form-item label="아이디" prop="id">
-          <el-input v-model="loginform.id" autocomplete="off"></el-input>
+          <el-input v-model="loginForm.id" autocomplete="off"></el-input>
         </el-form-item>
 	  		<el-form-item label="비밀번호" prop="pass">
-          <el-input type="password" v-model="loginform.pass" autocomplete="off"></el-input>
+          <el-input type="password" v-model="loginForm.pass" autocomplete="off"></el-input>
         </el-form-item>
 			  <a href="#">비밀번호를 잊으셨나요?</a>
-        <el-button type="primary" @click="submitLoginForm('ruleForm')">로그인</el-button>
+        <el-button type="primary" @click="submitLoginForm('loginForm')">로그인</el-button>
 		  </el-form>
 	  </div>
 	  <div class="overlay-container">
@@ -61,51 +61,71 @@
 <script>
   export default {
     data() {
-      var validateId = (rule, value, callback) => {
+      var validateLoginId = (_rule, value, callback) => {
         if (value === '') {
           callback(new Error('아이디를 입력하세요.'));
         } else {
-          if (this.ruleForm.checkId !== '') {
-            this.$refs.ruleForm.validateField('checkId');
+          if (this.loginForm.checkId !== '') {
+            this.$refs.loginForm.validateField('checkId');
           }
           callback();
         }
       };
-      var validatePass = (rule, value, callback) => {
+      var validateLoginPass = (_rule, value, callback) => {
         if (value === '') {
           callback(new Error('비밀번호를 입력하세요.'));
         } else {
-          if (this.ruleForm.checkPass !== '') {
-            this.$refs.ruleForm.validateField('checkPass');
+          if (this.loginForm.pass !== '') {
+            this.$refs.loginForm.validateField('pass');
           }
           callback();
         }
       };
-      var validatePass2 = (rule, value, callback) => {
+      var validateId = (_rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('아이디를 입력하세요.'));
+        } else {
+          if (this.signupForm.id !== '') {
+            this.$refs.signupForm.validateField('id');
+          }
+          callback();
+        }
+      };
+      var validatePass = (_rule, value, callback) => {
         if (value === '') {
           callback(new Error('비밀번호를 입력하세요.'));
-        } else if (value !== this.ruleForm.pass) {
+        } else {
+          if (this.signupForm.pass !== '') {
+            this.$refs.signupForm.validateField('pass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (_rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('비밀번호를 입력하세요.'));
+        } else if (value !== this.signupForm.pass) {
           callback(new Error('입력한 비밀번호가 일치하지 않습니다.'));
         } else {
           callback();
         }
       };
-      var checkname = (rule, value, callback) => {
+      var checkname = (_rule, value, callback) => {
         if (!value) {
           return callback(new Error('이름을 입력하세요.'));
         }
       };
-      var checkdepart = (rule, value, callback) => {
+      var checkdepart = (_rule, value, callback) => {
         if (!value) {
           return callback(new Error('부서를 입력하세요.'));
         }
       };
       return {
-        loginform: {
+        loginForm: {
           id: '',
           pass: ''
         },
-        ruleForm: {
+        signupForm: {
           id: '',
           pass: '',
           checkPass: '',
@@ -113,12 +133,20 @@
           depart: '',
           email: ''
         },
-        rules: {
-          id: [
-            { validator: validateId, trigger: 'blur' }
+        loginrules: {
+          loginId: [
+            { required: true, message: '아이디를 입력하세요.', trigger: 'blur' }
           ],
-          pass: [
-            { validator: validatePass, trigger: 'blur' }
+          loginPass: [
+            { required: true, message: '비밀번호를 입력하세요.', trigger: 'blur' }
+          ]
+        },
+        signuprules: {
+          signupId: [
+            { required: true, message: '아이디를 입력하세요.', trigger: 'blur' }
+          ],
+          signupPass: [
+            { required: true, message: '비밀번호를 입력하세요.', trigger: 'blur' }
           ],
           checkPass: [
             { required: true, validator: validatePass2, trigger: 'blur' }
@@ -137,26 +165,26 @@
       };
     },
     methods: {
-    submitLoginForm(ruleForm) {
-      // 폼 유효성 검사
-      this.$refs[ruleForm].validate((valid) => {
-        if (valid) {
-          // 아이디와 비밀번호를 서버로 전송
-          const { id, pass } = this.ruleForm;
+      submitLoginForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            // 아이디와 비밀번호를 서버로 전송
+            const { id, pass } = this.loginForm;
+            const baseURI = 'http://localhost:8443';
 
-          this.$axios.post('http://localhost:8443/login', { id, pass })
-            .then(response => {
-              // 로그인 성공 시 처리
-              const userData = response.data; // 백엔드에서 전달한 사용자 데이터
-              this.$message.success('로그인 성공');
-              // 로그인 성공 후 필요한 작업 수행
-              // 예: 사용자 정보 저장, 홈페이지로 이동 등
-            })
-            .catch(error => {
-              // 로그인 실패 시 처리
-              console.error('로그인 실패:', error);
-              this.$message.error('아이디 또는 비밀번호가 올바르지 않습니다.');
-            });
+        this.$axios.post(`${baseURI}/login`, { id, pass })
+          .then(response => {
+            // 로그인 성공 시 처리
+            const userData = response.data; // 백엔드에서 전달한 사용자 데이터
+            this.$message.success('로그인 성공');
+            // 로그인 성공 후 필요한 작업 수행
+            // 예: 사용자 정보 저장, 홈페이지로 이동 등
+          })
+          .catch(error => {
+            // 로그인 실패 시 처리
+            console.error('로그인 실패:', error);
+            this.$message.error('아이디 또는 비밀번호가 올바르지 않습니다.');
+          });
         } else {
           // 폼 유효성 검사 실패 시 에러 메시지 표시
           this.$message.error('입력값을 확인하세요.');
@@ -169,12 +197,13 @@
         if (valid) {
           const baseURI = 'http://localhost:8443';
           var data = {
-            id : this.ruleForm.id,
-            pass : this.ruleForm.pass,
-            name : this.ruleForm.name,
-            depart : this.ruleForm.depart,
-            email : this.ruleForm.email
+            id : this.signupForm.id,
+            pass : this.signupForm.pass,
+            name : this.signupForm.name,
+            depart : this.signupForm.depart,
+            email : this.signupForm.email
           }
+          console.log(data);
           this.$axios.post(`${baseURI}/login/post`, data)
           .then(result => {
             console.log(result)

@@ -7,18 +7,18 @@
             <span>출/퇴근하기</span>
           </div>
           <div class="grid_content_input">
-            <el-form :model="Comuute_form" ref="Comuute_form" :rules="rules" label-width="120px">
-              <el-form-item label="프로젝트명" prop="title">
-                <el-input v-model="Comuute_form.title"></el-input>
+            <el-form :model="Comuute_form" ref="Comuute_form" label-width="120px">
+              <el-form-item label="부서" prop="depart">
+                <el-input v-model="Comuute_form.depart"></el-input>
+              </el-form-item>
+              <el-form-item label="이름" prop="name">
+                <el-input v-model="Comuute_form.name"></el-input>
               </el-form-item>
               <el-form-item label="상태구분" prop="state">
                 <el-select v-model="Comuute_form.state" placeholder="구분">
                   <el-option label="출근" value="출근"></el-option>
                   <el-option label="퇴근" value="퇴근"></el-option>
                 </el-select>
-              </el-form-item>
-              <el-form-item label="라이센스" prop="license">
-                <el-input v-model="Comuute_form.license"></el-input>
               </el-form-item>
               <el-form-item>
                 <el-button type="success" @click="updateMode ? updateContent() : uploadContent('Comuute_form')">등록하기</el-button>
@@ -40,26 +40,13 @@ export default {
   data() {
     return {
       Comuute_form : {
-        title : '',
-        problem : '7',        
+        depart : '',
+        name : '',
         state : '',
-        success : '100%',
-        license : '',
         updatedAt: null,
         updateObject: null,
         updateMode: this.$route.params.number > 0 ? true : false,
       },
-      rules: {
-        title : [
-          { message: '제목을 선택하세요.', trigger: 'blur' }
-        ],
-        state : [
-          { message: '상태를 입력하세요.', trigger: 'change' }
-        ],
-        license : [
-          { message: '라이센스을 입력하세요.', trigger: 'blur' }
-        ],
-      }
     }
   },
   created() {
@@ -78,18 +65,15 @@ export default {
           alert('등록되었습니다.');
           const baseURI = 'http://localhost:8443';
           var data = {
-            division : this.Project_form.division,
-            title : this.Project_form.title,
-            component : this.Project_form.component,
-            name : this.Project_form.name,
-            state : this.Project_form.state,
-            level : this.Project_form.level
+            depart : this.Comuute_form.depart,
+            name : this.Comuute_form.name,
+            state : this.Comuute_form.state
           }
-          this.$axios.post(`${baseURI}/api/project`, data)
+          this.$axios.post(`${baseURI}/comuute`, data)
           .then(result => {
             console.log(result)
             this.$router.push({
-              path: '/project'
+              path: '/comuute'
             })
           })
           .catch(error => {
@@ -104,7 +88,7 @@ export default {
     },
     cancle() {
       this.$router.push({
-        path: '/project'
+        path: '/comuute'
       })
     },
   }

@@ -1,70 +1,95 @@
 <template>
-  <div class="Noticewrite_component">
-    <div class="input-group_title">
-      <el-input placeholder="제목을 입력하세요" v-model="title"></el-input>
-    </div>
-    <div class="input-group_component">
-      <el-input placeholder="내용을 입력하세요" v-model="component"></el-input>
-    </div>
-    <div class="input-group_component">
-      <el-input placeholder="내용을 입력하세요" v-model="name"></el-input>
-    </div>
-    <div>
-      <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :before-remove="beforeRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
-        <el-button size="small" type="primary">Click to upload</el-button>
-        <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
-      </el-upload>
-    </div>
-    <div class="button-group">
-      <el-button type="success" @click="updateMode ? updateContent() : uploadContent()">등록하기</el-button>
-      <el-button type="danger" @click="cancle">취소하기</el-button>
-    </div>
+  <div class="Notice_component">
+    <el-row>
+      <el-col :span="16">
+        <el-card>
+          <div slot="header" class="clearfix">
+            <span>공지사항</span>
+          </div>
+          <div class="grid_content_input">
+            <el-form :model="Notice_form" status-icon label-width="120px" class="demo-ruleForm" ref="Notice_form">
+              <el-form-item label="제목" prop="title">
+                <el-input type="text" v-model="Notice_form.title" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="내용" prop="component">
+                <el-input type="textarea" v-model="Notice_form.component" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="이름" prop="name">
+                <el-input type="text" v-model="Notice_form.name" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item class="button_component">
+                <el-button type="success" @click="uploadContent('Notice_form')">등록하기</el-button>
+                <el-button @click="resetForm('Notice_form')">초기화</el-button>
+                <el-button type="danger" @click="cancle">취소하기</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>  
   </div>
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
   data() {
     return {
-      title: '',
-      component: '',
-      date: '2021-01-24',
-      name: 'James', // 로그인한 계정에 따라 자동으로 불러오도록 수정 필요
-      updatedAt: null,
-      updateObject: null,
-      updateMode: this.$route.params.number > 0 ? true : false,
-      fileList: [{name: 'food.jpeg'}] // 파일 업로드 할 파일들 저장 필요
-    }
+      Notice_form : {
+        title : '',
+        component : '',
+        name : '',
+        updateObject: null,
+        updateMode: this.$route.params.id > 0 ? true : false,
+      },
+    };
   },
   created() {
-    if (this.$route.params.number > 0) {
-      const number = Number(this.$route.params.number)
-      this.updateObject = data.NoticeContent.filter(item => item.number === number)[0]
+    if (this.$route.params.id > 0) {
+      const number = Number(this.$route.params.id)
+      this.updateObject = data.NoticeContent.filter(item => item.id === number)[0]
       this.title = this.updateObject.title;
       this.component = this.updateObject.component;
+      this.name = this.updateObject.name;
+      this.Notice_form.updateMode = true;
     }
   },
   methods:{
-    uploadContent() {
-      let items = data.NoticeContent.sort((a,b) => {return b.number - a.number})
-      const number = items[0].number + 1
-      data.NoticeContent.push({
-        number: number,
-        title: this.title,
-        component: this.component,
-        name: this.name,
-        date: this.date,
-        updated_at: null
-      })
-      this.$router.push({
-        path: '/notice'
-      })
+    uploadContent(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          const baseURI = 'http://localhost:8443';
+          var data = {
+            title : this.Notice_form.title,
+            component : this.Notice_form.component,
+            name : this.Notice_form.name,
+          }
+          this.$axios.post(`${baseURI}/notice/post`, data)
+          .then(result => {
+            alert('등록되었습니다.');
+            console.log(result)
+            this.$router.push({
+              path: '/notice'
+            })
+          })
+          .catch(error => {
+            alert('에러발생.');
+            console.log(error)
+          })
+        } else {
+            alert('저장부터안함');
+            console.log('error submit!!');
+            return false;
+          }
+        }
+      );
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     },
     updateContent() {
       this.updateObject.title = this.title;
       this.updateObject.component = this.component;
+      this.updateObject.name = this.name;
       this.$router.push({
         path: '/notice'
       })
@@ -79,20 +104,23 @@ export default {
 </script>
 
 <style scoped>
-.Noticewrite_component {
-  width:100%; 
-  padding:10px;
+.Notice_component {
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f2f5;
+  position: relative;
 }
 
-.Noticewrite_component .input-group_title, .input-group_component {
-  margin-bottom:10px;
+.clearfix {
+  color: #595959;
+  font-weight: 700;
 }
 
-.button-group {
-  text-align: right; /* 버튼을 오른쪽 정렬 */
+.line {
+  text-align: center;
 }
 
-.align-right {
-  float: right; /* 버튼을 오른쪽으로 띄웁니다. */
+.box-card {
+  margin: 10px 0px;
 }
 </style>

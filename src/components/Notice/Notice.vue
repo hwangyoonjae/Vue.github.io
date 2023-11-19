@@ -33,9 +33,9 @@ import data from '@/data'
 export default {
   name : 'Notice',
   data() {
-    let items = data.NoticeContent.sort((a,b) => {return b.number - a.number})
+    //let items = data.NoticeContent.sort((a,b) => {return b.number - a.number})
     return {
-        items: items,
+        items: '',
         page: 1,
         pageSize: 10,
         options: [{
