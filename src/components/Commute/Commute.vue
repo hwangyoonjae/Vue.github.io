@@ -47,9 +47,6 @@ export default {
         name : '',
         state : '',
         position: '',
-        updatedAt: null,
-        updateObject: null,
-        updateMode: this.$route.params.number > 0 ? true : false,
       },
     }
   },
@@ -74,8 +71,9 @@ export default {
             position : this.Comuute_form.position,
             state : this.Comuute_form.state
           }
-          this.$axios.post(`${baseURI}/comuute/post`, data)
+          this.$axios.post(`${baseURI}/api/attendancepost`, data)
           .then(result => {
+            alert('등록되었습니다.');
             console.log(result)
             this.$router.push({
               path: '/comuute'
@@ -93,7 +91,7 @@ export default {
     },
     cancle() {
       this.$router.push({
-        path: '/comuute'
+        path: '/commute'
       })
     },
   }

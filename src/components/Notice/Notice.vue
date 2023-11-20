@@ -11,11 +11,11 @@
     </el-card>
     <el-card class="box-card">
       <el-table :data="displayData" @row-click="rowClick">
-        <el-table-column label="번호" prop="number"></el-table-column>
+        <el-table-column label="번호" prop="id"></el-table-column>
         <el-table-column label="제목" prop="title"></el-table-column>
         <el-table-column label="내용" prop="component"></el-table-column>
         <el-table-column label="작성자" prop="name"></el-table-column>
-        <el-table-column label="작성일" prop="date"></el-table-column>
+        <el-table-column label="작성일" prop="created_at"></el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
       <div class="Notice_write">
@@ -28,40 +28,31 @@
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
   name : 'Notice',
   data() {
-    //let items = data.NoticeContent.sort((a,b) => {return b.number - a.number})
     return {
-        items: '',
-        page: 1,
-        pageSize: 10,
-        options: [{
-          value: '제목',
-          label: '제목'
-        }, {
-          value: '내용',
-          label: '내용'
-        }],
-        value: '',
-        input: ''
-      }
-    },
-    computed: {
-      displayData() {
-        if (!this.items || this.items.length === 0) return [];
-        return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
-      }
-    },
-    methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
-    },
-      handleDelete(index, row) {
-        console.log(index, row);
-    },
+      items: '',
+      page: 1,
+      pageSize: 10,
+      options: [{
+        value: '제목',
+        label: '제목'
+      }, {
+        value: '내용',
+        label: '내용'
+      }],
+      value: '',
+      input: ''
+    }
+  },
+  computed: {
+    displayData() {
+      if (!this.items || this.items.length === 0) return [];
+      return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
+    }
+  },
+  methods: {
     rowClick(item, index, e) {
       this.$router.push({
         path: `detail/${item.number}`
@@ -72,9 +63,20 @@ export default {
         name: 'NoticeWrite'
       })
     },
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/noticelist`)
+      .then(result => {
+        console.log(result.data)
+        this.item = result.data
+      })
+    },
     handleCurrentChange(val) {
       this.page = val;
     },
+  },
+  mounted() {
+    this.getData();
   },
 }
 </script>

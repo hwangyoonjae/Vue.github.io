@@ -37,9 +37,7 @@ export default {
       Notice_form : {
         title : '',
         component : '',
-        name : '',
-        updateObject: null,
-        updateMode: this.$route.params.id > 0 ? true : false,
+        name : ''
       },
     };
   },
@@ -63,20 +61,19 @@ export default {
             component : this.Notice_form.component,
             name : this.Notice_form.name,
           }
-          this.$axios.post(`${baseURI}/notice/post`, data)
+          this.$axios.post(`${baseURI}/api/noticepost`, data)
           .then(result => {
             alert('등록되었습니다.');
-            console.log(result)
+            console.log(result);
             this.$router.push({
               path: '/notice'
             })
           })
           .catch(error => {
-            alert('에러발생.');
-            console.log(error)
+            alert(error);
+            console.log(error);
           })
         } else {
-            alert('저장부터안함');
             console.log('error submit!!');
             return false;
           }

@@ -70,7 +70,7 @@ export default {
     },
     getData: function() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/checkattendance`)
+      this.$axios.get(`${baseURI}/api/checkattendancelist`)
       .then(result => {
         console.log(result.data)
         this.item = result.data
