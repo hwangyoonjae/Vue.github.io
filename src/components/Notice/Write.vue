@@ -61,7 +61,7 @@ export default {
             component : this.Notice_form.component,
             name : this.Notice_form.name,
           }
-          this.$axios.post(`${baseURI}/api/noticepost`, data)
+          this.$axios.post(`${baseURI}/api/notice/post`, data)
           .then(result => {
             alert('등록되었습니다.');
             console.log(result);

@@ -68,7 +68,7 @@ export default {
       this.$axios.get(`${baseURI}/api/noticelist`)
       .then(result => {
         console.log(result.data)
-        this.item = result.data
+        this.items = result.data
       })
     },
     handleCurrentChange(val) {

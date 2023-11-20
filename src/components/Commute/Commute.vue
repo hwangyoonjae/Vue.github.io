@@ -76,7 +76,7 @@ export default {
             alert('등록되었습니다.');
             console.log(result)
             this.$router.push({
-              path: '/comuute'
+              path: '/checkattendance'
             })
           })
           .catch(error => {

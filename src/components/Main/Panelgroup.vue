@@ -10,7 +10,7 @@
             <div class="card-panel-text">
               출/퇴근
             </div>
-            <count-to :start-val="0" :end-val="this.project" :duration="2600" class="card-panel-num" />
+            <count-to :start-val="0" :end-val="this.Checkattendance.length" :duration="2600" class="card-panel-num" />
           </div>
         </div>
       </div>
@@ -71,6 +71,7 @@ export default {
     const notice = data.NoticeContent.sort((a,b) => {return b.number - a.number})
     const issue = data.IssueContent.sort((a,b) => {return b.number - a.number})
     return {
+      Checkattendance: '',
       Issuelist: '',
       Issuelistrequest: '',
       project : project[0].number,
@@ -100,12 +101,20 @@ export default {
         path: '/timetable'
       })
     },
-    getissueData: function() {
+    getissuelistData: function() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/api/hello`)
+      this.$axios.get(`${baseURI}/api/checkattendancelist`)
       .then(result => {
         console.log(result.data)
         this.Issuelist = result.data
+      })
+    },
+    getcheckattendanceData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/checkattendancelist`)
+      .then(result => {
+        console.log(result.data)
+        this.Checkattendance = result.data
       })
     },
     getissuerequestData() {
@@ -118,8 +127,9 @@ export default {
     },
   },
   mounted() {
-    this.getissueData();
+    this.getcheckattendanceData();
     this.getissuerequestData();
+    this.getissuelistData();
   },
 }
 </script>

@@ -11,7 +11,7 @@
     </el-card>
     <el-card class="box-card">
       <el-table :data="displayData" @row-click="rowClick">
-        <el-table-column label="번호" prop="number"></el-table-column>
+        <el-table-column label="번호" prop="id"></el-table-column>
         <el-table-column label="이름" prop="name"></el-table-column>
         <el-table-column label="부서" prop="depart"></el-table-column>
         <el-table-column label="직책" prop="position"></el-table-column>
@@ -24,12 +24,9 @@
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
   name : 'Attendance',
   data() {
-    //let items = data.CheckattendanceContent.sort((a,b) => {return b.number - a.number})
     return {
         items: '',
         page: 1,
@@ -73,13 +70,16 @@ export default {
       this.$axios.get(`${baseURI}/api/checkattendancelist`)
       .then(result => {
         console.log(result.data)
-        this.item = result.data
+        this.items = result.data
       })
     },
     handleCurrentChange(val) {
       this.page = val;
     },
   },
+  mounted() {
+    this.getData();
+  }
 }
 </script>
 
