@@ -23,7 +23,7 @@
             <div class="card-panel-text">
               사원수
             </div>
-            <count-to :start-val="0" :end-val="this.user" :duration="2600" class="card-panel-num" />
+            <count-to :start-val="0" :end-val="this.Userlist.length" :duration="2600" class="card-panel-num" />
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
             <div class="card-panel-text">
               공지사항
             </div>
-            <count-to :start-val="0" :end-val="this.Issuelistrequest.length" :duration="2600" class="card-panel-num" />
+            <count-to :start-val="0" :end-val="this.Noticelist.length" :duration="2600" class="card-panel-num" />
           </div>
         </div>
       </div>
@@ -74,6 +74,8 @@ export default {
       Checkattendance: '',
       Issuelist: '',
       Issuelistrequest: '',
+      Noticelist: '',
+      Userlist: '',
       project : project[0].number,
       user : user[0].user_id,
       notice : notice[0].number,
@@ -101,12 +103,12 @@ export default {
         path: '/timetable'
       })
     },
-    getissuelistData: function() {
+    getnoticelistData: function() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/api/checkattendancelist`)
+      this.$axios.get(`${baseURI}/api/noticelist`)
       .then(result => {
         console.log(result.data)
-        this.Issuelist = result.data
+        this.Noticelist = result.data
       })
     },
     getcheckattendanceData: function() {
@@ -125,11 +127,20 @@ export default {
         this.Issuelistrequest = result.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
       })
     },
+    getuserData() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/userlist`)
+      .then(result => {
+        console.log(result.data)
+        this.Userlist = result.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+      })
+    }
   },
   mounted() {
     this.getcheckattendanceData();
     this.getissuerequestData();
-    this.getissuelistData();
+    this.getnoticelistData();
+    this.getuserData();
   },
 }
 </script>

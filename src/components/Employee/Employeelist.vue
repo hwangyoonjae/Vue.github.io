@@ -11,7 +11,8 @@
     </el-card>
     <el-card class="box-card">
       <el-table :data="displayData" @row-click="rowClick">
-        <el-table-column label="번호" prop="id"></el-table-column>
+        <el-table-column label="번호" prop="idx"></el-table-column>
+        <el-table-column label="아이디" prop="id"></el-table-column>
         <el-table-column label="이름" prop="name"></el-table-column>
         <el-table-column label="부서" prop="depart"></el-table-column>
         <el-table-column label="이메일" prop="email"></el-table-column>
@@ -26,8 +27,6 @@
 export default {
   name : 'Employee',
   data() {
-    //const user = Number(this.$route.params.id);
-    //const contentData = data.User.filter(item => item.user_id === user)[0];
     return {
       items: '',
       page: 1,

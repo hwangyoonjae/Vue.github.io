@@ -65,7 +65,7 @@ export default {
     },
     getData: function() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/api/noticelist`)
+      this.$axios.get(`${baseURI}/api/notice/list`)
       .then(result => {
         console.log(result.data)
         this.items = result.data

@@ -21,10 +21,6 @@
         <i class="el-icon-user-solid"></i>
         <span>사원리스트</span>
       </el-menu-item>
-    <el-menu-item index="6" @click="timetablego">
-      <i class="el-icon-date"></i>
-      <span slot="title">일정확인</span>
-    </el-menu-item>
   </el-menu>
   </div>
 </template>
