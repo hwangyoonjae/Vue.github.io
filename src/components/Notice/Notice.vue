@@ -47,9 +47,9 @@ export default {
     }
   },
   computed: {
-    displayData() {
+    displayData() {        
       if (!this.items || this.items.length === 0) return [];
-      return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
+        return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
     }
   },
   methods: {
@@ -77,7 +77,7 @@ export default {
   },
   mounted() {
     this.getData();
-  },
+  }
 }
 </script>
 

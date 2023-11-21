@@ -28,32 +28,32 @@ export default {
   name : 'Attendance',
   data() {
     return {
-        items: '',
-        page: 1,
-        pageSize: 10,
-        options: [{
-          value: '제목',
-          label: '제목'
-        }, {
-          value: '내용',
-          label: '내용'
-        }],
-        value: '',
-        input: ''
-      }
-    },
-    computed: {
-      displayData() {
-        if (!this.items || this.items.length === 0) return [];
+      items: '',
+      page: 1,
+      pageSize: 10,
+      options: [{
+        value: '제목',
+        label: '제목'
+      }, {
+        value: '내용',
+        label: '내용'
+      }],
+      value: '',
+      input: ''
+    }
+  },
+  computed: {
+    displayData() {        
+      if (!this.items || this.items.length === 0) return [];
         return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
-      }
+    }
+  },
+  methods: {
+    handleEdit(index, row) {
+      console.log(index, row);
     },
-    methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
-    },
-      handleDelete(index, row) {
-        console.log(index, row);
+    handleDelete(index, row) {
+      console.log(index, row);
     },
     rowClick(item, index, e) {
       this.$router.push({

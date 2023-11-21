@@ -10,56 +10,51 @@
       </div>
     </el-card>
     <el-card class="box-card">
-      <el-table :data="items" @row-click="rowClick">
-        <el-table-column label="번호" prop="user_id"></el-table-column>
+      <el-table :data="displayData" @row-click="rowClick">
+        <el-table-column label="번호" prop="id"></el-table-column>
         <el-table-column label="이름" prop="name"></el-table-column>
-        <el-table-column label="부서" prop="component"></el-table-column>
-        <el-table-column label="직급" prop="name"></el-table-column>
+        <el-table-column label="부서" prop="depart"></el-table-column>
+        <el-table-column label="이메일" prop="email"></el-table-column>
         <el-table-column label="등록일" prop="created_at"></el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
-      <div class="Employee_write">
-        <router-link to="/notice/write" style="margin-left: 10px">
-          <el-button type="primary">글쓰기</el-button>
-        </router-link>
-      </div>
     </el-card>
   </div>
 </template>
 
 <script>
-import data from '@/data'
-
 export default {
   name : 'Employee',
   data() {
-    let items = data.User.sort((a,b) => {return b.user_id - a.user_id})
-    
-    const user = Number(this.$route.params.user_id);
-    const contentData = data.User.filter(item => item.user_id === user)[0];
+    //const user = Number(this.$route.params.id);
+    //const contentData = data.User.filter(item => item.user_id === user)[0];
     return {
-        items: items,
-        options: [{
-          value: '아이디',
-          label: '아이디'
-        }, {
-          value: '이름',
-          label: '이름'
-        }, {
-          value: '이메일',
-          label: '이메일'
-        }],
-      }
-    },
-    computed: {
-      displayData() {
-        if (!this.items || this.items.length === 0) return [];
-        return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
-      }
-    },
-    methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
+      items: '',
+      page: 1,
+      pageSize: 10,
+      options: [{
+        value: '아이디',
+        label: '아이디'
+      }, {
+        value: '이름',
+        label: '이름'
+      }, {
+        value: '이메일',
+        label: '이메일'
+      }],
+      value: '',
+      input: ''
+    }
+  },
+  computed: {
+    displayData() {
+      if (!this.items || this.items.length === 0) return [];
+      return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
+    }
+  },
+  methods: {
+    handleEdit(index, row) {
+      console.log(index, row);
     },
       handleDelete(index, row) {
         console.log(index, row);
@@ -74,10 +69,21 @@ export default {
         name: 'NoticeWrite'
       })
     },
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/userlist`)
+      .then(result => {
+        console.log(result.data)
+        this.items = result.data
+      })
+    },
     handleCurrentChange(val) {
       this.page = val;
     },
   },
+  mounted() {
+    this.getData();
+  }
 }
 </script>
 
