@@ -59,8 +59,11 @@
                 <el-dialog :visible.sync="dialogVisible" title="회의 시작" width="30%">
                   <!-- 다이얼로그 내용 입력 폼 -->
                   <el-form :model="meetingForm" label-position="top">
-                    <el-form-item label="회의 시간">
-                      <el-time-picker v-model="meetingForm.time" :picker-options="timePickerOptions" placeholder="시간 선택"></el-time-picker>
+                    <el-form-item label="시작 시간">
+                      <el-time-picker v-model="meetingForm.startTime" :picker-options="timePickerOptions" placeholder="시간 선택"></el-time-picker>
+                    </el-form-item>
+                    <el-form-item label="종료 시간">
+                      <el-time-picker v-model="meetingForm.endTime" :picker-options="timePickerOptions" placeholder="종료 시간 선택"></el-time-picker>
                     </el-form-item>
                     <el-form-item label="장소">
                       <el-input v-model="meetingForm.location" placeholder="장소 입력"></el-input>
@@ -293,36 +296,12 @@ export default {
       ],
       attendanceData: [
         {
-          type: '휴가',
-          category: '연차',
-          startDate: '2023-09-01',
-          endDate: '2023-09-05',
-          createdDate: '2023-08-15',
-          status: '미결재',
-        },
-        {
-          type: '외근',
-          category: '장소 이전',
-          startDate: '2023-09-10',
-          endDate: '2023-09-12',
-          createdDate: '2023-08-25',
-          status: '결재 완료',
-        },
-        {
-          type: '외출',
-          category: '장소 이전',
-          startDate: '2023-09-10',
-          endDate: '2023-09-12',
-          createdDate: '2023-08-25',
-          status: '결재 완료',
-        },
-        {
-          type: '회의',
-          category: '장애',
-          startDate: '2023-09-10',
-          endDate: '2023-09-12',
-          createdDate: '2023-08-25',
-          status: '결재 완료',
+          type: '',
+          category: '',
+          startDate: '',
+          endDate: '',
+          createdDate: '',
+          status: '',
         }
       ]
     }
