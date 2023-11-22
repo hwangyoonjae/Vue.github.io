@@ -17,18 +17,13 @@
       <div class="UserInfoContent">
         <p>
           이름: 
-          <span v-if="!isEditing">{{ userInfo.userName }}</span>
-          <el-input v-else v-model="userInfo.userName"></el-input>
+          <span v-if="!isEditing">{{ userInfo.name }}</span>
+          <el-input v-else v-model="userInfo.name"></el-input>
         </p>
         <p>
           부서: 
-          <span v-if="!isEditing">{{ userInfo.department }}</span>
-          <el-input v-else v-model="userInfo.department"></el-input>
-        </p>
-        <p>
-          직급: 
-          <span v-if="!isEditing">{{ userInfo.position }}</span>
-          <el-input v-else v-model="userInfo.position"></el-input>
+          <span v-if="!isEditing">{{ userInfo.depart }}</span>
+          <el-input v-else v-model="userInfo.depart"></el-input>
         </p>
       </div>
       <div class="UserInfoButtons">
@@ -56,21 +51,31 @@ export default {
       isLoggedIn: true, // 로그인 시 로그인 버튼 안보이게 표시
       isEditing: false, // 정보 수정 모드 여부
       userInfo: { // userInfo를 객체로 정의
-        userName: '',
-        department: '',
-        position: '',
+        name: '',
+        depart: '',
       },
     };
   },
   methods: {
     getData: function() {
       const baseURI = 'http://localhost:8443';
+      const userId = this.$store.state.loggedInUserId;
 
-      this.$axios.get(`${baseURI}/login/user?id=${userId}`)
+      // 사용자 정보를 가져오는 API 호출
+      this.$axios.get(`${baseURI}/login/${userId}`)
       .then(result => {
-        console.log(result.data)
-        this.item = result.data
+        console.log(result.data);
+
+        // API 응답 데이터에서 사용자 정보를 가져와 할당
+        const userData = result.data;
+
+        // userInfo 객체에 사용자 정보 할당
+        this.userInfo.name = userData.name;
+        this.userInfo.depart = userData.depart;
       })
+      .catch(error => {
+        console.error('사용자 정보를 가져오는 중 에러 발생:', error);
+      });
     },
     toggleUserInfo() {
       // 사용자 정보 카드 표시 여부를 토글
@@ -97,6 +102,9 @@ export default {
       });
       this.showUserInfoCard = false;
     }
+  },
+  mounted() {
+    this.getData();
   }
 }
 </script>
