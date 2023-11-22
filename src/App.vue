@@ -67,6 +67,10 @@ html,body {
   width: 100%;
 }
 
+.app-wrapper-main {
+  background-color: #f0f2f5;
+}
+
 .Sidebar_close {
   width: 63px !important;
   transition: 0.28s;
