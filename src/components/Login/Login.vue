@@ -146,7 +146,6 @@ export default {
             // 로그인 성공 시 처리
             const userData = response.data; // 백엔드에서 전달한 사용자 데이터
             this.userInfo = userData; // 사용자 정보를 저장
-            this.$store.commit('setLoggedInUserId', userData.id); // 사용자 ID를 Vuex 스토어에 저장
             this.$message.success('로그인 성공');
             this.$router.push({
               path: '/main'
