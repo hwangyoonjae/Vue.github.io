@@ -59,81 +59,81 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      var validateId = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('아이디를 입력하세요.'));
-        } else {
-          if (this.ruleForm.checkId !== '') {
-            this.$refs.ruleForm.validateField('checkId');
-          }
-          callback();
+export default {
+  data() {
+    var validateId = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('아이디를 입력하세요.'));
+      } else {
+        if (this.ruleForm.checkId !== '') {
+          this.$refs.ruleForm.validateField('checkId');
         }
-      };
-      var validatePass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('비밀번호를 입력하세요.'));
-        } else {
-          if (this.ruleForm.checkPass !== '') {
-            this.$refs.ruleForm.validateField('checkPass');
-          }
-          callback();
+        callback();
+      }
+    };
+    var validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('비밀번호를 입력하세요.'));
+      } else {
+        if (this.ruleForm.checkPass !== '') {
+          this.$refs.ruleForm.validateField('checkPass');
         }
-      };
-      var validatePass2 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('비밀번호를 입력하세요.'));
-        } else if (value !== this.ruleForm.pass) {
-          callback(new Error('입력한 비밀번호가 일치하지 않습니다.'));
-        } else {
-          callback();
-        }
-      };
-      var checkname = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('이름을 입력하세요.'));
-        }
-      };
-      var checkdepart = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('부서를 입력하세요.'));
-        }
-      };
-      return {
-        ruleForm: {
-          id: '',
-          pass: '',
-          checkPass: '',
-          name: '',
-          depart: '',
-          email: ''
-        },
-        userInfo: '',
-        rules: {
-          id: [
-            { validator: validateId, trigger: 'blur' }
-          ],
-          pass: [
-            { validator: validatePass, trigger: 'blur' }
-          ],
-          checkPass: [
-            { required: true, validator: validatePass2, trigger: 'blur' }
-          ],
-          name: [
-            { required: true, validator: checkname, trigger: 'blur' }
-          ],
-          depart: [
-            { required: true, validator: checkdepart, trigger: 'blur' }
-          ],
-          email: [
-            { required: true, message: '이메일을 입력하세요.', trigger: 'blur' },
-            { type: 'email', message: '이메일 형식이 올바르지 않습니다.', trigger: ['blur', 'change'] }
-          ]
-        }
-      };
-    },
-    methods: {
+        callback();
+      }
+    };
+    var validatePass2 = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('비밀번호를 입력하세요.'));
+      } else if (value !== this.ruleForm.pass) {
+        callback(new Error('입력한 비밀번호가 일치하지 않습니다.'));
+      } else {
+        callback();
+      }
+    };
+    var checkname = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('이름을 입력하세요.'));
+      }
+    };
+    var checkdepart = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('부서를 입력하세요.'));
+      }
+    };
+    return {
+      ruleForm: {
+        id: '',
+        pass: '',
+        checkPass: '',
+        name: '',
+        depart: '',
+        email: ''
+      },
+      userInfo: '',
+      rules: {
+        id: [
+          { validator: validateId, trigger: 'blur' }
+        ],
+        pass: [
+          { validator: validatePass, trigger: 'blur' }
+        ],
+        checkPass: [
+          { required: true, validator: validatePass2, trigger: 'blur' }
+        ],
+        name: [
+          { required: true, validator: checkname, trigger: 'blur' }
+        ],
+        depart: [
+          { required: true, validator: checkdepart, trigger: 'blur' }
+        ],
+        email: [
+          { required: true, message: '이메일을 입력하세요.', trigger: 'blur' },
+          { type: 'email', message: '이메일 형식이 올바르지 않습니다.', trigger: ['blur', 'change'] }
+        ]
+      }
+    };
+  },
+  methods: {
     submitLoginForm(ruleForm) {
       // 폼 유효성 검사
       this.$refs[ruleForm].validate((valid) => {
@@ -142,51 +142,52 @@
           const { id, pass } = this.ruleForm;
 
           this.$axios.post('http://localhost:8443/login', { id, pass })
-            .then(response => {
-              // 로그인 성공 시 처리
-              const userData = response.data; // 백엔드에서 전달한 사용자 데이터
-              this.userInfo = userData; // 사용자 정보를 저장
-              this.$message.success('로그인 성공');
-              this.$router.push({
-                path: '/main'
-              })
-              // 로그인 성공 후 필요한 작업 수행
-              // 예: 사용자 정보 저장, 홈페이지로 이동 등
+          .then(response => {
+            // 로그인 성공 시 처리
+            const userData = response.data; // 백엔드에서 전달한 사용자 데이터
+            this.userInfo = userData; // 사용자 정보를 저장
+            this.$store.commit('setLoggedInUserId', userData.id); // 사용자 ID를 Vuex 스토어에 저장
+            this.$message.success('로그인 성공');
+            this.$router.push({
+              path: '/main'
             })
-            .catch(error => {
-              // 로그인 실패 시 처리
-              console.error('로그인 실패:', error);
-              this.$message.error('아이디 또는 비밀번호가 올바르지 않습니다.');
-            });
-        } else {
-          // 폼 유효성 검사 실패 시 에러 메시지 표시
-          this.$message.error('입력값을 확인하세요.');
-        }
-      });
-    },
-    submitSignupForm(formName) {
-      // 폼 유효성 검사
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          const baseURI = 'http://localhost:8443';
-          var data = {
-            id : this.ruleForm.id,
-            pass : this.ruleForm.pass,
-            name : this.ruleForm.name,
-            depart : this.ruleForm.depart,
-            email : this.ruleForm.email
-          }
-          this.$axios.post(`${baseURI}/login/post`, data)
-          .then(result => {
-            console.log(result)
-            this.$message.success('회원가입 성공');
+            // 로그인 성공 후 필요한 작업 수행
+            // 예: 사용자 정보 저장, 홈페이지로 이동 등
           })
           .catch(error => {
-            console.error('회원가입 실패:', error);
-            this.$message.error('회원가입에 실패했습니다. 다시 시도해주세요.');
-          })
-        } else {
-            this.$message.error('입력값을 확인하세요.');
+            // 로그인 실패 시 처리
+            console.error('로그인 실패:', error);
+            this.$message.error('아이디 또는 비밀번호가 올바르지 않습니다.');
+          });
+      } else {
+        // 폼 유효성 검사 실패 시 에러 메시지 표시
+        this.$message.error('입력값을 확인하세요.');
+      }
+    });
+  },
+  submitSignupForm(formName) {
+    // 폼 유효성 검사
+    this.$refs[formName].validate((valid) => {
+      if (valid) {
+        const baseURI = 'http://localhost:8443';
+        var data = {
+          id : this.ruleForm.id,
+          pass : this.ruleForm.pass,
+          name : this.ruleForm.name,
+          depart : this.ruleForm.depart,
+          email : this.ruleForm.email
+        }
+        this.$axios.post(`${baseURI}/login/post`, data)
+        .then(result => {
+          console.log(result)
+          this.$message.success('회원가입 성공');
+        })
+        .catch(error => {
+          console.error('회원가입 실패:', error);
+          this.$message.error('회원가입에 실패했습니다. 다시 시도해주세요.');
+        })
+      } else {
+          this.$message.error('입력값을 확인하세요.');
             return false;
           }
         }
