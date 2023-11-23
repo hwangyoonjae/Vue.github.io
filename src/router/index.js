@@ -48,6 +48,7 @@ export const router = new VueRouter({
         },
         {
             path: '/main',
+            name: 'Main',
             component: () => import ('@/components/Main/Main'),
         },
         {

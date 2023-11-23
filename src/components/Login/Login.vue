@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import { EventBus } from '@/components/event-bus.js';
+
 export default {
   data() {
     var validateId = (rule, value, callback) => {
@@ -147,11 +149,11 @@ export default {
             const userData = response.data; // 백엔드에서 전달한 사용자 데이터
             this.userInfo = userData; // 사용자 정보를 저장
             this.$message.success('로그인 성공');
+            EventBus.$emit('userLoggedIn', id);
+            console.log("id is :", id);
             this.$router.push({
               path: '/main'
             })
-            // 로그인 성공 후 필요한 작업 수행
-            // 예: 사용자 정보 저장, 홈페이지로 이동 등
           })
           .catch(error => {
             // 로그인 실패 시 처리

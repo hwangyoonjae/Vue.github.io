@@ -40,6 +40,7 @@
 
 <script>
 import Burger from '@/components/Sidebar/Burger'
+import { EventBus } from '@/components/event-bus.js';
 
 export default {
   components: {
@@ -54,17 +55,20 @@ export default {
         name: '',
         depart: '',
       },
+      userId: ''
     };
   },
   methods: {
     getData: function() {
       const baseURI = 'http://localhost:8443';
-      const userId = this.$store.state.loggedInUserId;
+      const id = 'id';
 
       // 사용자 정보를 가져오는 API 호출
-      this.$axios.get(`${baseURI}/login/${userId}`)
+      this.$axios.get(`${baseURI}/login/${id}`)
       .then(result => {
+        console.log("===================");
         console.log(result.data);
+        console.log("===================");
 
         // API 응답 데이터에서 사용자 정보를 가져와 할당
         const userData = result.data;
@@ -105,6 +109,15 @@ export default {
   },
   mounted() {
     this.getData();
+
+    // EventBus를 통해 userLoggedIn 이벤트 수신
+    EventBus.$on('userLoggedIn', (userId) => {
+      // 이벤트 수신 시 userId 업데이트 및 데이터 로딩
+      console.log("userLoggedIn is:", userLoggedIn);
+      console.log("userId is:", userId);
+      this.userId = userId;
+      this.getData();
+    });
   }
 }
 </script>
