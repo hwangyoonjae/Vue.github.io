@@ -15,7 +15,7 @@
         <el-table-column label="제목" prop="title"></el-table-column>
         <el-table-column label="내용" prop="component"></el-table-column>
         <el-table-column label="작성자" prop="name" width="80"></el-table-column>
-        <el-table-column label="등록일" prop="created_at" width="100"></el-table-column>
+        <el-table-column label="등록일" prop="createdat" width="100"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" :pager-count="11" layout="prev, pager, next" @current-change="handleCurrentChange" :total="item.length"></el-pagination>

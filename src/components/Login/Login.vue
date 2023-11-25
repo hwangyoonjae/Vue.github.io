@@ -210,7 +210,7 @@ export default {
           id: this.ruleForm.id,
           name: this.ruleForm.name,
           email: this.ruleForm.email,
-          created_at: '2018-09-11 11:42:11',
+          createdat: '2018-09-11 11:42:11',
           updated_at: '2022-01-26 11:42:11'
         })
         this.$router.push({
@@ -222,7 +222,7 @@ export default {
           id: this.ruleForm.id,
           name: this.ruleForm.name,
           email: this.ruleForm.email,
-          created_at: '2018-09-11 11:42:11'
+          createdat: '2018-09-11 11:42:11'
         })
         this.$router.push({
           path: '/userlist'

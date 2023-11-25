@@ -16,7 +16,11 @@
         <el-table-column label="부서" prop="depart"></el-table-column>
         <el-table-column label="직책" prop="position"></el-table-column>
         <el-table-column label="근태여부" prop="state"></el-table-column>
-        <el-table-column label="시간" prop="created_at"></el-table-column>
+        <el-table-column label="시간" prop="createdat">
+          <template slot-scope="scope">
+            {{ formatDate(scope.row.createdat) }}
+          </template>
+        </el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
     </el-card>
@@ -24,6 +28,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   name : 'Attendance',
   data() {
@@ -76,6 +82,9 @@ export default {
     handleCurrentChange(val) {
       this.page = val;
     },
+    formatDate(date) {
+      return moment(date).format('YYYY-MM-DD HH:mm:ss');
+    }
   },
   mounted() {
     this.getData();

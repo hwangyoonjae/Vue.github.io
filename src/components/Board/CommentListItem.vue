@@ -3,7 +3,7 @@
     <div class="comment-list-item">
       <div class="comment-list-item-name">
         <div>{{name}}</div>
-        <div>{{commentObj.created_at}}</div>
+        <div>{{commentObj.createdat}}</div>
       </div>
       <div class="comment-list-item-context">{{commentObj.context}}</div>
       <div class="comment-list-item-button">
@@ -28,7 +28,7 @@
       >
         <div class="comment-list-item-name">
           <div>{{item.user_name}}</div>
-          <div>{{item.created_at}}</div>
+          <div>{{item.createdat}}</div>
         </div>
         <div class="comment-list-item-context">{{item.context}}</div>
         <div class="comment-list-item-button">

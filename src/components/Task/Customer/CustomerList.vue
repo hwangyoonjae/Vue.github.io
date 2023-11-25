@@ -18,7 +18,7 @@
         <el-table-column label="직급" prop="position"></el-table-column>
         <el-table-column label="연락처" prop="phone"></el-table-column>
         <el-table-column label="이메일" prop="mail"></el-table-column>
-        <el-table-column label="등록일" prop="created_at"></el-table-column>
+        <el-table-column label="등록일" prop="createdat"></el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" :pager-count="11" layout="prev, pager, next" @current-change="handleCurrentChange" :total="item.length"></el-pagination>
       <div class="Issue_write">

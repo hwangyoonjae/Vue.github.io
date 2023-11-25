@@ -10,12 +10,16 @@
       </div>
     </el-card>
     <el-card class="box-card">
-      <el-table :data="displayData" @row-click="rowClick">
+      <el-table :data="displayData">
         <el-table-column label="번호" prop="id"></el-table-column>
         <el-table-column label="제목" prop="title"></el-table-column>
         <el-table-column label="내용" prop="component"></el-table-column>
         <el-table-column label="작성자" prop="name"></el-table-column>
-        <el-table-column label="작성일" prop="created_at"></el-table-column>
+        <el-table-column label="작성일" prop="createdat">
+          <template slot-scope="scope">
+            {{ formatDate(scope.row.createdat) }}
+          </template>
+        </el-table-column>
       </el-table>
       <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
       <div class="Notice_write">
@@ -28,6 +32,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   name : 'Notice',
   data() {
@@ -74,6 +80,9 @@ export default {
     handleCurrentChange(val) {
       this.page = val;
     },
+    formatDate(date) {
+      return moment(date).format('YYYY-MM-DD HH:mm:ss');
+    }
   },
   mounted() {
     this.getData();

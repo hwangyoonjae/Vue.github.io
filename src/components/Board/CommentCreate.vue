@@ -41,7 +41,7 @@ export default {
         user_id: 1,
         content_id: this.contentId,
         context: this.context,
-        created_at: "2019-04-19 14:11:11",
+        createdat: "2019-04-19 14:11:11",
         updated_at: null
       });
       this.reloadComments();
@@ -55,7 +55,7 @@ export default {
         comment_id: this.commentId,
         user_id: 1,
         context: this.context,
-        created_at: "2019-04-19 16:22:11",
+        createdat: "2019-04-19 16:22:11",
         updated_at: null
       });
       this.reloadSubComments();

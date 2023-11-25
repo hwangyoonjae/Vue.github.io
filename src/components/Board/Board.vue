@@ -24,7 +24,7 @@ export default {
           label: '제목',
         },
         {
-          key: 'created_at',
+          key: 'createdat',
           label: '등록일'
         },
         {

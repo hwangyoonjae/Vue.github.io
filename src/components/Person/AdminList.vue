@@ -16,7 +16,7 @@
         <el-table-column label="아이디" prop="id"></el-table-column>
         <el-table-column label="이름" prop="name"></el-table-column>
         <el-table-column label="이메일" prop="email"></el-table-column>
-        <el-table-column label="등록일" prop="created_at"></el-table-column>
+        <el-table-column label="등록일" prop="createdat"></el-table-column>
         <el-table-column label="수정일" prop="updated_at"></el-table-column>
       </el-table>
       <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"></el-pagination>

@@ -16,7 +16,7 @@
         <el-table-column label="담당자" prop="name"></el-table-column>
         <el-table-column label="상태" prop="state"></el-table-column>
         <el-table-column label="우선순위" prop="level"></el-table-column>
-        <el-table-column label="작성일" prop="created_at"></el-table-column>
+        <el-table-column label="작성일" prop="createdat"></el-table-column>
         <el-table-column label="수정일" prop="updated_at"></el-table-column>
         <el-table-column label="구분" prop="division"></el-table-column>
       </el-table>

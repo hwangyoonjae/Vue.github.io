@@ -202,10 +202,10 @@
                   </template>
                 </el-table-column>
                 <el-table-column prop="category" label="신청구분"></el-table-column>
-                <el-table-column prop="created_at" label="진행날짜"></el-table-column>
+                <el-table-column prop="createdat" label="진행날짜"></el-table-column>
                 <el-table-column prop="startDate" label="시작시간"></el-table-column>
                 <el-table-column prop="endDate" label="종료시간"></el-table-column>
-                <el-table-column prop="created_at" label="작성일"></el-table-column>
+                <el-table-column prop="createdat" label="작성일"></el-table-column>
               </el-table>
             </div>
           </el-card>
@@ -328,7 +328,7 @@ export default {
           id: '',
           type: '',
           category: '',
-          created_at: '',
+          createdat: '',
           startDate: '',
           endDate: ''
         }

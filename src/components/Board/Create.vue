@@ -55,7 +55,7 @@ export default {
         user_id: this.userId,
         title: this.subject,
         context: this.context,
-        created_at: this.createdAt,
+        createdat: this.createdAt,
         updated_at: null
       })
       this.$router.push({

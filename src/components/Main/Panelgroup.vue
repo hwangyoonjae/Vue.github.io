@@ -43,11 +43,11 @@
       <div class="col-lg-3 mb-3">
         <div class="card-panel" @click="timetablego">
           <div class="card-panel-icon-wrapper icon-issue">
-            <i class="el-icon-date card-panel-icon"></i>
+            <i class="el-icon-document-checked card-panel-icon"></i>
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              일정확인
+              신청내역
             </div>
             <count-to :start-val="0" :end-val="this.Issuelist.length" :duration="2600" class="card-panel-num" />
           </div>
