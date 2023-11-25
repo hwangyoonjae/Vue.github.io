@@ -7,7 +7,7 @@
             <span>근태신청하기</span>
           </div>
           <div class="grid_content_input">
-            <el-form :model="Apply_form" label-position="top" ref="Apply_form">
+            <el-form :model="Apply_form" label-position="top" ref="Apply_form" :rules="rules">
               <el-form-item label="항목">
                 <el-input v-model="Apply_form.category" placeholder="회의, 외근, 외출 입력"></el-input>
               </el-form-item>

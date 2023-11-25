@@ -7,17 +7,17 @@
             <span>출/퇴근하기</span>
           </div>
           <div class="grid_content_input">
-            <el-form :model="Comuute_form" ref="Comuute_form" label-position="top" label-width="120px">
-              <el-form-item label="부서" prop="depart">
+            <el-form :model="Comuute_form" ref="Comuute_form" label-position="top" label-width="120px" rules="rules">
+              <el-form-item label="부서" prop="checkDepart">
                 <el-input v-model="Comuute_form.depart"></el-input>
               </el-form-item>
-              <el-form-item label="이름" prop="name">
+              <el-form-item label="이름" prop="checkName">
                 <el-input v-model="Comuute_form.name"></el-input>
               </el-form-item>
-              <el-form-item label="직책" prop="position">
+              <el-form-item label="직책" prop="checkPosition">
                 <el-input v-model="Comuute_form.position"></el-input>
               </el-form-item>
-              <el-form-item label="상태구분" prop="state">
+              <el-form-item label="상태구분" prop="checkState">
                 <el-select v-model="Comuute_form.state" placeholder="구분">
                   <el-option label="출근" value="출근"></el-option>
                   <el-option label="퇴근" value="퇴근"></el-option>
@@ -41,6 +41,26 @@ import data from '@/data'
 export default {
   name: 'Commute',
   data() {
+    var checkname = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('이름을 입력하세요.'));
+      }
+    };
+    var checkdepart = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('부서를 입력하세요.'));
+      }
+    };
+    var checkdeposition = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('직책을 입력하세요.'));
+      }
+    };
+    var checkstate = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('직책을 입력하세요.'));
+      }
+    };
     return {
       Comuute_form : {
         depart : '',
@@ -48,6 +68,20 @@ export default {
         state : '',
         position: '',
       },
+      rules: {
+        checkName: [
+          { required: true, validator: checkname, trigger: 'blur' }
+        ],
+        checkDepart: [
+          { required: true, validator: checkdepart, trigger: 'blur' }
+        ],
+        checkPosition: [
+          { required: true, validator: checkdeposition, trigger: 'blur' }
+        ],
+        checkState: [
+          { required: true, validator: checkstate, trigger: 'blur' }
+        ],
+      }
     }
   },
   created() {
