@@ -69,8 +69,8 @@
             <div class="main">
               <div class="timeline-container">
               <el-timeline :reverse="reverse">
-                <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp">
-                  {{activity.content}}
+                <el-timeline-item v-for="(activity, index) in Attendancelist" :key="index" :timestamp="formatTimestamp(activity.createdat)">
+                  {{activity.name}}
                 </el-timeline-item>
               </el-timeline>
               </div>
@@ -175,7 +175,7 @@ export default {
       confirmationMessage: '출근전',
       activities: [
         {
-          content: ' ',
+          state: ' ',
           timestamp: ' '
         }
       ]
@@ -253,6 +253,9 @@ export default {
         console.log(result.data)
         this.items = result.data
       })
+    },
+    formatTimestamp(date) {
+      return moment(date).format('YYYY-MM-DD HH:mm:ss');
     },
     formatDate(date) {
       return moment(date).format('YYYY-MM-DD');
