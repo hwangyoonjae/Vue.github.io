@@ -22,7 +22,6 @@
           <el-input v-model="ruleForm.email" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
-          <!--<el-button type="primary" @click="updateMode ? updateContent() : uploadContent()">회원가입</el-button>-->
           <el-button type="primary" @click="submitSignupForm('ruleForm')">회원가입</el-button>
           <el-button @click="resetForm('ruleForm')">초기화</el-button>
         </el-form-item>
@@ -37,18 +36,19 @@
 	  		<el-form-item label="비밀번호" prop="pass">
           <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
+			  <a href="#">비밀번호를 잊으셨나요?</a>
         <el-button type="primary" @click="submitLoginForm('ruleForm')">로그인</el-button>
 		  </el-form>
 	  </div>
 	  <div class="overlay-container">
 		  <div class="overlay">
 			  <div class="overlay-panel overlay-left">
-				  <h1 style="color: white;">어서와요!</h1>
+				  <h1>어서와요!</h1>
 				  <p>계정이 존재하면 지금 바로 로그인 하세요.</p>
 				  <button class="ghost" id="signIn">로그인</button>
 			  </div>
 			  <div class="overlay-panel overlay-right">
-				  <h1 style="color: white;">환영합니다!</h1>
+				  <h1>환영합니다!</h1>
 				  <p>계정을 만들고 우리 서비스의 일부가 되세요.</p>
 				  <button class="ghost" id="signUp">회원가입</button>
 			  </div>
@@ -209,7 +209,7 @@ export default {
           id: this.ruleForm.id,
           name: this.ruleForm.name,
           email: this.ruleForm.email,
-          createdat: '2018-09-11 11:42:11',
+          created_at: '2018-09-11 11:42:11',
           updated_at: '2022-01-26 11:42:11'
         })
         this.$router.push({
@@ -221,7 +221,7 @@ export default {
           id: this.ruleForm.id,
           name: this.ruleForm.name,
           email: this.ruleForm.email,
-          createdat: '2018-09-11 11:42:11'
+          created_at: '2018-09-11 11:42:11'
         })
         this.$router.push({
           path: '/userlist'
