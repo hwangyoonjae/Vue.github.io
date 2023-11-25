@@ -52,88 +52,6 @@
                   <span>퇴근하기</span>
                 </div>
               </div>
-
-              <!-- 회의, 외출, 외근 버튼 영역 -->
-              <div class="checkOther_components">
-                <el-button @click="showMeetingDialog">회의 신청</el-button>
-                <el-dialog :visible.sync="dialogVisible" title="회의 신청" width="30%">
-                  <!-- 다이얼로그 내용 입력 폼 -->
-                  <el-form :model="meetingForm" label-position="top" ref="meetingForm">
-                    <el-form-item label="형식">
-                      <el-input v-model="meetingForm.type" :disabled="true" placeholder="회의"></el-input>
-                    </el-form-item>
-                    <el-form-item label="날짜">
-                      <el-date-picker v-model="meetingForm.date" type="date" placeholder="진행"></el-date-picker>
-                    </el-form-item>
-                    <el-form-item label="시작 시간">
-                      <el-time-picker v-model="meetingForm.startTime" :picker-options="timePickerOptions" placeholder="시간 선택"></el-time-picker>
-                    </el-form-item>
-                    <el-form-item label="종료 시간">
-                      <el-time-picker v-model="meetingForm.endTime" :picker-options="timePickerOptions" placeholder="종료 시간 선택"></el-time-picker>
-                    </el-form-item>
-                    <el-form-item label="장소">
-                      <el-input v-model="meetingForm.location" placeholder="장소 입력"></el-input>
-                    </el-form-item>
-                    <el-form-item label="내용">
-                      <el-input v-model="meetingForm.reason" type="textarea" placeholder="회의 사유 입력"></el-input>
-                    </el-form-item>
-                  </el-form>
-                  <span slot="footer" class="dialog-footer">
-                    <el-button @click="dialogVisible=false">취소</el-button>
-                    <el-button type="primary" @click="startMeeting('meetingForm')">신청</el-button>
-                  </span>
-                </el-dialog>
-                <el-button @click="showGoOutDialog">외출 신청</el-button>
-                <el-dialog :visible.sync="goOutDialogVisible" title="외출 신청" width="30%">
-                  <!-- 다이얼로그 내용 입력 폼 -->
-                  <el-form :model="goOutForm" label-position="top" ref="goOutForm">
-                    <el-form-item label="형식">
-                      <el-input v-model="goOutForm.type" :disabled="true" placeholder="외출"></el-input>
-                    </el-form-item>
-                    <el-form-item label="날짜">
-                      <el-date-picker v-model="goOutForm.date" type="date" placeholder="날짜 선택"></el-date-picker>
-                    </el-form-item>
-                    <el-form-item label="시작 시간">
-                      <el-time-picker v-model="goOutForm.startTime" :picker-options="timePickerOptions" placeholder="시간 선택"></el-time-picker>
-                    </el-form-item>
-                    <el-form-item label="종료 시간">
-                      <el-time-picker v-model="goOutForm.endTime" :picker-options="timePickerOptions" placeholder="종료 시간 선택"></el-time-picker>
-                    </el-form-item>
-                    <el-form-item label="내용">
-                      <el-input v-model="goOutForm.reason" type="textarea" placeholder="외출 사유 입력"></el-input>
-                    </el-form-item>
-                  </el-form>
-                  <span slot="footer" class="dialog-footer">
-                    <el-button @click="goOutDialogVisible=false">취소</el-button>
-                    <el-button type="primary" @click="submitGoOutRequest('goOutForm')">신청</el-button>
-                  </span>
-                </el-dialog>
-                <el-button @click="showRemoteWorkDialog">외근 신청</el-button>
-                <el-dialog :visible.sync="remoteWorkDialogVisible" title="외근 신청" width="30%">
-                  <!-- 다이얼로그 내용 입력 폼 -->
-                  <el-form :model="remoteWorkForm" label-position="top" ref="remoteWorkForm">
-                    <el-form-item label="형식">
-                      <el-input v-model="remoteWorkForm.type" :disabled="true" placeholder="외근"></el-input>
-                    </el-form-item>
-                    <el-form-item label="날짜">
-                      <el-date-picker v-model="remoteWorkForm.date" type="date" placeholder="날짜 선택"></el-date-picker>
-                    </el-form-item>
-                    <el-form-item label="시작 시간">
-                      <el-time-picker v-model="remoteWorkForm.startTime" :picker-options="timePickerOptions" placeholder="시작 시간 선택"></el-time-picker>
-                    </el-form-item>
-                    <el-form-item label="종료 시간">
-                      <el-time-picker v-model="remoteWorkForm.endTime" :picker-options="timePickerOptions" placeholder="종료 시간 선택"></el-time-picker>
-                    </el-form-item>
-                      <el-form-item label="내용">
-                      <el-input v-model="remoteWorkForm.reason" type="textarea" placeholder="외근 사유 입력(고객사 입력 필요)"></el-input>
-                    </el-form-item>
-                  </el-form>
-                  <span slot="footer" class="dialog-footer">
-                    <el-button @click="remoteWorkDialogVisible=false">취소</el-button>
-                    <el-button type="primary" @click="submitRemoteWorkRequest('remoteWorkForm')">신청</el-button>
-                  </span>
-                </el-dialog>
-              </div>
             </div>
           </el-card>
         </div>
@@ -166,16 +84,19 @@
           <el-card style="height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-date"></i>
-              주간테이블
+              근태현황
             </div>
             <div>
-              <el-table :data="timetableData" height="200" style="width: 100%" border>
-                <el-table-column prop="time" label="시간" width="180"></el-table-column>
-                <el-table-column prop="mon" label="월"></el-table-column>
-                <el-table-column prop="tue" label="화"></el-table-column>
-                <el-table-column prop="wed" label="수"></el-table-column>
-                <el-table-column prop="thu" label="목"></el-table-column>
-                <el-table-column prop="fri" label="금"></el-table-column>
+              <el-table :data="attendanceData" height="200" style="width: 100%" border>
+                <el-table-column prop="name" label="이름"></el-table-column>
+                <el-table-column prop="depart" label="부서"></el-table-column>
+                <el-table-column prop="position" label="직책"></el-table-column>
+                <el-table-column prop="state" label="근태여부"></el-table-column>
+                <el-table-column prop="createdat" label="근태시간">
+                  <template slot-scope="scope">
+                    {{ formatDate(scope.row.createdat) }}
+                  </template>
+                </el-table-column>
               </el-table>
             </div>
           </el-card>
@@ -192,20 +113,28 @@
               근태신청내역
             </div>
             <div>
-              <el-table :data="attendanceData" height="200" style="width: 100%" border>
-                <el-table-column prop="type" label="신청항목">
-                  <template slot-scope="{ row }">
-                    <!-- 여기서 row.type에는 'meeting', 'goOut', 'remoteWork' 등이 들어가도록 서버에서 데이터를 보내주어야 합니다. -->
-                    <span v-if="row.type === 'meeting'">회의</span>
-                    <span v-else-if="row.type === 'goOut'">외출</span>
-                    <span v-else-if="row.type === 'remoteWork'">외근</span>
+              <el-table :data="displayData" height="200" style="width: 100%" border>
+                <el-table-column prop="category" label="신청항목"></el-table-column>
+                <el-table-column prop="proceedDate" label="진행날짜">
+                  <template slot-scope="scope">
+                    {{ formatDate(scope.row.createdat) }}
                   </template>
                 </el-table-column>
-                <el-table-column prop="category" label="신청구분"></el-table-column>
-                <el-table-column prop="createdat" label="진행날짜"></el-table-column>
-                <el-table-column prop="startDate" label="시작시간"></el-table-column>
-                <el-table-column prop="endDate" label="종료시간"></el-table-column>
-                <el-table-column prop="createdat" label="작성일"></el-table-column>
+                <el-table-column prop="startDate" label="시작시간">
+                  <template slot-scope="scope">
+                    {{ formatTime(scope.row.createdat) }}
+                  </template>
+                </el-table-column>
+                <el-table-column prop="endDate" label="종료시간">
+                  <template slot-scope="scope">
+                    {{ formatTime(scope.row.createdat) }}
+                  </template>
+                </el-table-column>
+                <el-table-column prop="createdat" label="작성일">
+                  <template slot-scope="scope">
+                    {{ formatDate(scope.row.createdat) }}
+                  </template>
+                </el-table-column>
               </el-table>
             </div>
           </el-card>
@@ -217,6 +146,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 import PanelGroup from './panelgroup.vue'
 import Project from '../Project/Project.vue'
 import ProjectChart from '../Project/Chart.vue'
@@ -233,6 +164,10 @@ export default {
   },
   data() {
     return {
+      items: '',
+      Attendancelist: '',
+      page: 1,
+      pageSize: 10,
       Detail: true,
       chart: false,
       serverTime: '',
@@ -243,96 +178,17 @@ export default {
           content: ' ',
           timestamp: ' '
         }
-      ],
-      // 회의 시작 다이얼로그의 표시 여부를 제어하는 변수
-      dialogVisible: false,
-      meetingForm: [
-        {
-          type: '',
-          date: '',
-          startTime: '', // 시작시간
-          endTime: '',
-          location: '', // 입력한 장소
-          reason: '' // 외근 사유
-        }
-      ],
-      timePickerOptions: [
-        {
-        selectableRange: '09:00:00 - 18:00:00', // 예시 시간 범위, 필요에 따라 수정
-        }
-      ],
-      // 외출 신청 다이얼로그의 표시 여부를 제어하는 변수
-      goOutDialogVisible: false,
-      goOutForm: [
-        {
-          type: '',
-          date: '',
-          startTime: '', // 시작시간
-          endTime: '',
-          location: '', // 입력한 장소
-          reason: '' // 외근 사유
-        }
-      ],
-      // 시간 선택용 옵션
-      timePickerOptions: {
-        selectableRange: '09:00:00 - 18:00:00', // 예시 시간 범위, 필요에 따라 수정
-      },
-      // 외근 신청 다이얼로그의 표시 여부를 제어하는 변수
-      remoteWorkDialogVisible: false,
-      remoteWorkForm: [
-        {
-          type: '',
-          date: '',
-          startTime: '', // 시작시간
-          endTime: '',
-          location: '', // 입력한 장소
-          reason: '' // 외근 사유
-        },
-      ],
-      timetableData: [
-        {
-          time: '근무시간',
-          mon: '08:00',
-          tue: '08:21',
-          wed: '09:00',
-          thu: '08:45',
-          fri: '-',
-        },
-        {
-          time: '연장근무시간',
-          mon: '08:00',
-          tue: '08:21',
-          wed: '09:00',
-          thu: '08:45',
-          fri: '-',
-        },
-        {
-          time: '총 근무시간',
-          mon: '08:00',
-          tue: '08:21',
-          wed: '09:00',
-          thu: '08:45',
-          fri: '-',
-        },
-        {
-          time: '상태',
-          mon: '정상처리',
-          tue: '정상처리',
-          wed: '정상처리',
-          thu: '정상처리',
-          fri: '-',
-        },
-      ],
-      attendanceData: [
-        {
-          id: '',
-          type: '',
-          category: '',
-          createdat: '',
-          startDate: '',
-          endDate: ''
-        }
       ]
+    }
+  },
+  computed: {
+    displayData() {        
+      if (!this.items || this.items.length === 0) return [];
+        return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
+    },
+    attendanceData() {        
+      if (!this.Attendancelist || this.Attendancelist.length === 0) return [];
+        return this.Attendancelist.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
     }
   },
   methods: {
@@ -350,7 +206,7 @@ export default {
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
   
-      // 24시간 형식으로 시간을 변경합니다.
+      // 24시간 항목으로 시간을 변경합니다.
       const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
       this.serverTime = formattedTime;
     },
@@ -368,20 +224,6 @@ export default {
       const content = action === 'checkIn' ? `출근` : `퇴근`;
       this.activities.push({ content, timestamp: formattedTimestamp });
     },
-    rowClassName({ row }) {
-      if (row.status === '미결재') {
-        return 'unprocessed-row';
-      } else if (row.status === '결재 완료') {
-        return 'processed-row';
-      }
-      return ''; // 기본 클래스
-    },
-    requestOvertime() {
-      // 연장근무 신청 로직을 여기에 추가
-    },
-    requestLeave() {
-      // 휴(무)일 근무 신청 로직을 여기에 추가
-    },
     checkattendancego() {
       this.$router.push({
         path: '/checkattendance'
@@ -390,106 +232,33 @@ export default {
     showMeetingDialog() {
       this.dialogVisible = true;
     },
-    startMeeting() {
-      this.dialogVisible = false;
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('등록되었습니다.');
-          const baseURI = 'http://localhost:8443';
-          var data = {
-            type : this.startMeeting.type,
-            category : this.startMeeting.category,
-            startDate : this.startMeeting.startDate,
-            endDate : this.startMeeting.endDate
-          }
-          this.$axios.post(`${baseURI}/api/applicationpost`, data)
-          .then(result => {
-            console.log(result)
-            this.$router.push({
-              path: '/main'
-            })
-          })
-          .catch(error => {
-            console.log(error)
-          })
-        } else {
-            console.log('error submit!!');
-            return false;
-          }
-        }
-      );
-    },
     showGoOutDialog() {
       this.goOutDialogVisible = true;
-    },
-    submitGoOutRequest() {
-      this.goOutDialogVisible = false;
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('등록되었습니다.');
-          const baseURI = 'http://localhost:8443';
-          var data = {
-            type : this.submitGoOutRequest.type,
-            category : this.submitGoOutRequest.category,
-            startDate : this.submitGoOutRequest.startDate,
-            endDate : this.submitGoOutRequest.endDate
-          }
-          this.$axios.post(`${baseURI}/api/applicationpost`, data)
-          .then(result => {
-            console.log(result)
-            this.$router.push({
-              path: '/main'
-            })
-          })
-          .catch(error => {
-            console.log(error)
-          })
-        } else {
-            console.log('error submit!!');
-            return false;
-          }
-        }
-      );
     },
     showRemoteWorkDialog() {
       this.remoteWorkDialogVisible = true;
     },
-    submitRemoteWorkRequest() {
-      this.remoteWorkDialogVisible = false;
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('등록되었습니다.');
-          const baseURI = 'http://localhost:8443';
-          var data = {
-            type : this.submitRemoteWorkRequest.type,
-            category : this.submitRemoteWorkRequest.category,
-            startDate : this.submitRemoteWorkRequest.startDate,
-            endDate : this.submitRemoteWorkRequest.endDate
-          }
-          this.$axios.post(`${baseURI}/api/applicationpost`, data)
-          .then(result => {
-            console.log(result)
-            this.$router.push({
-              path: '/main'
-            })
-          })
-          .catch(error => {
-            console.log(error)
-          })
-        } else {
-            console.log('error submit!!');
-            return false;
-          }
-        }
-      );
+    getcheckData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/checkattendancelist`)
+      .then(result => {
+        console.log(result.data)
+        this.Attendancelist = result.data
+      })
     },
     getData: function() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/api/applicationlist`)
+      this.$axios.get(`${baseURI}/api/applylist`)
       .then(result => {
         console.log(result.data)
         this.items = result.data
       })
+    },
+    formatDate(date) {
+      return moment(date).format('YYYY-MM-DD');
+    },
+    formatTime(date) {
+      return moment(date).format('HH:mm:ss');
     }
   },
   created() {
@@ -498,12 +267,12 @@ export default {
   },
   mounted() {
     this.getData();
+    this.getcheckData();
   }
 }
 </script>
 
 <style scoped>
-
 .Main_Component {
   width: 100%;
   padding: 32px;

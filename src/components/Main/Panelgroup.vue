@@ -2,7 +2,7 @@
   <div class="Panelgroup_Component">
     <div class="row">
       <div class="col-lg-3 mb-3">
-        <div class="card-panel" @click="checkattendancego">
+        <div class="card-panel">
           <div class="card-panel-icon-wrapper icon-project">
             <i class="el-icon-s-cooperation card-panel-icon"></i>
           </div>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel" @click="usergo">
+        <div class="card-panel">
           <div class="card-panel-icon-wrapper icon-people">
             <i class="el-icon-s-custom card-panel-icon"></i>
           </div>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel" @click="noticetgo">
+        <div class="card-panel">
           <div class="card-panel-icon-wrapper icon-notice">
             <i class="el-icon-bell card-panel-icon"></i>
           </div>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel" @click="timetablego">
+        <div class="card-panel">
           <div class="card-panel-icon-wrapper icon-issue">
             <i class="el-icon-document-checked card-panel-icon"></i>
           </div>
@@ -49,7 +49,7 @@
             <div class="card-panel-text">
               신청내역
             </div>
-            <count-to :start-val="0" :end-val="this.Issuelist.length" :duration="2600" class="card-panel-num" />
+            <count-to :start-val="0" :end-val="this.Applylist.length" :duration="2600" class="card-panel-num" />
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default {
     return {
       Checkattendance: '',
       Issuelist: '',
-      Issuelistrequest: '',
+      Applylist: '',
       Noticelist: '',
       Userlist: '',
       project : project[0].number,
@@ -83,26 +83,6 @@ export default {
     }
   },
   methods: {
-    checkattendancego() {
-      this.$router.push({
-        path: '/checkattendance'
-      })
-    },
-    usergo() {
-      this.$router.push({
-        path: '/employeelist'
-      })
-    },
-    noticetgo() {
-      this.$router.push({
-        path: '/notice'
-      })
-    },
-    timetablego() {
-      this.$router.push({
-        path: '/timetable'
-      })
-    },
     getnoticelistData: function() {
       const baseURI = 'http://localhost:8443';
       this.$axios.get(`${baseURI}/api/noticelist`)
@@ -119,12 +99,12 @@ export default {
         this.Checkattendance = result.data
       })
     },
-    getissuerequestData() {
+    getapplylistData() {
       const baseURI = 'http://localhost:8443';
-      this.$axios.get(`${baseURI}/api/request`)
+      this.$axios.get(`${baseURI}/api/applylist`)
       .then(result => {
         console.log(result.data)
-        this.Issuelistrequest = result.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+        this.Applylist = result.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
       })
     },
     getuserData() {
@@ -138,7 +118,7 @@ export default {
   },
   mounted() {
     this.getcheckattendanceData();
-    this.getissuerequestData();
+    this.getapplylistData();
     this.getnoticelistData();
     this.getuserData();
   },

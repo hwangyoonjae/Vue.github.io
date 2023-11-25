@@ -10,13 +10,13 @@
       </div>
     </el-card>
     <el-card class="box-card">
-      <el-table :data="displayData" @row-click="rowClick">
+      <el-table :data="displayData">
         <el-table-column label="번호" prop="id"></el-table-column>
         <el-table-column label="이름" prop="name"></el-table-column>
         <el-table-column label="부서" prop="depart"></el-table-column>
         <el-table-column label="직책" prop="position"></el-table-column>
         <el-table-column label="근태여부" prop="state"></el-table-column>
-        <el-table-column label="시간" prop="createdat">
+        <el-table-column label="근태시간" prop="createdat">
           <template slot-scope="scope">
             {{ formatDate(scope.row.createdat) }}
           </template>
@@ -60,11 +60,6 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
-    },
-    rowClick(item, index, e) {
-      this.$router.push({
-        path: `checkattendance/detail/${item.number}`
-      })
     },
     writeContent(index, row) {
       this.$router.push({

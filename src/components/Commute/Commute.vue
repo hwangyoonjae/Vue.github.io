@@ -7,7 +7,7 @@
             <span>출/퇴근하기</span>
           </div>
           <div class="grid_content_input">
-            <el-form :model="Comuute_form" ref="Comuute_form" label-width="120px">
+            <el-form :model="Comuute_form" ref="Comuute_form" label-position="top" label-width="120px">
               <el-form-item label="부서" prop="depart">
                 <el-input v-model="Comuute_form.depart"></el-input>
               </el-form-item>

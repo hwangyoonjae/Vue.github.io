@@ -9,15 +9,19 @@
       <i class="el-icon-postcard"></i>
       <span slot="title">출/퇴근하기</span>
     </el-menu-item>
-    <el-menu-item index="3" @click="noticego">
+    <el-menu-item index="3" @click="applycommutego">
+      <i class="el-icon-document-checked"></i>
+      <span slot="title">근태신청</span>
+    </el-menu-item>
+    <el-menu-item index="4" @click="noticego">
       <i class="el-icon-bell"></i>
       <span slot="title">공지사항</span>
     </el-menu-item>
-    <el-menu-item index="4" @click="checkattendancego">
+    <el-menu-item index="5" @click="checkattendancego">
       <i class="el-icon-circle-check"></i>
       <span slot="title">근태확인</span>
     </el-menu-item>
-    <el-menu-item index="5" @click="employeelistgo">
+    <el-menu-item index="6" @click="employeelistgo">
         <i class="el-icon-user-solid"></i>
         <span>사원리스트</span>
       </el-menu-item>
@@ -43,6 +47,11 @@ export default {
     commutego() {
       this.$router.push({
         path: '/commute'
+      })
+    },
+    applycommutego() {
+      this.$router.push({
+        path: '/applycommute'
       })
     },
     noticego() {

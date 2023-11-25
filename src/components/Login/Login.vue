@@ -37,19 +37,18 @@
 	  		<el-form-item label="비밀번호" prop="pass">
           <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
-			  <a href="#">비밀번호를 잊으셨나요?</a>
         <el-button type="primary" @click="submitLoginForm('ruleForm')">로그인</el-button>
 		  </el-form>
 	  </div>
 	  <div class="overlay-container">
 		  <div class="overlay">
 			  <div class="overlay-panel overlay-left">
-				  <h1>어서와요!</h1>
+				  <h1 style="color: white;">어서와요!</h1>
 				  <p>계정이 존재하면 지금 바로 로그인 하세요.</p>
 				  <button class="ghost" id="signIn">로그인</button>
 			  </div>
 			  <div class="overlay-panel overlay-right">
-				  <h1>환영합니다!</h1>
+				  <h1 style="color: white;">환영합니다!</h1>
 				  <p>계정을 만들고 우리 서비스의 일부가 되세요.</p>
 				  <button class="ghost" id="signUp">회원가입</button>
 			  </div>
