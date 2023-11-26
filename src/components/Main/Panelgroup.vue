@@ -2,7 +2,7 @@
   <div class="Panelgroup_Component">
     <div class="row">
       <div class="col-lg-3 mb-3">
-        <div class="card-panel">
+        <div class="card-panel" @click="checkattendancego">
           <div class="card-panel-icon-wrapper icon-project">
             <i class="el-icon-s-cooperation card-panel-icon"></i>
           </div>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel">
+        <div class="card-panel" @click="usergo">
           <div class="card-panel-icon-wrapper icon-people">
             <i class="el-icon-s-custom card-panel-icon"></i>
           </div>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel">
+        <div class="card-panel" @click="noticetgo">
           <div class="card-panel-icon-wrapper icon-notice">
             <i class="el-icon-bell card-panel-icon"></i>
           </div>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="col-lg-3 mb-3">
-        <div class="card-panel">
+        <div class="card-panel" @click="applycommutego">
           <div class="card-panel-icon-wrapper icon-issue">
             <i class="el-icon-document-checked card-panel-icon"></i>
           </div>
@@ -83,6 +83,26 @@ export default {
     }
   },
   methods: {
+    checkattendancego() {
+      this.$router.push({
+        path: '/checkattendance'
+      })
+    },
+    usergo() {
+      this.$router.push({
+        path: '/employeelist'
+      })
+    },
+    noticetgo() {
+      this.$router.push({
+        path: '/notice'
+      })
+    },
+    applycommutego() {
+      this.$router.push({
+        path: '/applycommute'
+      })
+    },
     getnoticelistData: function() {
       const baseURI = 'http://localhost:8443';
       this.$axios.get(`${baseURI}/api/noticelist`)

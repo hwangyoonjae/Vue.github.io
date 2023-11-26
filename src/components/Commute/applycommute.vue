@@ -1,128 +1,163 @@
 <template>
-  <div class="Projectwrite_component">
-    <el-row>
-      <el-col :span="16">
-        <el-card>
-          <div slot="header" class="clearfix">
-            <span>근태신청하기</span>
-          </div>
-          <div class="grid_content_input">
-            <el-form :model="Apply_form" label-position="top" ref="Apply_form" :rules="rules">
-              <el-form-item label="항목">
-                <el-input v-model="Apply_form.category" placeholder="회의, 외근, 외출 입력"></el-input>
-              </el-form-item>
-              <el-form-item label="날짜">
-                <el-date-picker v-model="Apply_form.proceedDate" type="date" placeholder="진행"></el-date-picker>
-              </el-form-item>
-              <el-form-item label="시작 시간">
-                <el-time-picker v-model="Apply_form.startDate" :picker-options="timePickerOptions" placeholder="시간 선택"></el-time-picker>
-              </el-form-item>
-              <el-form-item label="종료 시간">
-                <el-time-picker v-model="Apply_form.endDate" :picker-options="timePickerOptions" placeholder="종료 시간 선택"></el-time-picker>
-              </el-form-item>
-              <el-form-item label="내용">
-                <el-input v-model="Apply_form.reason" type="textarea" placeholder="회의, 외근, 외출 사유 입력(외근 시 고객사명도 기입 바람.)"></el-input>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="success" @click="uploadContent('Apply_form')">등록하기</el-button>
-                <el-button type="danger" @click="cancle">취소하기</el-button>
-              </el-form-item>
-            </el-form>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+  <div class="Attendance_component">
+    <el-card class="box-card">
+      <div class="Attendance_component_search">
+        <el-select v-model="value" placeholder="전체">
+          <el-option v-for="items in options" :key="items.value" :label="items.label" :value="items.value"></el-option>
+        </el-select>
+        <el-input placeholder="검색하세요" v-model="input"></el-input>
+        <el-button type="primary" icon="el-icon-search" @click="searchData">검색</el-button>
+      </div>
+    </el-card>
+    <el-card class="box-card">
+      <el-table :data="displayData">
+        <el-table-column label="번호" prop="id"></el-table-column>
+        <el-table-column prop="category" label="신청항목"></el-table-column>
+        <el-table-column prop="name" label="이름"></el-table-column>
+        <el-table-column prop="depart" label="부서"></el-table-column>
+        <el-table-column prop="proceedDate" label="진행날짜">
+          <template slot-scope="scope">
+            {{ formatDate(scope.row.proceedDate) }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="startDate" label="시작시간">
+          <template slot-scope="scope">
+            {{ formatTime(scope.row.startDate) }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="endDate" label="종료시간">
+          <template slot-scope="scope">
+            {{ formatTime(scope.row.endDate) }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="createdat" label="작성일">
+          <template slot-scope="scope">
+            {{ formatTimestamp(scope.row.createdat) }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="reason" label="신청사유"></el-table-column>
+      </el-table>
+      <el-pagination :page-size="pageSize" layout="prev, pager, next" @current-change="handleCurrentChange" :total="items.length"></el-pagination>
+    </el-card>
   </div>
 </template>
 
 <script>
-import data from '@/data'
+import moment from 'moment';
 
 export default {
-  name: 'Commute',
+  name : 'Attendance',
   data() {
     return {
-      Apply_form : {
-        category: '',
-        proceedDate: '',
-        createdat: '',
-        startDate: '', // 시작시간
-        endDate: '',
-        reason: '' // 외근 사유
-      },
-      timePickerOptions: [
-        {
-          selectableRange: '00:00:00 - 23:59:59' // 예시 시간 범위, 필요에 따라 수정
-        }
-      ]
+      items: '',
+      page: 1,
+      pageSize: 10,
+      options: [
+        { value: 'name', label: '이름' },
+        { value: 'category', label: '신청항목' }
+      ],
+      value: '',
+      input: ''
     }
   },
-  created() {
-    if (this.$route.params.number > 0) {
-      const number = Number(this.$route.params.number)
-      this.updateObject = data.ProjectContent.filter(item => item.number === number)[0]
-      this.depart = this.updateObject.depart;
-      this.name = this.updateObject.name;
-      this.position = this.updateObject.position;
-      this.state = this.updateObject.state;
+  computed: {
+    displayData() {        
+      if (!this.items || this.items.length === 0) return [];
+        return this.items.slice(this.pageSize * this.page - this.pageSize, this.pageSize * this.page)
     }
   },
-  methods:{
-    uploadContent(formName) {
-      this.dialogVisible = false;
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('등록되었습니다.');
-          const baseURI = 'http://localhost:8443';
-          var data = {
-            category : this.Apply_form.category,
-            proceedDate : this.Apply_form.proceedDate,
-            startDate : this.Apply_form.startDate,
-            endDate : this.Apply_form.endDate,
-            reason : this.Apply_form.reason
-          }
-          console.log(data)
-          this.$axios.post(`${baseURI}/api/applypost`, data)
-          .then(result => {
-            console.log(result)
-            this.$router.push({
-              path: '/main'
-            })
-          })
-          .catch(error => {
-            console.log(error)
-          })
-        } else {
-            console.log('error submit!!');
-            return false;
-          }
-        }
-      );
+  methods: {
+    handleEdit(index, row) {
+      console.log(index, row);
     },
-    cancle() {
+    handleDelete(index, row) {
+      console.log(index, row);
+    },
+    writeContent(index, row) {
       this.$router.push({
-        path: '/applycommute'
+        name: 'CheckattendanceWrite'
       })
     },
+    getData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/applylist`)
+      .then(result => {
+        console.log(result.data)
+        this.items = result.data
+      })
+    },
+    searchData() {
+      const baseURI = 'http://localhost:8443';
+      const searchField = this.value;
+      const searchTerm = this.input.toLowerCase();
+
+      if (!searchField) {
+        this.$message({
+          type: 'warning',
+          message: '검색 옵션을 선택하세요.',
+        });
+        return;
+      }
+      
+      // 검색 조건으로 백엔드에 Axios 요청
+      this.$axios.get(`${baseURI}/api/apllylist/search`, {
+        params: {
+          field: searchField,
+          term: searchTerm,
+        },
+      })
+      .then(result => {
+        console.log(result.data);
+        this.items = result.data;
+        // 검색 후 페이지네이션을 첫 번째 페이지로 리셋
+        this.page = 1;
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 오류 발생:', error);
+      });
+    },
+    handleCurrentChange(val) {
+      this.page = val;
+    },
+    formatTimestamp(date) {
+      return moment(date).format('YYYY-MM-DD HH:mm:ss');
+    },
+    formatDate(date) {
+      return moment(date).format('YYYY-MM-DD');
+    },
+    formatTime(date) {
+      return moment(date).format('HH:mm:ss');
+    }
+  },
+  mounted() {
+    this.getData();
   }
 }
 </script>
 
 <style scoped>
-.Projectwrite_component {
-  margin: 10px;
-}
-
-.clearfix {
-  color: #595959;
-  font-weight: 700;
-}
-
-.line {
-  text-align: center;
-}
+.Attendance_component {
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f2f5;
+  position: relative;
+} 
 
 .box-card {
   margin: 10px 0px;
+  text-align: center;
+}
+
+.Attendance_component_search {
+  display: flex;
+}
+
+.Attendance_component_search > * {
+  margin: 4px;
+}
+
+.Attendance_write {
+  text-align: right;
+  margin: 10px;
 }
 </style>

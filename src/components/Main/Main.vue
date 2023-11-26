@@ -11,13 +11,12 @@
               근무계획
             </div>
             <div class="main">
-              <div class="checkInTime">
+              <div class="checkInTime" style="margin-bottom: 20px;">
                 <h3>08:23분 출근</h3>
               </div>
-              <div class="workingHours">09:00 ~ 18:00 (소정근무 8시간)</div>
-              <div class="request_components">
-                <el-button @click="requestOvertime">연장근무 신청</el-button>
-                <el-button @click="requestLeave">휴(무)일 근무 신청</el-button>
+              <div class="workingHours" style="margin-bottom: 20px;">09:00 ~ 18:00 (소정근무 8시간)</div>
+              <div class="request_components" style="margin-bottom: 20px;">
+                <el-button @click="applycommutgo()">근태신청하기</el-button>
               </div>
             </div>
           </el-card>
@@ -32,24 +31,19 @@
               근무체크
             </div>
             <div class="main">
-              <div class="checkTime_components">
+              <div class="checkTime_components" style="margin-bottom: 20px;">
                 <div class="current-time">
-                  <h3>{{ serverTime }}</h3>
-                </div>
-                <div class="check">
-                  <el-button type="primary" size="medium" plain disabled>{{ confirmationMessage }}</el-button>
+                  <h3>현재시간 :{{ serverTime }}</h3>
                 </div>
               </div>
 
               <!-- 출근 및 퇴근 버튼 영역 -->
-              <div class="checkInOut_components">
-                <div class="checkInOut_components_checkIn" @click="showConfirmation('출근확인', 'checkIn')">
-                  <i class="el-icon-success"></i>
-                  <span>출근하기</span>
+              <div class="checkInOut_components" style="margin-bottom: 20px;">
+                <div class="checkInOut_components_checkIn">
+                  <el-button @click="commutego()">출근하기</el-button>
                 </div>
-                <div class="checkInOut_components_checkOut" @click="showConfirmation('퇴근확인', 'checkOut')">
-                  <i class="el-icon-circle-close"></i>
-                  <span>퇴근하기</span>
+                <div class="checkInOut_components_checkOut">
+                  <el-button @click="commutego()">퇴근하기</el-button>
                 </div>
               </div>
             </div>
@@ -110,24 +104,24 @@
           <el-card style="height: 300px;">
             <div slot="header" class="clearfix">
               <i class="el-icon-date"></i>
-              근태신청내역
+              근태신청현황
             </div>
             <div>
               <el-table :data="displayData" height="200" style="width: 100%" border>
                 <el-table-column prop="category" label="신청항목"></el-table-column>
                 <el-table-column prop="proceedDate" label="진행날짜">
                   <template slot-scope="scope">
-                    {{ formatDate(scope.row.createdat) }}
+                    {{ formatDate(scope.row.proceedDate) }}
                   </template>
                 </el-table-column>
                 <el-table-column prop="startDate" label="시작시간">
                   <template slot-scope="scope">
-                    {{ formatTime(scope.row.createdat) }}
+                    {{ formatTime(scope.row.startDate) }}
                   </template>
                 </el-table-column>
                 <el-table-column prop="endDate" label="종료시간">
                   <template slot-scope="scope">
-                    {{ formatTime(scope.row.createdat) }}
+                    {{ formatTime(scope.row.endDate) }}
                   </template>
                 </el-table-column>
                 <el-table-column prop="createdat" label="작성일">
@@ -210,33 +204,15 @@ export default {
       const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
       this.serverTime = formattedTime;
     },
-    showConfirmation(title, action) {
-      const now = new Date();
-      const formattedTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-      const formattedTimestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${formattedTime}`;
-      if (action === 'checkIn') {
-        alert("출근하였습니다.");
-        this.confirmationMessage = '퇴근전';
-      } else if (action === 'checkOut') {
-        alert("퇴근하였습니다.");
-        this.confirmationMessage = '출근전';
-      }
-      const content = action === 'checkIn' ? `출근` : `퇴근`;
-      this.activities.push({ content, timestamp: formattedTimestamp });
-    },
-    checkattendancego() {
+    applycommutgo() {
       this.$router.push({
-        path: '/checkattendance'
+        path: '/applycommutewrite'
       })
     },
-    showMeetingDialog() {
-      this.dialogVisible = true;
-    },
-    showGoOutDialog() {
-      this.goOutDialogVisible = true;
-    },
-    showRemoteWorkDialog() {
-      this.remoteWorkDialogVisible = true;
+    commutego() {
+      this.$router.push({
+        path: '/commute'
+      })
     },
     getcheckData: function() {
       const baseURI = 'http://localhost:8443';
@@ -289,9 +265,14 @@ export default {
   font-weight: bold;
 }
 .main {
+  width: 100%;
+  padding: 32px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* 수직 가운데 정렬을 위한 추가 */
+  margin: auto; /* 수평 가운데 정렬을 위한 추가 */
 }
 
 .request_components, .checkTime_components, .checkInOut_components, .checkOther_components {

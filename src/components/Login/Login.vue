@@ -110,7 +110,10 @@ export default {
         depart: '',
         email: ''
       },
-      userInfo: '',
+      userInfo: {
+        name: '',
+        depart: ''
+      },
       rules: {
         id: [
           { validator: validateId, trigger: 'blur' }
@@ -192,6 +195,23 @@ export default {
           }
         }
       );
+    },
+    userInfo(formName) {
+      const baseURI = 'http://localhost:8443';
+
+      // 사용자 정보를 가져오는 API 호출
+      this.$axios.get(`${baseURI}/api/userinfo`)
+      .then(result => {
+      // API 응답 데이터에서 사용자 정보를 가져와 할당
+      const userData = result.data;
+
+      // userInfo 객체에 사용자 정보 할당
+      this.userInfo.name = userData.name;
+      this.userInfo.depart = userData.depart;
+    })
+    .catch(error => {
+      console.error('사용자 정보를 가져오는 중 에러 발생:', error);
+    });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
