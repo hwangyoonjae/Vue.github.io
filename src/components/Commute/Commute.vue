@@ -1,5 +1,5 @@
 <template>
-  <div class="Projectwrite_component">
+  <div class="Commute_component">
     <el-row>
       <el-col :span="16">
         <el-card>
@@ -125,15 +125,15 @@ export default {
     },
     cancle() {
       this.$router.push({
-        path: '/commute'
+        path: '/main'
       })
-    },
+    }
   }
 }
 </script>
 
 <style scoped>
-.Projectwrite_component {
+.Commute_component {
   margin: 10px;
 }
 

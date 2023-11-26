@@ -83,7 +83,6 @@ export default {
         });
         return;
       }
-      
       // 검색 조건으로 백엔드에 Axios 요청
       this.$axios.get(`${baseURI}/api/checkattendancelist/search`, {
         params: {

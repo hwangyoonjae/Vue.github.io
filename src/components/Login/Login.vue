@@ -196,73 +196,9 @@ export default {
         }
       );
     },
-    userInfo(formName) {
-      const baseURI = 'http://localhost:8443';
-
-      // 사용자 정보를 가져오는 API 호출
-      this.$axios.get(`${baseURI}/api/userinfo`)
-      .then(result => {
-      // API 응답 데이터에서 사용자 정보를 가져와 할당
-      const userData = result.data;
-
-      // userInfo 객체에 사용자 정보 할당
-      this.userInfo.name = userData.name;
-      this.userInfo.depart = userData.depart;
-    })
-    .catch(error => {
-      console.error('사용자 정보를 가져오는 중 에러 발생:', error);
-    });
-    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
-    uploadContent() {
-      let adminitems = data.Admin.sort((a,b) => {return b.admin_id - a.admin_id})
-      let useritems = data.User.sort((a,b) => {return b.user_id - a.user_id})
-
-      const admin = adminitems[0].admin_id + 1
-      const user = useritems[0].user_id + 1
-      
-      if (this.ruleForm.division == 'admin') {
-        data.Admin.push({
-          admin_id: admin,
-          id: this.ruleForm.id,
-          name: this.ruleForm.name,
-          email: this.ruleForm.email,
-          created_at: '2018-09-11 11:42:11',
-          updated_at: '2022-01-26 11:42:11'
-        })
-        this.$router.push({
-          path: '/adminlist'
-        })
-      } else if (this.ruleForm.division == 'user') {
-        data.User.push({
-          user_id: user,
-          id: this.ruleForm.id,
-          name: this.ruleForm.name,
-          email: this.ruleForm.email,
-          created_at: '2018-09-11 11:42:11'
-        })
-        this.$router.push({
-          path: '/userlist'
-        })
-      } else {
-        console.log("signup error!!");
-      }
-    },
-    updateContent() {
-      this.updateObject.id = this.id;
-      this.updateObject.name = this.name;
-      this.updateObject.email = this.email;
-      this.$router.push({
-        path: '/userlist'
-      })
-    },
-    cancle() {
-      this.$router.push({
-        path: '/login'
-      })
-    }
   },
   mounted() {
     const signUpButton = document.getElementById('signUp');

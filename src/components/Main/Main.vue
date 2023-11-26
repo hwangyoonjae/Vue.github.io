@@ -1,20 +1,14 @@
 <template>
   <div class="Main_Component">
     <PanelGroup />
-
     <div class="row">
       <div class="col-lg-6 mb-3">
         <div class="card shadow mb-3">
           <el-card style="height: 300px;">
-            <div slot="header" class="clearfix">
-              <i class="el-icon-date"></i>
-              근무계획
-            </div>
+            <div slot="header" class="clearfix"><i class="el-icon-date"></i>근무계획</div>
             <div class="main">
-              <div class="checkInTime" style="margin-bottom: 20px;">
-                <h3>08:23분 출근</h3>
-              </div>
-              <div class="workingHours" style="margin-bottom: 20px;">09:00 ~ 18:00 (소정근무 8시간)</div>
+              <div class="checkInTime" style="margin-bottom: 20px;"><h3>다른업무를 봐야하거나 이후에 추가 근무하는 경우 신청바랍니다.</h3></div>
+              <div class="workingHours" style="margin-bottom: 20px;">업무시간 : 09:00 ~ 18:00 (소정근무 8시간)</div>
               <div class="request_components" style="margin-bottom: 20px;">
                 <el-button @click="applycommutgo()">근태신청하기</el-button>
               </div>
@@ -22,21 +16,14 @@
           </el-card>
         </div>
       </div>
-
       <div class="col-lg-6 mb-3">
         <div class="card shadow mb-3">
           <el-card style="height: 300px;">
-            <div slot="header" class="clearfix">
-              <i class="el-icon-circle-check"></i>
-              근무체크
-            </div>
+            <div slot="header" class="clearfix"><i class="el-icon-circle-check"></i>근무체크</div>
             <div class="main">
               <div class="checkTime_components" style="margin-bottom: 20px;">
-                <div class="current-time">
-                  <h3>현재시간 :{{ serverTime }}</h3>
-                </div>
+                <div class="current-time"><h3>현재시간 :{{ serverTime }} 출근 및 퇴근</h3></div>
               </div>
-
               <!-- 출근 및 퇴근 버튼 영역 -->
               <div class="checkInOut_components" style="margin-bottom: 20px;">
                 <div class="checkInOut_components_checkIn">
@@ -51,20 +38,17 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-lg-4 mb-3">
         <div class="card shadow mb-3">
           <el-card style="height: 300px;">
-            <div slot="header" class="clearfix">
-              <i class="el-icon-monitor"></i>
-              근무현황
-            </div>
+            <div slot="header" class="clearfix"><i class="el-icon-monitor"></i>근무현황</div>
             <div class="main">
               <div class="timeline-container">
               <el-timeline :reverse="reverse">
-                <el-timeline-item v-for="(activity, index) in Attendancelist" :key="index" :timestamp="formatTimestamp(activity.createdat)">
+                <el-timeline-item v-for="(activity, index) in Attendancelive" :key="index" :timestamp="formatTimestamp(activity.createdat)">
                   {{activity.name}}
+                  {{activity.state}}
                 </el-timeline-item>
               </el-timeline>
               </div>
@@ -72,24 +56,17 @@
           </el-card>
         </div>
       </div>
-
       <div class="col-lg-8 mb-3">
         <div class="card shadow mb-3">
           <el-card style="height: 300px;">
-            <div slot="header" class="clearfix">
-              <i class="el-icon-date"></i>
-              근태현황
-            </div>
+            <div slot="header" class="clearfix"><i class="el-icon-date"></i>근태현황</div>
             <div>
               <el-table :data="attendanceData" height="200" style="width: 100%" border>
                 <el-table-column prop="name" label="이름"></el-table-column>
                 <el-table-column prop="depart" label="부서"></el-table-column>
                 <el-table-column prop="position" label="직책"></el-table-column>
                 <el-table-column prop="state" label="근태여부"></el-table-column>
-                <el-table-column prop="createdat" label="근태시간">
-                  <template slot-scope="scope">
-                    {{ formatDate(scope.row.createdat) }}
-                  </template>
+                <el-table-column prop="createdat" label="근태시간"><template slot-scope="scope">{{ formatTimestamp(scope.row.createdat) }}</template>
                 </el-table-column>
               </el-table>
             </div>
@@ -97,37 +74,27 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-lg-12 mb-3">
         <div class="card shadow mb-3">
           <el-card style="height: 300px;">
-            <div slot="header" class="clearfix">
-              <i class="el-icon-date"></i>
-              근태신청현황
-            </div>
+            <div slot="header" class="clearfix"><i class="el-icon-date"></i>근태신청현황</div>
             <div>
               <el-table :data="displayData" height="200" style="width: 100%" border>
                 <el-table-column prop="category" label="신청항목"></el-table-column>
+                <el-table-column prop="name" label="이름"></el-table-column>
+                <el-table-column prop="depart" label="부서"></el-table-column>
                 <el-table-column prop="proceedDate" label="진행날짜">
-                  <template slot-scope="scope">
-                    {{ formatDate(scope.row.proceedDate) }}
-                  </template>
+                  <template slot-scope="scope">{{ formatDate(scope.row.proceedDate) }}</template>
                 </el-table-column>
                 <el-table-column prop="startDate" label="시작시간">
-                  <template slot-scope="scope">
-                    {{ formatTime(scope.row.startDate) }}
-                  </template>
+                  <template slot-scope="scope">{{ formatTime(scope.row.startDate) }}</template>
                 </el-table-column>
                 <el-table-column prop="endDate" label="종료시간">
-                  <template slot-scope="scope">
-                    {{ formatTime(scope.row.endDate) }}
-                  </template>
+                  <template slot-scope="scope">{{ formatTime(scope.row.endDate) }}</template>
                 </el-table-column>
                 <el-table-column prop="createdat" label="작성일">
-                  <template slot-scope="scope">
-                    {{ formatDate(scope.row.createdat) }}
-                  </template>
+                  <template slot-scope="scope">{{ formatDate(scope.row.createdat) }}</template>
                 </el-table-column>
               </el-table>
             </div>
@@ -135,7 +102,6 @@
         </div>
       </div>      
     </div>
-    
   </div>
 </template>
 
@@ -154,6 +120,7 @@ export default {
     return {
       items: '',
       Attendancelist: '',
+      Attendancelive: '',
       page: 1,
       pageSize: 10,
       Detail: true,
@@ -213,7 +180,15 @@ export default {
       this.$axios.get(`${baseURI}/api/checkattendancelist`)
       .then(result => {
         console.log(result.data)
-        this.Attendancelist = result.data
+        this.Attendancelist = result.data;
+      })
+    },
+    getliveData: function() {
+      const baseURI = 'http://localhost:8443';
+      this.$axios.get(`${baseURI}/api/checkattendancelist`)
+      .then(result => {
+        console.log(result.data)
+        this.Attendancelive = result.data.reverse();
       })
     },
     getData: function() {
@@ -241,6 +216,7 @@ export default {
   mounted() {
     this.getData();
     this.getcheckData();
+    this.getliveData();
   }
 }
 </script>
