@@ -39,7 +39,7 @@ export default {
       pageSize: 10,
       options: [
         { value: 'name', label: '이름' },
-        { value: 'position', label: '직책' }
+        { value: 'state', label: '근태여부' }
       ],
       value: '',
       input: ''
