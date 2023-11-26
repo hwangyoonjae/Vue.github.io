@@ -143,17 +143,11 @@
 import moment from 'moment';
 
 import PanelGroup from './panelgroup.vue'
-import Project from '../Project/Project.vue'
-import ProjectChart from '../Project/Chart.vue'
-import IssueChart from '../Task/IssueList/Chart.vue'
 import Board from '../Board/Board.vue'
 
 export default {
   components: {
     PanelGroup,
-    Project,
-    ProjectChart,
-    IssueChart,
     Board
   },
   data() {

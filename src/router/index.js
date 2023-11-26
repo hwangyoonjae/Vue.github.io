@@ -6,24 +6,8 @@ import Create from '@/components/Board/Create'
 import Notice from '@/components/Notice/Notice'
 import NoticeDetail from '@/components/Notice/NoticeDetail'
 import NoticeWrite from '@/components/Notice/Write'
-import IssueList from '@/components/Task/IssueList/IssueList'
-import IssueListDetail from '@/components/Task/IssueList/IssueListDetail'
-import IssueWrite from '@/components/Task/IssueList/Write'
-import IssueRequestList from '@/components/Task/Issuerequest/IssueRequestList'
-import IssueRequestWrite from '@/components/Task/Issuerequest/Write'
-import IssueRequestDetail from '@/components/Task/Issuerequest/IssueRequestDetail'
-import CustomerList from '@/components/Task/Customer/CustomerList'
-import CustomerWrite from '@/components/Task/Customer/Write'
-import CustomerDetail from '@/components/Task/Customer/CustomerDetail'
-import Project from '@/components/Project/Project'
-import ProjectWrite from '@/components/Project/Write'
-import ProjectDetail from '@/components/Project/ProjectDetail'
 import Login from '@/components/Login/Login'
 import Signup from '@/components/Login/Signup'
-import Todo from '@/components/Todo/TodoMain'
-import Schedule from '@/components/Timetable/Timetable'
-import AdminList from '@/components/Person/AdminList'
-import UserList from '@/components/Person/UserList'
 import Employeelist from '@/components/Employee/Employeelist.vue'
 import Checkattendance from '@/components/Checkattendance/Checkattendance.vue'
 import CheckattendanceDetail from '@/components/Checkattendance/CheckattendanceDetail.vue'
@@ -79,16 +63,6 @@ export const router = new VueRouter({
             component: Signup
         },
         {
-            path: '/todo',
-            name: 'Todo',
-            component: Todo
-        },
-        {
-            path: '/timetable',
-            name: 'Schedule',
-            component: Schedule
-        },
-        {
             path: '/notice',
             name: 'notice',
             component: Notice
@@ -102,76 +76,6 @@ export const router = new VueRouter({
             path: '/notice/detail/:number',
             name: 'NoticeDetail',
             component: NoticeDetail
-        },
-        {
-            path: '/issueList',
-            name: 'IssueList',
-            component: IssueList
-        },
-        {
-            path: '/issueList/write/:number?',
-            name: 'IssueWrite',
-            component: IssueWrite
-        },
-        {
-            path: '/issueList/detail/:number',
-            name: 'IssueListDetail',
-            component: IssueListDetail
-        },
-        {
-            path: '/issuerequest/list',
-            name: 'IssueRequestList',
-            component: IssueRequestList
-        },
-        {
-            path: '/issuerequest/list/write/:number?',
-            name: 'IssueRequestWrite',
-            component: IssueRequestWrite
-        },
-        {
-            path: '/issuerequest/list/detail/:id',
-            name: 'IssueRequestDetail',
-            component: IssueRequestDetail
-        },
-        {
-            path: '/customerlist',
-            name: 'CustomerList',
-            component: CustomerList
-        },
-        {
-            path: '/customerlist/write/:number?',
-            name: 'CustomerWrite',
-            component: CustomerWrite
-        },
-        {
-            path: '/customerlist/detail/:number',
-            name: 'CustomerDetail',
-            component: CustomerDetail
-        },
-        {
-            path: '/project',
-            name: 'Project',
-            component: Project
-        },
-        {
-            path: '/project/write/:number?',
-            name: 'ProjectWrite',
-            component: ProjectWrite
-        },
-        {
-            path: '/project/detail/:number',
-            name: 'ProjectDetail',
-            component: ProjectDetail
-        },
-        {
-            path: '/userlist',
-            name: 'UserList',
-            component: UserList
-        },
-        {
-            path: '/adminlist',
-            name: 'AdminList',
-            component: AdminList
         },
         {
             path: '/employeelist',

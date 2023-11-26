@@ -58,7 +58,6 @@
 </template>
 
 <script>
-import data from '@/data'
 import countTo from 'vue-count-to'
 
 export default {
@@ -66,20 +65,12 @@ export default {
     countTo,
   },
   data () {
-    const project = data.ProjectContent.sort((a,b) => {return b.number - a.number})
-    const user = data.User.sort((a,b) => {return b.user_id - a.user_id})
-    const notice = data.NoticeContent.sort((a,b) => {return b.number - a.number})
-    const issue = data.IssueContent.sort((a,b) => {return b.number - a.number})
     return {
       Checkattendance: '',
       Issuelist: '',
       Applylist: '',
       Noticelist: '',
       Userlist: '',
-      project : project[0].number,
-      user : user[0].user_id,
-      notice : notice[0].number,
-      issue : issue[0].number
     }
   },
   methods: {
