@@ -3,10 +3,10 @@
     <el-card class="box-card">
       <div class="Attendance_component_search">
         <el-select v-model="value" placeholder="전체">
-          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          <el-option v-for="items in options" :key="items.value" :label="items.label" :value="items.value"></el-option>
         </el-select>
         <el-input placeholder="검색하세요" v-model="input"></el-input>
-        <el-button type="primary" icon="el-icon-search">검색</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="searchData">검색</el-button>
       </div>
     </el-card>
     <el-card class="box-card">
@@ -37,13 +37,10 @@ export default {
       items: '',
       page: 1,
       pageSize: 10,
-      options: [{
-        value: '제목',
-        label: '제목'
-      }, {
-        value: '내용',
-        label: '내용'
-      }],
+      options: [
+        { value: 'name', label: '이름' },
+        { value: 'position', label: '직책' }
+      ],
       value: '',
       input: ''
     }
@@ -73,6 +70,36 @@ export default {
         console.log(result.data)
         this.items = result.data
       })
+    },
+    searchData() {
+      const baseURI = 'http://localhost:8443';
+      const searchField = this.value;
+      const searchTerm = this.input.toLowerCase();
+
+      if (!searchField) {
+        this.$message({
+          type: 'warning',
+          message: '검색 옵션을 선택하세요.',
+        });
+        return;
+      }
+      
+      // 검색 조건으로 백엔드에 Axios 요청
+      this.$axios.get(`${baseURI}/api/checkattendancelist/search`, {
+        params: {
+          field: searchField,
+          term: searchTerm,
+        },
+      })
+      .then(result => {
+        console.log(result.data);
+        this.items = result.data;
+        // 검색 후 페이지네이션을 첫 번째 페이지로 리셋
+        this.page = 1;
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 오류 발생:', error);
+      });
     },
     handleCurrentChange(val) {
       this.page = val;
