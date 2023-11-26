@@ -100,7 +100,7 @@ export default {
       }
       
       // 검색 조건으로 백엔드에 Axios 요청
-      this.$axios.get(`${baseURI}/api/apllylist/search`, {
+      this.$axios.get(`${baseURI}/api/applylist/search`, {
         params: {
           field: searchField,
           term: searchTerm,
